@@ -43,6 +43,11 @@ u_vector<T>& u_vector<T>::push_back(const T& object) {
 }
 
 template <class T>
+unsigned int u_vector<T>::get_size() const {
+  return size;
+}
+
+template <class T>
 u_vector<T>& u_vector<T>::operator=(const u_vector<T>& v) {
   if (this != &v) {
     delete[] array;

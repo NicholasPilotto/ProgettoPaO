@@ -44,6 +44,12 @@ class u_vector {
   u_vector& push_back(const T&);
 
   /**
+   * @brief metodo getter per la size del vettore
+   * @return unsigned int size del vettore
+   */
+  unsigned int get_size() const;
+
+  /**
    * @brief definizione dell'operatore di assegnazione
    * @param v: const u_vector&, indirizzo dell'oggetto da assegnare
    */
@@ -114,7 +120,75 @@ class u_vector {
     const T* operator->() const;
   };
 
-  const_iterator begin() const;
-  const_iterator end() const;
+  const_iterator const_begin() const;
+  const_iterator const_end() const;
+
+  /**
+   * @brief classe iterator che identifica l'iteratore costante della classe u_vector
+   * @tparam T è un tipo generico, salvato in u_vector
+   */
+  class iterator {
+    friend class u_vector<T>;
+
+   private:
+    T* pointer;
+    bool past_the_end;
+
+    /**
+     * @brief costruttore di iterator
+     * @param p: const T*, puntatore con cui inizializzare `pointer`
+     * @param pte: bool, valore indicante se è past the end, di default = false
+     */
+    iterator(const T*, bool = false);
+
+   public:
+    /**
+    * @brief costruttore di iterator
+    */
+    iterator();
+
+    /**
+     * @brief operator++ prefisso
+     */
+    iterator& operator++();
+
+    /**
+     * @brief operator++ postfisso
+     */
+    iterator operator++(int);
+
+    /**
+     * @brief operator-- prefisso
+     */
+    iterator& operator--();
+
+    /**
+     * @brief operator-- postfisso
+     */
+    iterator operator--(int);
+
+    /**
+     * @brief operatore di confronto di uguaglianza
+     */
+    bool operator==(const iterator&) const;
+
+    /**
+     * @brief operatore di confronto di disuguaglianza
+     */
+    bool operator!=(const iterator&) const;
+
+    /**
+     * @brief operatore di dereferenziazione
+     */
+    T& operator*() const;
+
+    /**
+     * @brief operatore freccia
+     */
+    T* operator->() const;
+  };
+
+  iterator begin() const;
+  iterator end() const;
 };
 #endif  // __U_VECTOR_H__

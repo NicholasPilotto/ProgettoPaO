@@ -90,3 +90,16 @@ template <class T>
 const T* u_vector<T>::const_iterator::operator->() const {
   return &(pointer->info);
 }
+
+template <class T>
+typename u_vector<T>::const_iterator u_vector<T>::const_begin() const {
+  return const_iterator(first);
+}
+
+template <class T>
+typename u_vector<T>::const_iterator u_vector<T>::const_end() const {
+  if (!last) {
+    return dList<T>::const_iterator();
+  }
+  return dList<T>::const_iterator(last + 1, true);  // attenzione: NON e' past the end
+}
