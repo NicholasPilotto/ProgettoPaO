@@ -44,6 +44,35 @@ class u_vector {
   u_vector& push_back(const T&);
 
   /**
+   * @brief metodo per l'eliminazione dell'ultimo elemento di u_vector
+   */
+  void pop_back();
+
+  /**
+   * @brief metodo che ritorna il primo elemento di u_vector
+   * @return T&, indirizzo del primo elemento di u_vector
+   */
+  T& front();
+
+  /**
+   * @brief metodo che ritorna l'ultimo elemento di u_vector
+   * @return T&, indirizzo dell'ultimo elemento di u_vector
+   */
+  T& back();
+
+  /**
+   * @brief metodo che ritorna il primo elemento di u_vector
+   * @return const T&, indirizzo del primo elemento di u_vector
+   */
+  const T& front() const;
+
+  /**
+   * @brief metodo che ritorna l'ultimo elemento di u_vector
+   * @return const T&, indirizzo dell'ultimo elemento di u_vector
+   */
+  const T& back() const;
+
+  /**
    * @brief metodo getter per la __size del vettore
    * @return unsigned int __size del vettore
    */

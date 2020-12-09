@@ -43,6 +43,17 @@ u_vector<T>& u_vector<T>::push_back(const T& object) {
 }
 
 template <class T>
+void u_vector<T>::pop_back() {
+  if (__size) {
+    if (iterator::current_position == __size - 1 || const_iterator::current_position == __size - 1) {
+      iterator::current_position--;
+      const_iterator::current_position--;
+    }
+    __size--;
+  }
+}
+
+template <class T>
 unsigned int u_vector<T>::size() const {
   return __size;
 }
