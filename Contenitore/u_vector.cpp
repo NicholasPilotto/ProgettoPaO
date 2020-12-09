@@ -54,6 +54,26 @@ void u_vector<T>::pop_back() {
 }
 
 template <class T>
+T& u_vector<T>::front() {
+  return *array;
+}
+
+template <class T>
+T& u_vector<T>::back() {
+  return *(array + (__size - 1));
+}
+
+template <class T>
+const T& u_vector<T>::front() const {
+  return *array;
+}
+
+template <class T>
+const T& u_vector<T>::back() const {
+  return *(array + (__size - 1));
+}
+
+template <class T>
 unsigned int u_vector<T>::size() const {
   return __size;
 }
