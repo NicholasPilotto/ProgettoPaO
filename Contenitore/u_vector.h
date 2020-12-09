@@ -1,6 +1,8 @@
 #ifndef __U_VECTOR_H__
 #define __U_VECTOR_H__
 
+#include <iostream>
+
 /**
  * @brief universal vector
  * @tparam T è un tipo generico, che verrà salvato nel vettore
@@ -8,14 +10,7 @@
 template <class T>
 class u_vector {
  private:
-  /**
-  * @brief puntatore alla prima cella dell'array contenente `size` volte T
-  */
   T* array;
-
-  /**
-   * @brief unsigned int che identifica la dimensione dell'array
-   */
   unsigned int size;
 
   /**
@@ -53,5 +48,73 @@ class u_vector {
    * @param v: const u_vector&, indirizzo dell'oggetto da assegnare
    */
   u_vector& operator=(const u_vector&);
+
+  /**
+   * @brief classe const_iterator che identifica l'iteratore costante della classe u_vector
+   * @tparam T è un tipo generico, salvato in u_vector
+   */
+  class const_iterator {
+    friend class u_vector<T>;
+
+   private:
+    const T* pointer;
+    bool past_the_end;
+
+    /**
+     * @brief costruttore di const_iterator
+     * @param p: const T*, puntatore con cui inizializzare `pointer`
+     * @param pte: bool, valore indicante se è past the end, di default = false
+     */
+    const_iterator(const T*, bool = false);
+
+   public:
+    /**
+    * @brief costruttore di const_iterator
+    */
+    const_iterator();
+
+    /**
+     * @brief operator++ prefisso
+     */
+    const_iterator& operator++();
+
+    /**
+     * @brief operator++ postfisso
+     */
+    const_iterator operator++(int);
+
+    /**
+     * @brief operator-- prefisso
+     */
+    const_iterator& operator--();
+
+    /**
+     * @brief operator-- postfisso
+     */
+    const_iterator operator--(int);
+
+    /**
+     * @brief operatore di confronto di uguaglianza
+     */
+    bool operator==(const const_iterator&) const;
+
+    /**
+     * @brief operatore di confronto di disuguaglianza
+     */
+    bool operator!=(const const_iterator&) const;
+
+    /**
+     * @brief operatore di dereferenziazione
+     */
+    const T& operator*() const;
+
+    /**
+     * @brief operatore freccia
+     */
+    const T* operator->() const;
+  };
+
+  const_iterator begin() const;
+  const_iterator end() const;
 };
 #endif  // __U_VECTOR_H__
