@@ -44,8 +44,14 @@ class u_vector {
 
   /**
    * @brief metodo per l'inserimento in coda
-   * @param object: const T&, indirizzo dell'oggetto  da inserire in coda
+   * @param object: const T&, indirizzo dell'oggetto da inserire in coda
    */
   u_vector& push_back(const T&);
+
+  /**
+   * @brief definizione dell'operatore di assegnazione
+   * @param v: const u_vector&, indirizzo dell'oggetto da assegnare
+   */
+  u_vector& operator=(const u_vector&);
 };
 #endif  // __U_VECTOR_H__

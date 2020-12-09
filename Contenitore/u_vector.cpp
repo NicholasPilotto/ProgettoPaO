@@ -41,3 +41,16 @@ u_vector<T>& u_vector<T>::push_back(const T& object) {
   }
   return *this;
 }
+
+template <class T>
+u_vector<T>& u_vector<T>::operator=(const u_vector<T>& v) {
+  if (this != &v) {
+    delete[] array;
+    array = (v.size == 0) ? nullptr : new int[size]();
+    for (unsigned int i = 0; i < v.size; i++) {
+      array[i] = v.array[i];
+    }
+  }
+
+  return *this;
+}
