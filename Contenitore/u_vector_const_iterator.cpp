@@ -3,10 +3,10 @@
 #include "u_vector.h"
 
 template <class T>
-u_vector<T>::const_iterator::const_iterator(const T* p, bool pte) : pointer(p), past_the_end(pte) {}
+u_vector<T>::const_iterator::const_iterator(const T* p, bool pte) : pointer(p), past_the_end(pte), current_position(0) {}
 
 template <class T>
-u_vector<T>::const_iterator::const_iterator() : pointer(p), past_the_end(false) {}
+u_vector<T>::const_iterator::const_iterator() : pointer(p), past_the_end(false), current_position(0) {}
 
 template <class T>
 typename u_vector<T>::const_iterator& u_vector<T>::const_iterator::operator++() {
@@ -18,6 +18,7 @@ typename u_vector<T>::const_iterator& u_vector<T>::const_iterator::operator++() 
         pointer = pointer + 1;
         past_the_end = true;
       }
+      current_position++;
     }
   }
   return *this;
@@ -35,6 +36,7 @@ typename u_vector<T>::const_iterator u_vector<T>::const_iterator::operator++(int
         past_the_end = true;
       }
     }
+    current_position++;
   }
 
   return aux;
@@ -51,6 +53,7 @@ typename u_vector<T>::const_iterator& u_vector<T>::const_iterator::operator--() 
       pointer = pointer - 1;
       past_the_end = false;
     }
+    current_position--;
   }
   return *this;
 }
@@ -67,6 +70,7 @@ typename u_vector<T>::const_iterator u_vector<T>::const_iterator::operator--(int
       pointer = pointer - 1;
       past_the_end = false;
     }
+    current_position--;
   }
   return aux;
 }
@@ -82,6 +86,64 @@ bool u_vector<T>::const_iterator::operator!=(const u_vector<T>::const_iterator& 
 }
 
 template <class T>
+bool u_vector<T>::const_iterator::operator<(const u_vector<T>::const_iterator& it) const {
+  return pointer < it.pointer;
+}
+
+template <class T>
+bool u_vector<T>::const_iterator::operator<=(const u_vector<T>::const_iterator& it) const {
+  return pointer <= it.pointer;
+}
+
+template <class T>
+bool u_vector<T>::const_iterator::operator>(const u_vector<T>::const_iterator& it) const {
+  return pointer > it.pointer;
+}
+
+template <class T>
+bool u_vector<T>::const_iterator::operator<=(const u_vector<T>::const_iterator& it) const {
+  return pointer <= it.pointer;
+}
+
+template <class T>
+typename u_vector<T>::const_iterator u_vector<T>::const_iterator::operator+(int value) const {
+  if (current_position + value < size) {
+    current_position += value;
+    return const_iterator(pointer + value);
+  }
+  throw std::out_of_range("Code 1001");
+}
+
+template <class T>
+typename u_vector<T>::const_iterator& u_vector<T>::const_iterator::operator+=(int value) {
+  if (current_position + value < size) {
+    current_position += value;
+    pointer = pointer + value;
+    return *this;
+  }
+  throw std::out_of_range("Code 1002");
+}
+
+template <class T>
+typename u_vector<T>::const_iterator u_vector<T>::const_iterator::operator-(int value) const {
+  if (current_position - value >= 0) {
+    current_position -= value;
+    return const_iterator(pointer - value);
+  }
+  throw std::out_of_range("Code 1003");
+}
+
+template <class T>
+typename u_vector<T>::const_iterator& u_vector<T>::const_iterator::operator-=(int value) {
+  if (current_position - value >= 0) {
+    current_position -= value;
+    pointer = pointer + value;
+    return *this;
+  }
+  throw std::out_of_range("Code 1004");
+}
+
+template <class T>
 const T& u_vector<T>::const_iterator::operator*() const {
   return pointer->info;
 }
@@ -92,6 +154,14 @@ const T* u_vector<T>::const_iterator::operator->() const {
 }
 
 template <class T>
+const T& u_vector<T>::const_iterator::operator[](unsigned int index) const {
+  if (index < size) {
+    return *(p + index);
+  }
+  throw std::out_of_range("Code 1005");
+}
+
+template <class T>
 typename u_vector<T>::const_iterator u_vector<T>::const_begin() const {
   return const_iterator(first);
 }
@@ -99,7 +169,7 @@ typename u_vector<T>::const_iterator u_vector<T>::const_begin() const {
 template <class T>
 typename u_vector<T>::const_iterator u_vector<T>::const_end() const {
   if (!last) {
-    return dList<T>::const_iterator();
+    return u_vector<T>::const_iterator();
   }
-  return dList<T>::const_iterator(last + 1, true);  // attenzione: NON e' past the end
+  return u_vector<T>::const_iterator(last + 1, true);
 }
