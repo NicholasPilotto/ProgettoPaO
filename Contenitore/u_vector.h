@@ -11,7 +11,7 @@ template <class T>
 class u_vector {
  private:
   T* array;
-  unsigned int size;
+  unsigned int __size;
 
   /**
    * @brief medoto per la copia profonda di un oggetto T*
@@ -44,10 +44,21 @@ class u_vector {
   u_vector& push_back(const T&);
 
   /**
-   * @brief metodo getter per la size del vettore
-   * @return unsigned int size del vettore
+   * @brief metodo getter per la __size del vettore
+   * @return unsigned int __size del vettore
    */
-  unsigned int get_size() const;
+  unsigned int size() const;
+
+  /**
+   * @brief medoto per fare il check del contenuto di u_vector
+   * @return bool, `true` se u_vector è vuoto, `false` altrimenti
+   */
+  bool empty() const;
+
+  /**
+   * @brief metodo per la cancellazione di u_vector
+   */
+  void clear();
 
   /**
    * @brief definizione dell'operatore di assegnazione
@@ -151,7 +162,7 @@ class u_vector {
      * @brief operatore somma
      * @param value: int, numero di posizioni da avanzare
      * @return const_iterator, oggetto di invocazione + `value`
-     * @throw out_of_range, se current_index + value >= size
+     * @throw out_of_range, se current_index + value >= __size
      */
     const_iterator operator+(int) const;
 
@@ -159,7 +170,7 @@ class u_vector {
      * @brief operatore somma-uguale
      * @param value: int, numero di posizioni da avanzare
      * @return const_iterator&, indirizzo dell'oggetto di invocazione + `value`
-     * @throw out_of_range, se current_index + value >= size
+     * @throw out_of_range, se current_index + value >= __size
      */
     const_iterator& operator+=(int);
 
@@ -183,7 +194,7 @@ class u_vector {
      * @brief operatore di subscripting
      * @param index: unsigned int, indice dell'oggetto di interesse
      * @return const T&, indirizzo dell'oggetto di indice `index`
-     * @throw out_of_range se `index` >= `size`
+     * @throw out_of_range se `index` >= `__size`
      */
     const T& operator[](unsigned int) const;
 
@@ -299,7 +310,7 @@ class u_vector {
      * @brief operatore somma
      * @param value: int, numero di posizioni da avanzare
      * @return iterator, oggetto di invocazione + `value`
-     * @throw out_of_range, se current_index + value >= size
+     * @throw out_of_range, se current_index + value >= __size
      */
     iterator operator+(int) const;
 
@@ -307,7 +318,7 @@ class u_vector {
      * @brief operatore somma-uguale
      * @param value: int, numero di posizioni da avanzare
      * @return iterator&, indirizzo dell'oggetto di invocazione + `value`
-     * @throw out_of_range, se current_index + value >= size
+     * @throw out_of_range, se current_index + value >= __size
      */
     iterator& operator+=(int);
 
@@ -331,7 +342,7 @@ class u_vector {
      * @brief operatore di subscripting
      * @param index: unsigned int, indice dell'oggetto di interesse
      * @return T&, indirizzo dell'oggetto di indice `index`
-     * @throw out_of_range se `index` >= `size`
+     * @throw out_of_range se `index` >= `__size`
      */
     T& operator[](unsigned int) const;
 

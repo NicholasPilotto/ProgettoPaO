@@ -107,7 +107,7 @@ bool u_vector<T>::const_iterator::operator<=(const u_vector<T>::const_iterator& 
 
 template <class T>
 typename u_vector<T>::const_iterator u_vector<T>::const_iterator::operator+(int value) const {
-  if (current_position + value < size) {
+  if (current_position + value < __size) {
     current_position += value;
     return const_iterator(pointer + value);
   }
@@ -116,7 +116,7 @@ typename u_vector<T>::const_iterator u_vector<T>::const_iterator::operator+(int 
 
 template <class T>
 typename u_vector<T>::const_iterator& u_vector<T>::const_iterator::operator+=(int value) {
-  if (current_position + value < size) {
+  if (current_position + value < __size) {
     current_position += value;
     pointer = pointer + value;
     return *this;
@@ -155,7 +155,7 @@ const T* u_vector<T>::const_iterator::operator->() const {
 
 template <class T>
 const T& u_vector<T>::const_iterator::operator[](unsigned int index) const {
-  if (index < size) {
+  if (index < __size) {
     return *(p + index);
   }
   throw std::out_of_range("Code 1005");
