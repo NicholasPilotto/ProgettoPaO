@@ -9,7 +9,7 @@ compile: main.o u_vector.o
 main.o: main.cpp conto_bancario.h
 	$(CC) $(CCFLAGS) -c main.cpp
 
-u_vector.o: u_vector.cpp u_vector.h u_vector_const_iterator.cpp
+u_vector.o: u_vector.cpp u_vector.h u_vector_const_iterator.cpp u_vector_iterator.cpp
 	$(CC) $(CCFLAGS) -c u_vector.cpp -o u_vector.o
 
 clean:
