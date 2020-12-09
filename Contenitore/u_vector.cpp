@@ -27,12 +27,12 @@ u_vector<T>::~u_vector() {
 
 template <class T>
 u_vector<T>& u_vector<T>::push_back(const T& object) {
-  if (v.size != 0) {
+  if (object.size != 0) {
     T* aux = new T[size + object.size]();
     for (unsigned int i = 0; i < size; i++) {
       aux[i] = array[i];
     }
-    for (unsigned int i = 0; i < v.size; i++) {
+    for (unsigned int i = 0; i < object.size; i++) {
       aux[size + i] = object.array[i];
     }
     size += object.size;
