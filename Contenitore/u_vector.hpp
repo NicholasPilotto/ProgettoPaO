@@ -17,6 +17,7 @@ class u_vector {
   T* array;
   unsigned int __capacity;
   unsigned int __size;
+
   static void destroy(T* v);
 
   /**
@@ -605,7 +606,7 @@ u_vector<T>::u_vector(unsigned int _capacity, const T& element) : array(new T[_c
 }
 
 template <class T>
-u_vector<T>::u_vector(const u_vector& uv) : array(deep_copy(uv.array)), __capacity(uv.__capacity), __size(uv.__size) {}
+u_vector<T>::u_vector(const u_vector& uv) : array(uv.deep_copy(uv.__size, uv.__capacity)), __capacity(uv.__capacity), __size(uv.__size) {}
 
 template <class T>
 T* u_vector<T>::deep_copy(unsigned int n, unsigned int c) const {
@@ -739,11 +740,11 @@ bool u_vector<T>::operator<(const u_vector<T>& uv) const {
   unsigned int min_size = __size < uv.__size ? __size : uv.__size;
 
   for (size_t i = 0; i < min_size; i++) {
-    if (array[i] > uv.array[i]) {
-      return false;
+    if (array[i] != uv.array[i]) {
+      return array[i] < uv.array[i];
     }
   }
-  return true;
+  return __size < uv.__size ? true : false;
 }
 
 template <class T>
@@ -751,11 +752,11 @@ bool u_vector<T>::operator>(const u_vector<T>& uv) const {
   unsigned int min_size = __size < uv.__size ? __size : uv.__size;
 
   for (size_t i = 0; i < min_size; i++) {
-    if (array[i] < uv.array[i]) {
-      return false;
+    if (array[i] != uv.array[i]) {
+      return array[i] > uv.array[i];
     }
   }
-  return true;
+  return __size > uv.__size ? true : false;
 }
 
 template <class T>
