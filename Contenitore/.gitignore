@@ -34,4 +34,5 @@
 # Others
 .vscode
 main.cpp
-# !u_vector.o
+main.o
+!u_vector.o
