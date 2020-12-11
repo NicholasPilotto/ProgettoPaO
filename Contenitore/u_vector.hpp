@@ -278,7 +278,6 @@ class u_vector {
      * @brief operatore differenza-uguale
      * @param value: int, numero di posizioni da arretrare
      * @return iterator&, indirizzo dell'oggetto di invocazione - `value`
-     * @throw out_of_range, se current_index + value < 0
      */
     iterator& operator-=(int);
 
@@ -379,6 +378,11 @@ class u_vector {
    * @brief definizione dell'operatore di assegnazione
    * @param v: const u_vector&, indirizzo dell'oggetto da assegnare
    */
+
+  T& at(unsigned int) const;
+
+  T* data() const;
+
   iterator begin() const;
   iterator end() const;
 
@@ -684,6 +688,16 @@ const T& u_vector<T>::back() const {
 template <class T>
 void u_vector<T>::clear() {
   erase(begin(), end());
+}
+
+template <class T>
+T& u_vector<T>::at(unsigned int index) const {
+  return *(array + index);
+}
+
+template <class T>
+T* u_vector<T>::data() const {
+  return __size ? array : nullptr;
 }
 
 template <class T>
