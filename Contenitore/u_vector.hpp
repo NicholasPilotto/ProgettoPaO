@@ -116,7 +116,6 @@ class u_vector {
      * @brief operatore somma
      * @param value: int, numero di posizioni da avanzare
      * @return const_iterator, oggetto di invocazione + `value`
-     * @throw out_of_range, se current_index + value >= __size
      */
     const_iterator operator+(int) const;
 
@@ -124,7 +123,6 @@ class u_vector {
      * @brief operatore somma-uguale
      * @param value: int, numero di posizioni da avanzare
      * @return const_iterator&, indirizzo dell'oggetto di invocazione + `value`
-     * @throw out_of_range, se current_index + value >= __size
      */
     const_iterator& operator+=(int);
 
@@ -132,7 +130,6 @@ class u_vector {
      * @brief operatore differenza
      * @param value: int, numero di posizioni da arretrare
      * @return const_iterator, oggetto di invocazione - `value`
-     * @throw out_of_range, se current_index + value < 0
      */
     const_iterator operator-(int) const;
 
@@ -140,7 +137,6 @@ class u_vector {
      * @brief operatore differenza-uguale
      * @param value: int, numero di posizioni da arretrare
      * @return const_iterator&, indirizzo dell'oggetto di invocazione - `value`
-     * @throw out_of_range, se current_index + value < 0
      */
     const_iterator& operator-=(int);
 
@@ -148,7 +144,6 @@ class u_vector {
      * @brief operatore di subscripting
      * @param index: unsigned int, indice dell'oggetto di interesse
      * @return const T&, indirizzo dell'oggetto di indice `index`
-     * @throw out_of_range se `index` >= `__size`
      */
     const T& operator[](unsigned int) const;
 
@@ -254,7 +249,6 @@ class u_vector {
      * @brief operatore somma
      * @param value: int, numero di posizioni da avanzare
      * @return iterator, oggetto di invocazione + `value`
-     * @throw out_of_range, se current_index + value >= __size
      */
     iterator operator+(int) const;
 
@@ -262,7 +256,6 @@ class u_vector {
      * @brief operatore somma-uguale
      * @param value: int, numero di posizioni da avanzare
      * @return iterator&, indirizzo dell'oggetto di invocazione + `value`
-     * @throw out_of_range, se current_index + value >= __size
      */
     iterator& operator+=(int);
 
@@ -270,7 +263,6 @@ class u_vector {
      * @brief operatore differenza
      * @param value: int, numero di posizioni da arretrare
      * @return iterator, oggetto di invocazione - `value`
-     * @throw out_of_range, se current_index + value < 0
      */
     iterator operator-(int) const;
 
@@ -285,7 +277,6 @@ class u_vector {
      * @brief operatore di subscripting
      * @param index: unsigned int, indice dell'oggetto di interesse
      * @return T&, indirizzo dell'oggetto di indice `index`
-     * @throw out_of_range se `index` >= `__size`
      */
     T& operator[](unsigned int) const;
 
@@ -302,8 +293,19 @@ class u_vector {
     T* operator->() const;
   };
 
+  /**
+   * @brief costruttore di u_vector
+   * @param _capacity : unsigned int, valore che indica la capacity di u_vector, defautl = 1
+   * @param _size : unsigned int, valore che indica la size di u_vector, default = 0
+   */
   u_vector(unsigned int = 1, unsigned int = 0);
-  u_vector(unsigned int, const T&);
+
+  /**
+   * @brief costruttore di u_vector
+   * @param element : const T&, elemento T inserito `_capacity` volte
+   * @param _capacity : unsigned int, indica la capacity di u_vector, default = 1
+   */
+  u_vector(const T&, unsigned int = 1);
 
   /**
    * @brief costruttore di copia profonda
@@ -312,7 +314,7 @@ class u_vector {
   u_vector(const u_vector&);
 
   /**
-   * @brief distruttore di copia profonda
+   * @brief distruttore profondo di u_vector
    */
   ~u_vector();
 
@@ -379,24 +381,90 @@ class u_vector {
    * @param v: const u_vector&, indirizzo dell'oggetto da assegnare
    */
 
+  /**
+   * @brief metodo at
+   * @param index : unsigned int, indice dell'elemento desiderato
+   * @return indirizzo dell'elemento di indice `index`
+   */
   T& at(unsigned int) const;
 
+  /**
+   * @brief metodo data
+   * @return il puntatore del primo elemento dell'array di u_vector
+   */
   T* data() const;
 
+  /**
+   * @brief metodo per il ritorno del primo elemento
+   * @return iterator, iteratore rappresentante il primo elemento di u_vector
+   */
   iterator begin() const;
+
+  /**
+   * @brief metodo per il ritorno dell'ultimo elemento
+   * @return iterator, iteratore rappresentante l'ultimo elemento di u_vector
+   */
   iterator end() const;
 
+  /**
+   * @brief metodo per il ritorno del primo elemento costante
+   * @return const_iterator, iteratore rappresentante il primo elemento costante di u_vector
+   */
   const_iterator const_begin() const;
+
+  /**
+   * @brief metodo per il ritorno dell'ultimo elemento costante
+   * @return const_iterator, iteratore rappresentante l'ultimo elemento costante di u_vector
+   */
   const_iterator const_end() const;
 
+  /**
+   * @brief operatore di assegnazione
+   * @param uv : const u_vector&, u_vector da assegnare
+   * @return u_vector&, indirizzo di u_vector di invocazione
+   */
   u_vector& operator=(const u_vector&);
 
+  /**
+   * @brief operatore di uguaglianza
+   * @param uv const u_vector&, u_vector da controllare
+   * @return bool, `true` sse u_vector di invocazione ugale a `uv`, false altrimenti
+   */
   bool operator==(const u_vector&) const;
+
+  /**
+   * @brief operatore di confronto minore
+   * @param uv const u_vector&, u_vector da controllare
+   * @return bool, `true` sse u_vector di invocazione minore di `uv`, false altrimenti
+   */
   bool operator<(const u_vector&) const;
+
+  /**
+   * @brief operatore di confronto maggiore
+   * @param uv const u_vector&, u_vector da controllare
+   * @return bool, `true` sse u_vector di invocazione maggiore di `uv`, false altrimenti
+   */
   bool operator>(const u_vector&) const;
+
+  /**
+   * @brief operatore di confronto minore-uguale
+   * @param uv const u_vector&, u_vector da controllare
+   * @return bool, `true` sse u_vector di invocazione minore-uguale di `uv`, false altrimenti
+   */
   bool operator<=(const u_vector&) const;
+
+  /**
+   * @brief operatore di confronto maggiore-uguale
+   * @param uv const u_vector&, u_vector da controllare
+   * @return bool, `true` sse u_vector di invocazione maggiore-uguale di `uv`, false altrimenti
+   */
   bool operator>=(const u_vector&) const;
 
+  /**
+   * @brief operatore di subscripting
+   * @param index : unsigned int, indice richiesto
+   * @return const T&, indirizzo dell'elemento di indice `index`
+   */
   const T& operator[](unsigned int) const;
 };
 #endif  // __U_VECTOR_H__
@@ -603,7 +671,7 @@ template <class T>
 u_vector<T>::u_vector(unsigned int _capacity, unsigned int _size) : array(new T[_capacity]), __capacity(_capacity), __size(_size) {}
 
 template <class T>
-u_vector<T>::u_vector(unsigned int _capacity, const T& element) : array(new T[_capacity]), __capacity(_capacity), __size(_capacity) {
+u_vector<T>::u_vector(const T& element, unsigned int _capacity) : array(new T[_capacity]), __capacity(_capacity), __size(_capacity) {
   for (int i = 0; i < _capacity; i++) {
     array[i] = element;
   }
