@@ -378,13 +378,21 @@ class u_vector {
    * @brief definizione dell'operatore di assegnazione
    * @param v: const u_vector&, indirizzo dell'oggetto da assegnare
    */
-  u_vector& operator=(const u_vector&);
-
   iterator begin() const;
   iterator end() const;
 
   const_iterator const_begin() const;
   const_iterator const_end() const;
+
+  u_vector& operator=(const u_vector&);
+
+  bool operator==(const u_vector&) const;
+  bool operator<(const u_vector&) const;
+  bool operator>(const u_vector&) const;
+  bool operator<=(const u_vector&) const;
+  bool operator>=(const u_vector&) const;
+
+  const T& operator[](unsigned int) const;
 };
 #endif  // __U_VECTOR_H__
 
@@ -678,19 +686,6 @@ void u_vector<T>::clear() {
 }
 
 template <class T>
-u_vector<T>& u_vector<T>::operator=(const u_vector<T>& v) {
-  if (this != &v) {
-    delete[] array;
-    array = (v.__size == 0) ? nullptr : new int[__size]();
-    for (unsigned int i = 0; i < v.__size; i++) {
-      array[i] = v.array[i];
-    }
-  }
-
-  return *this;
-}
-
-template <class T>
 typename u_vector<T>::iterator u_vector<T>::begin() const {
   return iterator(array);
 }
@@ -708,4 +703,72 @@ typename u_vector<T>::const_iterator u_vector<T>::const_begin() const {
 template <class T>
 typename u_vector<T>::const_iterator u_vector<T>::const_end() const {
   return const_iterator(array + __size);
+}
+
+template <class T>
+u_vector<T>& u_vector<T>::operator=(const u_vector<T>& v) {
+  if (this != &v) {
+    destroy(array);
+    __size = v.__size;
+    __capacity = v.__capacity;
+    array = v.deep_copy(__size, __capacity);
+  }
+  return *this;
+}
+
+template <class T>
+bool u_vector<T>::operator==(const u_vector<T>& uv) const {
+  if (this == &uv) {
+    return true;
+  }
+
+  if (__size != uv.__size) {
+    return false;
+  }
+
+  for (size_t i = 0; i < __size; i++) {
+    if (array[i] != uv.array[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+template <class T>
+bool u_vector<T>::operator<(const u_vector<T>& uv) const {
+  unsigned int min_size = __size < uv.__size ? __size : uv.__size;
+
+  for (size_t i = 0; i < min_size; i++) {
+    if (array[i] > uv.array[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+template <class T>
+bool u_vector<T>::operator>(const u_vector<T>& uv) const {
+  unsigned int min_size = __size < uv.__size ? __size : uv.__size;
+
+  for (size_t i = 0; i < min_size; i++) {
+    if (array[i] < uv.array[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+template <class T>
+bool u_vector<T>::operator<=(const u_vector<T>& uv) const {
+  return *this < uv || this->operator==(uv);
+}
+
+template <class T>
+bool u_vector<T>::operator>=(const u_vector<T>& uv) const {
+  return *this > uv || this->operator==(uv);
+}
+
+template <class T>
+const T& u_vector<T>::operator[](unsigned int index) const {
+  return *(array + index);
 }
