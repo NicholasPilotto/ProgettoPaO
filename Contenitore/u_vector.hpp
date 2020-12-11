@@ -18,11 +18,16 @@ class u_vector {
   unsigned int __capacity;
   unsigned int __size;
 
-  static void destroy(T* v);
+  /**
+   * @brief metodo per la ditruzione profonda di un array
+   * @param array : T*, puntatore al primo elemento dell'array da distruggere
+   */
+  static void destroy_array(T*);
 
   /**
    * @brief medoto per la copia profonda di un oggetto T*
-   * @param a: const T*, puntatore costante alla prima cella dell'array da copiare
+   * @param _size : unsigned int, sie dell'array di invocazione
+   * @param _capazity : unsigned int, capacity dell'array di invocazione
    */
   T* deep_copy(unsigned int, unsigned int) const;
 
@@ -395,6 +400,12 @@ class u_vector {
   T* data() const;
 
   /**
+   * @brief massimo numero di elementi
+   * @return unsigned int, numero massimo di elementi che u_vector può contenere
+   */
+  static unsigned int max_size();
+
+  /**
    * @brief metodo per il ritorno del primo elemento
    * @return iterator, iteratore rappresentante il primo elemento di u_vector
    */
@@ -681,23 +692,23 @@ template <class T>
 u_vector<T>::u_vector(const u_vector& uv) : array(uv.deep_copy(uv.__size, uv.__capacity)), __capacity(uv.__capacity), __size(uv.__size) {}
 
 template <class T>
-T* u_vector<T>::deep_copy(unsigned int n, unsigned int c) const {
-  if (n <= c && n <= __size) {
-    T* p = new T[c];
-    std::copy(array, array + n, p);
-    return p;
+T* u_vector<T>::deep_copy(unsigned int _size, unsigned int _capacity) const {
+  if (_size <= _capacity && _size <= __size) {
+    T* aux = new T[_capacity];
+    std::copy(array, array + _capacity, aux);
+    return aux;
   } else
     return nullptr;
 }
 
 template <class T>
-void u_vector<T>::destroy(T* v) {
-  if (v) delete[] v;
+void u_vector<T>::destroy_array(T* array) {
+  if (array) delete[] array;
 }
 
 template <class T>
 u_vector<T>::~u_vector() {
-  destroy(array);
+  destroy_array(array);
 }
 
 template <class T>
@@ -705,7 +716,7 @@ void u_vector<T>::push_back(const T& object) {
   if (__size >= __capacity) {
     __capacity *= 2;
     T* temp = deep_copy(__size, __capacity);
-    destroy(array);
+    destroy_array(array);
     array = temp;
   }
   array[__size++] = object;
@@ -769,6 +780,11 @@ T* u_vector<T>::data() const {
 }
 
 template <class T>
+unsigned int u_vector<T>::max_size() {
+  return UINT_MAX;
+}
+
+template <class T>
 typename u_vector<T>::iterator u_vector<T>::begin() const {
   return iterator(array);
 }
@@ -791,7 +807,7 @@ typename u_vector<T>::const_iterator u_vector<T>::const_end() const {
 template <class T>
 u_vector<T>& u_vector<T>::operator=(const u_vector<T>& v) {
   if (this != &v) {
-    destroy(array);
+    destroy_array(array);
     __size = v.__size;
     __capacity = v.__capacity;
     array = v.deep_copy(__size, __capacity);
