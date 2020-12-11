@@ -51,6 +51,9 @@ class u_vector {
     const_iterator(const T*);
 
    public:
+    //TODO: operator=
+    const_iterator& operator=(const iterator&);
+
     /**
      * @brief operator++ prefisso
      * @return const_iterator&, indirizzo dell'oggetto di invocazione + 1
@@ -184,6 +187,8 @@ class u_vector {
     iterator(T*);
 
    public:
+    //TODO: operator=
+    iterator& operator=(const iterator&);
     /**
      * @brief operator++ prefisso
      * @return iterator&, indirizzo dell'oggetto di invocazione + 1
@@ -429,6 +434,11 @@ class u_vector {
    */
   const_iterator const_end() const;
 
+  //TODO: insert
+  iterator insert(iterator, const T&);
+
+  iterator insert(const_iterator, const T&);
+
   /**
    * @brief operatore di assegnazione
    * @param uv : const u_vector&, u_vector da assegnare
@@ -481,6 +491,12 @@ class u_vector {
 #endif  // __U_VECTOR_H__
 
 //* ---------- ITERATOR ----------
+
+template <class T>
+typename u_vector<T>::iterator& u_vector<T>::iterator::operator=(const u_vector<T>::iterator& it) {
+  pointer = it.pointer;
+  return *this;
+}
 
 template <class T>
 u_vector<T>::iterator::iterator(T* p) : pointer(p) {}
@@ -791,7 +807,7 @@ typename u_vector<T>::iterator u_vector<T>::begin() const {
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::end() const {
-  return iterator(array + __size);
+  return iterator(array + (__size - 1));
 }
 
 template <class T>
@@ -801,7 +817,30 @@ typename u_vector<T>::const_iterator u_vector<T>::const_begin() const {
 
 template <class T>
 typename u_vector<T>::const_iterator u_vector<T>::const_end() const {
-  return const_iterator(array + __size);
+  return const_iterator(array + (__size - 1));
+}
+
+template <class T>
+typename u_vector<T>::iterator u_vector<T>::insert(iterator position, const T& element) {
+  T* aux = nullptr;
+  u_vector<T>::iterator result = NULL;
+  u_vector<T>::iterator it = begin();
+  u_vector<T>::iterator last = end();
+
+  size_t index = 0;
+  for (; it != last; it++) {
+    if (it != position) {
+      aux[index] = *it;
+    } else if (it == position) {
+      aux[index] = element;
+      result = it;
+    }
+    index++;
+  }
+
+  destroy_array(array);
+  array = aux;
+  return result;
 }
 
 template <class T>
