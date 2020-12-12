@@ -822,18 +822,27 @@ typename u_vector<T>::const_iterator u_vector<T>::const_end() const {
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::insert(iterator position, const T& element) {
-  T* aux = nullptr;
   u_vector<T>::iterator result = NULL;
   u_vector<T>::iterator it = begin();
   u_vector<T>::iterator last = end();
 
+  T* aux = new T[__size + 1];
+
   size_t index = 0;
-  for (; it != last; it++) {
+  bool inserted = false;
+  for (; !inserted && it != last + 1; it++) {
     if (it != position) {
       aux[index] = *it;
     } else if (it == position) {
       aux[index] = element;
+      std::copy(position, end(), (aux + index + 1));
+      __size++;
+      if (__size >= __capacity) {
+        __capacity *= 2;
+      }
+
       result = it;
+      inserted = true;
     }
     index++;
   }
