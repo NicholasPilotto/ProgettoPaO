@@ -424,9 +424,20 @@ class u_vector {
    */
   const_iterator const_end() const;
 
-  //TODO: insert
+  /**
+   * @brief metodo per l'inserimento di un elemento T in posizione position - 1
+   * @param position : iterator, posizione successiva alla posizione di inserimento
+   * @param element : const T&, elemento da inserire
+   * @return iterator, iteratore rappresentante l'elemento inserito
+   */
   iterator insert(iterator, const T&);
 
+  /**
+   * @brief metodo per l'inserimento di un elemento T in posizione position - 1
+   * @param position : const_iterator, posizione successiva alla posizione di inserimento
+   * @param element : const T&, elemento da inserire
+   * @return iterator, iteratore rappresentante l'elemento inserito
+   */
   iterator insert(const_iterator, const T&);
 
   /**
@@ -825,6 +836,26 @@ typename u_vector<T>::iterator u_vector<T>::insert(u_vector<T>::iterator positio
   std::copy_backward(position, end() - 1, end());
   *position = element;
   return position;
+}
+
+template <class T>
+typename u_vector<T>::iterator u_vector<T>::insert(u_vector<T>::const_iterator position, const T& element) {
+  //? Valutare se rifarlo o tenerlo copiato
+  unsigned int offset = static_cast<unsigned int>(position.pointer - array);
+  ++__size;
+  if (__size >= __capacity) {
+    __capacity *= 2;
+    T* aux = deep_copy(offset, __capacity);
+    aux[offset] = element;
+    std::copy(position, end(), iterator(aux + offset + 1));
+
+    destroy_array(array);
+    array = aux;
+    return iterator(aux + offset);
+  }
+
+  std::copy_backward(position, end() - 1, end());
+  return iterator(array + offset);
 }
 
 template <class T>
