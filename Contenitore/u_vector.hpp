@@ -441,6 +441,14 @@ class u_vector {
   iterator insert(const_iterator, const T&);
 
   /**
+   * @brief metodo per l'inserimento ripetuto di un oggetto in posizione position - 1
+   * @param postion iterator, posizione successica alla posizione di inserimento
+   * @param count size_t, numero di ripetizioni dell'oggetto da inserire
+   * @param element const T&, elemento da inserire 
+   */
+  void insert(iterator, size_t, const T&);
+
+  /**
    * @brief metodo per la ricerca di un elemento all'interno di u_vector
    * @param element : const T&, elemento da ricercare all'interno di u_vector
    * @return bool, true sse element presente in u_vector, false altrimenti
@@ -850,6 +858,14 @@ typename u_vector<T>::iterator u_vector<T>::insert(u_vector<T>::const_iterator p
   //! MOLTO RISCHIOSO
   auto it = iterator(const_cast<T*>(position.pointer));
   return insert(it, element);
+}
+
+template <class T>
+void u_vector<T>::insert(u_vector<T>::iterator position, size_t count, const T& element) {
+  //! NON FUNZIONA COME DOVREBBE
+  for (size_t i = 0; i < count; i++) {
+    insert(position, element);
+  }
 }
 
 template <class T>
