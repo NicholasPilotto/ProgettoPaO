@@ -441,6 +441,13 @@ class u_vector {
   iterator insert(const_iterator, const T&);
 
   /**
+   * @brief metodo per la ricerca di un elemento all'interno di u_vector
+   * @param element : const T&, elemento da ricercare all'interno di u_vector
+   * @return bool, true sse element presente in u_vector, false altrimenti
+   */
+  bool search(const T&) const;
+
+  /**
    * @brief operatore di assegnazione
    * @param uv : const u_vector&, u_vector da assegnare
    * @return u_vector&, indirizzo di u_vector di invocazione
@@ -840,22 +847,23 @@ typename u_vector<T>::iterator u_vector<T>::insert(u_vector<T>::iterator positio
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::insert(u_vector<T>::const_iterator position, const T& element) {
-  //? Valutare se rifarlo o tenerlo copiato
-  unsigned int offset = static_cast<unsigned int>(position.pointer - array);
-  ++__size;
-  if (__size >= __capacity) {
-    __capacity *= 2;
-    T* aux = deep_copy(offset, __capacity);
-    aux[offset] = element;
-    std::copy(position, end(), iterator(aux + offset + 1));
+  //! MOLTO RISCHIOSO
+  auto it = iterator(const_cast<T*>(position.pointer));
+  return insert(it, element);
+}
 
-    destroy_array(array);
-    array = aux;
-    return iterator(aux + offset);
+template <class T>
+bool u_vector<T>::search(const T& element) const {
+  u_vector<T>::iterator it = begin();
+  u_vector<T>::iterator last = end();
+
+  for (; it != last; it++) {
+    if (*it == element) {
+      return true;
+    }
   }
 
-  std::copy_backward(position, end() - 1, end());
-  return iterator(array + offset);
+  return false;
 }
 
 template <class T>
