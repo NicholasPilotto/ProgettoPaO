@@ -26,7 +26,7 @@ class u_vector {
 
   /**
    * @brief medoto per la copia profonda di un oggetto T*
-   * @param _size : unsigned int, sie dell'array di invocazione
+   * @param _size : unsigned int, size dell'array di invocazione
    * @param _capazity : unsigned int, capacity dell'array di invocazione
    */
   T* deep_copy(unsigned int, unsigned int) const;
@@ -51,9 +51,6 @@ class u_vector {
     const_iterator(const T*);
 
    public:
-    //TODO: operator=
-    const_iterator& operator=(const iterator&);
-
     /**
      * @brief operator++ prefisso
      * @return const_iterator&, indirizzo dell'oggetto di invocazione + 1
@@ -80,42 +77,42 @@ class u_vector {
 
     /**
      * @brief operatore di confronto di uguaglianza
-     * @param it: const const_iterator&, iteratore con la quale eseguire il confronto
+     * @param it: const const_iterator&, iteratore con il quale eseguire il confronto
      * @return bool, `true` se i due valori sono uguali, `false` altrimenti
      */
     bool operator==(const const_iterator&) const;
 
     /**
      * @brief operatore di confronto di disuguaglianza
-     * @param it: const const_iterator&, iteratore con la quale eseguire il confronto
+     * @param it: const const_iterator&, iteratore con il quale eseguire il confronto
      * @return bool, `true` se i due valori sono disuguali, `false` altrimenti
      */
     bool operator!=(const const_iterator&) const;
 
     /**
      * @brief operatore minore
-     * @param it: const const_iterator&, iteratore con la quale eseguire il confronto
+     * @param it: const const_iterator&, iteratore con il quale eseguire il confronto
      * @return bool, `true` se l'oggetto di invocazione è minore di it
      */
     bool operator<(const const_iterator&) const;
 
     /**
      * @brief operatore minore-uguale
-     * @param it: const const_iterator&, iteratore con la quale eseguire il confronto
+     * @param it: const const_iterator&, iteratore con il quale eseguire il confronto
      * @return bool, `true` se l'oggetto di invocazione è minore oppure uguale di it
      */
     bool operator<=(const const_iterator&) const;
 
     /**
      * @brief operatore maggiore
-     * @param it: const const_iterator&, iteratore con la quale eseguire il confronto
+     * @param it: const const_iterator&, iteratore con il quale eseguire il confronto
      * @return bool, `true` se l'oggetto di invocazione è maggiore di it
      */
     bool operator>(const const_iterator&) const;
 
     /**
      * @brief operatore maggiore-uguale
-     * @param it: const const_iterator&, iteratore con la quale eseguire il confronto
+     * @param it: const const_iterator&, iteratore con il quale eseguire il confronto
      * @return bool, `true` se l'oggetto di invocazione è maggiore oppure uguale di it
      */
     bool operator>=(const const_iterator&) const;
@@ -187,8 +184,6 @@ class u_vector {
     iterator(T*);
 
    public:
-    //TODO: operator=
-    iterator& operator=(const iterator&);
     /**
      * @brief operator++ prefisso
      * @return iterator&, indirizzo dell'oggetto di invocazione + 1
@@ -215,42 +210,42 @@ class u_vector {
 
     /**
      * @brief operatore di confronto di uguaglianza
-     * @param it: const iterator&, iteratore con la quale eseguire il confronto
+     * @param it: const iterator&, iteratore con il quale eseguire il confronto
      * @return bool, `true` se i due valori sono uguali, `false` altrimenti
      */
     bool operator==(const iterator&) const;
 
     /**
      * @brief operatore di confronto di disuguaglianza
-     * @param it: const iterator&, iteratore con la quale eseguire il confronto
+     * @param it: const iterator&, iteratore con il quale eseguire il confronto
      * @return bool, `true` se i due valori sono disuguali, `false` altrimenti
      */
     bool operator!=(const iterator&) const;
 
     /**
      * @brief operatore minore
-     * @param it: const iterator&, iteratore con la quale eseguire il confronto
+     * @param it: const iterator&, iteratore con il quale eseguire il confronto
      * @return bool, `true` se l'oggetto di invocazione è minore di it
      */
     bool operator<(const iterator&) const;
 
     /**
      * @brief operatore minore-uguale
-     * @param it: const iterator&, iteratore con la quale eseguire il confronto
+     * @param it: const iterator&, iteratore con il quale eseguire il confronto
      * @return bool, `true` se l'oggetto di invocazione è minore oppure uguale di it
      */
     bool operator<=(const iterator&) const;
 
     /**
      * @brief operatore maggiore
-     * @param it: const iterator&, iteratore con la quale eseguire il confronto
+     * @param it: const iterator&, iteratore con il quale eseguire il confronto
      * @return bool, `true` se l'oggetto di invocazione è maggiore di it
      */
     bool operator>(const iterator&) const;
 
     /**
      * @brief operatore maggiore-uguale
-     * @param it: const iterator&, iteratore con la quale eseguire il confronto
+     * @param it: const iterator&, iteratore con il quale eseguire il confronto
      * @return bool, `true` se l'oggetto di invocazione è maggiore oppure uguale di it
      */
     bool operator>=(const iterator&) const;
@@ -387,11 +382,6 @@ class u_vector {
   void clear();
 
   /**
-   * @brief definizione dell'operatore di assegnazione
-   * @param v: const u_vector&, indirizzo dell'oggetto da assegnare
-   */
-
-  /**
    * @brief metodo at
    * @param index : unsigned int, indice dell'elemento desiderato
    * @return indirizzo dell'elemento di indice `index`
@@ -491,12 +481,6 @@ class u_vector {
 #endif  // __U_VECTOR_H__
 
 //* ---------- ITERATOR ----------
-
-template <class T>
-typename u_vector<T>::iterator& u_vector<T>::iterator::operator=(const u_vector<T>::iterator& it) {
-  pointer = it.pointer;
-  return *this;
-}
 
 template <class T>
 u_vector<T>::iterator::iterator(T* p) : pointer(p) {}
@@ -711,7 +695,7 @@ template <class T>
 T* u_vector<T>::deep_copy(unsigned int _size, unsigned int _capacity) const {
   if (_size <= _capacity && _size <= __size) {
     T* aux = new T[_capacity];
-    std::copy(array, array + _capacity, aux);
+    std::copy(array, array + _size, aux);
     return aux;
   } else
     return nullptr;
@@ -719,7 +703,9 @@ T* u_vector<T>::deep_copy(unsigned int _size, unsigned int _capacity) const {
 
 template <class T>
 void u_vector<T>::destroy_array(T* array) {
-  if (array) delete[] array;
+  if (array) {
+    delete[] array;
+  }
 }
 
 template <class T>
@@ -807,7 +793,7 @@ typename u_vector<T>::iterator u_vector<T>::begin() const {
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::end() const {
-  return iterator(array + (__size - 1));
+  return iterator(array + __size);
 }
 
 template <class T>
@@ -817,39 +803,28 @@ typename u_vector<T>::const_iterator u_vector<T>::const_begin() const {
 
 template <class T>
 typename u_vector<T>::const_iterator u_vector<T>::const_end() const {
-  return const_iterator(array + (__size - 1));
+  return const_iterator(array + __size);
 }
 
 template <class T>
-typename u_vector<T>::iterator u_vector<T>::insert(iterator position, const T& element) {
-  u_vector<T>::iterator result = NULL;
-  u_vector<T>::iterator it = begin();
-  u_vector<T>::iterator last = end();
+typename u_vector<T>::iterator u_vector<T>::insert(u_vector<T>::iterator position, const T& element) {
+  //? Valutare se rifarlo o tenerlo copiato
+  ++__size;
+  if (__size >= __capacity) {
+    unsigned int offset = static_cast<unsigned int>(position.pointer - array);
+    __capacity *= 2;
+    T* aux = deep_copy(offset, __capacity);
+    aux[offset] = element;
+    std::copy(position, end(), iterator(aux + offset + 1));
 
-  T* aux = new T[__size + 1];
-
-  size_t index = 0;
-  bool inserted = false;
-  for (; !inserted && it != last + 1; it++) {
-    if (it != position) {
-      aux[index] = *it;
-    } else if (it == position) {
-      aux[index] = element;
-      std::copy(position, end(), (aux + index + 1));
-      __size++;
-      if (__size >= __capacity) {
-        __capacity *= 2;
-      }
-
-      result = it;
-      inserted = true;
-    }
-    index++;
+    destroy_array(array);
+    array = aux;
+    return iterator(aux + offset);
   }
 
-  destroy_array(array);
-  array = aux;
-  return result;
+  std::copy_backward(position, end() - 1, end());
+  *position = element;
+  return position;
 }
 
 template <class T>
