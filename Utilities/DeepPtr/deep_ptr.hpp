@@ -5,7 +5,7 @@ class deep_ptr{
 private:
     T* ptr;
 public:
-    deep_ptr(ptr = nullptr);
+    deep_ptr();
     ~deep_ptr();
     deep_ptr(const deep_ptr&);
     deep_ptr& operator=(const deep_ptr&);
