@@ -9,9 +9,9 @@ class deep_ptr {
  public:
   /**
   * @brief costruttore di deep_ptr
-  * @param dp const T&, variabile alla quale deep_ptr deve puntare
+  * @param dp T*, puntatore templatizzato polimorfo inizializzato di default a nullptr
  */
-  deep_ptr(const T&);
+  deep_ptr(T* = nullptr);
 
   /**
    * @brief costruttore di copia di deep_ptr
@@ -20,7 +20,7 @@ class deep_ptr {
   deep_ptr(const deep_ptr&);
 
   /**
-   * @brief distruttore di deep_ptr
+   * @brief distruttore di deep_ptr, tramite il distruttore virtuale di T
    */
   ~deep_ptr();
 
@@ -99,10 +99,10 @@ class deep_ptr {
 };
 
 template <class T>
-deep_ptr<T>::deep_ptr(const T& dp) : pointer(dp) {}
+deep_ptr<T>::deep_ptr(T* dp) : pointer(dp) {}
 
 template <class T>
-deep_ptr<T>::deep_ptr(const deep_ptr& dp) : pointer(dp ? dp.clone() : nullptr) {}
+deep_ptr<T>::deep_ptr(const deep_ptr& dp) : pointer(dp.pointer ? dp.pointer->clone() : nullptr) {}
 
 template <class T>
 deep_ptr<T>::~deep_ptr() {
@@ -120,9 +120,8 @@ template <class T>
 deep_ptr<T>& deep_ptr<T>::operator=(const deep_ptr& dp) {
   if (this != &dp) {
     delete pointer;
-    pointer = dp.pointer;
+    pointer = dp.pointer ? dp.pointer->clone() : nullptr;
   }
-
   *this;
 }
 
