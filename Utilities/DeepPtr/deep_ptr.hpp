@@ -1,99 +1,149 @@
-#ifndef DEEP_PTR_H_
-#define DEEP_PTR_H_
+#ifndef __DEEP_PTR_H__
+#define __DEEP_PTR_H__
+
 template <class T>
 class deep_ptr {
  private:
-  T* ptr;
-  static void destroy(T*);
-  static T* deep_copy(T*);
+  T* pointer;
 
  public:
+  /**
+  * @brief costruttore di deep_ptr
+  * @param dp const T&, variabile alla quale deep_ptr deve puntare
+ */
   deep_ptr(const T&);
-  ~deep_ptr();
+
+  /**
+   * @brief costruttore di copia di deep_ptr
+   * @param dp const deep_ptr&, deep_ptr dalla quale costruire la copia
+   */
   deep_ptr(const deep_ptr&);
+
+  /**
+   * @brief distruttore di deep_ptr
+   */
+  ~deep_ptr();
+
+  /**
+   * @brief operatore di assegnazione
+   * @param dp const deep_ptr&, deep_ptr con il quale fare l'assegnazione
+   * @return deep_ptr&, indirizzo di deep_ptr di invocazione riassegnato
+   */
   deep_ptr& operator=(const deep_ptr&);
+
+  /**
+   * @brief operatore di uguaglianza
+   * @param dp const deep_ptr&, deep_ptr con il quale fare il confronto
+   * @return bool, true se deep_ptr di invocazione è uguale a dp, false altrimenti
+   */
   bool operator==(const deep_ptr&) const;
+
+  /**
+   * @brief operatore di disuguaglianza
+   * @param dp const deep_ptr&, deep_ptr con il quale fare il confronto
+   * @return bool, true se deep_ptr di invocazione è diverso di dp, false altrimenti
+   */
   bool operator!=(const deep_ptr&) const;
+
+  /**
+   * @brief operatore di minoranza
+   * @param dp const deep_ptr&, deep_ptr con il quale fare il confronto
+   * @return bool, true se deep_ptr di invocazione è minore di dp, false altrimenti
+   */
   bool operator<(const deep_ptr&) const;
+
+  /**
+   * @brief operatore di minore-uguale
+   * @param dp const deep_ptr&, deep_ptr con il quale fare il confronto
+   * @return bool, true se deep_ptr di invocazione è minore-uguale di dp, false altrimenti
+   */
   bool operator<=(const deep_ptr&) const;
+
+  /**
+   * @brief operatore di maggioranza
+   * @param dp const deep_ptr&, deep_ptr con il quale fare il confronto
+   * @return bool, true se deep_ptr di invocazione è maggiore di dp, false altrimenti
+   */
   bool operator>(const deep_ptr&) const;
+
+  /**
+   * @brief operatore di maggiore-uguale
+   * @param dp const deep_ptr&, deep_ptr con il quale fare il confronto
+   * @return bool, true se deep_ptr di invocazione è maggiore-uguale di dp, false altrimenti
+   */
   bool operator>=(const deep_ptr&) const;
+
+  /**
+   * @brief operatore booleano
+   * @return bool, true se deep_ptr punta ad un oggetto, false altrimenti
+   */
   explicit operator bool() const;
+
+  /**
+   * @brief operatore di dereferenziazione
+   * @return T&, indirizzo della variabile puntata da deep_ptr
+   */
   T& operator*() const;
+
+  /**
+   * @brief operatore freccia
+   * @return T*, puntatore alla variabile puntata da deep_ptr
+   */
   T* operator->() const;
-  T& operator[](unsigned int) const;
 };
 
-// Costruttore
+template <class T>
+deep_ptr<T>::deep_ptr(const T& dp) : pointer(dp) {}
 
 template <class T>
-deep_ptr<T>::deep_ptr(const T&) : ptr(nullptr) {}
-
-//Funzioni statiche deep_copy, destroy da fare
-template <class T>
-T* deep_ptr<T>::deep_copy(T* p){
-  if(!p)
-    return nullptr;
-  for(auto )
-}
-
-template <class T>
-void deep_ptr<T>::destroy(T*p){
-  
-}
-//Costruttore di copia, distruttore, assegnazione
-
-template <class T>
-deep_ptr<T>::deep_ptr(const deep_ptr& dp) : ptr(deep_copy(dp.ptr)) {}
+deep_ptr<T>::deep_ptr(const deep_ptr& dp) : pointer(dp ? dp.clone() : nullptr) {}
 
 template <class T>
 deep_ptr<T>::~deep_ptr() {
-  if (ptr)
-    delete ptr; // o destroy???
+  if (pointer) {
+    delete pointer;
+  }
 }
 
 template <class T>
 deep_ptr<T>& deep_ptr<T>::operator=(const deep_ptr& dp) {
   if (this != &dp) {
-    destroy(ptr);
-    dp = deep_copy(db.ptr);
+    delete pointer;
+    pointer = dp.pointer;
   }
+
   *this;
 }
 
-//Overloading operatori di confronto
-
 template <class T>
 bool deep_ptr<T>::operator==(const deep_ptr& dp) const {
-  return ptr == dp.ptr;
+  return pointer == dp.pointer;
 }
 
 template <class T>
 bool deep_ptr<T>::operator!=(const deep_ptr& dp) const {
-  return ptr != dp.ptr;
+  return pointer != dp.pointer;
 }
 
 template <class T>
 bool deep_ptr<T>::operator<(const deep_ptr& dp) const {
-  return ptr < dp.ptr;
+  return pointer < dp.pointer;
 }
 
 template <class T>
 bool deep_ptr<T>::operator<=(const deep_ptr& dp) const {
-  return ptr <= dp.ptr;
+  return pointer <= dp.pointer;
 }
 
 template <class T>
 bool deep_ptr<T>::operator>(const deep_ptr& dp) const {
-  return ptr > dp.ptr;
+  return pointer > dp.pointer;
 }
 
 template <class T>
 bool deep_ptr<T>::operator>=(const deep_ptr& dp) const {
-  return ptr >= dp.ptr;
+  return pointer >= dp.pointer;
 }
-
-// Operatore bool, *, ->, []
 
 template <class T>
 deep_ptr<T>::operator bool() const {
@@ -102,16 +152,11 @@ deep_ptr<T>::operator bool() const {
 
 template <class T>
 T& deep_ptr<T>::operator*() const {
-  return *ptr;
+  return *pointer;
 }
 
 template <class T>
 T* deep_ptr<T>::operator->() const {
-  return &ptr;
+  return &pointer;
 }
-
-template <class T>
-T& deep_ptr<T>::operator[](unsigned int i) const {
-  return *(ptr + i);
-}
-#endif
+#endif  // __DEEP_PTR_H__
