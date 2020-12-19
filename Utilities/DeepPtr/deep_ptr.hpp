@@ -25,6 +25,12 @@ class deep_ptr {
   ~deep_ptr();
 
   /**
+   * @brief metodo per ricevere il puntatore di deep_ptr
+   * @return T*, puntatore di deep_ptr
+   */
+  T* get() const;
+
+  /**
    * @brief operatore di assegnazione
    * @param dp const deep_ptr&, deep_ptr con il quale fare l'assegnazione
    * @return deep_ptr&, indirizzo di deep_ptr di invocazione riassegnato
@@ -103,6 +109,11 @@ deep_ptr<T>::~deep_ptr() {
   if (pointer) {
     delete pointer;
   }
+}
+
+template <class T>
+T* deep_ptr<T>::get() const {
+  return pointer;
 }
 
 template <class T>
