@@ -455,6 +455,11 @@ class u_vector {
    */
   bool search(const T&) const;
 
+  /**
+   * @brief metodo per la ricerca di un elemento
+   * @param element const T&, elemento da ricercare
+   * @return iterator, posizione dell'elemento all'interno di u_vector se presente, nullptr altrimenti
+   */
   iterator search_position(const T&) const;
 
   /**
@@ -487,6 +492,10 @@ class u_vector {
    */
   iterator erase(const_iterator, const_iterator);
 
+  /**
+   * @brief metodo per la rimozione di tutte le occorrenze di T
+   * @param element const T&, elemento da rimuovere
+   */
   void remove_T(const T&);
 
   /**
@@ -869,7 +878,6 @@ typename u_vector<T>::const_iterator u_vector<T>::const_end() const {
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::insert(u_vector<T>::iterator position, const T& element) {
-  //? Valutare se rifarlo o tenerlo copiato
   ++__size;
   if (__size >= __capacity) {
     unsigned int offset = static_cast<unsigned int>(position.pointer - array);
@@ -890,7 +898,6 @@ typename u_vector<T>::iterator u_vector<T>::insert(u_vector<T>::iterator positio
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::insert(u_vector<T>::const_iterator position, const T& element) {
-  //! MOLTO RISCHIOSO
   auto it = iterator(const_cast<T*>(position.pointer));
   return insert(it, element);
 }
