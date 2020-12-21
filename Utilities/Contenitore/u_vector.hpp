@@ -462,6 +462,15 @@ class u_vector {
    */
   iterator erase(iterator);
 
+  iterator erase(iterator, iterator);
+
+  /**
+   * @brief metodo per la cancellazione di un elemento in u_vector
+   * @param position const_iterator, posizione in u_vector dell'elemento da eliminare
+   * @return iterator, iteratore rappresentatore l'elemento eliminato
+   */
+  iterator erase(const_iterator);
+
   /**
    * @brief operatore di assegnazione
    * @param uv : const u_vector&, u_vector da assegnare
@@ -921,6 +930,28 @@ typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::iterator position
   }
 
   return last_iterator;
+}
+
+template <class T>
+typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::iterator first, u_vector<T>::iterator last) {
+  u_vector<T>::iterator last_iterator = end();
+  if (first != last) {
+    unsigned int offset_first = static_cast<unsigned int>(first.pointer - array);
+    unsigned int offset_last = static_cast<unsigned int>(last.pointer - array);
+    unsigned int range = offset_last - offset_first;
+    T* aux = deep_copy(offset_first, __capacity);
+    std::copy(last, last_iterator, iterator(aux + offset_first));
+    __size -= range;
+    destroy_array(array);
+    array = aux;
+    return last_iterator;
+  }
+  return last;
+}
+
+template <class T>
+typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::const_iterator position) {
+  return erase(const_cast<iterator>(position));
 }
 
 template <class T>
