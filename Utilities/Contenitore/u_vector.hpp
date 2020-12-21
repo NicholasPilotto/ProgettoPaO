@@ -455,6 +455,8 @@ class u_vector {
    */
   bool search(const T&) const;
 
+  iterator search_position(const T&) const;
+
   /**
    * @brief metodo per la cancellazione di un elemento in u_vector
    * @param position iterator, posizione in u_vector dell'elemento da eliminare
@@ -484,6 +486,8 @@ class u_vector {
    * @return iterator, iteratore rappresentatore l'elemento eliminato
    */
   iterator erase(const_iterator, const_iterator);
+
+  void remove_T(const T&);
 
   /**
    * @brief operatore di assegnazione
@@ -928,6 +932,20 @@ bool u_vector<T>::search(const T& element) const {
 }
 
 template <class T>
+typename u_vector<T>::iterator u_vector<T>::search_position(const T& element) const {
+  u_vector<T>::iterator it = begin();
+  u_vector<T>::iterator last = end();
+
+  for (; it != last; it++) {
+    if (*it == element) {
+      return it;
+    }
+  }
+
+  return nullptr;
+}
+
+template <class T>
 typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::iterator position) {
   u_vector<T>::iterator first_iterator = begin();
   u_vector<T>::iterator last_iterator = end();
@@ -971,6 +989,13 @@ typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::const_iterator po
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::const_iterator first, u_vector<T>::const_iterator last) {
   return erase(iterator(const_cast<T*>(first.pointer)), iterator(const_cast<T*>(last.pointer)));
+}
+
+template <class T>
+void u_vector<T>::remove_T(const T& element) {
+  while (search(element)) {
+    erase(search_position(element));
+  }
 }
 
 template <class T>
