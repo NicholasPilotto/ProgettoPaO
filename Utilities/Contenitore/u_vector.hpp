@@ -462,6 +462,12 @@ class u_vector {
    */
   iterator erase(iterator);
 
+  /**
+   * @brief metodo per la cancellazione di un range [first, last) in u_vector
+   * @param first iterator, indice iniziale del range di elementi da eliminare
+   * @param last iterator, indice finale del range di elementi da eliminare
+   * @return iterator, iteratore rappresentatore l'elemento eliminato
+   */
   iterator erase(iterator, iterator);
 
   /**
@@ -470,6 +476,14 @@ class u_vector {
    * @return iterator, iteratore rappresentatore l'elemento eliminato
    */
   iterator erase(const_iterator);
+
+  /**
+   * @brief metodo per la cancellazione di un range [first, last) in u_vector
+   * @param first const_iterator, indice iniziale del range di elementi da eliminare
+   * @param last const_iterator, indice finale del range di elementi da eliminare
+   * @return iterator, iteratore rappresentatore l'elemento eliminato
+   */
+  iterator erase(const_iterator, const_iterator);
 
   /**
    * @brief operatore di assegnazione
@@ -951,7 +965,12 @@ typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::iterator first, u
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::const_iterator position) {
-  return erase(const_cast<iterator>(position));
+  return erase(iterator(const_cast<T*>(position.pointer)));
+}
+
+template <class T>
+typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::const_iterator first, u_vector<T>::const_iterator last) {
+  return erase(iterator(const_cast<T*>(first.pointer)), iterator(const_cast<T*>(last.pointer)));
 }
 
 template <class T>
