@@ -862,9 +862,23 @@ typename u_vector<T>::iterator u_vector<T>::insert(u_vector<T>::const_iterator p
 
 template <class T>
 void u_vector<T>::insert(u_vector<T>::iterator position, size_t count, const T& element) {
-  //! NON FUNZIONA COME DOVREBBE
-  for (size_t i = 0; i < count; i++) {
-    insert(position, element);
+  __size += count;
+  if (__size >= __capacity) {
+    int offset = static_cast<int>(position.pointer - array);
+    __capacity = 2 * (__size + count);
+    T* aux = deep_copy(offset, __capacity);
+    for (size_t i = 0; i < count; ++i) {
+      aux[offset + i] = element;
+    }
+    std::copy(position, end(), iterator(aux + offset + count));
+    destroy_array(array);
+    array = aux;
+  } else {
+    __size += count;
+    std::copy_backward(position, end() - count, end());
+    for (size_t i = 0; i < count; i++) {
+      position[i] = element;
+    }
   }
 }
 
