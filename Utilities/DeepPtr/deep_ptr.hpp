@@ -171,4 +171,4 @@ T* deep_ptr<T>::operator->() const {
 }
 #endif  // __DEEP_PTR_H__
 
-//salvataggio di prova
+//salvataggio
