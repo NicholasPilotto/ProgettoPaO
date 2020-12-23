@@ -122,7 +122,7 @@ deep_ptr<T>& deep_ptr<T>::operator=(const deep_ptr& dp) {
     delete pointer;
     pointer = dp.pointer ? dp.pointer->clone() : nullptr;
   }
-  *this;
+  return *this;
 }
 
 template <class T>
