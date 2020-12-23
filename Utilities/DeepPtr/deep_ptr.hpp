@@ -170,3 +170,5 @@ T* deep_ptr<T>::operator->() const {
   return pointer;
 }
 #endif  // __DEEP_PTR_H__
+
+//salvataggio di prova
