@@ -167,6 +167,6 @@ T& deep_ptr<T>::operator*() const {
 
 template <class T>
 T* deep_ptr<T>::operator->() const {
-  return &pointer;
+  return pointer;
 }
 #endif  // __DEEP_PTR_H__
