@@ -1,7 +1,8 @@
 #include "Utilities/DeepPtr/deep_ptr.hpp"
 #include "Utilities/Contenitore/u_vector.hpp"
 #include <iostream>
-//Non so come controllare gli operatori *, ->, []
+// Non so come controllare gli operatori *, ->, []
+// Da provare con il pointer publlico e non privato per i cout
 class A{
     public:
     virtual void m(){std::cout << "A::m()" << std::endl;}
