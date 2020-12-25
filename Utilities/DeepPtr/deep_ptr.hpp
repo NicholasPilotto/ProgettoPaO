@@ -1,12 +1,10 @@
 #ifndef __DEEP_PTR_H__
 #define __DEEP_PTR_H__
-#include <iostream>
 template <class T>
 class deep_ptr {
  private:
-
- public:
  T* pointer;
+ public:
   /**
   * @brief costruttore di deep_ptr
   * @param dp T*, puntatore templatizzato polimorfo inizializzato di default a nullptr
@@ -105,14 +103,13 @@ class deep_ptr {
 };
 
 template <class T>
-deep_ptr<T>::deep_ptr(T* dp) : pointer(dp) {std::cout << "costruttore" << std::endl;}
+deep_ptr<T>::deep_ptr(T* dp) : pointer(dp) {}
 
 template <class T>
-deep_ptr<T>::deep_ptr(const deep_ptr& dp) : pointer(dp.pointer ? dp.pointer->clone() : nullptr) {std::cout << "costruttore di copia" << std::endl;}
+deep_ptr<T>::deep_ptr(const deep_ptr& dp) : pointer(dp.pointer ? dp.pointer->clone() : nullptr) {}
 
 template <class T>
 deep_ptr<T>::~deep_ptr() {
-  std::cout << "distruttore" << std::endl;
   if (pointer) {
     delete pointer;
   }
@@ -125,7 +122,6 @@ T* deep_ptr<T>::get() const {
 
 template <class T>
 deep_ptr<T>& deep_ptr<T>::operator=(const deep_ptr& dp) {
-  std::cout << "assegnazione" << std::endl;
   if (this != &dp) {
     delete pointer;
     pointer = dp.pointer ? dp.pointer->clone() : nullptr;
