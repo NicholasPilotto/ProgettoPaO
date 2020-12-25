@@ -1,12 +1,12 @@
 #ifndef __DEEP_PTR_H__
 #define __DEEP_PTR_H__
-
+#include <iostream>
 template <class T>
 class deep_ptr {
  private:
-  T* pointer;
 
  public:
+ T* pointer;
   /**
   * @brief costruttore di deep_ptr
   * @param dp T*, puntatore templatizzato polimorfo inizializzato di default a nullptr
@@ -96,16 +96,23 @@ class deep_ptr {
    * @return T*, puntatore alla variabile puntata da deep_ptr
    */
   T* operator->() const;
+
+  /**
+     * @brief operatore di dereferenziazione
+     * @return T&, indirizzo dell'oggetto dereferenziato
+     */
+  T& operator[](unsigned int) const;
 };
 
 template <class T>
-deep_ptr<T>::deep_ptr(T* dp) : pointer(dp) {}
+deep_ptr<T>::deep_ptr(T* dp) : pointer(dp) {std::cout << "costruttore" << std::endl;}
 
 template <class T>
-deep_ptr<T>::deep_ptr(const deep_ptr& dp) : pointer(dp.pointer ? dp.pointer->clone() : nullptr) {}
+deep_ptr<T>::deep_ptr(const deep_ptr& dp) : pointer(dp.pointer ? dp.pointer->clone() : nullptr) {std::cout << "costruttore di copia" << std::endl;}
 
 template <class T>
 deep_ptr<T>::~deep_ptr() {
+  std::cout << "distruttore" << std::endl;
   if (pointer) {
     delete pointer;
   }
@@ -118,6 +125,7 @@ T* deep_ptr<T>::get() const {
 
 template <class T>
 deep_ptr<T>& deep_ptr<T>::operator=(const deep_ptr& dp) {
+  std::cout << "assegnazione" << std::endl;
   if (this != &dp) {
     delete pointer;
     pointer = dp.pointer ? dp.pointer->clone() : nullptr;
@@ -168,5 +176,10 @@ T& deep_ptr<T>::operator*() const {
 template <class T>
 T* deep_ptr<T>::operator->() const {
   return pointer;
+}
+
+template <class T>
+T& deep_ptr<T>::operator[](unsigned int index) const{
+  return *(pointer + index);
 }
 #endif  // __DEEP_PTR_H__
