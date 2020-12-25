@@ -1,7 +1,7 @@
 #include "Utilities/DeepPtr/deep_ptr.hpp"
 #include "Utilities/Contenitore/u_vector.hpp"
 #include <iostream>
-//Non so come controllare gli operatori *, ->, 
+//Non so come controllare gli operatori *, ->, []
 class A{
     public:
     virtual void m(){std::cout << "A::m()" << std::endl;}
