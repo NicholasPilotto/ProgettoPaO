@@ -16,14 +16,14 @@ color old::get_color() const {
 
 double old::kind_price() const {
   if (kind_price() == small)
-    return -1.30 + (is_barrique() ? -1.70 : 0.00);
+    return -1.30 + (is_barrique() ? +0.30 : 0.00);
   else if (kind_price() == big)
-    return 0.80 + (is_barrique() ? 5.90 : 0.00);
+    return 0.80 + (is_barrique() ? 0.90 : 0.00);
   return 0.00;
 }
 
 double old::price_increment() const {
-  return kind_price() + price_increment_per_month * month + (is_barrique() ? 5.00 : 0.00);
+  return kind_price() + price_increment_per_month * month + (is_barrique() ? 3.00 : 0.00);
 }
 
 double old::get_price() const {
