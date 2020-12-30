@@ -1,0 +1,43 @@
+#include "creme.h"
+
+creme::creme(taste* t, color c) {}
+
+creme* creme::clone() const {
+  return new creme(*this);
+}
+
+double creme::price_increment() {
+  return non_spirits_tax() + creme_price_increment + non_spirits::kind_price() + kind_price();  //creme_price_increment + kind_price()
+}
+
+double creme::get_price() {
+  return get_default_price() + price_increment();  // non_spirits::get_price() + price_increment()
+}
+
+double creme::promotion() {
+  return -get_price();
+}
+
+double creme::kind_price() {
+  if (get_kind() == small)
+    return -0.50;
+  else if (get_kind() == big)
+    return 0.50;
+  return 0.00;
+}
+
+// PROBLEMA: il codice non verrebbe identico perchè le prime 10 posizioni dell'enum sono da 1 cifra e il resto da 2 cifre
+// UNA SOLUZIONE: assegnazione di un valore a due cifre nell'enum
+// ALTERNATIVA: creare enum per le creme ed enum per liquori ed enum per le grappe
+std::string creme::code() {
+  return std::string("AC0" + std::to_string(halzenhut) + std::to_string(lemon) + std::to_string(berries) + std::to_string(chocolate));
+}
+// sostituire con dereferenziazione dell'u_vector al posto di lemon, hanzenhut etc etc
+
+u_vector<taste> creme::get_tastes() const {
+  return tastes;
+}
+
+color creme::get_color() const {
+  return col;
+}
