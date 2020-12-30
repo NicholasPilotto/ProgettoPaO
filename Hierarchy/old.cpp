@@ -2,16 +2,18 @@
 
 old::old(const u_vector<taste>& t, color c, bool b, unsigned int i) {}
 
-old* old::clone() const {
-  return new old(*this);
-}
-
 u_vector<taste> old::get_tastes() const {
   return tastes;
 }
 
 color old::get_color() const {
   return col;
+}
+// o const double?
+double const old::multiplicator_discount_old = 0.80;
+
+old* old::clone() const {
+  return new old(*this);
 }
 
 double old::kind_price() const {
@@ -31,7 +33,7 @@ double old::get_price() const {
 }
 
 double old::promotion() const {
-  return -get_price();
+  return get_price() * multiplicator_discount_old;
 }
 
 std::string old::code() const {
@@ -41,4 +43,7 @@ std::string old::code() const {
 std::string old::get_image_path() const {
   return "product/spirits/grappa/old/" + get_name();
 }
+
+bool old::is_barrique() const {
+  return barrique;
 }

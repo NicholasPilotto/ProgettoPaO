@@ -11,9 +11,9 @@ class grappa : public spirits {
  public:
   grappa();  //nessun campo dato?
   static const double minimum_alcohol_content = 38.0;
-  virtual double get_price() const override;
-  virtual double price_increment() const override;
   virtual double kind_price() const override;
+  virtual double price_increment() const override;
+  virtual double get_price() const override;
   virtual std::string code() const override;
   virtual std::string get_image_path() const;
 };

@@ -2,23 +2,11 @@
 
 spirits::spirits(bottle_size bs, const std::string& n, const std::string& imp, double fp, double ac) : product(bs, n, imp, fp, ac >= minimum_alcohol_content ? ac : minimum_alcohol_content) {}
 
-double const spirits::minimum_alcohol_content = 21.0;
-
 double spirits::spirits_tax() const {
   return 0.2 * get_alcohol_content();
 }
 
-double spirits::price_increment() const {
-  return spirits_tax() + kind_price();
-}
-
-double spirits::get_price() const {
-  return get_default_price() + price_increment();
-}
-
-std::string spirits::code() const {
-  return std::string("S");
-}
+double const spirits::minimum_alcohol_content = 21.0;
 
 double spirits::kind_price() const {
   if (get_kind() == small)
@@ -27,6 +15,18 @@ double spirits::kind_price() const {
     return 1.20;
   else
     return 0.00;
+}
+
+double spirits::price_increment() const {
+  return kind_price() + spirits_tax();
+}
+
+double spirits::get_price() const {
+  return get_default_price() + price_increment();
+}
+
+std::string spirits::code() const {
+  return std::string("S");
 }
 
 std::string spirits::get_image_path() const {

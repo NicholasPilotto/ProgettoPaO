@@ -1,6 +1,6 @@
 #include "young.h"
 
-young::young(taste* t, color c) {}
+young::young(const u_vector<taste>& t, color c) {}
 
 u_vector<taste> young::get_tastes() const {
   return tastes;
@@ -9,6 +9,8 @@ u_vector<taste> young::get_tastes() const {
 color young::get_color() const {
   return col;
 }
+
+double const young::multiplicator_discount_young = 0.85;
 
 young* young::clone() const {
   return new young(*this);
@@ -32,7 +34,7 @@ double young::get_price() const {
 }
 
 double young::promotion() const {
-  return -get_price();  // chiamare liquor::getprice() per fare lo sconto del valore di un liquore della stessa bottle_size
+  return get_price() * multiplicator_discount_young;  // chiamare liquor::getprice() per fare lo sconto del valore di un liquore della stessa bottle_size
 }
 
 std::string young::code() const {

@@ -15,13 +15,14 @@ class liquor : public spirits {
   color get_color() const override;             // protected o public???
 
  public:
-  static double maximum_alcohol_content;
   liquor(color, const u_vector<taste>&);   // da fare
   liquor(const liquor&);                   // da fare
   const liquor& operator=(const liquor&);  // da fare
+  static const double maximum_alcohol_content;
+  static const double multiplicator_discount_liquor;
   liquor* clone() const override;
-  double price_increment() const override;
   double kind_price() const override;
+  double price_increment() const override;
   double get_price() const override;
   virtual double promotion() const override;
   virtual std::string code() const override;

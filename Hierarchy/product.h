@@ -11,7 +11,7 @@ class product {
   bottle_size kind;
   std::string name;
   std::string image_path;
-  double fixed_price;
+  double fixed_price;  // variabile statica? tanto non dipende dall'oggetto di invocazione perchè il prezzo viene modificato dal kind_price
   double alcohol_content;
 
  protected:
@@ -24,8 +24,8 @@ class product {
   virtual ~product() = default;
   virtual product* clone() const = 0;
   virtual double kind_price() const;
-  virtual double get_price() const = 0;
   virtual double price_increment() const = 0;
+  virtual double get_price() const = 0;
   virtual std::string code() const = 0;
   virtual double promotion() const = 0;
   virtual u_vector<taste> get_tastes() const = 0;  // protected o public???

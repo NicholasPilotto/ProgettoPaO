@@ -19,10 +19,11 @@ class old : public grappa {
   old(const u_vector<taste>&, color, bool = false, unsigned int = (is_barrique() ? 24 : 18));  //da fare
   old(const old&);                                                                             //da fare
   const old& operator=(const old&);                                                            //da fare
+  static const double multiplicator_discount_old;
   virtual old* clone() const override;
   virtual double kind_price() const override;
-  virtual double get_price() const override;
   virtual double price_increment() const override;
+  virtual double get_price() const override;
   virtual double promotion() const override;
   virtual std::string code() const override;
   virtual std::string get_image_path() const override;

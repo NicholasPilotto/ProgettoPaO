@@ -13,13 +13,14 @@ class young : public grappa {
   virtual color get_color() const override;             // pubblico o privato??
 
  public:
-  young(const u_vector<taste>&, color);
-  young(const young&);
-  const young& operator=(const young&);
+  young(const u_vector<taste>&, color);  //da fare
+  young(const young&);                   //da fare
+  const young& operator=(const young&);  //da fare
+  static const double multiplicator_discount_young;
   virtual young* clone() const override;
   virtual double kind_price() const override;
-  virtual double get_price() const override;
   virtual double price_increment() const override;
+  virtual double get_price() const override;
   virtual double promotion() const override;
   virtual std::string code() const override;
   virtual std::string get_image_path() const override;
