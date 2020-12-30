@@ -28,7 +28,7 @@ class u_vector {
   /**
    * @brief medoto per la copia profonda di un oggetto T*
    * @param _size : unsigned int, size dell'array di invocazione
-   * @param _capazity : unsigned int, capacity dell'array di invocazione
+   * @param _capacity : unsigned int, capacity dell'array di invocazione
    */
   T* deep_copy(unsigned int, unsigned int) const;
 
@@ -47,7 +47,6 @@ class u_vector {
     /**
      * @brief costruttore di const_iterator
      * @param p: const T*, puntatore con cui inizializzare `pointer`
-     * @param pte: bool, valore indicante se è past the end, di default = false
      */
     const_iterator(const T*);
 
@@ -180,7 +179,6 @@ class u_vector {
     /**
      * @brief costruttore di iterator
      * @param p: const T*, puntatore con cui inizializzare `pointer`
-     * @param pte: bool, valore indicante se è past the end, di default = false
      */
     iterator(T*);
 
@@ -301,7 +299,7 @@ class u_vector {
 
   /**
    * @brief costruttore di u_vector
-   * @param _capacity : unsigned int, valore che indica la capacity di u_vector, defautl = 1
+   * @param _capacity : unsigned int, valore che indica la capacity di u_vector, default = 1
    * @param _size : unsigned int, valore che indica la size di u_vector, default = 0
    */
   u_vector(unsigned int = 1, unsigned int = 0);
