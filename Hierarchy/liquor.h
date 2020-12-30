@@ -11,18 +11,21 @@ class liquor : public spirits {
  protected:
   static const double liquor_price_increment = 4.00;
   static const double taste_increment_per_each = 0.10;
-  u_vector<taste> get_tastes() const;
-  color get_color() const;
+  u_vector<taste> get_tastes() const override;  // protected o public???
+  color get_color() const override;             // protected o public???
 
  public:
   static double maximum_alcohol_content;
-  liquor(color, taste* = nullptr);      // u_vector<taste> al posto di taste*
-  liquor* clone() const override;       // OK
-  double price_increment() override;    // OK
-  double kind_price() override;         // OK
-  double get_price() override;          // OK
-  virtual double promotion() override;  // ??
-  virtual std::string code() override;
+  liquor(color, const u_vector<taste>&);   // da fare
+  liquor(const liquor&);                   // da fare
+  const liquor& operator=(const liquor&);  // da fare
+  liquor* clone() const override;
+  double price_increment() const override;
+  double kind_price() const override;
+  double get_price() const override;
+  virtual double promotion() const override;
+  virtual std::string code() const override;
+  virtual std::string get_image_path() const override;
 };
 
 #endif  // LIQUOR_H_

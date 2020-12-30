@@ -14,7 +14,7 @@ young* young::clone() const {
   return new young(*this);
 }
 
-double young::kind_price() {
+double young::kind_price() const {
   if (get_kind() == small)
     return -0.30;
   else if (get_kind() == big)
@@ -23,18 +23,22 @@ double young::kind_price() {
 }
 
 // Serve override??
-double young::price_increment() {
-  return spirits_tax() + kind_price() + grappa_increment_price;
+double young::price_increment() const {
+  return kind_price() + grappa_increment_price;
 }
 
-double young::get_price() {
-  return get_default_price() + price_increment();
+double young::get_price() const {
+  return grappa::get_price() + price_increment();
 }
 
-double young::promotion() {
+double young::promotion() const {
   return -get_price();  // chiamare liquor::getprice() per fare lo sconto del valore di un liquore della stessa bottle_size
 }
 
-std::string young::code() {
+std::string young::code() const {
   return std::string("SGG" + std::to_string(dry) + std::to_string(00) + std::to_string(00) + std::to_string(00));
+}
+
+std::string young::get_image_path() const {
+  return "product/spirits/grappa/young/" + get_name();
 }

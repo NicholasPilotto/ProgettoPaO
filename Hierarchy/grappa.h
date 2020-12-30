@@ -9,11 +9,13 @@ class grappa : public spirits {
   static const double grappa_increment_price = 4.50;
 
  public:
+  grappa();  //nessun campo dato?
   static const double minimum_alcohol_content = 38.0;
-  double get_price() override;
-  double price_increment() override;
-  double kind_price() override;
-  std::string code() override;
+  virtual double get_price() const override;
+  virtual double price_increment() const override;
+  virtual double kind_price() const override;
+  virtual std::string code() const override;
+  virtual std::string get_image_path() const;
 };
 
 #endif  // GRAPPA_H_

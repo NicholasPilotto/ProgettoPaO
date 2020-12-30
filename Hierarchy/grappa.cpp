@@ -1,6 +1,6 @@
 #include "grappa.h"
 
-double grappa::kind_price() {
+double grappa::kind_price() const {
   if (get_kind() == small)
     return -1.60;
   else if (get_kind() == big)
@@ -8,14 +8,18 @@ double grappa::kind_price() {
   return 0.00;
 }
 
-double grappa::price_increment() {
+double grappa::price_increment() const {
   return spirits_tax() + kind_price() + grappa_increment_price;
 }
 
-double grappa::get_price() {
-  return get_default_price() + price_increment();
+double grappa::get_price() const {
+  return spirits::get_price() + price_increment();
 }
 
-std::string grappa::code() {
+std::string grappa::code() const {
   return std::string("SG");
+}
+
+std::string grappa::get_image_path() const {
+  return "product/spirits/grappa";
 }

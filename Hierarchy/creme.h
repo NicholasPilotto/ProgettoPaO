@@ -10,17 +10,20 @@ class creme : public non_spirits {
 
  protected:
   static const double creme_price_increment = 3.50;
-  u_vector<taste> get_tastes() const;
-  color get_color() const;
+  virtual u_vector<taste> get_tastes() const override;  // protected o public???
+  virtual color get_color() const override;             // protected o public???
 
  public:
-  creme(taste*, color);
-  creme* clone() const override;      // OK
-  double price_increment() override;  // OK
-  double get_price() override;        // OK
-  double promotion() override;        // OK
-  double kind_price() override;       // OK
-  std::string code() override;        // OK
+  creme(const u_vector<taste>&, color);  // da fare
+  creme(const creme&);                   // da fare
+  const creme& operator=(const creme&);  // da fare
+  virtual creme* clone() const override;
+  virtual double price_increment() const override;
+  virtual double get_price() const override;
+  virtual double promotion() const override;
+  virtual double kind_price() const override;
+  virtual std::string code() const override;
+  virtual std::string get_image_path() const override;
 };
 
 #endif  // CREME_H_
