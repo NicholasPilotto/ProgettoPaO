@@ -60,7 +60,7 @@ std::string liquor::code() const {
     aux += std::to_string(*cit);
     count++;
   }
-  for (; count < tastes.size(); count++) {
+  for (; count < tastes.capacity(); count++) {
     aux += "00";
   }
   return aux;
