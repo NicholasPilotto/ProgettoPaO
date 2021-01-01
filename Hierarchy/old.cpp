@@ -1,15 +1,19 @@
 #include "old.h"
 
-old::old(const u_vector<taste>& t, color c, bool b, unsigned int i) {}
+old::old(color c, const u_vector<taste>& t, bool b, unsigned int m) {}
 
-u_vector<taste> old::get_tastes() const {
-  return tastes;
+old::old(const old& o) : col(o.col), tastes(o.tastes), barrique(o.barrique), month(o.month) {}  // Anche il sottooggetto? Se si come?
+
+old& old::operator=(const old& o) {
+  if (this != &o) {
+    delete this;
+    *this = o;
+  }
+  return *this;
 }
 
-color old::get_color() const {
-  return col;
-}
-// o const double?
+const double old::price_increment_per_month = 0.2;
+
 double const old::multiplicator_discount_old = 0.80;
 
 old* old::clone() const {
@@ -17,10 +21,11 @@ old* old::clone() const {
 }
 
 double old::kind_price() const {
-  if (kind_price() == small)
-    return -1.30 + (is_barrique() ? +0.30 : 0.00);
-  else if (kind_price() == big)
+  if (kind_price() == small) {
+    return -1.30 + (is_barrique() ? 0.30 : 0.00);
+  } else if (kind_price() == big) {
     return 0.80 + (is_barrique() ? 0.90 : 0.00);
+  }
   return 0.00;
 }
 
@@ -36,12 +41,20 @@ double old::promotion() const {
   return get_price() * multiplicator_discount_old;
 }
 
+u_vector<taste> old::get_tastes() const {
+  return tastes;
+}
+
+color old::get_color() const {
+  return col;
+}
+
 std::string old::code() const {
   return std::string("SGI" + std::to_string(dry) + std::to_string(00) + std::to_string(00) + std::to_string(00));
 }
 
 std::string old::get_image_path() const {
-  return "product/spirits/grappa/old/" + get_name();
+  return grappa::get_image_path() + "old/" + get_name();
 }
 
 bool old::is_barrique() const {

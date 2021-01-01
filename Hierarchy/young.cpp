@@ -1,13 +1,15 @@
 #include "young.h"
 
-young::young(const u_vector<taste>& t, color c) {}
+young::young(color c, const u_vector<taste>& t) {}
 
-u_vector<taste> young::get_tastes() const {
-  return tastes;
-}
+young::young(const young& y) : col(y.col), tastes(y.tastes) {}  // Anche il sottooggetto? Se si come?
 
-color young::get_color() const {
-  return col;
+young& young::operator=(const young& y) {
+  if (this != &y) {
+    delete this;
+    *this = y;
+  }
+  return *this;
 }
 
 double const young::multiplicator_discount_young = 0.85;
@@ -17,14 +19,14 @@ young* young::clone() const {
 }
 
 double young::kind_price() const {
-  if (get_kind() == small)
+  if (get_kind() == small) {
     return -0.30;
-  else if (get_kind() == big)
+  } else if (get_kind() == big) {
     return 0.10;
+  }
   return 0.00;
 }
 
-// Serve override??
 double young::price_increment() const {
   return kind_price() + grappa_increment_price;
 }
@@ -34,13 +36,21 @@ double young::get_price() const {
 }
 
 double young::promotion() const {
-  return get_price() * multiplicator_discount_young;  // chiamare liquor::getprice() per fare lo sconto del valore di un liquore della stessa bottle_size
+  return get_price() * multiplicator_discount_young;
+}
+
+u_vector<taste> young::get_tastes() const {
+  return tastes;
+}
+
+color young::get_color() const {
+  return col;
 }
 
 std::string young::code() const {
-  return std::string("SGG" + std::to_string(dry) + std::to_string(00) + std::to_string(00) + std::to_string(00));
+  return "SGG" + std::to_string(dry) + std::to_string(00) + std::to_string(00) + std::to_string(00);
 }
 
 std::string young::get_image_path() const {
-  return "product/spirits/grappa/young/" + get_name();
+  return grappa::get_image_path() + "young/" + get_name();
 }

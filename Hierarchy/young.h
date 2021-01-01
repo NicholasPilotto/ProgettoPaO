@@ -5,23 +5,21 @@
 
 class young : public grappa {
  private:
-  u_vector<taste> tastes;
   color col;
-
- protected:
-  virtual u_vector<taste> get_tastes() const override;  // pubblico o privato??
-  virtual color get_color() const override;             // pubblico o privato??
+  u_vector<taste> tastes;
 
  public:
-  young(const u_vector<taste>&, color);  //da fare
+  young(color, const u_vector<taste>&);  //da fare
   young(const young&);                   //da fare
-  const young& operator=(const young&);  //da fare
+  young& operator=(const young&);        //da fare
   static const double multiplicator_discount_young;
   virtual young* clone() const override;
   virtual double kind_price() const override;
   virtual double price_increment() const override;
   virtual double get_price() const override;
   virtual double promotion() const override;
+  virtual u_vector<taste> get_tastes() const override;
+  virtual color get_color() const override;
   virtual std::string code() const override;
   virtual std::string get_image_path() const override;
 };

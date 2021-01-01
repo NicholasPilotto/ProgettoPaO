@@ -8,7 +8,9 @@ class non_spirits : public product {
   double non_spirits_tax() const;
 
  public:
-  non_spirits(bottle_size, const std::string& = "No name", const std::string& = "No path", double = 5.00, double = 17.0);  // da controllare
+  non_spirits(bottle_size = medium, const std::string& = "", double = 17.0);  // da controllare
+  non_spirits(const non_spirits&);                                            // da controllare (penso non corretto)
+  non_spirits& operator=(const non_spirits&);                                 // da controllare
   static const double maximum_alcohol_content;
   virtual double kind_price() const override;
   virtual double price_increment() const override;
