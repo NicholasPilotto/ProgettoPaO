@@ -9,9 +9,9 @@ class young : public grappa {
   u_vector<taste> tastes;
 
  public:
-  young(color, const u_vector<taste>&);  //da fare
-  young(const young&);                   //da fare
-  young& operator=(const young&);        //da fare
+  young(color, const u_vector<taste>&, bottle_size = medium, const std::string& = "", double = 38.0);  //da fare
+  young(const young&);                                                                                 //da fare
+  young& operator=(const young&);                                                                      //da fare
   static const double multiplicator_discount_young;
   virtual young* clone() const override;
   virtual double kind_price() const override;

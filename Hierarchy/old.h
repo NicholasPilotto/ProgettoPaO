@@ -11,12 +11,12 @@ class old : public grappa {
   unsigned int month;
 
  protected:
-  static const double price_increment_per_month = 0.2;
+  static const double price_increment_per_month;
 
  public:
-  old(color, const u_vector<taste>&, bool = false, unsigned int = 18);  //da fare
-  old(const old&);                                                      //da fare
-  old& operator=(const old&);                                           //da fare
+  old(color, const u_vector<taste>&, bool = false, unsigned int = 18, bottle_size = medium, const std::string& = "", double = 38.0);  //da fare
+  old(const old&);                                                                                                                    //da fare
+  old& operator=(const old&);                                                                                                         //da fare
   static const double multiplicator_discount_old;
   virtual old* clone() const override;
   virtual double kind_price() const override;

@@ -1,6 +1,6 @@
 #include "young.h"
 
-young::young(color c, const u_vector<taste>& t) {}
+young::young(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac >= grappa::minimum_alcohol_content ? ac : grappa::minimum_alcohol_content), col(c), tastes(t) {}
 
 young::young(const young& y) : col(y.col), tastes(y.tastes) {}  // Anche il sottooggetto? Se si come?
 
@@ -28,7 +28,7 @@ double young::kind_price() const {
 }
 
 double young::price_increment() const {
-  return kind_price() + grappa_increment_price;
+  return kind_price();
 }
 
 double young::get_price() const {

@@ -1,6 +1,6 @@
 #include "liquor.h"
 
-liquor::liquor(color c, const u_vector<taste>& t) : spirits(), col(c), tastes(t) {}
+liquor::liquor(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : spirits(bs, n, ac <= maximum_alcohol_content ? ac : minimum_alcohol_content), col(c), tastes(t) {}
 
 const double liquor::liquor_price_increment = 4.00;
 

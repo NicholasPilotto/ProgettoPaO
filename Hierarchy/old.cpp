@@ -1,6 +1,6 @@
 #include "old.h"
 
-old::old(color c, const u_vector<taste>& t, bool b, unsigned int m) {}
+old::old(color c, const u_vector<taste>& t, bool b, unsigned int m, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac >= grappa::minimum_alcohol_content ? ac : grappa::minimum_alcohol_content), col(c), tastes(t), barrique(b), month(m) {}
 
 old::old(const old& o) : col(o.col), tastes(o.tastes), barrique(o.barrique), month(o.month) {}  // Anche il sottooggetto? Se si come?
 
@@ -12,7 +12,7 @@ old& old::operator=(const old& o) {
   return *this;
 }
 
-const double old::price_increment_per_month = 0.2;
+const double old::price_increment_per_month = 0.20;
 
 double const old::multiplicator_discount_old = 0.80;
 
