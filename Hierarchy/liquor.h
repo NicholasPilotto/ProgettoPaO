@@ -16,6 +16,7 @@ class liquor : public spirits {
   liquor(color, const u_vector<taste>&, bottle_size = medium, const std::string& = "", double = 21.0);  // da controllare
   liquor(const liquor&);                                                                                // da controllare
   liquor& operator=(const liquor&);                                                                     // da controllare
+  static const double minimum_alcohol_content;
   static const double maximum_alcohol_content;
   static const double multiplicator_discount_liquor;
   virtual liquor* clone() const override;

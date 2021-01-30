@@ -2,17 +2,24 @@
 
 old::old(color c, const u_vector<taste>& t, bool b, unsigned int m, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac >= grappa::minimum_alcohol_content ? ac : grappa::minimum_alcohol_content), col(c), tastes(t), barrique(b), month(m) {}
 
-old::old(const old& o) : col(o.col), tastes(o.tastes), barrique(o.barrique), month(o.month) {}  // Anche il sottooggetto? Se si come?
+old::old(const old& o) : grappa(o), col(o.col), tastes(o.tastes), barrique(o.barrique), month(o.month) {}  // Anche il sottooggetto? Se si come?
 
 old& old::operator=(const old& o) {
   if (this != &o) {
-    delete this;
-    *this = o;
+    grappa::operator=(o);
+    col = o.col;
+    tastes = o.tastes;
+    barrique = o.barrique;
+    month = o.month;
   }
   return *this;
 }
 
 const double old::price_increment_per_month = 0.20;
+
+unsigned int old::get_month_old() const {
+  return month;
+}
 
 double const old::multiplicator_discount_old = 0.80;
 
@@ -50,7 +57,18 @@ color old::get_color() const {
 }
 
 std::string old::code() const {
-  return std::string("SGI" + std::to_string(dry) + std::to_string(00) + std::to_string(00) + std::to_string(00));
+  std::string aux = "SGO";
+  int count = 0;
+  u_vector<taste>::const_iterator cit = tastes.const_begin();
+  u_vector<taste>::const_iterator end = tastes.const_end();
+  for (; cit != end; cit++) {
+    aux += std::to_string(*cit);
+    count++;
+  }
+  for (; count < tastes.capacity(); count++) {
+    aux += "00";
+  }
+  return aux;
 }
 
 std::string old::get_image_path() const {

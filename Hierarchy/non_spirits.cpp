@@ -2,12 +2,11 @@
 
 non_spirits::non_spirits(bottle_size bs, const std::string& n, double ac) : product(bs, n, ac < maximum_alcohol_content ? ac : 17.0) {}
 
-non_spirits::non_spirits(const non_spirits& ns) : non_spirits() {}  // non avendo campi dati come faccio? Solo il sottoogetto? Se si come?
+non_spirits::non_spirits(const non_spirits& ns) : product(ns) {}  // non avendo campi dati come faccio? Solo il sottoogetto? Se si come?
 
 non_spirits& non_spirits::operator=(const non_spirits& ns) {
   if (this != &ns) {
-    delete this;
-    *this = ns;
+    product::operator=(ns);
   }
   return *this;
 }
@@ -42,3 +41,6 @@ std::string non_spirits::code() const {
 std::string non_spirits::get_image_path() const {
   return product::get_image_path() + "non_spirits/";
 }
+
+product* p = nullptr;
+non_spirits* ns = dynamic_cast<non_spirits*>(p);

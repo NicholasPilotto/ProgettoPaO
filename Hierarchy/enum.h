@@ -24,7 +24,8 @@ enum taste {
   honey = 23,
   dry = 24,
   smooth = 25,
-  amable = 26
+  amable = 26,
+  mint = 27
 };  // differenza tra smooth e amable:
     // smooth -> invecchiata
     // amable -> più amabile
@@ -37,6 +38,7 @@ enum color {
   black,
   violet,
   white,
+  green,
   white_trasparent,
   yellow_trasparent
 };

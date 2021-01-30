@@ -13,6 +13,7 @@ class spirits : public product {
   spirits(const spirits&);                                                 // da controllare
   spirits& operator=(const spirits&);                                      // da controllare
   static const double minimum_alcohol_content;
+  static double maximum_alcohol_content;
   virtual double kind_price() const override;
   virtual double price_increment() const override;
   virtual double get_price() const override;

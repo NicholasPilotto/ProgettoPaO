@@ -2,12 +2,13 @@
 
 young::young(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac >= grappa::minimum_alcohol_content ? ac : grappa::minimum_alcohol_content), col(c), tastes(t) {}
 
-young::young(const young& y) : col(y.col), tastes(y.tastes) {}  // Anche il sottooggetto? Se si come?
+young::young(const young& y) : grappa(y), col(y.col), tastes(y.tastes) {}  // Anche il sottooggetto? Se si come?
 
 young& young::operator=(const young& y) {
   if (this != &y) {
-    delete this;
-    *this = y;
+    grappa::operator=(y);
+    col = y.col;
+    tastes = y.tastes;
   }
   return *this;
 }
@@ -48,7 +49,18 @@ color young::get_color() const {
 }
 
 std::string young::code() const {
-  return "SGG" + std::to_string(dry) + std::to_string(00) + std::to_string(00) + std::to_string(00);
+  std::string aux = "SGY";
+  int count = 0;
+  u_vector<taste>::const_iterator cit = tastes.const_begin();
+  u_vector<taste>::const_iterator end = tastes.const_end();
+  for (; cit != end; cit++) {
+    aux += std::to_string(*cit);
+    count++;
+  }
+  for (; count < tastes.capacity(); count++) {
+    aux += "00";
+  }
+  return aux;
 }
 
 std::string young::get_image_path() const {

@@ -2,12 +2,11 @@
 
 spirits::spirits(bottle_size bs, const std::string& n, double ac) : product(bs, n, ac >= minimum_alcohol_content ? ac : minimum_alcohol_content) {}
 
-spirits::spirits(const spirits& s) : product() {}  // non avendo campi dati come faccio? Solo il sottoogetto? Se si come?
+spirits::spirits(const spirits& s) : product(s) {}  // non avendo campi dati come faccio? Solo il sottoogetto? Se si come?
 
 spirits& spirits::operator=(const spirits& s) {
   if (this != &s) {
-    delete this;
-    *this = s;
+    product::operator=(s);
   }
   return *this;
 }

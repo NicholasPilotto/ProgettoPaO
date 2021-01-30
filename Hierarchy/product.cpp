@@ -20,8 +20,9 @@ product::product(const product& p) : kind(p.kind), name(p.name), alcohol_content
 
 product& product::operator=(const product& p) {
   if (this != &p) {
-    delete this;
-    *this = p;
+    kind = p.kind;
+    name = p.name;
+    alcohol_content = p.alcohol_content;
   }
   return *this;
 }

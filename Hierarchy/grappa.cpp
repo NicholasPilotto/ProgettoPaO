@@ -2,17 +2,16 @@
 
 grappa::grappa(bottle_size bs, const std::string& n, double ac) : spirits(bs, n, ac >= grappa::minimum_alcohol_content ? ac : grappa::minimum_alcohol_content) {}  // essendoci una variabile statica con lo stesso nome è conveniente cambiare nome ma secondo te va bene anche con l'operatore di scoping? Comunque io rinominerei...
 
-grappa::grappa(const grappa& g) : spirits() {}  // non avendo campi dati come faccio? Solo il sottoogetto? Se si come?
+grappa::grappa(const grappa& g) : spirits(g) {}  // non avendo campi dati come faccio? Solo il sottoogetto? Se si come?
 
 grappa& grappa::operator=(const grappa& g) {
   if (this != &g) {
-    delete this;
-    *this = g;
+    spirits::operator=(g);
   }
   return *this;
 }
 
-const double grappa::grappa_increment_price = 4.50;
+const double grappa::grappa_price_increment = 4.50;
 
 const double grappa::minimum_alcohol_content = 38.0;
 
@@ -26,7 +25,7 @@ double grappa::kind_price() const {
 }
 
 double grappa::price_increment() const {
-  return kind_price() + grappa_increment_price;
+  return kind_price() + grappa_price_increment;
 }
 
 double grappa::get_price() const {

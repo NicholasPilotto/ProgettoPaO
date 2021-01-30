@@ -6,12 +6,13 @@ const double liquor::liquor_price_increment = 4.00;
 
 const double liquor::taste_increment_per_each = 0.10;
 
-liquor::liquor(const liquor& l) : col(l.col), tastes(l.tastes) {}  // Anche il sottooggetto? Se si come?
+liquor::liquor(const liquor& l) : spirits(l), col(l.col), tastes(l.tastes) {}  // Anche il sottooggetto? Se si come?
 
 liquor& liquor::operator=(const liquor& l) {
   if (this != &l) {
-    delete this;
-    *this = l;
+    spirits::operator=(l);
+    col = l.col;
+    tastes = l.tastes;
   }
   return *this;
 }
@@ -56,7 +57,9 @@ color liquor::get_color() const {
 std::string liquor::code() const {
   std::string aux = "SL0";
   int count = 0;
-  for (u_vector<taste>::const_iterator cit = tastes.const_begin(); cit != tastes.const_end(); cit++) {
+  u_vector<taste>::const_iterator cit = tastes.const_begin();
+  u_vector<taste>::const_iterator end = tastes.const_end();
+  for (; cit != end; cit++) {
     aux += std::to_string(*cit);
     count++;
   }
@@ -64,10 +67,7 @@ std::string liquor::code() const {
     aux += "00";
   }
   return aux;
-  //return "SL0" + (tastes.size() < 1 ? "00" : std::to_string(10)) + (tastes.size() < 2 ? "00" : std::to_string(10)) + (tastes.size() < 3 ? "00" : std::to_string(10)) + (tastes.size() < 4 ? "00" : std::to_string(10));  // quando si ha 00 solo la stringa e non la funzione
 }
-// sostituire con dereferenziazione dell'u_vector al posto di lemon, hanzenhut etc etc con 00 s'intende gusto e null(da aggiungere ai "gusti" in enum?)
-// come faccio a far apparire la derefernziazione del'u_vector e contemporaneamente a sapere lo 00??
 
 std::string liquor::get_image_path() const {
   return spirits::get_image_path() + "liquor/" + get_name();
