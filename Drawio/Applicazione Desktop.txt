@@ -1,0 +1,43 @@
+Registratore di cassa virtuale
+
+L'idea è di costruire un'applicazione desktop facile ed elegante che emuli un registratore di cassa rivolta ad un'azienda di grappe.
+La descrizione sarà top-down e left-right.
+
+La barra dei menù è composta da due voci File e Filters.
+
+File avranno a disposizione le voci "Add Product" ed Exit. (vale la pena aggiungere anche le opzioni remove e modify? Il progetto forse diventerebbe > 50 ore)
+Con Add Product si potrà aggiungere un prodotto nella griglia dei prodotti disponibili segliendo una foto e inserendo i dati principali del prodotto.
+Con Exit si esce dalla applicazione.
+
+Con Filters si avranno a disposizione le voci Colours, Codes, Tastes, Alcoholic Content.
+Ognuna avrà a disposizione un menù a tendina dove si possono selezionare e deselezionare i filtri.
+
+Il Label "Distilleria Veneta" sarà seguito in basso a sinistra da una QGridLayout contente i prodotti disponibili in negozio con sopra il label Prodotti.
+Il tutto verrà reso più fluido da una QScrollBar.
+
+Spieghiamo ora cosa deve succedere con il click di un item.
+Verrà fuori un banner dove bisogna selezionare la size dell'item e digitare il numero di item che si vogliono immettere nello scontrino.
+
+Sotto verranno messi i Filtri principali così da facilitare la ricerca e avere i bottoni a portata di mano.(Cream, Liquor, Grappa)
+
+A destra invece si avrà lo scontrino vero e proprio con sopra il label Scontrino
+
+Sotto è prevista una QListWidget dove per ogni item si ha un bottone per eliminare l'intera riga, nome, size, quantità e prezzo (parziale, della linea).
+Di fianco alle quantità ci sono due pulsanti d'incremento e decremento che vanno a impattare sul numero di item sul prezzo parziale e di conseguenza su quello finale.
+Il tutto verrà reso più fluido da una QScrollBar.
+
+Lo scontrino termina con il numero di prodotti e con il conto finale, dove viene mostrato anche il totale delle tasse.
+
+I due pulsanti in fondo son ELimina e Paga e hanno le seguenti funzionalità.
+
+Elimina ha il compito di eliminare l'intero scontrino.
+
+Paga invece funziona come segue (2 possibilità??)
+
+1. Al click viene creato un unico banner in cui bisogna digitare il numero del denaro consegnato dal cliente e subito dopo viene fatto un calcolo del resto da
+consegnare. Se il numero digitato è < del totale allora il resto rimane 0.00 e alla conferma viene generato un warning. Terminata la fase di pagamento con il cliente
+si dà conferma e si può chiudere il banner.
+
+2.Al click viene creato un banner in cui bisogna digitare il numero del denaro consegnato dal cliente. Se alla conferma il numero digitato è < del totale viene
+generato un warning altrimenti viene generato un secondo banner in cui viene indicato il resto da dare. Al termine si dà conferma e viene chiuso il banner.
+
