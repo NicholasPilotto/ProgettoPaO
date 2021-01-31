@@ -5,14 +5,14 @@
 
 class grappa : public spirits {
  protected:
-  static const double grappa_price_increment;
+  static const double grappa_incr;
 
  public:
-  grappa(bottle_size = medium, const std::string& = " ", double = 38.0);  // da controllare
+  grappa(bottle_size = medium, const std::string& = " ", double = min_ac);  // da controllare
   grappa(const grappa&);                                                  // da controllare
   grappa& operator=(const grappa&);                                       // da controllare
-  static const double minimum_alcohol_content;
-  static const double maximum_alcohol_content;
+  static const double min_ac;
+  static const double max_ac;
   virtual double kind_price() const override;
   virtual double price_increment() const override;
   virtual double get_price() const override;

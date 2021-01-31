@@ -1,6 +1,6 @@
 #include "young.h"
 
-young::young(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac >= grappa::minimum_alcohol_content ? ac : grappa::minimum_alcohol_content), col(c), tastes(t) {}
+young::young(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
 
 young::young(const young& y) : grappa(y), col(y.col), tastes(y.tastes) {}  // Anche il sottooggetto? Se si come?
 
@@ -13,7 +13,7 @@ young& young::operator=(const young& y) {
   return *this;
 }
 
-double const young::multiplicator_discount_young = 0.85;
+double const young::discount_young = 0.85;
 
 young* young::clone() const {
   return new young(*this);
@@ -37,7 +37,7 @@ double young::get_price() const {
 }
 
 double young::promotion() const {
-  return get_price() * multiplicator_discount_young;
+  return get_price() * discount_young;
 }
 
 u_vector<taste> young::get_tastes() const {

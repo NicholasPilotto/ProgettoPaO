@@ -19,16 +19,18 @@ class product {
   double get_alcohol_content() const;
 
  public:
-  product(bottle_size = medium, const std::string& = "", double = 17.0);  // da controllare
+  product(bottle_size = medium, const std::string& = "", double = min_ac);  // da controllare
   product(const product&);
   product& operator=(const product&);
   virtual ~product() = default;
-  static const double taxes_multiplicator;
+  static const double multiplier_taxes;
+  static const double min_ac;
+  static const double max_ac;
   virtual product* clone() const = 0;
   virtual double kind_price() const;
   virtual double price_increment() const = 0;
   virtual double get_price() const = 0;  // chiamata ricorsiva
-  virtual std::string code() const = 0;  // problema dell'1234 + problema delle prime tre lettere ricorsive con differenza tra creme/liquori e old/young
+  virtual std::string code() const = 0;  // problema delle prime tre lettere ricorsive con differenza tra creme/liquori e old/young
   virtual double promotion() const = 0;
   virtual u_vector<taste> get_tastes() const = 0;
   virtual color get_color() const = 0;

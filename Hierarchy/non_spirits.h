@@ -4,11 +4,11 @@
 
 class non_spirits : public product {
  public:
-  non_spirits(bottle_size = medium, const std::string& = "", double = 17.0);  // da controllare
+  non_spirits(bottle_size = medium, const std::string& = "", double = min_ac);  // da controllare
   non_spirits(const non_spirits&);                                            // da controllare (penso non corretto)
   non_spirits& operator=(const non_spirits&);                                 // da controllare
-  static const double minimum_alcohol_content;
-  static const double maximum_alcohol_content;
+  static const double min_ac;
+  static const double max_ac;
   virtual double kind_price() const override;
   virtual double price_increment() const override;
   virtual double get_price() const override;

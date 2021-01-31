@@ -1,10 +1,10 @@
 #include "liquor.h"
 
-liquor::liquor(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : spirits(bs, n, ac <= maximum_alcohol_content ? ac : minimum_alcohol_content), col(c), tastes(t) {}
+liquor::liquor(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : spirits(bs, n, ac <= max_ac ? ac : min_ac), col(c), tastes(t) {}
 
-const double liquor::liquor_price_increment = 4.00;
+const double liquor::liquor_incr = 4.00;
 
-const double liquor::taste_increment_per_each = 0.10;
+const double liquor::taste_incr = 0.10;
 
 liquor::liquor(const liquor& l) : spirits(l), col(l.col), tastes(l.tastes) {}  // Anche il sottooggetto? Se si come?
 
@@ -17,9 +17,11 @@ liquor& liquor::operator=(const liquor& l) {
   return *this;
 }
 
-double const liquor::maximum_alcohol_content = 38.0;
+const double liquor::min_ac = 21.0;
 
-double const liquor::multiplicator_discount_liquor = 0.90;
+const double liquor::max_ac = 38.0;
+
+double const liquor::discount_liquor = 0.90;
 
 liquor* liquor::clone() const {
   return new liquor(*this);
@@ -27,7 +29,7 @@ liquor* liquor::clone() const {
 
 double liquor::kind_price() const {
   if (get_kind() == small) {
-    return -1.20;
+    return -0.80;
   } else if (get_kind() == big) {
     return 0.30;
   }
@@ -35,7 +37,7 @@ double liquor::kind_price() const {
 }
 
 double liquor::price_increment() const {
-  return kind_price() + liquor_price_increment + tastes.size() * taste_increment_per_each;
+  return kind_price() + liquor_incr + tastes.size() * taste_incr;
 }
 
 double liquor::get_price() const {
@@ -43,7 +45,7 @@ double liquor::get_price() const {
 }
 
 double liquor::promotion() const {
-  return get_price() * multiplicator_discount_liquor;
+  return get_price() * discount_liquor;
 }
 
 u_vector<taste> liquor::get_tastes() const {

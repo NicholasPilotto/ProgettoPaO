@@ -9,13 +9,15 @@ class cream : public non_spirits {
   u_vector<taste> tastes;
 
  protected:
-  static const double cream_price_increment;
+  static const double cream_incr;
 
  public:
-  cream(color, const u_vector<taste>&, bottle_size = medium, const std::string& = "", double = 17.0);  // da fare
+  cream(color, const u_vector<taste>&, bottle_size = medium, const std::string& = "", double = min_ac);  // da fare
   cream(const cream&);                                                                                 // da fare
   cream& operator=(const cream&);                                                                      // da fare
-  static const double multiplicator_discount_cream;
+  static const double discount_cream;
+  static const double min_ac;
+  static const double max_ac;
   virtual cream* clone() const override;
   virtual double kind_price() const override;
   virtual double price_increment() const override;

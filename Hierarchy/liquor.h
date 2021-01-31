@@ -9,16 +9,16 @@ class liquor : public spirits {
   u_vector<taste> tastes;
 
  protected:
-  static const double liquor_price_increment;
-  static const double taste_increment_per_each;
+  static const double liquor_incr;
+  static const double taste_incr;
 
  public:
-  liquor(color, const u_vector<taste>&, bottle_size = medium, const std::string& = "", double = 21.0);  // da controllare
+  liquor(color, const u_vector<taste>&, bottle_size = medium, const std::string& = "", double = min_ac);  // da controllare
   liquor(const liquor&);                                                                                // da controllare
   liquor& operator=(const liquor&);                                                                     // da controllare
-  static const double minimum_alcohol_content;
-  static const double maximum_alcohol_content;
-  static const double multiplicator_discount_liquor;
+  static const double min_ac;
+  static const double max_ac;
+  static const double discount_liquor;
   virtual liquor* clone() const override;
   virtual double kind_price() const override;
   virtual double price_increment() const override;

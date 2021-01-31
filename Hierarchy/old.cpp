@@ -1,6 +1,6 @@
 #include "old.h"
 
-old::old(color c, const u_vector<taste>& t, bool b, unsigned int m, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac >= grappa::minimum_alcohol_content ? ac : grappa::minimum_alcohol_content), col(c), tastes(t), barrique(b), month(m) {}
+old::old(color c, const u_vector<taste>& t, bool b, unsigned int m, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac >= min_ac ? ac : min_ac), col(c), tastes(t), barrique(b), month(m) {}
 
 old::old(const old& o) : grappa(o), col(o.col), tastes(o.tastes), barrique(o.barrique), month(o.month) {}  // Anche il sottooggetto? Se si come?
 
@@ -15,13 +15,13 @@ old& old::operator=(const old& o) {
   return *this;
 }
 
-const double old::price_increment_per_month = 0.20;
+const double old::month_incr = 0.20;
 
 unsigned int old::get_month_old() const {
   return month;
 }
 
-double const old::multiplicator_discount_old = 0.80;
+double const old::discount_old = 0.80;
 
 old* old::clone() const {
   return new old(*this);
@@ -29,15 +29,15 @@ old* old::clone() const {
 
 double old::kind_price() const {
   if (kind_price() == small) {
-    return -1.30 + (is_barrique() ? 0.30 : 0.00);
+    return -1.50 + (is_barrique() ? -1.50 : 0.00);
   } else if (kind_price() == big) {
-    return 0.80 + (is_barrique() ? 0.90 : 0.00);
+    return 1.00 + (is_barrique() ? 1.20 : 0.00);
   }
   return 0.00;
 }
 
 double old::price_increment() const {
-  return kind_price() + price_increment_per_month * month + (is_barrique() ? 3.00 : 0.00);
+  return kind_price() + month_incr * month + (is_barrique() ? 3.00 : 0.00);
 }
 
 double old::get_price() const {
@@ -45,7 +45,7 @@ double old::get_price() const {
 }
 
 double old::promotion() const {
-  return get_price() * multiplicator_discount_old;
+  return get_price() * discount_old;
 }
 
 u_vector<taste> old::get_tastes() const {

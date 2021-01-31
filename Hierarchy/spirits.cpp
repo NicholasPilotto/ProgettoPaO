@@ -1,6 +1,6 @@
 #include "spirits.h"
 
-spirits::spirits(bottle_size bs, const std::string& n, double ac) : product(bs, n, ac >= minimum_alcohol_content ? ac : minimum_alcohol_content) {}
+spirits::spirits(bottle_size bs, const std::string& n, double ac) : product(bs, n, ac >= min_ac ? ac : min_ac) {}
 
 spirits::spirits(const spirits& s) : product(s) {}  // non avendo campi dati come faccio? Solo il sottoogetto? Se si come?
 
@@ -11,13 +11,15 @@ spirits& spirits::operator=(const spirits& s) {
   return *this;
 }
 
-const double spirits::minimum_alcohol_content = 21.0;
+const double spirits::min_ac = 21.0;
+
+const double spirits::max_ac = 90.0;
 
 double spirits::kind_price() const {
   if (get_kind() == small) {
-    return -1.80;
+    return -1.00;
   } else if (get_kind() == big) {
-    return 1.20;
+    return 0.50;
   }
   return 0.00;
 }

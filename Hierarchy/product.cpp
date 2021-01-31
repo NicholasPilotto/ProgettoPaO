@@ -27,7 +27,11 @@ product& product::operator=(const product& p) {
   return *this;
 }
 
-const double product::taxes_multiplicator = 0.1;
+const double product::multiplier_taxes = 0.10;
+
+const double product::max_ac = 90.0;
+
+const double product::min_ac = 18.0;
 
 double product::kind_price() const {
   if (kind == small) {
@@ -47,11 +51,11 @@ std::string product::get_name() const {
 }
 
 double product::taxes() const {
-  double aux = taxes_multiplicator * alcohol_content;
+  double aux = multiplier_taxes * alcohol_content;
   if (kind == small) {
-    return aux * 0.5;
+    return aux * 0.50;
   } else if (kind == big) {
-    return aux * 1.5;
+    return aux * 1.50;
   }
   return aux;
 }
