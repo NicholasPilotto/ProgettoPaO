@@ -11,10 +11,6 @@ non_spirits& non_spirits::operator=(const non_spirits& ns) {
   return *this;
 }
 
-double non_spirits::non_spirits_tax() const {
-  return 0.1 * get_alcohol_content();
-}
-
 const double non_spirits::maximum_alcohol_content = 21.0;
 
 double non_spirits::kind_price() const {
@@ -27,7 +23,7 @@ double non_spirits::kind_price() const {
 }
 
 double non_spirits::price_increment() const {
-  return kind_price() + non_spirits_tax();
+  return kind_price();
 }
 
 double non_spirits::get_price() const {

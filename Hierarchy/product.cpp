@@ -27,6 +27,8 @@ product& product::operator=(const product& p) {
   return *this;
 }
 
+const double product::taxes_multiplicator = 0.1;
+
 double product::kind_price() const {
   if (kind == small) {
     return -1.00;
@@ -42,6 +44,16 @@ std::string product::get_image_path() const {
 
 std::string product::get_name() const {
   return name;
+}
+
+double product::taxes() const {
+  double aux = taxes_multiplicator * alcohol_content;
+  if (kind == small) {
+    return aux * 0.5;
+  } else if (kind == big) {
+    return aux * 1.5;
+  }
+  return aux;
 }
 
 double product::operator+(const product& p) const {

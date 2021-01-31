@@ -11,10 +11,6 @@ spirits& spirits::operator=(const spirits& s) {
   return *this;
 }
 
-double spirits::spirits_tax() const {
-  return 0.2 * get_alcohol_content();
-}
-
 const double spirits::minimum_alcohol_content = 21.0;
 
 double spirits::kind_price() const {
@@ -27,7 +23,7 @@ double spirits::kind_price() const {
 }
 
 double spirits::price_increment() const {
-  return kind_price() + spirits_tax();
+  return kind_price();
 }
 
 double spirits::get_price() const {

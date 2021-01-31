@@ -4,10 +4,6 @@
 #include "product.h"
 
 class spirits : public product {
- private:
- protected:
-  double spirits_tax() const;
-
  public:
   spirits(bottle_size = medium, const std::string& = " ", double = 21.0);  // da controllare
   spirits(const spirits&);                                                 // da controllare

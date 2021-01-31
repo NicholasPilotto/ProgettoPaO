@@ -3,9 +3,6 @@
 #include "product.h"
 
 class non_spirits : public product {
- protected:
-  double non_spirits_tax() const;
-
  public:
   non_spirits(bottle_size = medium, const std::string& = "", double = 17.0);  // da controllare
   non_spirits(const non_spirits&);                                            // da controllare (penso non corretto)

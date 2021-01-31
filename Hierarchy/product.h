@@ -23,6 +23,7 @@ class product {
   product(const product&);
   product& operator=(const product&);
   virtual ~product() = default;
+  static const double taxes_multiplicator;
   virtual product* clone() const = 0;
   virtual double kind_price() const;
   virtual double price_increment() const = 0;
@@ -33,6 +34,7 @@ class product {
   virtual color get_color() const = 0;
   virtual std::string get_image_path() const;
   std::string get_name() const;
+  double taxes() const;
   double operator+(const product&) const;
   double operator-(const product&) const;
 };
