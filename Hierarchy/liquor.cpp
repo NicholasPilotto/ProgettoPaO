@@ -1,6 +1,6 @@
 #include "liquor.h"
 
-liquor::liquor(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : spirits(bs, n, ac <= max_ac ? ac : min_ac), col(c), tastes(t) {}
+liquor::liquor(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : spirits(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
 
 const double liquor::liquor_incr = 4.00;
 

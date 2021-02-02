@@ -1,6 +1,6 @@
 #include "cream.h"
 
-cream::cream(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : non_spirits(bs, n, ac < max_ac ? ac : min_ac), col(c), tastes(t) {}
+cream::cream(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : non_spirits(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
 
 const double cream::cream_incr = 3.50;
 

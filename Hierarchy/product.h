@@ -14,9 +14,7 @@ class product {
 
  protected:
   static const double fixed_price;
-  bottle_size get_kind() const;
   double get_default_price() const;
-  double get_alcohol_content() const;
 
  public:
   product(bottle_size = medium, const std::string& = "", double = min_ac);  // da controllare
@@ -37,6 +35,8 @@ class product {
   virtual std::string get_image_path() const;
   std::string get_name() const;
   double taxes() const;
+  double get_alcohol_content() const;
+  bottle_size get_kind() const;
   double operator+(const product&) const;
   double operator-(const product&) const;
 };

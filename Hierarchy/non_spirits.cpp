@@ -1,6 +1,6 @@
 #include "non_spirits.h"
 
-non_spirits::non_spirits(bottle_size bs, const std::string& n, double ac) : product(bs, n, ac < max_ac ? ac : min_ac) {}
+non_spirits::non_spirits(bottle_size bs, const std::string& n, double ac) : product(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac) {}
 
 non_spirits::non_spirits(const non_spirits& ns) : product(ns) {}  // non avendo campi dati come faccio? Solo il sottoogetto? Se si come?
 

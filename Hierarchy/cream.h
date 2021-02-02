@@ -13,8 +13,8 @@ class cream : public non_spirits {
 
  public:
   cream(color, const u_vector<taste>&, bottle_size = medium, const std::string& = "", double = min_ac);  // da fare
-  cream(const cream&);                                                                                 // da fare
-  cream& operator=(const cream&);                                                                      // da fare
+  cream(const cream&);                                                                                   // da fare
+  cream& operator=(const cream&);                                                                        // da fare
   static const double discount_cream;
   static const double min_ac;
   static const double max_ac;

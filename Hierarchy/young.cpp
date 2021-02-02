@@ -1,6 +1,6 @@
 #include "young.h"
 
-young::young(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
+young::young(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
 
 young::young(const young& y) : grappa(y), col(y.col), tastes(y.tastes) {}  // Anche il sottooggetto? Se si come?
 

@@ -4,19 +4,11 @@ product::product(bottle_size bs, const std::string& n, double ac) : kind(bs), na
 
 const double product::fixed_price = 5.00;
 
-bottle_size product::get_kind() const {
-  return kind;
-}
-
 double product::get_default_price() const {
   return kind_price() + fixed_price;
 }
 
-double product::get_alcohol_content() const {
-  return alcohol_content;
-}
-
-product::product(const product& p) : kind(p.kind), name(p.name), alcohol_content(p.alcohol_content) {}
+product::product(const product& p) : kind(p.kind), name(p.name), alcohol_content(p.alcohol_content < max_ac && p.alcohol_content >= min_ac ? p.alcohol_content : min_ac) {}
 
 product& product::operator=(const product& p) {
   if (this != &p) {
@@ -60,6 +52,14 @@ double product::taxes() const {
   return aux;
 }
 
+double product::get_alcohol_content() const {
+  return alcohol_content;
+}
+
+bottle_size product::get_kind() const {
+  return kind;
+}
+
 double product::operator+(const product& p) const {
   return get_price() + p.get_price();
 }
@@ -67,3 +67,5 @@ double product::operator+(const product& p) const {
 double product::operator-(const product& p) const {
   return get_price() >= p.get_price() ? get_price() - p.get_price() : p.get_price() - get_price();
 }
+
+//importare math per floor e ceil
