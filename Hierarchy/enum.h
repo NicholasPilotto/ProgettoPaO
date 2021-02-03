@@ -43,9 +43,4 @@ enum color {
   yellow_trasparent
 };
 
-enum bag_size {
-  single_bag,
-  double_bag,
-  triple_bag
-};
 #endif  // ENUM_H_
