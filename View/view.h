@@ -1,7 +1,6 @@
 #ifndef VIEW_H_
 #define VIEW_H_
 
-//#include "controller.h"
 #include <QAlert>
 #include <QGridLayout>
 #include <QHBoxLayout>
@@ -13,7 +12,10 @@
 #include <QString>
 #include <QVBoxLayout>
 
-class view {
+class controller;
+
+class view : public QWidget {
+  Q_OBJECT
  private:
   QMenuBar* menu_bar;
   QVBoxLayout* main_layout;
@@ -21,14 +23,14 @@ class view {
   QLabel* name_label;
   QGridLayout* product_grid;
   QListWidget* receipt_list;
-  QPushbutton* grappa_button;  //serve per forza scrivere button?
-  QPushbutton* liquor_button;
-  QPushbutton* cream_button;
-  QPushbutton* add_item;
-  QPushbutton* remove_item;
-  QPushbutton* remove_line;
-  QPushbutton* delete_receipt;
-  QPushbutton* pay_button;
+  QPushButton* grappa_button;  //serve per forza scrivere button?
+  QPushButton* liquor_button;
+  QPushButton* cream_button;
+  QPushButton* add_item;
+  QPushButton* remove_item;
+  QPushButton* remove_line;
+  QPushButton* delete_receipt;
+  QPushButton* pay_button;
   QScrollBar* grid_scroll;
   QScrollBar* receipt_scroll;
   void add_menu_bar();
@@ -38,10 +40,10 @@ class view {
   void add_receipt_buttons();
   unsigned int number_items();
   double calc_total_per_item();
-  void show_alert(QAlert*);
+  void show_alert();  //QAlert non esiste
 
  public:
-  void view(QWidget *= nullptr);
+  view(QWidget *= nullptr);
   void set_controller(controller*);
   void upload_grid_item();
   void show_warning(Qstring);
