@@ -34,6 +34,7 @@ class view : public QWidget {
   QScrollBar* grid_scroll;
   QScrollBar* receipt_scroll;
   void add_menu_bar(QVBoxLayout*); // OK 1/2
+  void add_title(QVBoxLayout*);
   void flavor_actions();
   void add_grid(QVBoxLayout*);
   void add_filter_buttons(QVBoxLayout*);

@@ -1,25 +1,28 @@
 #include "view.h"
 
 void view::add_menu_bar(QVBoxLayout* main_layout) {
+
   QMenuBar* menu_bar = new QMenuBar(this);
+
   QMenu* file;
   QMenu* filters;
+  QAction* alcohols;
+  QAction* codes;
   QMenu* colours;
-  QMenu* alcohols;
-  QMenu* codes;
   QMenu* flavors;
+
   file = new QMenu("File", menu_bar);
   filters = new QMenu("Filtri", menu_bar);
   colours = new QMenu("Colore", filters);
-  alcohols = new QMenu("Contenuto Alcolico", filters);
-  codes = new QMenu("Codice", filters);
+  alcohols = new QAction("Contenuto Alcolico", filters);
+  codes = new QAction("Codice", filters);
   flavors = new QMenu("Gusto", filters);
 
   menu_bar->addMenu(file);
   menu_bar->addMenu(filters);
+  filters->addAction(alcohols);
+  filters->addAction(codes);
   filters->addMenu(colours);
-  filters->addMenu(alcohols);
-  filters->addMenu(codes);
   filters->addMenu(flavors);
 
   file->addAction(new QAction("Aggiungi Prodotto", file));
@@ -39,11 +42,10 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   colours->addAction(new QAction("Bianco Trasparente", colours));
   colours->addAction(new QAction("Giallo Trasparente", colours));
 
-  /*
-  Alcohols incompleto
-  alcohols->addAction();
-  */
-
+/*
+  //Alcohols incompleto
+  alcohols->add
+*/
   /*
   Codes incompleto
   codes->addAction(new QAction());
@@ -73,6 +75,15 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   connect(file->actions()[1], SIGNAL(triggered()), this, SLOT(close()));
 
   main_layout->addWidget(menu_bar);
+}
+
+void view::add_title(QVBoxLayout* main_layout){
+
+    QLabel* title = new QLabel("Distilleria Veneta");
+
+    title->setAlignment(Qt::AlignCenter);
+
+    main_layout->addWidget(title);
 }
 
 void view::flavor_actions(){
@@ -168,7 +179,17 @@ void view::flavor_actions(){
     action_mint->setChecked(true);
 
 }
+/* NEED HELP!
+void view::add_grid(QVBoxLayout* main_layout){
+    QVBoxLayout* grid = new QVBoxLayout;
 
+    product_grid->
+
+    grid->addLayout(product_grid);
+
+    main_layout->addLayout(grid);
+}
+*/
 //SetEnabled enable-disable
 //SetShortcut
 
@@ -176,6 +197,10 @@ view::view(QWidget* parent) : QWidget(parent) {
   QVBoxLayout* main_layout = new QVBoxLayout;
 
   add_menu_bar(main_layout);
+
+  add_title(main_layout);
+
+  //add_grid(main_layout);
 
   add_filter_buttons(main_layout);
 
@@ -227,4 +252,5 @@ void view::add_receipt_buttons(QVBoxLayout* main_layout){
 
     main_layout->addLayout(receipt_buttons);
 }
+
 
