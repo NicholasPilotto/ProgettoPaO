@@ -24,16 +24,16 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   file->addAction(new QAction("Chiudi", file));
 
   // Colours incompleto
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
+  colours->addAction();
+  colours->addAction();
+  colours->addAction();
+  colours->addAction();
+  colours->addAction();
+  colours->addAction();
+  colours->addAction();
+  colours->addAction();
+  colours->addAction();
+  colours->addAction();
 
   /*
   Alcohols incompleto
@@ -46,27 +46,38 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   */
 
   //Flavors incompleto
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
-  filters->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
+  flavors->addAction();
 
   main_layout->addWidget(menu_bar);
 }
 
 //SetEnabled enable-disable
 //SetShotcut
+
+view::view(QWidget* parent) : QWidget(parent) {
+  QVBoxLayout* main_layout = new QVBoxLayout;
+
+  add_menu_bar(mainLayout);
+
+  mainLayout->setSpacing(0);
+  setLayout(mainLayout);
+  resize(QSize(1024, 720));
+}
