@@ -51,3 +51,15 @@ void receipt::decrease_item(product* p) {
     }
   }
 }
+
+double receipt::total_price() const {
+  double price = 0;
+  u_vector<pair<deep_ptr<product>, int>>::iterator it = items.begin();
+  u_vector<pair<deep_ptr<product>, int>>::iterator end = items.end();
+
+  for (; it != end; it++) {
+    price += (it->first->get_price() * it->second)
+  }
+
+  return price;
+}

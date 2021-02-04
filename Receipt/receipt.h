@@ -24,7 +24,7 @@ class receipt {
   void remove_item(product*);
   void increase_item(product*);
   void decrease_item(product*);
-  void total_price() const;
+  double total_price() const;
 
   // METODI PACKAGE
 };
