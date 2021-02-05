@@ -33,20 +33,22 @@ class view : public QWidget {
   QPushButton* pay_button;
   QScrollBar* grid_scroll;
   QScrollBar* receipt_scroll;
-  void add_menu_bar(QVBoxLayout*);
-  void add_grid();
-  void add_filter_buttons();
+  void add_menu_bar(QVBoxLayout*); // OK 1/2
+  void add_title(QVBoxLayout*);
+  void flavor_actions();
+  void add_grid(QVBoxLayout*);
+  void add_filter_buttons(QVBoxLayout*);
   void add_receipt();
-  void add_receipt_buttons();
+  void add_receipt_buttons(QVBoxLayout*);
   unsigned int number_items();
   double calc_total_per_item();
-  void show_alert();  //QAlert non esiste
+  void show_alert(QDialog*); //OK
 
  public:
   view(QWidget* = nullptr);
   void set_controller(controller*);
   void upload_grid_item();
-  void show_warning(QString);
+  void show_warning(const QString&);
   double calc_total();
 };
 

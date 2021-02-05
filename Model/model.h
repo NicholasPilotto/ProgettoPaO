@@ -1,9 +1,10 @@
 #include "product.h" /* attesa di receipt */
-// #include "receipt.h"
+#include "receipt.h"
 
 class model {
  private:
-  // receipt* r;
+  receipt* r;
+
  public:
   model();
   ~model();
