@@ -58,8 +58,12 @@ double receipt::total_price() const {
   u_vector<pair<deep_ptr<product>, int>>::iterator end = items.end();
 
   for (; it != end; it++) {
-    price += (it->first->get_price() * it->second)
+    price += (it->first->get_price() * it->second);
   }
 
   return price;
+}
+
+u_vector<pair<deep_ptr<product>, int>> receipt::get_items() const {
+  return items;
 }

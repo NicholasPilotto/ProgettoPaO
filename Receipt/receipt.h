@@ -25,6 +25,7 @@ class receipt {
   void increase_item(product*);
   void decrease_item(product*);
   double total_price() const;
+  u_vector<pair<deep_ptr<product>, int>> get_items() const;
 
   // METODI PACKAGE
 };

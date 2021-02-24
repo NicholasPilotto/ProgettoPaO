@@ -11,6 +11,9 @@
 #include <QScrollBar>
 #include <QString>
 #include <QVBoxLayout>
+#include <QFileDialog>
+#include <QLineEdit>
+#include <QString>
 
 class controller;
 
@@ -37,7 +40,7 @@ class view : public QWidget {
   void add_title(QVBoxLayout*);
   void flavor_actions();
   void add_grid(QVBoxLayout*);
-  void add_filter_buttons(QVBoxLayout*);
+  QHBoxLayout* add_filter_buttons();
   void add_receipt();
   void add_receipt_buttons(QVBoxLayout*);
   unsigned int number_items();
@@ -48,8 +51,18 @@ class view : public QWidget {
   view(QWidget* = nullptr);
   void set_controller(controller*);
   void upload_grid_item();
+  QString add_dialog_choice();
   void show_warning(const QString&);
   double calc_total();
+};
+
+class QProduct : public QWidget{
+    Q_OBJECT
+private:
+    QFrame* image;
+    QLabel* name_prod;
+public:
+    explicit QProduct(QWidget* parent = nullptr);
 };
 
 #endif  // VIEW_H_

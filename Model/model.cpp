@@ -26,24 +26,24 @@ void model::decrement_item(product* p) {
   r->decrease_item(p);
 }
 
-double total_price() {
+double model::total_price() const {
   return r->total_price();
 }
 
 unsigned int model::get_total_number_items() const {
   unsigned int count = 0;
-  for (u_vector<std::pair<deep_ptr<product>, unsigned int>>::const_iterator cit = items->const_begin(); cit != items.const_end(); cit++) {
+  for (u_vector<std::pair<deep_ptr<product>, int>>::const_iterator cit = r->get_items().const_begin(); cit != r->get_items().const_end(); cit++) {
     count += (*cit).second;  // dereferenziare unsigned int presente in pair
   }
   return count;
 }
 /*
 void model::delete_list() {
-    delete receipt();
+    delete r;
 }
 
 
 receipt save_receipt() {
-    return receipt();
+    return r;
 }
 */

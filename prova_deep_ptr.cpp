@@ -4,7 +4,7 @@
 #include "Utilities/DeepPtr/deep_ptr.hpp"
 // Non so come controllare gli operatori *, ->, []
 // Da provare con il pointer publlico e non privato per i cout
-class A {
+/*class A {
  public:
   virtual void m() { std::cout << "A::m()" << std::endl; }
   virtual A* clone() {
@@ -40,4 +40,4 @@ int main() {
             << bool(a3) << std::endl
             << bool(a4) << std::endl
             << bool(a5) << std::endl;
-}
+}*/
