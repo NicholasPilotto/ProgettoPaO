@@ -14,6 +14,7 @@
 #include <QFileDialog>
 #include <QLineEdit>
 #include <QString>
+#include "./Utilities/u_vector.hpp"
 
 class controller;
 

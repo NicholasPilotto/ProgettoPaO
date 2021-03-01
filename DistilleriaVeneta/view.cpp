@@ -30,51 +30,27 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
     file->addAction(new QAction("Remove product", file));*/
   file->addAction(new QAction("Chiudi", file));
 
-  // Colours
-  colours->addAction(new QAction("Giallo", colours));
-  colours->addAction(new QAction("Rosso", colours));
-  colours->addAction(new QAction("Rosa", colours));
-  colours->addAction(new QAction("Marrone", colours));
-  colours->addAction(new QAction("Nero", colours));
-  colours->addAction(new QAction("Violetto", colours));
-  colours->addAction(new QAction("Bianco", colours));
-  colours->addAction(new QAction("Verde", colours));
-  colours->addAction(new QAction("Bianco Trasparente", colours));
-  colours->addAction(new QAction("Giallo Trasparente", colours));
-
-
   //Alcohols incompleto
 
-  /*
-  Codes incompleto
-  codes->addAction(new QAction());
-  */
+
+  // Colours
+  u_vector<QString> colours_actions = {"Giallo","Rosso","Rosa","Marrone","Nero","Violetto","Bianco","Verde","Bianco Trasparente","Giallo Trasparente",};
+  for(auto cit = colours_actions.cbegin(); cit != colours_actions.cend(); cit++){
+      QAction* action = new QAction(*cit, flavors);
+      action->setCheckable(true);
+      action->setChecked(false);
+      colours->addAction(action);
+  }
 
   //Flavors incompleto
-  flavor_actions();
-  QAction* action_lemon;
-  action_lemon = new QAction("Limone");
-  action_lemon->setCheckable(true);
-  action_lemon->setChecked(true); // check di default
+  u_vector<QString> flavors_actions = {"Nocciola","Caffè","Liquirizia","Cioccolato","Uovo","Rum","Panna","Fragola","Frutti di Bosco","Mirtillo","Ribes","Prugna","Miele","Secco","Fruttato","Amabile","Menta"};
+  for(auto cit = flavors_actions.cbegin(); cit != flavors_actions.cend(); cit++){
+      QAction* action = new QAction(*cit, flavors);
+      action->setCheckable(true);
+      action->setChecked(false);
+      flavors->addAction(action);
+  }
 
-  flavors->addAction(action_lemon);
-  flavors->addAction(new QAction("Nocciola", colours));
-  flavors->addAction(new QAction("Caffè", colours));
-  flavors->addAction(new QAction("Liquirizia", colours));
-  flavors->addAction(new QAction("Cioccolato", colours));
-  flavors->addAction(new QAction("Uovo", colours));
-  flavors->addAction(new QAction("Rum", colours));
-  flavors->addAction(new QAction("Panna", colours));
-  flavors->addAction(new QAction("Fragola", colours));
-  flavors->addAction(new QAction("Frutti di Bosco", colours));
-  flavors->addAction(new QAction("Mirtillo", colours));
-  flavors->addAction(new QAction("Ribes", colours));
-  flavors->addAction(new QAction("Prugna", colours));
-  flavors->addAction(new QAction("Miele", colours));
-  flavors->addAction(new QAction("Secco", colours));
-  flavors->addAction(new QAction("Fruttato", colours));
-  flavors->addAction(new QAction("Amabile", colours));
-  flavors->addAction(new QAction("Menta", colours));
 
   connect(file->actions()[1], SIGNAL(triggered()), this, SLOT(close()));
 
@@ -88,100 +64,6 @@ void view::add_title(QVBoxLayout* main_layout){
     title->setAlignment(Qt::AlignCenter);
 
     main_layout->addWidget(title);
-}
-
-void view::flavor_actions(){
-    QAction* action_lemon;
-    QAction* action_halzenhut;
-    QAction* action_coffee;
-    QAction* action_licorice;
-    QAction* action_chocolate;
-    QAction* action_egg;
-    QAction* action_rum;
-    QAction* action_cream;
-    QAction* action_strawberry;
-    QAction* action_berries;
-    QAction* action_blueberry;
-    QAction* action_ribes;
-    QAction* action_plum;
-    QAction* action_honey;
-    QAction* action_dry;
-    QAction* action_smooth;
-    QAction* action_amable;
-    QAction* action_mint;
-
-    action_lemon = new QAction("Limone");
-    action_lemon->setCheckable(true);
-    action_lemon->setChecked(true);
-
-    action_halzenhut = new QAction("Nocciola");
-    action_halzenhut->setCheckable(true);
-    action_halzenhut->setChecked(true);
-
-    action_coffee = new QAction("Caffè");
-    action_coffee->setCheckable(true);
-    action_coffee->setChecked(true);
-
-    action_licorice =new QAction("Liquirizia");
-    action_licorice->setCheckable(true);
-    action_licorice->setChecked(true);
-
-    action_chocolate = new QAction("Cioccolato");
-    action_chocolate->setCheckable(true);
-    action_chocolate->setChecked(true);
-
-    action_egg = new QAction("Uovo");
-    action_egg->setCheckable(true);
-    action_egg->setChecked(true);
-
-    action_rum = new QAction("Rum");
-    action_rum->setCheckable(true);
-    action_rum->setChecked(true);
-
-    action_cream = new QAction("Panna");
-    action_cream->setCheckable(true);
-    action_cream->setChecked(true);
-
-    action_strawberry = new QAction("Fragola");
-    action_strawberry->setCheckable(true);
-    action_strawberry->setChecked(true);
-
-    action_berries = new QAction("Frutti di Bosco");
-    action_berries->setCheckable(true);
-    action_berries->setChecked(true);
-
-    action_blueberry = new QAction("Mirtillo");
-    action_blueberry->setCheckable(true);
-    action_blueberry->setChecked(true);
-
-    action_ribes = new QAction("Ribes");
-    action_ribes->setCheckable(true);
-    action_ribes->setChecked(true);
-
-    action_plum = new QAction("Prugna");
-    action_plum->setCheckable(true);
-    action_plum->setChecked(true);
-
-    action_honey = new QAction("Miele");
-    action_honey->setCheckable(true);
-    action_honey->setChecked(true);
-
-    action_dry = new QAction("Secco");
-    action_dry->setCheckable(true);
-    action_dry->setChecked(true);
-
-    action_smooth = new QAction("Fruttato");
-    action_smooth->setCheckable(true);
-    action_smooth->setChecked(true);
-
-    action_amable = new QAction("Amabile");
-    action_amable->setCheckable(true);
-    action_amable->setChecked(true);
-
-    action_mint = new QAction("Menta");
-    action_mint->setCheckable(true);
-    action_mint->setChecked(true);
-
 }
 
 void view::upload_grid_item() {
