@@ -35,7 +35,7 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
 
   // Colours
   u_vector<QString> colours_actions = {"Giallo","Rosso","Rosa","Marrone","Nero","Violetto","Bianco","Verde","Bianco Trasparente","Giallo Trasparente",};
-  for(auto cit = colours_actions.cbegin(); cit != colours_actions.cend(); cit++){
+  for(auto cit = colours_actions.const_begin(); cit != colours_actions.const_end(); cit++){
       QAction* action = new QAction(*cit, flavors);
       action->setCheckable(true);
       action->setChecked(false);
@@ -44,7 +44,7 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
 
   //Flavors incompleto
   u_vector<QString> flavors_actions = {"Nocciola","Caffè","Liquirizia","Cioccolato","Uovo","Rum","Panna","Fragola","Frutti di Bosco","Mirtillo","Ribes","Prugna","Miele","Secco","Fruttato","Amabile","Menta"};
-  for(auto cit = flavors_actions.cbegin(); cit != flavors_actions.cend(); cit++){
+  for(auto cit = flavors_actions.const_begin(); cit != flavors_actions.const_end(); cit++){
       QAction* action = new QAction(*cit, flavors);
       action->setCheckable(true);
       action->setChecked(false);
