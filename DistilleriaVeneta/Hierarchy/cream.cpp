@@ -60,7 +60,7 @@ color cream::get_color() const {
 //da modificare con la proposta di liquor???
 std::string cream::code() const {
   std::string aux = "AC0";
-  int count = 0;
+  unsigned int count = 0;
   u_vector<taste>::const_iterator cit = tastes.const_begin();
   u_vector<taste>::const_iterator end = tastes.const_end();
   for (; cit != end; cit++) {

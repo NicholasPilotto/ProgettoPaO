@@ -18,7 +18,7 @@ SOURCES += \
     ./Hierarchy/old.cpp \
     ./Hierarchy/young.cpp \
     ./Hierarchy/liquor.cpp \
-    ./Hierarchy/non-spirits.cpp \
+    ./Hierarchy/non_spirits.cpp \
     ./Hierarchy/cream.cpp \
 
 HEADERS += \
@@ -31,7 +31,7 @@ HEADERS += \
     ./Hierarchy/old.h \
     ./Hierarchy/young.h \
     ./Hierarchy/liquor.h \
-    ./Hierarchy/non-spirits.h \
+    ./Hierarchy/non_spirits.h \
     ./Hierarchy/cream.h \
     ./Utilities/u_vector.hpp \
     ./Utilities/deep_ptr.hpp \
