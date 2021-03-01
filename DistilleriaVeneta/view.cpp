@@ -52,7 +52,12 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
 
   //Flavors incompleto
   flavor_actions();
-  flavors->addAction(new QAction("Limone", colours));
+  QAction* action_lemon;
+  action_lemon = new QAction("Limone");
+  action_lemon->setCheckable(true);
+  action_lemon->setChecked(true); // check di default
+
+  flavors->addAction(action_lemon);
   flavors->addAction(new QAction("Nocciola", colours));
   flavors->addAction(new QAction("Caffè", colours));
   flavors->addAction(new QAction("Liquirizia", colours));
