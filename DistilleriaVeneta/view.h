@@ -21,8 +21,8 @@ class controller;
 class view : public QWidget {
   Q_OBJECT
  private:
-  QMenuBar* menu_bar;
-  QVBoxLayout* main_layout;
+  QMenuBar* menu_bar; //Used
+  QVBoxLayout* main_layout; //Used
   QHBoxLayout* main_object_layout;
   QLabel* name_label;
   QGridLayout* product_grid;
@@ -35,15 +35,12 @@ class view : public QWidget {
   QPushButton* remove_line;
   QPushButton* delete_receipt;
   QPushButton* pay_button;
-  QScrollBar* grid_scroll;
-  QScrollBar* receipt_scroll;
-  void add_menu_bar(QVBoxLayout*); // OK 1/2
-  void add_title(QVBoxLayout*);
-  void flavor_actions();
-  void add_grid(QVBoxLayout*);
-  QHBoxLayout* add_filter_buttons();
-  void add_receipt();
-  void add_receipt_buttons(QVBoxLayout*);
+  void add_menu_bar(QVBoxLayout*);          // OK
+  void add_title(QVBoxLayout*);             // OK
+  void add_grid(QHBoxLayout*);              // OK
+  QHBoxLayout* add_filter_buttons();        //
+  void add_receipt(QHBoxLayout*);
+  QHBoxLayout* add_receipt_buttons();
   unsigned int number_items();
   double calc_total_per_item();
   void show_alert(QDialog*); //OK
