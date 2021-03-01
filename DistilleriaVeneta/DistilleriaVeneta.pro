@@ -11,11 +11,32 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    view.cpp
+    view.cpp \
+    ./Hierarchy/product.cpp \
+    ./Hierarchy/spirits.cpp \
+    ./Hierarchy/grappa.cpp \
+    ./Hierarchy/old.cpp \
+    ./Hierarchy/young.cpp \
+    ./Hierarchy/liquor.cpp \
+    ./Hierarchy/non-spirits.cpp \
+    ./Hierarchy/cream.cpp \
 
 HEADERS += \
     mainwindow.h \
-    view.h
+    view.h \
+    ./Hierarchy/enum.h \
+    ./Hierarchy/product.h \
+    ./Hierarchy/spirits.h \
+    ./Hierarchy/grappa.h \
+    ./Hierarchy/old.h \
+    ./Hierarchy/young.h \
+    ./Hierarchy/liquor.h \
+    ./Hierarchy/non-spirits.h \
+    ./Hierarchy/cream.h \
+    ./Utilities/u_vector.hpp \
+    ./Utilities/deep_ptr.hpp \
+    ./Utilities/aux_func.hpp \
+
 
 FORMS += \
     mainwindow.ui
