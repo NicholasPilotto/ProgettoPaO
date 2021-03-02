@@ -79,22 +79,22 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
     }
 
   //Flavors incompleto
-  /*u_vector<QString> flavors_actions(17,17);
+  u_vector<QString> flavors_actions(17,17);
   flavors_actions = {"Nocciola","Caffè","Liquirizia","Cioccolato","Uovo","Rum","Panna","Fragola","Frutti di Bosco","Mirtillo","Ribes","Prugna","Miele","Secco","Fruttato","Amabile","Menta"};
   for(auto cit = flavors_actions.const_begin(); cit != flavors_actions.const_end(); cit++){
       QAction* action = new QAction(*cit, flavors);
       action->setCheckable(true);
       action->setChecked(false);
       flavors->addAction(action);
-  }*/
+  }
 
-    std::vector<QString> flavors_actions = {"Nocciola","Caffè","Liquirizia","Cioccolato","Uovo","Rum","Panna","Fragola","Frutti di Bosco","Mirtillo","Ribes","Prugna","Miele","Secco","Fruttato","Amabile","Menta"};
+    /*std::vector<QString> flavors_actions = {"Nocciola","Caffè","Liquirizia","Cioccolato","Uovo","Rum","Panna","Fragola","Frutti di Bosco","Mirtillo","Ribes","Prugna","Miele","Secco","Fruttato","Amabile","Menta"};
     for(auto cit = flavors_actions.cbegin(); cit != flavors_actions.cend(); cit++){
         QAction* action = new QAction(*cit, flavors);
         action->setCheckable(true);
         action->setChecked(false);
         flavors->addAction(action);
-    }
+    }*/
 
 
   connect(file->actions()[0], SIGNAL(triggered()), this, SLOT(close()));
@@ -142,7 +142,7 @@ void view::upload_grid_item() {
     upload->addWidget(confirm,4,0,1,1);
     upload->addWidget(undo,4,1,1,2,Qt::AlignRight);
 }
-
+*/
 QString view::add_dialog_choice(){
     QString fileName = QFileDialog::getOpenFileName(
             this, tr("Apri il file"), "/home", tr("Immagini (*.png *.jpg)"));
@@ -152,7 +152,7 @@ QString view::add_dialog_choice(){
 
     return fileName;
 }
-*/
+
 void view::add_grid(QHBoxLayout* main_object_layout){
     QVBoxLayout* left_app = new QVBoxLayout;
 
@@ -209,7 +209,7 @@ void view::add_receipt(QHBoxLayout* main_object_layout){
 
     QListWidget* receipt_list = new QListWidget;
     for(int i=0; i<50; i++)
-    receipt_list->addItem("Prova1");
+    receipt_list->addItem("Prova2");
 
     //Right app
 
@@ -280,6 +280,18 @@ view::view(QWidget* parent) : QWidget(parent) {
 
 QProduct::QProduct(QWidget* parent) : QWidget(parent) {
     QHBoxLayout* left_widget = new QHBoxLayout;
+
+    left_widget_name = new QLabel;
+    left_widget_code = new QLabel; //richiamo funzione code
+    left_widget_image = new QFrame;
+    add = new QPushButton("Aggiungi");
+
+    left_widget->addWidget(new QLabel(this));
+
+    left_widget->addWidget(left_widget_name);
+    left_widget->addWidget(left_widget_code);
+    left_widget->addWidget(left_widget_image);
+    left_widget->addWidget(add);
 }
 
 

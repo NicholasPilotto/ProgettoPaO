@@ -54,11 +54,16 @@ class view : public QWidget {
   double calc_total();
 };
 
+
+
+
 class QProduct : public QWidget{
     Q_OBJECT
 private:
-    QFrame* image;
-    QLabel* name_prod;
+    QFrame* left_widget_image;
+    QLabel* left_widget_name;
+    QLabel* left_widget_code;
+    QPushButton* add;
 public:
     explicit QProduct(QWidget* parent = nullptr);
 };

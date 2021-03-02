@@ -964,6 +964,7 @@ moc_view.cpp: ../DistilleriaVeneta/view.h \
 		/home/filippo/Qt/5.15.2/gcc_64/include/QtGui/qtextformat.h \
 		/home/filippo/Qt/5.15.2/gcc_64/include/QtGui/qpen.h \
 		/home/filippo/Qt/5.15.2/gcc_64/include/QtGui/qtextoption.h \
+		../DistilleriaVeneta/Utilities/u_vector.hpp \
 		moc_predefs.h \
 		/home/filippo/Qt/5.15.2/gcc_64/bin/moc
 	/home/filippo/Qt/5.15.2/gcc_64/bin/moc $(DEFINES) --include '/home/filippo/Scrivania/UNIPD/2.1 Programmazione ad oggetti/Progetto/ProgettoPaO/build-DistilleriaVeneta-Desktop_Qt_5_15_2_GCC_64bit-Debug/moc_predefs.h' -I/home/filippo/Qt/5.15.2/gcc_64/mkspecs/linux-g++ -I'/home/filippo/Scrivania/UNIPD/2.1 Programmazione ad oggetti/Progetto/ProgettoPaO/DistilleriaVeneta' -I/home/filippo/Qt/5.15.2/gcc_64/include -I/home/filippo/Qt/5.15.2/gcc_64/include/QtWidgets -I/home/filippo/Qt/5.15.2/gcc_64/include/QtGui -I/home/filippo/Qt/5.15.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../DistilleriaVeneta/view.h -o moc_view.cpp
@@ -1147,6 +1148,7 @@ main.o: ../DistilleriaVeneta/main.cpp ../DistilleriaVeneta/mainwindow.h \
 		/home/filippo/Qt/5.15.2/gcc_64/include/QtGui/qtextformat.h \
 		/home/filippo/Qt/5.15.2/gcc_64/include/QtGui/qpen.h \
 		/home/filippo/Qt/5.15.2/gcc_64/include/QtGui/qtextoption.h \
+		../DistilleriaVeneta/Utilities/u_vector.hpp \
 		/home/filippo/Qt/5.15.2/gcc_64/include/QtWidgets/QApplication \
 		/home/filippo/Qt/5.15.2/gcc_64/include/QtWidgets/qapplication.h \
 		/home/filippo/Qt/5.15.2/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1436,7 +1438,8 @@ view.o: ../DistilleriaVeneta/view.cpp ../DistilleriaVeneta/view.h \
 		/home/filippo/Qt/5.15.2/gcc_64/include/QtGui/qtextcursor.h \
 		/home/filippo/Qt/5.15.2/gcc_64/include/QtGui/qtextformat.h \
 		/home/filippo/Qt/5.15.2/gcc_64/include/QtGui/qpen.h \
-		/home/filippo/Qt/5.15.2/gcc_64/include/QtGui/qtextoption.h
+		/home/filippo/Qt/5.15.2/gcc_64/include/QtGui/qtextoption.h \
+		../DistilleriaVeneta/Utilities/u_vector.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o view.o ../DistilleriaVeneta/view.cpp
 
 product.o: ../DistilleriaVeneta/Hierarchy/product.cpp ../DistilleriaVeneta/Hierarchy/product.h \
