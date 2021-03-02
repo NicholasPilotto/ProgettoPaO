@@ -79,7 +79,8 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
     }
 
   //Flavors incompleto
-  /*u_vector<QString> flavors_actions = {"Nocciola","Caffè","Liquirizia","Cioccolato","Uovo","Rum","Panna","Fragola","Frutti di Bosco","Mirtillo","Ribes","Prugna","Miele","Secco","Fruttato","Amabile","Menta"};
+  /*u_vector<QString> flavors_actions(17,17);
+  flavors_actions = {"Nocciola","Caffè","Liquirizia","Cioccolato","Uovo","Rum","Panna","Fragola","Frutti di Bosco","Mirtillo","Ribes","Prugna","Miele","Secco","Fruttato","Amabile","Menta"};
   for(auto cit = flavors_actions.const_begin(); cit != flavors_actions.const_end(); cit++){
       QAction* action = new QAction(*cit, flavors);
       action->setCheckable(true);
@@ -275,3 +276,27 @@ view::view(QWidget* parent) : QWidget(parent) {
   setLayout(main_layout);
   resize(QSize(1024, 720));
 }
+
+
+QProduct::QProduct(QWidget* parent) : QWidget(parent) {
+    QHBoxLayout* left_widget = new QHBoxLayout;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

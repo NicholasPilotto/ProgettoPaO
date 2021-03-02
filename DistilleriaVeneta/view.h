@@ -23,7 +23,7 @@ class view : public QWidget {
  private:
   QMenuBar* menu_bar; //Used
   QVBoxLayout* main_layout; //Used
-  QHBoxLayout* main_object_layout;
+  QHBoxLayout* main_object_layout; //Used
   QLabel* name_label;
   QGridLayout* product_grid;
   QListWidget* receipt_list;
@@ -38,12 +38,12 @@ class view : public QWidget {
   void add_menu_bar(QVBoxLayout*);          // OK
   void add_title(QVBoxLayout*);             // OK
   void add_grid(QHBoxLayout*);              // OK
-  QHBoxLayout* add_filter_buttons();        //
-  void add_receipt(QHBoxLayout*);
-  QHBoxLayout* add_receipt_buttons();
+  QHBoxLayout* add_filter_buttons();        // OK
+  void add_receipt(QHBoxLayout*);           // OK
+  QHBoxLayout* add_receipt_buttons();       // OK
   unsigned int number_items();
   double calc_total_per_item();
-  void show_alert(QDialog*); //OK
+  void show_alert(QDialog*);                //OK
 
  public:
   view(QWidget* = nullptr);
