@@ -1,0 +1,13 @@
+release/main.o
+release/mainwindow.o
+release/view.o
+release/product.o
+release/spirits.o
+release/grappa.o
+release/old.o
+release/young.o
+release/liquor.o
+release/non_spirits.o
+release/cream.o
+release/moc_mainwindow.o
+release/moc_view.o
