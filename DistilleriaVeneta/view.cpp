@@ -207,12 +207,12 @@ void view::add_receipt(QHBoxLayout* main_object_layout){
 
     //List
     //Problema con visione del widget!!!
-    QListWidget* receipt_list = new QListWidget;
-    QProduct* product = new QProduct;
-    for(int i=0; i<50; i++){
-        QListWidgetItem* item = new QListWidgetItem();
-        receipt_list->addItem(item);
-        receipt_list->setItemWidget(item,product);
+    QListWidget* receipt_list = new QListWidget();
+    QProduct* product = new QProduct(receipt_list);
+    for(int i=0; i < 50; i++){
+       QListWidgetItem* item = new QListWidgetItem();
+       receipt_list->setItemWidget(item, product);
+       receipt_list->addItem(item);
 }
     //Right app
 
@@ -295,6 +295,8 @@ QProduct::QProduct(QWidget* parent) : QWidget(parent) {
     left_widget->addWidget(left_widget_code);
     //left_widget->addWidget(left_widget_image);
     left_widget->addWidget(add);
+
+    setLayout(left_widget);
 }
 
 

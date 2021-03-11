@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../DistilleriaVeneta/view.h"
+#include "../../../ProgettoPaO2/ProgettoPaO/DistilleriaVeneta/view.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

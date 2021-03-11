@@ -58,7 +58,7 @@ color liquor::get_color() const {
 
 std::string liquor::code() const {
   std::string aux = "SL0";
-  int count = 0;
+  unsigned int count = 0;
   u_vector<taste>::const_iterator cit = tastes.const_begin();
   u_vector<taste>::const_iterator end = tastes.const_end();
   for (; cit != end; cit++) {

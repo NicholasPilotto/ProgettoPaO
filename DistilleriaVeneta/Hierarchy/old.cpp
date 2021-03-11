@@ -58,7 +58,7 @@ color old::get_color() const {
 
 std::string old::code() const {
   std::string aux = "SGO";
-  int count = 0;
+  unsigned int count = 0;
   u_vector<taste>::const_iterator cit = tastes.const_begin();
   u_vector<taste>::const_iterator end = tastes.const_end();
   for (; cit != end; cit++) {
