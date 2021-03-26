@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QGridLayout>
+#include <QTableView>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QListWidget>
@@ -14,6 +15,7 @@
 #include <QFileDialog>
 #include <QLineEdit>
 #include <QString>
+#include <QScrollArea>
 #include "./Utilities/u_vector.hpp"
 
 class controller;
@@ -26,7 +28,7 @@ class view : public QWidget {
   QHBoxLayout* main_object_layout; //Used
   QLabel* name_label;
   QGridLayout* product_grid;
-  QListWidget* receipt_list;
+  //QListWidget* receipt_list;
   QPushButton* grappa_button;  //serve per forza scrivere button?
   QPushButton* liquor_button;
   QPushButton* cream_button;
@@ -55,6 +57,15 @@ class view : public QWidget {
 };
 
 
+class QReceiptitem : public QWidget {
+    Q_OBJECT
+private:
+    QFrame* left_widget_image;
+    QLabel* left_widget_name;
+    QLabel* left_widget_price;
+public:
+    explicit QReceiptitem(QWidget* parent = nullptr);
+};
 
 
 class QProduct : public QWidget{
