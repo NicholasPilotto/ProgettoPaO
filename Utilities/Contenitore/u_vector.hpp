@@ -1,8 +1,9 @@
 #ifndef __U_VECTOR_H__
 #define __U_VECTOR_H__
 
-#include <climits>
 #include <iostream>
+
+using std::initializer_list;
 
 /**
  * @brief universal vector
@@ -28,7 +29,7 @@ class u_vector {
   /**
    * @brief medoto per la copia profonda di un oggetto T*
    * @param _size : unsigned int, size dell'array di invocazione
-   * @param _capacity : unsigned int, capacity dell'array di invocazione
+   * @param _capazity : unsigned int, capacity dell'array di invocazione
    */
   T* deep_copy(unsigned int, unsigned int) const;
 
@@ -47,6 +48,7 @@ class u_vector {
     /**
      * @brief costruttore di const_iterator
      * @param p: const T*, puntatore con cui inizializzare `pointer`
+     * @param pte: bool, valore indicante se è past the end, di default = false
      */
     const_iterator(const T*);
 
@@ -179,6 +181,7 @@ class u_vector {
     /**
      * @brief costruttore di iterator
      * @param p: const T*, puntatore con cui inizializzare `pointer`
+     * @param pte: bool, valore indicante se è past the end, di default = false
      */
     iterator(T*);
 
@@ -299,7 +302,13 @@ class u_vector {
 
   /**
    * @brief costruttore di u_vector
-   * @param _capacity : unsigned int, valore che indica la capacity di u_vector, default = 1
+   * @param _l : initializer_list<T>, lista di oggetti di tipo T con la quale creare un u_vector
+   */
+  u_vector(initializer_list<T>);
+
+  /**
+   * @brief costruttore di u_vector
+   * @param _capacity : unsigned int, valore che indica la capacity di u_vector, defautl = 1
    * @param _size : unsigned int, valore che indica la size di u_vector, default = 0
    */
   u_vector(unsigned int = 1, unsigned int = 0);
@@ -638,7 +647,7 @@ T& u_vector<T>::iterator::operator*() const {
 
 template <class T>
 T* u_vector<T>::iterator::operator->() const {
-  return &pointer;
+  return pointer;
 }
 
 template <class T>
@@ -745,6 +754,21 @@ const T& u_vector<T>::const_iterator::operator[](unsigned int index) const {
 }
 
 //* ---------- U_VECTOR ----------
+
+template <class T>
+u_vector<T>::u_vector(initializer_list<T> l) : array(new T[l.size()]), __size(l.size()) {
+  unsigned int i = 0;
+  __capacity = 1;
+  const T* it = l.begin();
+  const T* end = l.end();
+  for (; it != end; it++) {
+    array[i] = *it;
+    i++;
+    if (i == __capacity) {
+      __capacity *= 2;
+    }
+  }
+}
 
 template <class T>
 u_vector<T>::u_vector(unsigned int _capacity, unsigned int _size) : array(new T[_capacity]), __capacity(_capacity), __size(_size) {}
