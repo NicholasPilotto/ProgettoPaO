@@ -377,6 +377,8 @@ QProduct::QProduct(QWidget* parent) : QWidget(parent) {
 QReceiptitem::QReceiptitem(QWidget* parent) : QWidget(parent){
     QHBoxLayout* left_widget = new QHBoxLayout;
 
+    QPushButton* bin_line = new QPushButton("bin");
+
     left_widget_name = new QLabel("Nome Prodotto");
     left_widget_name->setAlignment(Qt::AlignCenter);
     left_widget_name->setContentsMargins(30,0,10,0);
@@ -399,6 +401,7 @@ QReceiptitem::QReceiptitem(QWidget* parent) : QWidget(parent){
 
     //left_widget->addWidget(new QLabel(this));
 
+    left_widget->addWidget(bin_line);
     left_widget->addWidget(left_widget_name);
     left_widget->addWidget(left_widget_dim);
     left_widget->addWidget(minus);
