@@ -16,6 +16,7 @@
 #include <QLineEdit>
 #include <QString>
 #include <QScrollArea>
+#include <QBoxLayout>
 #include "./Utilities/u_vector.hpp"
 
 class controller;
@@ -57,26 +58,38 @@ class view : public QWidget {
 };
 
 
-class QReceiptitem : public QWidget {
+class QProduct : public QWidget {
     Q_OBJECT
 private:
     QFrame* left_widget_image;
     QLabel* left_widget_name;
     QLabel* left_widget_price;
 public:
-    explicit QReceiptitem(QWidget* parent = nullptr);
+    explicit QProduct(QWidget* parent = nullptr);
 };
 
-
-class QProduct : public QWidget{
+/*
+class product : public QFrame {
     Q_OBJECT
 private:
-    QFrame* left_widget_image;
+    QLabel* img;
     QLabel* left_widget_name;
-    QLabel* left_widget_code;
-    QPushButton* add;
+    QLabel* left_widget_price;
 public:
-    explicit QProduct(QWidget* parent = nullptr);
+    explicit product(QFrame* parent = nullptr);
+};
+*/
+
+
+class QReceiptitem : public QWidget{
+    Q_OBJECT
+private:
+    QLabel* left_widget_name;
+    QLabel* left_widget_dim;
+    QLabel* left_widget_n_items;
+    QLabel* left_widget_line_price;
+public:
+    explicit QReceiptitem(QWidget* parent = nullptr);
 };
 
 #endif  // VIEW_H_

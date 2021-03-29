@@ -72,41 +72,23 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
 
 
   // Colours
-  /*u_vector<QString> colours_actions = {"Giallo","Rosso","Rosa","Marrone","Nero","Violetto","Bianco","Verde","Bianco Trasparente","Giallo Trasparente",};
+  u_vector<QString> colours_actions = {"Giallo","Rosso","Rosa","Marrone","Nero","Violetto","Bianco","Verde","Bianco Trasparente","Giallo Trasparente",};
   for(auto cit = colours_actions.const_begin(); cit != colours_actions.const_end(); cit++){
       QAction* action = new QAction(*cit, colours);
       action->setCheckable(true);
       action->setChecked(false);
       colours->addAction(action);
-  }*/
-
-  //Prova colours
-  std::vector<QString> colours_actions = {"Giallo","Rosso","Rosa","Marrone","Nero","Violetto","Bianco","Verde","Bianco Trasparente","Giallo Trasparente",};
-    for(auto cit = colours_actions.cbegin(); cit != colours_actions.cend(); cit++){
-        QAction* action = new QAction(*cit, colours);
-        action->setCheckable(true);
-        action->setChecked(false);
-        colours->addAction(action);
-    }
+  }
 
   //Flavors incompleto
-  /*u_vector<QString> flavors_actions(17,17);
+  u_vector<QString> flavors_actions(17,17);
   flavors_actions = {"Nocciola","Caffè","Liquirizia","Cioccolato","Uovo","Rum","Panna","Fragola","Frutti di Bosco","Mirtillo","Ribes","Prugna","Miele","Secco","Fruttato","Amabile","Menta"};
   for(auto cit = flavors_actions.const_begin(); cit != flavors_actions.const_end(); cit++){
       QAction* action = new QAction(*cit, flavors);
       action->setCheckable(true);
       action->setChecked(false);
       flavors->addAction(action);
-  }*/
-
-    std::vector<QString> flavors_actions = {"Nocciola","Caffè","Liquirizia","Cioccolato","Uovo","Rum","Panna","Fragola","Frutti di Bosco","Mirtillo","Ribes","Prugna","Miele","Secco","Fruttato","Amabile","Menta"};
-    for(auto cit = flavors_actions.cbegin(); cit != flavors_actions.cend(); cit++){
-        QAction* action = new QAction(*cit, flavors);
-        action->setCheckable(true);
-        action->setChecked(false);
-        flavors->addAction(action);
-    }
-
+  }
 
   connect(file->actions()[3], SIGNAL(triggered()), this, SLOT(close()));
 
@@ -168,8 +150,8 @@ void view::add_grid(QHBoxLayout* main_object_layout){
     QVBoxLayout* left_app = new QVBoxLayout;
 
     QLabel* products_title = new QLabel("Prodotti");
+    products_title->setContentsMargins(0,20,0,20);
     products_title->setAlignment(Qt::AlignCenter);
-    products_title->setContentsMargins(0,0,0,20);
 
     /*QTableView* table_list = new QTableView;
     table_list->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
@@ -179,41 +161,54 @@ void view::add_grid(QHBoxLayout* main_object_layout){
     left_app->addWidget(products_title);
 
     QScrollArea* product_area = new QScrollArea;
+    product_area->setMinimumSize(QSize(500,500));
     product_area->setWidgetResizable(true);
     product_area->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+
+    QFrame* contenitore = new QFrame();
+
+    QGridLayout* layout = new QGridLayout();
+
+    contenitore->setLayout(layout);
+
+    product_area->setWidget(contenitore);
+
+
+    int r = 1, c = 1;
+
+    for(int i = 0; i < 9; i++) {
+        QProduct* p = new QProduct();
+
+        layout->addWidget(p,r,c);
+
+        if(c == 3) {
+            r++;
+            c = 1;
+        } else
+            c++;
+    }
+
+    /*
     QFrame* product_background = new QFrame;
     QVBoxLayout* product_list = new QVBoxLayout;
     product_area->setWidget(product_background);
     product_background->setLayout(product_list);
-    QGridLayout* table_list = new QGridLayout;
-    table_list->addWidget(new QReceiptitem,0,0);
-    table_list->addWidget(new QReceiptitem,0,1);
-    table_list->addWidget(new QReceiptitem,0,2);
-    table_list->addWidget(new QReceiptitem,0,3);
-    table_list->addWidget(new QReceiptitem,0,4);
-    table_list->addWidget(new QReceiptitem,1,0);
-    table_list->addWidget(new QReceiptitem,1,1);
-    table_list->addWidget(new QReceiptitem,1,2);
-    table_list->addWidget(new QReceiptitem,1,3);
-    table_list->addWidget(new QReceiptitem,1,4);
-    table_list->addWidget(new QReceiptitem,2,0);
-    table_list->addWidget(new QReceiptitem,2,1);
-    table_list->addWidget(new QReceiptitem,2,2);
-    table_list->addWidget(new QReceiptitem,2,3);
-    table_list->addWidget(new QReceiptitem,2,4);
-    table_list->addWidget(new QReceiptitem,3,0);
-    table_list->addWidget(new QReceiptitem,3,1);
-    table_list->addWidget(new QReceiptitem,3,2);
-    table_list->addWidget(new QReceiptitem,3,3);
-    table_list->addWidget(new QReceiptitem,3,4);
-    table_list->addWidget(new QReceiptitem,4,0);
-    table_list->addWidget(new QReceiptitem,4,1);
-    table_list->addWidget(new QReceiptitem,4,2);
-    table_list->addWidget(new QReceiptitem,4,3);
-    table_list->addWidget(new QReceiptitem,4,4);
+    QHBoxLayout* line = new QHBoxLayout;
+    for(int i=0; i<3; i++)
+        line->addWidget(new QProduct);
+    product_list->addLayout(line);
+    QHBoxLayout* line2 = new QHBoxLayout;
+    for(int i=0; i<3; i++)
+        line2->addWidget(new QProduct);
+    product_list->addLayout(line2);
+    QHBoxLayout* line3 = new QHBoxLayout;
+    for(int i=0; i<3; i++)
+        line3->addWidget(new QProduct);
+    product_list->addLayout(line3);
+    */
 
 
-    left_app->addLayout(table_list);
+    left_app->addWidget(product_area);
     left_app->addLayout(add_filter_buttons());
     left_app->setSpacing(0);
     left_app->setContentsMargins(20,20,20,20);
@@ -230,23 +225,23 @@ void view::add_receipt(QHBoxLayout* main_object_layout){
 
     QLabel* receipt_title = new QLabel("Scontrino");
     receipt_title->setAlignment(Qt::AlignCenter);
-    receipt_title->setContentsMargins(0,0,0,20);
+    receipt_title->setContentsMargins(0,20,0,20);
 
     //Receipt Menu
 
     QHBoxLayout* receipt_menu = new QHBoxLayout;
     QLabel* name_receipt = new QLabel("Nome");
     name_receipt->setAlignment(Qt::AlignCenter);
-    name_receipt->setContentsMargins(0,0,0,20);
+    name_receipt->setContentsMargins(40,20,0,20);
     QLabel* size_receipt = new QLabel("Dimensione");
     size_receipt->setAlignment(Qt::AlignCenter);
-    size_receipt->setContentsMargins(0,0,0,20);
+    size_receipt->setContentsMargins(50,20,0,20);
     QLabel* quantity_receipt = new QLabel("Quantità");
     quantity_receipt->setAlignment(Qt::AlignCenter);
-    quantity_receipt->setContentsMargins(0,0,0,20);
+    quantity_receipt->setContentsMargins(50,20,0,20);
     QLabel* price_receipt = new QLabel("Prezzo");
     price_receipt->setAlignment(Qt::AlignCenter);
-    price_receipt->setContentsMargins(0,0,0,20);
+    price_receipt->setContentsMargins(0,20,0,20);
 
     receipt_menu->addWidget(name_receipt);
     receipt_menu->addWidget(size_receipt);
@@ -256,25 +251,15 @@ void view::add_receipt(QHBoxLayout* main_object_layout){
     //List
 
     QScrollArea* receipt_area = new QScrollArea;
+    receipt_area->setMinimumSize(QSize(500,500));
     receipt_area->setWidgetResizable(true);
     receipt_area->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     QFrame* receipt_background = new QFrame;
     QVBoxLayout* receipt_list = new QVBoxLayout;
     receipt_area->setWidget(receipt_background);
     receipt_background->setLayout(receipt_list);
-    receipt_list->addWidget(new QProduct);
-    receipt_list->addWidget(new QProduct);
-    receipt_list->addWidget(new QProduct);
-    receipt_list->addWidget(new QProduct);
-    receipt_list->addWidget(new QProduct);
-    receipt_list->addWidget(new QProduct);
-    receipt_list->addWidget(new QProduct);
-    receipt_list->addWidget(new QProduct);
-    receipt_list->addWidget(new QProduct);
-    receipt_list->addWidget(new QProduct);
-    receipt_list->addWidget(new QProduct);
-    receipt_list->addWidget(new QProduct);
-
+    for(int i=0;i<50;i++)
+    receipt_list->addWidget(new QReceiptitem);
 
 
 
@@ -320,7 +305,7 @@ QHBoxLayout* view::add_receipt_buttons(){
     receipt_buttons->addWidget(pay_button);
     receipt_buttons->addWidget(delete_receipt);
     receipt_buttons->setSpacing(50);
-    receipt_buttons->setContentsMargins(50,20,50,20);
+    receipt_buttons->setContentsMargins(100,20,100,20);
 
     return receipt_buttons;
 }
@@ -341,38 +326,87 @@ view::view(QWidget* parent) : QWidget(parent) {
 
   main_layout->setSpacing(20);
   setLayout(main_layout);
-  resize(QSize(1024, 720));
 }
+
+/*
+product::product (QFrame* parent) : QFrame(parent) {
+     QVBoxLayout* mainlayout = new QVBoxLayout;
+
+     img = new QLabel();
+     left_widget_name = new QLabel();
+     left_widget_price = new QLabel();
+
+     img->setPixmap(QPixmap("path"));
+     left_widget_name->setText("name");
+     left_widget_price->setText("41");
+
+     mainlayout->addWidget(img);
+     mainlayout->addWidget(left_widget_name);
+     mainlayout->addWidget(left_widget_price);
+
+     setLayout(mainlayout);
+}
+*/
 
 
 QProduct::QProduct(QWidget* parent) : QWidget(parent) {
-    QHBoxLayout* left_widget = new QHBoxLayout;
 
-    left_widget_name = new QLabel("Prova4");
-    left_widget_code = new QLabel("Prova3"); //richiamo funzione code
-    //left_widget_image = new QFrame;
-    add = new QPushButton("Aggiungi");
 
-    //left_widget->addWidget(new QLabel(this));
-
-    left_widget->addWidget(left_widget_name, Qt::AlignCenter);
-    left_widget->addWidget(left_widget_code, Qt::AlignCenter);
-    //left_widget->addWidget(left_widget_image);
-    left_widget->addWidget(add);
-
-    setLayout(left_widget);
-}
-
-QReceiptitem::QReceiptitem(QWidget* parent) : QWidget(parent){
     QVBoxLayout* mainlayout = new QVBoxLayout;
+    QHBoxLayout* image_layout = new QHBoxLayout;
     left_widget_image = new QFrame;
+    left_widget_image->setStyleSheet("background-color: rgb(50,50,50)");
+    left_widget_image->setLayout(image_layout);
+    //left_widget_image->layout()->setMargin(0);
+    left_widget_image->layout()->setSpacing(0);
+    left_widget_image->layout()->setAlignment(Qt::AlignCenter);
+    left_widget_image->setMinimumSize(100, 178);
+    left_widget_image->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
     mainlayout->addWidget(left_widget_image, Qt::AlignCenter);
     left_widget_name = new QLabel("Liquirizia");//getname
+    left_widget_name->setAlignment(Qt::AlignCenter);
     mainlayout->addWidget(left_widget_name, Qt::AlignCenter);
     left_widget_price = new QLabel("10.50");
+    left_widget_price->setAlignment((Qt::AlignCenter));
     mainlayout->addWidget(left_widget_price, Qt::AlignHCenter);
 
     setLayout(mainlayout);
+}
+
+QReceiptitem::QReceiptitem(QWidget* parent) : QWidget(parent){
+    QHBoxLayout* left_widget = new QHBoxLayout;
+
+    left_widget_name = new QLabel("Nome Prodotto");
+    left_widget_name->setAlignment(Qt::AlignCenter);
+    left_widget_name->setContentsMargins(30,0,10,0);
+
+    left_widget_dim = new QLabel("Grande"); //richiamo funzione code
+    left_widget_dim->setAlignment(Qt::AlignCenter);
+    left_widget_dim->setContentsMargins(50,0,60,0);
+
+    QPushButton* minus = new QPushButton("-");
+
+    left_widget_n_items = new QLabel(QString::number(10));
+    left_widget_n_items->setAlignment(Qt::AlignCenter);
+    left_widget_n_items->setContentsMargins(0,0,0,0);
+
+    QPushButton* plus = new QPushButton("+");
+
+    left_widget_line_price = new QLabel("€ " + QString::number(70.20));
+    left_widget_line_price->setAlignment(Qt::AlignCenter);
+    left_widget_line_price->setContentsMargins(30,0,0,0);
+
+    //left_widget->addWidget(new QLabel(this));
+
+    left_widget->addWidget(left_widget_name);
+    left_widget->addWidget(left_widget_dim);
+    left_widget->addWidget(minus);
+    left_widget->addWidget(left_widget_n_items);
+    left_widget->addWidget(plus);
+    left_widget->addWidget(left_widget_line_price);
+
+    setLayout(left_widget);
 }
 
 
