@@ -1,5 +1,27 @@
 #include "view.h"
 //Nuova versione
+
+// TODO
+unsigned int view::number_items(){
+    unsigned int count = 0;
+    //for per sommare tutti i numeri di elementi
+    return count;
+}
+
+double view::calc_total_per_item(){
+    double total_per_item = 0.0;
+    return total_per_item /* moltiplicato per number of items */;
+}
+
+double view::calc_total(){
+    double total = 0.0;
+    //for per sommare tutti i prodotti a carrello tramite la funzione calc_total_per_item
+    return total;
+}
+
+
+
+
 void view::show_warning(const QString& message) {
     QDialog* dialog = new QDialog(this);
 
@@ -103,7 +125,7 @@ void view::add_title(QVBoxLayout* main_layout){
 
     main_layout->addWidget(title);
 }
-/*
+
 void view::upload_grid_item() {
     QGridLayout* upload = new QGridLayout;
 
@@ -132,10 +154,10 @@ void view::upload_grid_item() {
     upload->addWidget(path,3,0);
     upload->addWidget(path_line,3,1);
     upload->addWidget(path_button,3,2);
-    upload->addWidget(confirm,4,0,1,1);
+    upload->addWidget(confirm,4,0,1,1, Qt::AlignLeft);
     upload->addWidget(undo,4,1,1,2,Qt::AlignRight);
 }
-*/
+
 QString view::add_dialog_choice(){
     QString fileName = QFileDialog::getOpenFileName(
             this, tr("Apri il file"), "/home", tr("Immagini (*.png *.jpg)"));
@@ -174,14 +196,14 @@ void view::add_grid(QHBoxLayout* main_object_layout){
     product_area->setWidget(contenitore);
 
 
-    int r = 1, c = 1;
+    int r = 1, c = 1, n_ele = 3;
 
     for(int i = 0; i < 9; i++) {
         QProduct* p = new QProduct();
 
         layout->addWidget(p,r,c);
 
-        if(c == 3) {
+        if(c == n_ele) {
             r++;
             c = 1;
         } else
@@ -393,7 +415,7 @@ QReceiptitem::QReceiptitem(QWidget* parent) : QWidget(parent){
     left_widget_n_items->setAlignment(Qt::AlignCenter);
     left_widget_n_items->setContentsMargins(0,0,0,0);
 
-    QPushButton* plus = new QPushButton("+");
+    QPushButton* plus = new QPushButton("../Grafica/Immagini/plus@2x");
 
     left_widget_line_price = new QLabel("€ " + QString::number(70.20));
     left_widget_line_price->setAlignment(Qt::AlignCenter);
@@ -411,22 +433,3 @@ QReceiptitem::QReceiptitem(QWidget* parent) : QWidget(parent){
 
     setLayout(left_widget);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -33,9 +33,6 @@ class view : public QWidget {
   QPushButton* grappa_button;  //serve per forza scrivere button?
   QPushButton* liquor_button;
   QPushButton* cream_button;
-  QPushButton* add_item;
-  QPushButton* remove_item;
-  QPushButton* remove_line;
   QPushButton* delete_receipt;
   QPushButton* pay_button;
   void add_menu_bar(QVBoxLayout*);          // OK
@@ -44,17 +41,22 @@ class view : public QWidget {
   QHBoxLayout* add_filter_buttons();        // OK
   void add_receipt(QHBoxLayout*);           // OK
   QHBoxLayout* add_receipt_buttons();       // OK
-  unsigned int number_items();
-  double calc_total_per_item();
-  void show_alert(QDialog*);                //OK
+  unsigned int number_items();              // DA FARE
+  double calc_total_per_item();             // DA FARE
+  void show_alert(QDialog*);                // NON FATTO
 
  public:
-  view(QWidget* = nullptr);
-  void set_controller(controller*);
-  void upload_grid_item();
-  QString add_dialog_choice();
-  void show_warning(const QString&);
-  double calc_total();
+  view(QWidget* = nullptr);                 // OK
+  void set_controller(controller*);         // NON FATTO
+  void upload_grid_item();                  // 1/2
+  void modify_grid_item();                  // NON FATTO
+  void remove_grid_item();                  // NON FATTO
+  QString add_dialog_choice();              // OK
+  void show_warning(const QString&);        // OK
+  double calc_total();                      // DA FARE
+  void pay_banner(QDialog*);                // NON FATTO
+
+
 };
 
 
