@@ -7,7 +7,7 @@ model::~model() {
 }
 
 double model::total_TAX() const {
-  return r->tot_taxes();
+  return 0;  // r->tot_taxes();
 }
 
 void model::add_item(product* p) {

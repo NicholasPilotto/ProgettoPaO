@@ -15,7 +15,7 @@ void controller::add_item(product* p) { _model->add_item(p); }
 
 void controller::save_receipt() const {}
 
-void controller::delete_receipt() { _model->delete_list(); }
+// void controller::delete_receipt() { _model->delete_list(); }
 
 void controller::pay() {
   double total_price = _model->total_price();

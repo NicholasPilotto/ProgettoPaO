@@ -1,3 +1,4 @@
+#include "./Utilities/u_vector.hpp"
 #include "Hierarchy/product.h" /* attesa di receipt */
 #include "receipt.h"
 
