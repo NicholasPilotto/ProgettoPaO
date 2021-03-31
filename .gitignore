@@ -34,3 +34,7 @@
 *.vscode
 build_Distilleria-Veneta*
 *.pro.user
+build-DistilleriaVeneta-Desktop_Qt_5_15_2_GCC_64bit-Debug
+build-DistilleriaVeneta-Desktop_Qt_6_0_0_MinGW_64_bit-Debug
+build-DistilleriaVeneta-Desktop_Qt_6_0_2_MinGW_64_bit-Debug
+build-DistilleriaVeneta-Desktop_x86_darwin_generic_mach_o_64bit-Debug
