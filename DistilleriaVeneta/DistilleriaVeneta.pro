@@ -15,6 +15,7 @@ SOURCES += \
   model.cpp \
   receipt.cpp \
     view.cpp \
+    view.cpp \
     ./Hierarchy/product.cpp \
     ./Hierarchy/spirits.cpp \
     ./Hierarchy/grappa.cpp \
