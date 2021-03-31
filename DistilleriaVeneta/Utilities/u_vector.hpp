@@ -1,6 +1,8 @@
 #ifndef _U_VECTOR_H_
 #define _U_VECTOR_H_
 
+#include <limits.h>
+
 #include <iostream>
 
 using std::initializer_list;
