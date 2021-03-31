@@ -198,7 +198,7 @@ void view::add_grid(QHBoxLayout* main_object_layout){
 
     int r = 1, c = 1, n_ele = 3;
 
-    for(int i = 0; i < 9; i++) {
+    for(int i = 0; i < 8; i++) {
         QProduct* p = new QProduct();
 
         layout->addWidget(p,r,c);
