@@ -27,19 +27,19 @@ HEADERS += \
   controller.h \
   receipt.h \
   model.h \
-    view.h \
-    ./Hierarchy/enum.h \
-    ./Hierarchy/product.h \
-    ./Hierarchy/spirits.h \
-    ./Hierarchy/grappa.h \
-    ./Hierarchy/old.h \
-    ./Hierarchy/young.h \
-    ./Hierarchy/liquor.h \
-    ./Hierarchy/non_spirits.h \
-    ./Hierarchy/cream.h \
-    ./Utilities/u_vector.hpp \
-    ./Utilities/deep_ptr.hpp \
-    ./Utilities/aux_func.hpp \
+  view.h \
+  ./Hierarchy/enum.h \
+  ./Hierarchy/product.h \
+  ./Hierarchy/spirits.h \
+  ./Hierarchy/grappa.h \
+  ./Hierarchy/old.h \
+  ./Hierarchy/young.h \
+  ./Hierarchy/liquor.h \
+  ./Hierarchy/non_spirits.h \
+  ./Hierarchy/cream.h \
+  ./Utilities/u_vector.hpp \
+  ./Utilities/deep_ptr.hpp \
+  ./Utilities/aux_func.hpp \
 
 FORMS +=
 
