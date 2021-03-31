@@ -52,8 +52,14 @@ class u_vector {
      */
     const_iterator(const T*);
 
-   public:
-    /**
+	 public:
+		typedef std::forward_iterator_tag iterator_category;
+		typedef iterator self_type;
+		typedef T value_type;
+		typedef T& reference;
+		typedef T* p;
+		typedef int difference_type;
+		/**
      * @brief operator++ prefisso
      * @return const_iterator&, indirizzo dell'oggetto di invocazione + 1
      */
@@ -186,7 +192,13 @@ class u_vector {
     iterator(T*);
 
    public:
-    /**
+		typedef std::forward_iterator_tag iterator_category;
+		typedef iterator self_type;
+		typedef T value_type;
+		typedef T& reference;
+		typedef T* p;
+		typedef int difference_type;
+		/**
      * @brief operator++ prefisso
      * @return iterator&, indirizzo dell'oggetto di invocazione + 1
      */
