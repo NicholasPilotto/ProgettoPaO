@@ -555,7 +555,6 @@ class u_vector {
    */
   const T& operator[](unsigned int) const;
 };
-#endif  // __U_VECTOR_H__
 
 //* ---------- ITERATOR ----------
 
@@ -1095,3 +1094,5 @@ template <class T>
 const T& u_vector<T>::operator[](unsigned int index) const {
   return *(array + index);
 }
+
+#endif  // __U_VECTOR_H__

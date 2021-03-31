@@ -9,8 +9,11 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+  controller.cpp \
     main.cpp \
     mainwindow.cpp \
+  model.cpp \
+  receipt.cpp \
     view.cpp \
     ./Hierarchy/product.cpp \
     ./Hierarchy/spirits.cpp \
@@ -22,7 +25,10 @@ SOURCES += \
     ./Hierarchy/cream.cpp \
 
 HEADERS += \
+  controller.h \
     mainwindow.h \
+  receipt.h \
+  model.h \
     view.h \
     ./Hierarchy/enum.h \
     ./Hierarchy/product.h \

@@ -50,8 +50,11 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../DistilleriaVeneta/main.cpp \
+SOURCES       = ../DistilleriaVeneta/controller.cpp \
+		../DistilleriaVeneta/main.cpp \
 		../DistilleriaVeneta/mainwindow.cpp \
+		../DistilleriaVeneta/model.cpp \
+		../DistilleriaVeneta/receipt.cpp \
 		../DistilleriaVeneta/view.cpp \
 		../DistilleriaVeneta/Hierarchy/product.cpp \
 		../DistilleriaVeneta/Hierarchy/spirits.cpp \
@@ -60,10 +63,14 @@ SOURCES       = ../DistilleriaVeneta/main.cpp \
 		../DistilleriaVeneta/Hierarchy/young.cpp \
 		../DistilleriaVeneta/Hierarchy/liquor.cpp \
 		../DistilleriaVeneta/Hierarchy/non_spirits.cpp \
-		../DistilleriaVeneta/Hierarchy/cream.cpp moc_mainwindow.cpp \
+		../DistilleriaVeneta/Hierarchy/cream.cpp moc_controller.cpp \
+		moc_mainwindow.cpp \
 		moc_view.cpp
-OBJECTS       = main.o \
+OBJECTS       = controller.o \
+		main.o \
 		mainwindow.o \
+		model.o \
+		receipt.o \
 		view.o \
 		product.o \
 		spirits.o \
@@ -73,6 +80,7 @@ OBJECTS       = main.o \
 		liquor.o \
 		non_spirits.o \
 		cream.o \
+		moc_controller.o \
 		moc_mainwindow.o \
 		moc_view.o
 DIST          = /Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/spec_pre.prf \
@@ -233,6 +241,7 @@ DIST          = /Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/spec_p
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/qt_config.prf \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/spec_post.prf \
+		../DistilleriaVeneta/.qmake.stash \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/toolchain.prf \
@@ -259,7 +268,10 @@ DIST          = /Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/spec_p
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/exceptions.prf \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/yacc.prf \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/lex.prf \
-		../DistilleriaVeneta/DistilleriaVeneta.pro ../DistilleriaVeneta/mainwindow.h \
+		../DistilleriaVeneta/DistilleriaVeneta.pro ../DistilleriaVeneta/controller.h \
+		../DistilleriaVeneta/mainwindow.h \
+		../DistilleriaVeneta/receipt.h \
+		../DistilleriaVeneta/model.h \
 		../DistilleriaVeneta/view.h \
 		../DistilleriaVeneta/Hierarchy/enum.h \
 		../DistilleriaVeneta/Hierarchy/product.h \
@@ -272,8 +284,11 @@ DIST          = /Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/spec_p
 		../DistilleriaVeneta/Hierarchy/cream.h \
 		../DistilleriaVeneta/Utilities/u_vector.hpp \
 		../DistilleriaVeneta/Utilities/deep_ptr.hpp \
-		../DistilleriaVeneta/Utilities/aux_func.hpp ../DistilleriaVeneta/main.cpp \
+		../DistilleriaVeneta/Utilities/aux_func.hpp ../DistilleriaVeneta/controller.cpp \
+		../DistilleriaVeneta/main.cpp \
 		../DistilleriaVeneta/mainwindow.cpp \
+		../DistilleriaVeneta/model.cpp \
+		../DistilleriaVeneta/receipt.cpp \
 		../DistilleriaVeneta/view.cpp \
 		../DistilleriaVeneta/Hierarchy/product.cpp \
 		../DistilleriaVeneta/Hierarchy/spirits.cpp \
@@ -458,6 +473,7 @@ Makefile: ../DistilleriaVeneta/DistilleriaVeneta.pro /Users/NicholasPilotto/Qt/5
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/qt_config.prf \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/toolchain.prf \
@@ -647,6 +663,7 @@ Makefile: ../DistilleriaVeneta/DistilleriaVeneta.pro /Users/NicholasPilotto/Qt/5
 /Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/qt_config.prf:
 /Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/macx-clang/qmake.conf:
 /Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/exclusive_builds.prf:
 /Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/mac/sdk.prf:
 /Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/toolchain.prf:
@@ -707,8 +724,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../DistilleriaVeneta/mainwindow.h ../DistilleriaVeneta/view.h ../DistilleriaVeneta/Hierarchy/enum.h ../DistilleriaVeneta/Hierarchy/product.h ../DistilleriaVeneta/Hierarchy/spirits.h ../DistilleriaVeneta/Hierarchy/grappa.h ../DistilleriaVeneta/Hierarchy/old.h ../DistilleriaVeneta/Hierarchy/young.h ../DistilleriaVeneta/Hierarchy/liquor.h ../DistilleriaVeneta/Hierarchy/non_spirits.h ../DistilleriaVeneta/Hierarchy/cream.h ../DistilleriaVeneta/Utilities/u_vector.hpp ../DistilleriaVeneta/Utilities/deep_ptr.hpp ../DistilleriaVeneta/Utilities/aux_func.hpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../DistilleriaVeneta/main.cpp ../DistilleriaVeneta/mainwindow.cpp ../DistilleriaVeneta/view.cpp ../DistilleriaVeneta/Hierarchy/product.cpp ../DistilleriaVeneta/Hierarchy/spirits.cpp ../DistilleriaVeneta/Hierarchy/grappa.cpp ../DistilleriaVeneta/Hierarchy/old.cpp ../DistilleriaVeneta/Hierarchy/young.cpp ../DistilleriaVeneta/Hierarchy/liquor.cpp ../DistilleriaVeneta/Hierarchy/non_spirits.cpp ../DistilleriaVeneta/Hierarchy/cream.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../DistilleriaVeneta/controller.h ../DistilleriaVeneta/mainwindow.h ../DistilleriaVeneta/receipt.h ../DistilleriaVeneta/model.h ../DistilleriaVeneta/view.h ../DistilleriaVeneta/Hierarchy/enum.h ../DistilleriaVeneta/Hierarchy/product.h ../DistilleriaVeneta/Hierarchy/spirits.h ../DistilleriaVeneta/Hierarchy/grappa.h ../DistilleriaVeneta/Hierarchy/old.h ../DistilleriaVeneta/Hierarchy/young.h ../DistilleriaVeneta/Hierarchy/liquor.h ../DistilleriaVeneta/Hierarchy/non_spirits.h ../DistilleriaVeneta/Hierarchy/cream.h ../DistilleriaVeneta/Utilities/u_vector.hpp ../DistilleriaVeneta/Utilities/deep_ptr.hpp ../DistilleriaVeneta/Utilities/aux_func.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../DistilleriaVeneta/controller.cpp ../DistilleriaVeneta/main.cpp ../DistilleriaVeneta/mainwindow.cpp ../DistilleriaVeneta/model.cpp ../DistilleriaVeneta/receipt.cpp ../DistilleriaVeneta/view.cpp ../DistilleriaVeneta/Hierarchy/product.cpp ../DistilleriaVeneta/Hierarchy/spirits.cpp ../DistilleriaVeneta/Hierarchy/grappa.cpp ../DistilleriaVeneta/Hierarchy/old.cpp ../DistilleriaVeneta/Hierarchy/young.cpp ../DistilleriaVeneta/Hierarchy/liquor.cpp ../DistilleriaVeneta/Hierarchy/non_spirits.cpp ../DistilleriaVeneta/Hierarchy/cream.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../DistilleriaVeneta/mainwindow.ui $(DISTDIR)/
 
 
@@ -719,6 +736,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r DistilleriaVeneta.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -740,9 +758,51 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/data/dummy.cpp
 	/Library/Developer/CommandLineTools/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.10 -Wall -W -dM -E -o moc_predefs.h /Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_view.cpp
+compiler_moc_header_make_all: moc_controller.cpp moc_mainwindow.cpp moc_view.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_view.cpp
+	-$(DEL_FILE) moc_controller.cpp moc_mainwindow.cpp moc_view.cpp
+moc_controller.cpp: /Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../DistilleriaVeneta/Hierarchy/product.h \
+		../DistilleriaVeneta/Utilities/u_vector.hpp \
+		../DistilleriaVeneta/Hierarchy/enum.h \
+		../DistilleriaVeneta/model.h \
+		../DistilleriaVeneta/receipt.h \
+		../DistilleriaVeneta/Utilities/deep_ptr.hpp \
+		../DistilleriaVeneta/view.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QBoxLayout \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QGridLayout \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QMenuBar \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qmenubar.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QScrollArea \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QScrollBar \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qscrollbar.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QTableView \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qtableview.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../DistilleriaVeneta/controller.h \
+		moc_predefs.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/bin/moc
+	/Users/NicholasPilotto/Qt/5.9.9/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/macx-clang -I'/Users/NicholasPilotto/Documents/UniPD/Anno II/PAO/Progetto/ProgettoPaO/DistilleriaVeneta' -I/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers -I/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtGui.framework/Headers -I/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib ../DistilleriaVeneta/controller.h -o moc_controller.cpp
+
 moc_mainwindow.cpp: /Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../DistilleriaVeneta/mainwindow.h \
@@ -750,33 +810,34 @@ moc_mainwindow.cpp: /Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.frame
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/bin/moc
 	/Users/NicholasPilotto/Qt/5.9.9/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/NicholasPilotto/Qt/5.9.9/clang_64/mkspecs/macx-clang -I'/Users/NicholasPilotto/Documents/UniPD/Anno II/PAO/Progetto/ProgettoPaO/DistilleriaVeneta' -I/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers -I/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtGui.framework/Headers -I/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib ../DistilleriaVeneta/mainwindow.h -o moc_mainwindow.cpp
 
-moc_view.cpp: /Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+moc_view.cpp: /Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QBoxLayout \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QGridLayout \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qgridlayout.h \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QTableView \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qtableview.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QLabel \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QMenuBar \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qmenubar.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QScrollArea \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QScrollBar \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qscrollbar.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/QString \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QTableView \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qtableview.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QVBoxLayout \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QScrollArea \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		../DistilleriaVeneta/Utilities/u_vector.hpp \
 		../DistilleriaVeneta/view.h \
 		moc_predefs.h \
@@ -804,37 +865,78 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-main.o: ../DistilleriaVeneta/main.cpp ../DistilleriaVeneta/mainwindow.h \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+controller.o: ../DistilleriaVeneta/controller.cpp ../DistilleriaVeneta/controller.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../DistilleriaVeneta/Hierarchy/product.h \
+		../DistilleriaVeneta/Utilities/u_vector.hpp \
+		../DistilleriaVeneta/Hierarchy/enum.h \
+		../DistilleriaVeneta/model.h \
+		../DistilleriaVeneta/receipt.h \
+		../DistilleriaVeneta/Utilities/deep_ptr.hpp \
 		../DistilleriaVeneta/view.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QBoxLayout \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QGridLayout \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qgridlayout.h \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QTableView \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qtableview.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QLabel \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QMenuBar \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qmenubar.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QScrollArea \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QScrollBar \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qscrollbar.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/QString \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QTableView \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qtableview.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QVBoxLayout
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controller.o ../DistilleriaVeneta/controller.cpp
+
+main.o: ../DistilleriaVeneta/main.cpp ../DistilleriaVeneta/mainwindow.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../DistilleriaVeneta/view.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QBoxLayout \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QGridLayout \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QMenuBar \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qmenubar.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QScrollArea \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QScrollBar \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qscrollbar.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QTableView \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qtableview.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		../DistilleriaVeneta/Utilities/u_vector.hpp \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
@@ -846,34 +948,50 @@ mainwindow.o: ../DistilleriaVeneta/mainwindow.cpp ../DistilleriaVeneta/mainwindo
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../DistilleriaVeneta/mainwindow.cpp
 
+model.o: ../DistilleriaVeneta/model.cpp ../DistilleriaVeneta/model.h \
+		../DistilleriaVeneta/Hierarchy/product.h \
+		../DistilleriaVeneta/Utilities/u_vector.hpp \
+		../DistilleriaVeneta/Hierarchy/enum.h \
+		../DistilleriaVeneta/receipt.h \
+		../DistilleriaVeneta/Utilities/deep_ptr.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o model.o ../DistilleriaVeneta/model.cpp
+
+receipt.o: ../DistilleriaVeneta/receipt.cpp ../DistilleriaVeneta/receipt.h \
+		../DistilleriaVeneta/Hierarchy/product.h \
+		../DistilleriaVeneta/Utilities/u_vector.hpp \
+		../DistilleriaVeneta/Hierarchy/enum.h \
+		../DistilleriaVeneta/Utilities/deep_ptr.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o receipt.o ../DistilleriaVeneta/receipt.cpp
+
 view.o: ../DistilleriaVeneta/view.cpp ../DistilleriaVeneta/view.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QBoxLayout \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QGridLayout \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qgridlayout.h \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QTableView \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qtableview.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QLabel \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QMenuBar \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qmenubar.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QScrollArea \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QScrollBar \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qscrollbar.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/QString \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QTableView \
+		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qtableview.h \
 		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QVBoxLayout \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/QScrollArea \
-		/Users/NicholasPilotto/Qt/5.9.9/clang_64/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		../DistilleriaVeneta/Utilities/u_vector.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o view.o ../DistilleriaVeneta/view.cpp
 
@@ -930,6 +1048,9 @@ cream.o: ../DistilleriaVeneta/Hierarchy/cream.cpp ../DistilleriaVeneta/Hierarchy
 		../DistilleriaVeneta/Utilities/u_vector.hpp \
 		../DistilleriaVeneta/Hierarchy/enum.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cream.o ../DistilleriaVeneta/Hierarchy/cream.cpp
+
+moc_controller.o: moc_controller.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_controller.o moc_controller.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
