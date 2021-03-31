@@ -41,8 +41,6 @@ HEADERS += \
   ./Utilities/deep_ptr.hpp \
   ./Utilities/aux_func.hpp \
 
-FORMS +=
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
