@@ -198,7 +198,11 @@ void view::add_grid(QHBoxLayout* main_object_layout){
 
     int r = 1, c = 1, n_ele = 3;
 
+<<<<<<< HEAD
     for(int i = 0; i < 9; i++) {
+=======
+    for(int i = 0; i < 8; i++) {
+>>>>>>> main
         QProduct* p = new QProduct();
 
         layout->addWidget(p,r,c);
@@ -353,6 +357,7 @@ view::view(QWidget* parent) : QWidget(parent) {
 /*
 product::product (QFrame* parent) : QFrame(parent) {
      QVBoxLayout* mainlayout = new QVBoxLayout;
+<<<<<<< HEAD
 
      img = new QLabel();
      left_widget_name = new QLabel();
@@ -373,6 +378,24 @@ product::product (QFrame* parent) : QFrame(parent) {
 
 QProduct::QProduct(QWidget* parent) : QWidget(parent) {
 
+=======
+     img = new QLabel();
+     left_widget_name = new QLabel();
+     left_widget_price = new QLabel();
+     img->setPixmap(QPixmap("path"));
+     left_widget_name->setText("name");
+     left_widget_price->setText("41");
+     mainlayout->addWidget(img);
+     mainlayout->addWidget(left_widget_name);
+     mainlayout->addWidget(left_widget_price);
+     setLayout(mainlayout);
+}
+*/
+
+
+QProduct::QProduct(QWidget* parent) : QWidget(parent) {
+
+>>>>>>> main
 
     QVBoxLayout* mainlayout = new QVBoxLayout;
     QHBoxLayout* image_layout = new QHBoxLayout;

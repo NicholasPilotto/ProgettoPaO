@@ -1,22 +1,30 @@
 #ifndef VIEW_H_
 #define VIEW_H_
 
+#include <QBoxLayout>
 #include <QDialog>
+#include <QFileDialog>
 #include <QGridLayout>
-#include <QTableView>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QLineEdit>
 #include <QListWidget>
 #include <QMenuBar>
 #include <QPushButton>
+#include <QScrollArea>
 #include <QScrollBar>
 #include <QString>
+#include <QTableView>
 #include <QVBoxLayout>
+<<<<<<< HEAD
 #include <QFileDialog>
 #include <QLineEdit>
 #include <QString>
 #include <QScrollArea>
 #include <QBoxLayout>
+=======
+
+>>>>>>> main
 #include "./Utilities/u_vector.hpp"
 
 class controller;

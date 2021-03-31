@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
   controller.cpp \
+<<<<<<< HEAD
     main.cpp \
     mainwindow.cpp \
     view.cpp \
@@ -25,6 +26,25 @@ SOURCES += \
 HEADERS += \
   controller.h \
     mainwindow.h \
+=======
+  main.cpp \
+  model.cpp \
+  receipt.cpp \
+  view.cpp \
+  ./Hierarchy/product.cpp \
+  ./Hierarchy/spirits.cpp \
+  ./Hierarchy/grappa.cpp \
+  ./Hierarchy/old.cpp \
+  ./Hierarchy/young.cpp \
+  ./Hierarchy/liquor.cpp \
+  ./Hierarchy/non_spirits.cpp \
+  ./Hierarchy/cream.cpp \
+
+HEADERS += \
+  controller.h \
+  receipt.h \
+  model.h \
+>>>>>>> main
     view.h \
     ./Hierarchy/enum.h \
     ./Hierarchy/product.h \
@@ -39,9 +59,7 @@ HEADERS += \
     ./Utilities/deep_ptr.hpp \
     ./Utilities/aux_func.hpp \
 
-
-FORMS += \
-    mainwindow.ui
+FORMS +=
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
