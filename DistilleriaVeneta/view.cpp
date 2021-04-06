@@ -60,20 +60,20 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   filters->addMenu(flavors);
 
 
-  QAction* add_product_menu = new QAction("Aggiungi Prodotto", file);
-  const QKeySequence* adding = new QKeySequence("Ctrl+A");
-  add_product_menu->setShortcut(*adding);
-  file->addAction(add_product_menu);
+//  QAction* add_product_menu = new QAction("Aggiungi Prodotto", file);
+//  const QKeySequence* adding = new QKeySequence("Ctrl+A");
+//  add_product_menu->setShortcut(*adding);
+//  file->addAction(add_product_menu);
 
-  QAction* modify_product_menu = new QAction("Modifica Prodotto", file);
-  const QKeySequence* modifing = new QKeySequence("Ctrl+M");
-  modify_product_menu->setShortcut(*modifing);
-  file->addAction(modify_product_menu);
+//  QAction* modify_product_menu = new QAction("Modifica Prodotto", file);
+//  const QKeySequence* modifing = new QKeySequence("Ctrl+M");
+//  modify_product_menu->setShortcut(*modifing);
+//  file->addAction(modify_product_menu);
 
-  QAction* remove_product_menu = new QAction("Remove product", file);
-  const QKeySequence* removing = new QKeySequence("Ctrl+R");
-  remove_product_menu->setShortcut(*removing);
-  file->addAction(remove_product_menu);
+//  QAction* remove_product_menu = new QAction("Remove product", file);
+//  const QKeySequence* removing = new QKeySequence("Ctrl+R");
+//  remove_product_menu->setShortcut(*removing);
+//  file->addAction(remove_product_menu);
 
   QAction* close_action = new QAction("Chiudi", file);
   const QKeySequence* closing = new QKeySequence("Ctrl+Q");
@@ -282,7 +282,10 @@ void view::add_receipt(QHBoxLayout* main_object_layout){
     receipt_background->setLayout(receipt_list);
     for(int i=0;i<50;i++)
     receipt_list->addWidget(new QReceiptitem);
-
+    /*
+     * for(auto it = v.begin(); it != v.end(); it++)
+     *  receiptlist->addwidget(new QReceiptitem(*it));
+    */
 
 
     //Right app
@@ -411,7 +414,7 @@ QReceiptitem::QReceiptitem(QWidget* parent) : QWidget(parent){
     left_widget_n_items->setAlignment(Qt::AlignCenter);
     left_widget_n_items->setContentsMargins(0,0,0,0);
 
-    QPushButton* plus = new QPushButton("../Grafica/Immagini/plus@2x");
+    QPushButton* plus = new QPushButton("+");
 
     left_widget_line_price = new QLabel("€ " + QString::number(70.20));
     left_widget_line_price->setAlignment(Qt::AlignCenter);
@@ -429,3 +432,41 @@ QReceiptitem::QReceiptitem(QWidget* parent) : QWidget(parent){
 
     setLayout(left_widget);
 }
+
+//QReceiptitem::QReceiptitem(QWidget* parent, deepptr<product> p) : QWidget(parent){
+//QHBoxLayout* left_widget = new QHBoxLayout;
+
+//QPushButton* bin_line = new QPushButton("bin");
+
+//left_widget_name = new QLabel(p.get()->getnome());
+//left_widget_name->setAlignment(Qt::AlignCenter);
+//left_widget_name->setContentsMargins(30,0,10,0);
+
+//left_widget_dim = new QLabel("Grande"); //richiamo funzione code
+//left_widget_dim->setAlignment(Qt::AlignCenter);
+//left_widget_dim->setContentsMargins(50,0,60,0);
+
+//QPushButton* minus = new QPushButton("-");
+
+//left_widget_n_items = new QLabel(QString::number(10));
+//left_widget_n_items->setAlignment(Qt::AlignCenter);
+//left_widget_n_items->setContentsMargins(0,0,0,0);
+
+//QPushButton* plus = new QPushButton("+");
+
+//left_widget_line_price = new QLabel("€ " + QString::number(70.20));
+//left_widget_line_price->setAlignment(Qt::AlignCenter);
+//left_widget_line_price->setContentsMargins(30,0,0,0);
+
+//left_widget->addWidget(new QLabel(this));
+
+//left_widget->addWidget(bin_line);
+//left_widget->addWidget(left_widget_name);
+//left_widget->addWidget(left_widget_dim);
+//left_widget->addWidget(minus);
+//left_widget->addWidget(left_widget_n_items);
+//left_widget->addWidget(plus);
+//left_widget->addWidget(left_widget_line_price);
+
+//setLayout(left_widget);
+//}
