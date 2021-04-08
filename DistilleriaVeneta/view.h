@@ -35,6 +35,7 @@ class view : public QWidget {
   QPushButton* cream_button;
   QPushButton* delete_receipt;
   QPushButton* pay_button;
+  controller* presenter;
   void add_menu_bar(QVBoxLayout*);          // OK
   void add_title(QVBoxLayout*);             // OK
   void add_grid(QHBoxLayout*);              // OK

@@ -20,6 +20,34 @@ double view::calc_total(){
 }
 
 
+void view::set_controller(controller* c){
+    presenter = c;
+}
+
+//QPair<QString, int> view::show_add_dialog(){
+//    QPushButton* small = new QPushButton("Small");
+//    small->setFlat(false);
+//    small->setCheckable(true);
+//   small->setChecked(false);
+//    QPushButton* medium = new QPushButton("Medium");
+//    medium->setFlat(true);
+//    medium->setCheckable(true);
+//    medium->setChecked(true);
+//    medium->setDefault(true);
+//    QPushButton* large = new QPushButton("Large");
+//    large->setFlat(false);
+//    large->setCheckable(true);
+//    large->setChecked(false);
+
+//    bool ok = false;
+//    int number = QInputDialog::getInt(this, tr("Aggiunta prodotto"), "Quantità ", 1, 1, 2147483647, 1, &ok);
+//    if (!ok)
+//        throw std::runtime_error("Inserimento prodotto non valido");
+
+//    // controllo con isFlat per ritornare la cosa corretta...
+
+//    return {, number} ;
+//}
 
 
 void view::show_warning(const QString& message) {
@@ -112,7 +140,7 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
       flavors->addAction(action);
   }
 
-  connect(file->actions()[3], SIGNAL(triggered()), this, SLOT(close()));
+  connect(file->actions()[0], SIGNAL(triggered()), this, SLOT(close()));
 
   main_layout->addWidget(menu_bar);
 }
@@ -436,23 +464,23 @@ QReceiptitem::QReceiptitem(QWidget* parent) : QWidget(parent){
 //QReceiptitem::QReceiptitem(QWidget* parent, deepptr<product> p) : QWidget(parent){
 //QHBoxLayout* left_widget = new QHBoxLayout;
 
-//QPushButton* bin_line = new QPushButton("bin");
+//QPushButton* bin_line = new QPushButton();
 
-//left_widget_name = new QLabel(p.get()->getnome());
+//left_widget_name = new QLabel();
 //left_widget_name->setAlignment(Qt::AlignCenter);
 //left_widget_name->setContentsMargins(30,0,10,0);
 
-//left_widget_dim = new QLabel("Grande"); //richiamo funzione code
+//left_widget_dim = new QLabel(); //richiamo funzione code
 //left_widget_dim->setAlignment(Qt::AlignCenter);
 //left_widget_dim->setContentsMargins(50,0,60,0);
 
-//QPushButton* minus = new QPushButton("-");
+//QPushButton* minus = new QPushButton();
 
-//left_widget_n_items = new QLabel(QString::number(10));
+//left_widget_n_items = new QLabel();
 //left_widget_n_items->setAlignment(Qt::AlignCenter);
 //left_widget_n_items->setContentsMargins(0,0,0,0);
 
-//QPushButton* plus = new QPushButton("+");
+//QPushButton* plus = new QPushButton();
 
 //left_widget_line_price = new QLabel("€ " + QString::number(70.20));
 //left_widget_line_price->setAlignment(Qt::AlignCenter);
