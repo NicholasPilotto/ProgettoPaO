@@ -5,22 +5,32 @@
 
 class old : public grappa {
  private:
-  color col;
-  u_vector<taste> tastes;
-  bool barrique;
-  unsigned int month;
+	class aux_map_initializer {
+	 private:
+		old* ptr;
+
+	 public:
+		aux_map_initializer();
+		~aux_map_initializer();
+	};
+	static aux_map_initializer aux_map;
+
+	color col;
+	u_vector<taste> tastes;
+	bool barrique;
+	unsigned int month;
 
  protected:
   static const double month_incr;
   unsigned int get_month_old() const;
 
  public:
-  old(color, const u_vector<taste>&, bool = false, unsigned int = 18, bottle_size = medium, const std::string& = "", double = min_ac);  //da fare
-  old(const old&);                                                                                                                    //da fare
-  old& operator=(const old&);                                                                                                         //da fare
-  static const double discount_old;
-  virtual old* clone() const override;
-  virtual double kind_price() const override;
+	old(const color = white_trasparent, const u_vector<taste>& = {}, bool = false, unsigned int = 18, bottle_size = medium, const std::string& = "", double = min_ac);  // da fare
+	old(const old&);                                                                                                                                                    // da fare
+	old& operator=(const old&);                                                                                                                                         // da fare
+	static const double discount_old;
+	virtual old* clone() const override;
+	virtual double kind_price() const override;
   virtual double price_increment() const override;
   virtual double get_price() const override;
   virtual double promotion() const override;
@@ -29,6 +39,7 @@ class old : public grappa {
   virtual std::string code() const override;
   virtual std::string get_image_path() const override;
   bool is_barrique() const;
+	virtual old* create(std::map<std::string, QVariant>&) const override;
 };
 
 #endif  // OLD_H_

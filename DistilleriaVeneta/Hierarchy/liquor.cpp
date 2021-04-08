@@ -1,6 +1,15 @@
 #include "liquor.h"
 
-liquor::liquor(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : spirits(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
+#include <algorithm>
+
+liquor::aux_map_initializer::aux_map_initializer() {
+	ptr = new liquor(color::white, {});
+	_map["liquor"] = ptr;
+}
+liquor::aux_map_initializer::~aux_map_initializer() { delete ptr; }
+liquor::aux_map_initializer liquor::aux_map;
+
+liquor::liquor(const color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : spirits(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
 
 const double liquor::liquor_incr = 4.00;
 
@@ -73,4 +82,15 @@ std::string liquor::code() const {
 
 std::string liquor::get_image_path() const {
   return spirits::get_image_path() + "liquor/" + get_name();
+}
+
+liquor* liquor::create(std::map<std::string, QVariant>& m) const {
+	color _color = static_cast<color>(m["color"].toString().toInt());
+	u_vector<taste> _tastes;
+	std::for_each(m["tastes"].toList().begin(), m["tastes"].toList().end(), [&_tastes](QVariant value) { _tastes.push_back(static_cast<taste>(value.toString().toInt())); });
+	bottle_size _bottle = static_cast<bottle_size>(m["bottle_size"].toString().toInt());
+	std::string _name = m["name"].toString().toStdString();
+	double _alcohol_content = m["min_ac"].toString().toDouble();
+
+	return new liquor(_color, _tastes, _bottle, _name, _alcohol_content);
 }

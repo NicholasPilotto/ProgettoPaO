@@ -4,9 +4,9 @@
 
 class non_spirits : public product {
  public:
-  non_spirits(bottle_size = medium, const std::string& = "", double = min_ac);  // da controllare
-  non_spirits(const non_spirits&);                                            // da controllare (penso non corretto)
-  non_spirits& operator=(const non_spirits&);                                 // da controllare
+	non_spirits(bottle_size = medium, const std::string& = "", double = min_ac);  // da controllare
+	non_spirits(const non_spirits&);                                              // da controllare (penso non corretto)
+	non_spirits& operator=(const non_spirits&);                                 // da controllare
   static const double min_ac;
   static const double max_ac;
   virtual double kind_price() const override;

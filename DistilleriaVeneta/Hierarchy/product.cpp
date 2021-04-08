@@ -1,5 +1,7 @@
 #include "product.h"
 
+std::map<std::string, product*> _map = std::map<std::string, product*>();
+
 product::product(bottle_size bs, const std::string& n, double ac) : kind(bs), name(n), alcohol_content(ac) {}
 
 const double product::fixed_price = 5.00;
@@ -66,6 +68,15 @@ double product::operator+(const product& p) const {
 
 double product::operator-(const product& p) const {
   return get_price() >= p.get_price() ? get_price() - p.get_price() : p.get_price() - get_price();
+}
+
+static product* unserialize(std::map<std::string, QVariant>& m) {
+	std::string p = m["product"].toString().toStdString();
+	if (_map.count(p) != 0) {
+		return _map[p]->create(m);
+	}
+
+	return nullptr;
 }
 
 //importare math per floor e ceil

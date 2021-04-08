@@ -1,6 +1,8 @@
 #ifndef _PRODOTTO_H_
 #define _PRODOTTO_H_
 
+#include <QVariant>
+#include <map>
 #include <string>
 
 #include "./Utilities/u_vector.hpp"
@@ -15,6 +17,7 @@ class product {
  protected:
   static const double fixed_price;
   double get_default_price() const;
+	inline static std::map<std::string, product*> _map;
 
  public:
   product(bottle_size = medium, const std::string& = "", double = min_ac);  // da controllare
@@ -35,10 +38,12 @@ class product {
   virtual std::string get_image_path() const;
   std::string get_name() const;
   double taxes() const;
-  double get_alcohol_content() const;
-  bottle_size get_kind() const;
-  double operator+(const product&) const;
-  double operator-(const product&) const;
+	double get_alcohol_content() const;
+	bottle_size get_kind() const;
+	static product* unserialize(std::map<std::string, QVariant>&);
+	virtual product* create(std::map<std::string, QVariant>&) const = 0;
+	double operator+(const product&) const;
+	double operator-(const product&) const;
 };
 
 #endif  // PRODOTTO_H_

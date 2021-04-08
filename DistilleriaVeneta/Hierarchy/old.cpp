@@ -1,18 +1,25 @@
 #include "old.h"
 
-old::old(color c, const u_vector<taste>& t, bool b, unsigned int m, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t), barrique(b), month(m) {}
+old::aux_map_initializer::aux_map_initializer() {
+	ptr = new old();
+	_map["old"] = ptr;
+}
+old::aux_map_initializer::~aux_map_initializer() { delete ptr; }
+old::aux_map_initializer old::aux_map;
 
-old::old(const old& o) : grappa(o), col(o.col), tastes(o.tastes), barrique(o.barrique), month(o.month) {}  // Anche il sottooggetto? Se si come?
+old::old(const color c, const u_vector<taste>& t, bool b, unsigned int m, bottle_size bs, const std::string& n, double ac) : grappa(c, t, bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t), barrique(b), month(m) {}
+
+old::old(const old& o) : grappa(o), col(o.col), tastes(o.tastes), barrique(o.barrique), month(o.month) {}
 
 old& old::operator=(const old& o) {
-  if (this != &o) {
-    grappa::operator=(o);
-    col = o.col;
-    tastes = o.tastes;
-    barrique = o.barrique;
-    month = o.month;
-  }
-  return *this;
+	if (this != &o) {
+		grappa::operator=(o);
+		col = o.col;
+		tastes = o.tastes;
+		barrique = o.barrique;
+		month = o.month;
+	}
+	return *this;
 }
 
 const double old::month_incr = 0.20;
@@ -77,4 +84,17 @@ std::string old::get_image_path() const {
 
 bool old::is_barrique() const {
   return barrique;
+}
+
+old* old::create(std::map<std::string, QVariant>& m) const {
+	color _color = static_cast<color>(m["color"].toString().toInt());
+	u_vector<taste> _tastes;
+	std::for_each(m["tastes"].toList().begin(), m["tastes"].toList().end(), [&_tastes](QVariant value) { _tastes.push_back(static_cast<taste>(value.toString().toInt())); });
+	bottle_size _bottle = static_cast<bottle_size>(m["bottle_size"].toString().toInt());
+	std::string _name = m["name"].toString().toStdString();
+	double _alcohol_content = m["min_ac"].toString().toDouble();
+	bool _barrique = m["barrique"].toBool();
+	unsigned int _month = m["month"].toUInt();
+
+	return new old(_color, _tastes, _barrique, _month, _bottle, _name, _alcohol_content);
 }

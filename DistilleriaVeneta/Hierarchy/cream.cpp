@@ -1,21 +1,31 @@
 #include "cream.h"
 
-cream::cream(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : non_spirits(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
+#include <algorithm>
+
+cream::aux_map_initializer::aux_map_initializer() {
+	ptr = new cream();
+	_map["cream"] = ptr;
+}
+cream::aux_map_initializer::~aux_map_initializer() { delete ptr; }
+cream::aux_map_initializer cream::aux_map;
+
+cream::cream(const color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : non_spirits(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
 
 const double cream::cream_incr = 3.50;
 
 cream::cream(const cream& c) : non_spirits(c), col(c.col), tastes(c.tastes) {}
 
 cream& cream::operator=(const cream& c) {
-  if (this != &c) {
-    non_spirits::operator=(c);
-    col = c.col;
-    u_vector<taste>::const_iterator cit = tastes.const_begin();
-    for (; cit != tastes.const_end(); cit++) {
-      tastes = c.tastes;
-    }
-  }
-  return *this;
+	if (this != &c) {
+		non_spirits::operator=(c);
+		col = c.col;
+		u_vector<taste>::const_iterator cit = tastes.const_begin();
+		u_vector<taste>::const_iterator end = tastes.const_end();
+		for (; cit != end; cit++) {
+			tastes = c.tastes;
+		}
+	}
+	return *this;
 }
 
 const double cream::discount_cream = 0.95;
@@ -75,4 +85,15 @@ std::string cream::code() const {
 
 std::string cream::get_image_path() const {
   return non_spirits::get_image_path() + "cream/" + get_name();
+}
+
+cream* cream::create(std::map<std::string, QVariant>& m) const {
+	color _color = static_cast<color>(m["color"].toString().toInt());
+	u_vector<taste> _tastes;
+	std::for_each(m["tastes"].toList().begin(), m["tastes"].toList().end(), [&_tastes](QVariant value) { _tastes.push_back(static_cast<taste>(value.toString().toInt())); });
+	bottle_size _bottle = static_cast<bottle_size>(m["bottle_size"].toString().toInt());
+	std::string _name = m["name"].toString().toStdString();
+	double _alcohol_content = m["min_ac"].toString().toDouble();
+
+	return new cream(_color, _tastes, _bottle, _name, _alcohol_content);
 }
