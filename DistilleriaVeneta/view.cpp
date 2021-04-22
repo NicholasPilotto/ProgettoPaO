@@ -61,21 +61,6 @@ void view::add_menu_bar(QVBoxLayout *main_layout)
     filters->addMenu(colours);
     filters->addMenu(flavors);
 
-    QAction *add_product_menu = new QAction("Aggiungi Prodotto", file);
-    const QKeySequence *adding = new QKeySequence("Ctrl+A");
-    add_product_menu->setShortcut(*adding);
-    file->addAction(add_product_menu);
-
-    QAction *modify_product_menu = new QAction("Modifica Prodotto", file);
-    const QKeySequence *modifing = new QKeySequence("Ctrl+M");
-    modify_product_menu->setShortcut(*modifing);
-    file->addAction(modify_product_menu);
-
-    QAction *remove_product_menu = new QAction("Remove product", file);
-    const QKeySequence *removing = new QKeySequence("Ctrl+R");
-    remove_product_menu->setShortcut(*removing);
-    file->addAction(remove_product_menu);
-
     QAction *close_action = new QAction("Chiudi", file);
     const QKeySequence *closing = new QKeySequence("Ctrl+Q");
     close_action->setShortcut(*closing);
