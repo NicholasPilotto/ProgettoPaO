@@ -110,7 +110,7 @@ void view::add_menu_bar(QVBoxLayout *main_layout)
         flavors->addAction(action);
     }
 
-    connect(file->actions()[3], SIGNAL(triggered()), this, SLOT(close()));
+    connect(file->actions()[0], SIGNAL(triggered()), this, SLOT(close()));
 
     main_layout->addWidget(menu_bar);
 }
