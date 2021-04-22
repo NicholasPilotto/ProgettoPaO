@@ -1,5 +1,13 @@
 #include "cream.h"
 
+cream::aux_map_initializer::aux_map_initializer() {
+  ptr = new cream();
+  _map["cream"] = ptr;
+}
+cream::aux_map_initializer::~aux_map_initializer() {
+  delete ptr;
+}
+
 cream::cream(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : non_spirits(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
 
 const double cream::cream_incr = 3.50;
@@ -75,4 +83,8 @@ std::string cream::code() const {
 
 std::string cream::get_image_path() const {
   return non_spirits::get_image_path() + "cream/" + get_name();
+}
+
+cream* cream::create(std::map<std::string, QVariant>& m) const {
+    return new cream();
 }

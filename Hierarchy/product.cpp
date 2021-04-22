@@ -1,5 +1,7 @@
 #include "product.h"
 
+std::map<std::string, product*> _map = std::map<std::string, product*>();
+
 product::product(bottle_size bs, const std::string& n, double ac) : kind(bs), name(n), alcohol_content(ac) {}
 
 const double product::fixed_price = 5.00;
@@ -58,6 +60,15 @@ double product::get_alcohol_content() const {
 
 bottle_size product::get_kind() const {
   return kind;
+}
+
+static product* unserialize(std::map<std::string, QVariant>& m) {
+  std::string p = m["product"];
+  if (_map.count(p) != 0) {
+    return _map[p]->create(m);
+  }
+
+  return nullptr;
 }
 
 double product::operator+(const product& p) const {

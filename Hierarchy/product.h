@@ -1,9 +1,11 @@
 #ifndef PRODOTTO_H_
 #define PRDOTTO_H_
 
+#include <QtCore/QVariant>
+#include <map>
 #include <string>
 
-#include "./Utilities/Contenitore/u_vector.hpp"
+#include "../Utilities/Contenitore/u_vector.hpp"
 #include "enum.h"
 
 class product {
@@ -15,6 +17,7 @@ class product {
  protected:
   static const double fixed_price;
   double get_default_price() const;
+  static std::map<std::string, product*> _map;
 
  public:
   product(bottle_size = medium, const std::string& = "", double = min_ac);  // da controllare
@@ -37,6 +40,8 @@ class product {
   double taxes() const;
   double get_alcohol_content() const;
   bottle_size get_kind() const;
+  static product* unserialize(std::map<std::string, QVariant>&);
+  virtual product* create(std::map<std::string, QVariant>&) const = 0;
   double operator+(const product&) const;
   double operator-(const product&) const;
 };

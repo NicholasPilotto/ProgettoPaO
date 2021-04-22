@@ -1,5 +1,10 @@
+#ifndef _MODEL_H
+#define _MODEL_H
+#include <QDebug>
+
 #include "./Utilities/u_vector.hpp"
 #include "Hierarchy/product.h" /* attesa di receipt */
+#include "io_json.h"
 #include "receipt.h"
 
 class model {
@@ -16,7 +21,8 @@ class model {
   void decrement_item(product*);
   double total_price() const;
   unsigned int get_total_number_items() const;
-  // bool pay() const;
-  void delete_list();
-  void save_receipt();
+	// bool pay() const;
+	void delete_list();
+	void save_receipt();
 };
+#endif

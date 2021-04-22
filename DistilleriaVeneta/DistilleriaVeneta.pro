@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
   controller.cpp \
+  io_json.cpp \
   main.cpp \
   model.cpp \
   receipt.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
 
 HEADERS += \
   controller.h \
+  io_json.h \
   receipt.h \
   model.h \
   view.h \
@@ -45,3 +47,7 @@ HEADERS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+  recources.qrc
+

@@ -5,6 +5,14 @@
 
 class cream : public non_spirits {
  private:
+  class aux_map_initializer {
+   private:
+    cream* ptr;
+
+   public:
+    aux_map_initializer() {}
+    ~aux_map_initializer() {}
+  };
   color col;
   u_vector<taste> tastes;
 
@@ -27,6 +35,7 @@ class cream : public non_spirits {
   virtual color get_color() const override;
   virtual std::string code() const override;
   virtual std::string get_image_path() const override;
+  virtual cream* create(std::map < std::string, QVariant) const;
 };
 
 #endif  // CREAM_H_

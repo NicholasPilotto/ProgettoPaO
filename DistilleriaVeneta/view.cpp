@@ -361,12 +361,12 @@ view::view(QWidget *parent) : QWidget(parent)
 
     add_grid(main_object_layout);
 
-    add_receipt(main_object_layout);
+	  add_receipt(main_object_layout);
 
-    main_layout->addLayout(main_object_layout);
+	  main_layout->addLayout(main_object_layout);
 
-    main_layout->setSpacing(20);
-    setLayout(main_layout);
+	  main_layout->setSpacing(20);
+	  setLayout(main_layout);
 }
 
 /*
