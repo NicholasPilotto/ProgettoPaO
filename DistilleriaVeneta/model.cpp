@@ -7,7 +7,7 @@ model::~model() {
 }
 
 double model::total_TAX() const {
-  return 0;  // r->tot_taxes();
+	return 0;  // r->tot_taxes();
 }
 
 void model::add_item(product* p) {
@@ -32,10 +32,17 @@ double model::total_price() const {
 
 unsigned int model::get_total_number_items() const {
   unsigned int count = 0;
-  for (u_vector<std::pair<deep_ptr<product>, int>>::const_iterator cit = r->get_items().const_begin(); cit != r->get_items().const_end(); cit++) {
-    count += (*cit).second;  // dereferenziare unsigned int presente in pair
-  }
-  return count;
+	u_vector<std::pair<deep_ptr<product>, int>>::const_iterator cit = r->get_items().const_begin();
+	u_vector<std::pair<deep_ptr<product>, int>>::const_iterator end = r->get_items().const_end();
+	for (; cit != end; cit++) {
+		count += (*cit).second;
+	}
+	return count;
+}
+
+u_vector<deep_ptr<product>> model::load_from_file(const std::string& path) const {
+	io_json* io = new io_json(path);
+	return io->read();
 }
 /*
 void model::delete_list() {
