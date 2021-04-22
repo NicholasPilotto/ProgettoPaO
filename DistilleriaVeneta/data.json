@@ -1,0 +1,31 @@
+{
+  "element": {
+    "element1": {
+      "product": "cream",
+      "kind": "cream",
+      "alcohol_content": 30,
+      "color": 1,
+      "tastes": [
+      	10,
+      	11
+      ],
+      "bottle_size": 2,
+      "name": "Crema al limone",
+      "min_ac": 20
+    },
+    "element": {
+      "product": "cream",
+      "kind": "cream",
+      "alcohol_content": 29,
+      "color": 2,
+      "tastes": [
+      	18,
+      	11, 
+      	15
+      ],
+      "bottle_size": 2,
+      "name": "Crema al lampone",
+      "min_ac": 20
+    }
+  }
+}
