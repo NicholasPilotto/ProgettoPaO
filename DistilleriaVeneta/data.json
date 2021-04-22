@@ -89,7 +89,7 @@
       "name": "Crema alla fragola",
       "kind": "cream",
       "alcohol_content": 18,
-      "color": 1,
+      "color": 2,
       "tastes": [
         18
       ],
@@ -127,6 +127,7 @@
       "alcohol_content": 38,
       "color": 3,
       "tastes": [
+        24,
         25
       ],
       "bottle_size": 2,
@@ -209,7 +210,7 @@
       "name": "Liquore al ribes",
       "kind": "liquor",
       "alcohol_content": 30,
-      "color": 2,
+      "color": 1,
       "tastes": [
         21
       ],
@@ -249,7 +250,6 @@
       "alcohol_content": 42,
       "color": 9,
       "tastes": [
-        25,
         26
       ],
       "bottle_size": 2,
