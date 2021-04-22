@@ -170,25 +170,6 @@ void view::add_grid(QHBoxLayout *main_object_layout)
             c++;
     }
 
-    /*
-    QFrame* product_background = new QFrame;
-    QVBoxLayout* product_list = new QVBoxLayout;
-    product_area->setWidget(product_background);
-    product_background->setLayout(product_list);
-    QHBoxLayout* line = new QHBoxLayout;
-    for(int i=0; i<3; i++)
-        line->addWidget(new QProduct);
-    product_list->addLayout(line);
-    QHBoxLayout* line2 = new QHBoxLayout;
-    for(int i=0; i<3; i++)
-        line2->addWidget(new QProduct);
-    product_list->addLayout(line2);
-    QHBoxLayout* line3 = new QHBoxLayout;
-    for(int i=0; i<3; i++)
-        line3->addWidget(new QProduct);
-    product_list->addLayout(line3);
-    */
-
     left_app->addWidget(product_area);
     left_app->addLayout(add_filter_buttons());
     left_app->setSpacing(0);
