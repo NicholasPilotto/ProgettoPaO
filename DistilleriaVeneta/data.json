@@ -4,133 +4,133 @@
       "product": "cream",
       "name": "Crema al limone",
       "kind": "cream",
-      "alcohol_content": 30,
+      "alcohol_content": 18,
       "color": 0,
       "tastes": [
       	10
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 18
     },
     "element": {
       "product": "cream",
       "name": "Crema alla nocciola",
       "kind": "cream",
-      "alcohol_content": 30,
+      "alcohol_content": 18,
       "color": 3,
       "tastes": [
         11
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 18
     },
     "element": {
       "product": "cream",
       "name": "Crema al caffè",
       "kind": "cream",
-      "alcohol_content": 30,
+      "alcohol_content": 18,
       "color": 3,
       "tastes": [
         12
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 18
     },
     "element": {
       "product": "cream",
       "name": "Crema alla liquirizia",
       "kind": "cream",
-      "alcohol_content": 30,
+      "alcohol_content": 18,
       "color": 4,
       "tastes": [
         13
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 18
     },
     "element": {
       "product": "cream",
       "name": "Crema al cioccolato",
       "kind": "cream",
-      "alcohol_content": 30,
+      "alcohol_content": 18,
       "color": 3,
       "tastes": [
         14
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 18
     },
     "element": {
       "product": "cream",
       "name": "Crema all'uovo",
       "kind": "cream",
-      "alcohol_content": 30,
+      "alcohol_content": 18,
       "color": 0,
       "tastes": [
         15
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 18
     },
     "element": {
       "product": "cream",
       "name": "Crema alla panna",
       "kind": "cream",
-      "alcohol_content": 30,
+      "alcohol_content": 18,
       "color": 6,
       "tastes": [
         17
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 18
     },
     "element": {
       "product": "cream",
       "name": "Crema alla fragola",
       "kind": "cream",
-      "alcohol_content": 30,
+      "alcohol_content": 18,
       "color": 1,
       "tastes": [
         18
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 18
     },
     "element": {
       "product": "cream",
       "name": "Crema ai frutti di bosco",
       "kind": "cream",
-      "alcohol_content": 30,
+      "alcohol_content": 18,
       "color": 5,
       "tastes": [
         19
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 18
     },
     "element": {
       "product": "cream",
       "name": "Crema alla menta",
       "kind": "cream",
-      "alcohol_content": 30,
+      "alcohol_content": 18,
       "color": 7,
       "tastes": [
         27
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 18
     },
     "element": {
       "product": "liquor",
       "name": "Rum",
       "kind": "liquor",
-      "alcohol_content": 30,
+      "alcohol_content": 38,
       "color": 3,
       "tastes": [
         25
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 21
     },
     "element": {
       "product": "liquor",
@@ -142,7 +142,7 @@
         11
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 21
     },
     "element": {
       "product": "liquor",
@@ -154,7 +154,7 @@
         10
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 21
     },
     "element": {
       "product": "liquor",
@@ -166,7 +166,7 @@
         13
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 21
     },
     "element": {
       "product": "liquor",
@@ -178,7 +178,7 @@
         23
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 21
     },
     "element": {
       "product": "liquor",
@@ -190,7 +190,7 @@
         22
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 21
     },
     "element": {
       "product": "liquor",
@@ -202,7 +202,7 @@
         20
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 21
     },
     "element": {
       "product": "liquor",
@@ -214,47 +214,47 @@
         21
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 21
     },
     "element": {
       "product": "young",
       "name": "Grappa giovane",
       "kind": "young",
-      "alcohol_content": 30,
+      "alcohol_content": 42,
       "color": 8,
       "tastes": [
         26
       ],
       "bottle_size": 2,
-      "min_ac": 20
+      "min_ac": 38
     },
     "element": {
       "product": "old",
       "name": "Grappa invecchiata",
       "kind": "old",
-      "alcohol_content": 30,
+      "alcohol_content": 42,
       "color": 9,
       "tastes": [
         25
       ],
       "bottle_size": 2,
-      "min_ac": 20,
+      "min_ac": 38,
       "barrique": false,
-      "month": 12
+      "month": 18
     },
     "element": {
       "product": "old",
       "name": "Grappa invecchiata barricata",
       "kind": "old",
-      "alcohol_content": 30,
+      "alcohol_content": 42,
       "color": 9,
       "tastes": [
         25,
         26
       ],
       "bottle_size": 2,
-      "min_ac": 20,
+      "min_ac": 38,
       "barrique": true,
-      "month": 20
+      "month": 24
     },
 }
