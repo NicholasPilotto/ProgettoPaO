@@ -1,7 +1,5 @@
 #include "cream.h"
 
-#include <algorithm>
-
 cream::aux_map_initializer::aux_map_initializer() {
 	ptr = new cream();
 	_map["cream"] = ptr;
@@ -87,10 +85,15 @@ std::string cream::get_image_path() const {
   return non_spirits::get_image_path() + "cream/" + get_name();
 }
 
-cream* cream::create(std::map<std::string, QVariant>& m) const {
+cream* cream::create(QMap<QString, QVariant>& m) const {
 	color _color = static_cast<color>(m["color"].toString().toInt());
 	u_vector<taste> _tastes;
-	std::for_each(m["tastes"].toList().begin(), m["tastes"].toList().end(), [&_tastes](QVariant value) { _tastes.push_back(static_cast<taste>(value.toString().toInt())); });
+
+	QList<QVariant> list = m["tastes"].toList();
+	for (auto const& element: list) {
+		_tastes.push_back(static_cast<taste>(element.toString().toInt()));
+	}
+
 	bottle_size _bottle = static_cast<bottle_size>(m["bottle_size"].toString().toInt());
 	std::string _name = m["name"].toString().toStdString();
 	double _alcohol_content = m["min_ac"].toString().toDouble();

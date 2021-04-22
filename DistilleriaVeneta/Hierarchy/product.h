@@ -1,6 +1,8 @@
 #ifndef _PRODOTTO_H_
 #define _PRODOTTO_H_
 
+#include <QMap>
+#include <QString>
 #include <QVariant>
 #include <map>
 #include <string>
@@ -40,8 +42,9 @@ class product {
   double taxes() const;
 	double get_alcohol_content() const;
 	bottle_size get_kind() const;
-	static product* unserialize(std::map<std::string, QVariant>&);
-	virtual product* create(std::map<std::string, QVariant>&) const = 0;
+	static product* unserialize(QMap<QString, QVariant>&);
+	virtual product* create(QMap<QString, QVariant>&) const = 0;
+	//	virtual std::string write() const = 0;
 	double operator+(const product&) const;
 	double operator-(const product&) const;
 };

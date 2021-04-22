@@ -1,6 +1,8 @@
 #ifndef CREAM_H_
 #define CREAM_H_
 
+#include <algorithm>
+
 #include "non_spirits.h"
 
 class cream : public non_spirits {
@@ -36,7 +38,8 @@ class cream : public non_spirits {
 	virtual color get_color() const override;
 	virtual std::string code() const override;
 	virtual std::string get_image_path() const override;
-	virtual cream* create(std::map<std::string, QVariant>&) const override;
+	virtual cream* create(QMap<QString, QVariant>&) const override;
+	//	virtual std::string write() const;
 };
 
 #endif  // CREAM_H_

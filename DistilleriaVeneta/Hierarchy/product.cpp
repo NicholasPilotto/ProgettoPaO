@@ -58,9 +58,7 @@ double product::get_alcohol_content() const {
   return alcohol_content;
 }
 
-bottle_size product::get_kind() const {
-  return kind;
-}
+bottle_size product::get_kind() const { return kind; }
 
 double product::operator+(const product& p) const {
   return get_price() + p.get_price();
@@ -70,7 +68,7 @@ double product::operator-(const product& p) const {
   return get_price() >= p.get_price() ? get_price() - p.get_price() : p.get_price() - get_price();
 }
 
-static product* unserialize(std::map<std::string, QVariant>& m) {
+product* product::unserialize(QMap<QString, QVariant>& m) {
 	std::string p = m["product"].toString().toStdString();
 	if (_map.count(p) != 0) {
 		return _map[p]->create(m);
@@ -79,4 +77,4 @@ static product* unserialize(std::map<std::string, QVariant>& m) {
 	return nullptr;
 }
 
-//importare math per floor e ceil
+// importare math per floor e ceil

@@ -39,7 +39,7 @@ class old : public grappa {
   virtual std::string code() const override;
   virtual std::string get_image_path() const override;
   bool is_barrique() const;
-	virtual old* create(std::map<std::string, QVariant>&) const override;
+	virtual old* create(QMap<QString, QVariant>&) const override;
 };
 
 #endif  // OLD_H_

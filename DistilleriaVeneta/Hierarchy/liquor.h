@@ -37,7 +37,7 @@ class liquor : public spirits {
   virtual color get_color() const override;
   virtual std::string code() const override;
   virtual std::string get_image_path() const override;
-	virtual liquor* create(std::map<std::string, QVariant>&) const override;
+	virtual liquor* create(QMap<QString, QVariant>&) const override;
 };
 
 #endif  // LIQUOR_H_

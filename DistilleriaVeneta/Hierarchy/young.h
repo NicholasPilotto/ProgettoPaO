@@ -32,7 +32,7 @@ class young : public grappa {
   virtual color get_color() const override;
   virtual std::string code() const override;
   virtual std::string get_image_path() const override;
-	virtual young* create(std::map<std::string, QVariant>&) const override;
+	virtual young* create(QMap<QString, QVariant>&) const override;
 };
 // non ha incrementi di prezzo in quanto è la grappa basica, che non ha la stessa lavorazione di un liquore, di una crema, di un'invecchiata o di una barricata
 #endif  //YOUNG_H_
