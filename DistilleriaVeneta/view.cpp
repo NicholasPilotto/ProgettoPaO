@@ -337,7 +337,7 @@ QReceiptitem::QReceiptitem(QWidget *parent) : QWidget(parent)
     left_widget_n_items->setAlignment(Qt::AlignCenter);
     left_widget_n_items->setContentsMargins(0, 0, 0, 0);
 
-    QPushButton *plus = new QPushButton("../Grafica/Immagini/plus@2x");
+    QPushButton *plus = new QPushButton("+");
 
     left_widget_line_price = new QLabel("€ " + QString::number(70.20));
     left_widget_line_price->setAlignment(Qt::AlignCenter);
