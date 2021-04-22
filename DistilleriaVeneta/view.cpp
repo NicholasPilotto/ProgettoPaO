@@ -125,50 +125,6 @@ void view::add_title(QVBoxLayout *main_layout)
     main_layout->addWidget(title);
 }
 
-void view::upload_grid_item()
-{
-    QGridLayout *upload = new QGridLayout;
-
-    QLabel *name_product = new QLabel("Nome Prodotto:");
-    QLineEdit *name_line = new QLineEdit;
-
-    QLabel *alc = new QLabel("Contenuto Alcolico:");
-    QLineEdit *alc_line = new QLineEdit;
-
-    QLabel *colore = new QLabel("Colore:");
-    QLineEdit *colore_line = new QLineEdit;
-
-    QLabel *path = new QLabel("Path:");
-    QLineEdit *path_line = new QLineEdit(add_dialog_choice());
-    QPushButton *path_button = new QPushButton;
-
-    QPushButton *confirm = new QPushButton;
-    QPushButton *undo = new QPushButton;
-
-    upload->addWidget(name_product, 0, 0);
-    upload->addWidget(name_line, 0, 1);
-    upload->addWidget(alc, 1, 0);
-    upload->addWidget(alc_line, 1, 1);
-    upload->addWidget(colore, 2, 0);
-    upload->addWidget(colore_line, 2, 1);
-    upload->addWidget(path, 3, 0);
-    upload->addWidget(path_line, 3, 1);
-    upload->addWidget(path_button, 3, 2);
-    upload->addWidget(confirm, 4, 0, 1, 1, Qt::AlignLeft);
-    upload->addWidget(undo, 4, 1, 1, 2, Qt::AlignRight);
-}
-
-QString view::add_dialog_choice()
-{
-    QString fileName = QFileDialog::getOpenFileName(
-        this, tr("Apri il file"), "/home", tr("Immagini (*.png *.jpg)"));
-
-    if (fileName == "")
-        throw std::runtime_error("Nessun file scelto: aggiunta annullata");
-
-    return fileName;
-}
-
 void view::add_grid(QHBoxLayout *main_object_layout)
 {
     QVBoxLayout *left_app = new QVBoxLayout;
@@ -354,25 +310,6 @@ view::view(QWidget *parent) : QWidget(parent)
 	  setLayout(main_layout);
 }
 
-/*
-product::product (QFrame* parent) : QFrame(parent) {
-     QVBoxLayout* mainlayout = new QVBoxLayout;
-
-     img = new QLabel();
-     left_widget_name = new QLabel();
-     left_widget_price = new QLabel();
-
-     img->setPixmap(QPixmap("path"));
-     left_widget_name->setText("name");
-     left_widget_price->setText("41");
-
-     mainlayout->addWidget(img);
-     mainlayout->addWidget(left_widget_name);
-     mainlayout->addWidget(left_widget_price);
-
-     setLayout(mainlayout);
-}
-*/
 
 QProduct::QProduct(QWidget *parent) : QWidget(parent)
 {
