@@ -18,6 +18,7 @@
 #include <QVBoxLayout>
 
 #include "./Utilities/u_vector.hpp"
+#include "qproduct.h"
 
 class controller;
 
@@ -29,8 +30,7 @@ class view : public QWidget {
   QHBoxLayout* main_object_layout; //Used
   QLabel* name_label;
   QGridLayout* product_grid;
-  //QListWidget* receipt_list;
-  QPushButton* grappa_button;  //serve per forza scrivere button?
+  QPushButton* grappa_button;
   QPushButton* liquor_button;
   QPushButton* cream_button;
   QPushButton* delete_receipt;
@@ -56,43 +56,6 @@ class view : public QWidget {
   void show_warning(const QString&);        // OK
   double calc_total();                      // DA FARE
   void pay_banner(QDialog*);                // NON FATTO
-
-
-};
-
-
-class QProduct : public QWidget {
-    Q_OBJECT
-private:
-    QFrame* left_widget_image;
-    QLabel* left_widget_name;
-    QLabel* left_widget_price;
-public:
-    explicit QProduct(QWidget* parent = nullptr);
-};
-
-/*
-class product : public QFrame {
-    Q_OBJECT
-private:
-    QLabel* img;
-    QLabel* left_widget_name;
-    QLabel* left_widget_price;
-public:
-    explicit product(QFrame* parent = nullptr);
-};
-*/
-
-
-class QReceiptitem : public QWidget{
-    Q_OBJECT
-private:
-    QLabel* left_widget_name;
-    QLabel* left_widget_dim;
-    QLabel* left_widget_n_items;
-    QLabel* left_widget_line_price;
-public:
-    explicit QReceiptitem(QWidget* parent = nullptr);
 };
 
 #endif  // VIEW_H_

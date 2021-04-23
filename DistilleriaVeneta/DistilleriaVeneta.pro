@@ -13,7 +13,10 @@ SOURCES += \
   io_json.cpp \
   main.cpp \
   model.cpp \
+    qproduct.cpp \
   receipt.cpp \
+    showgrid.cpp \
+    showreceipt.cpp \
   view.cpp \
   ./Hierarchy/product.cpp \
   ./Hierarchy/spirits.cpp \
@@ -27,8 +30,11 @@ SOURCES += \
 HEADERS += \
   controller.h \
   io_json.h \
+    qproduct.h \
   receipt.h \
   model.h \
+    showgrid.h \
+    showreceipt.h \
   view.h \
   ./Hierarchy/enum.h \
   ./Hierarchy/product.h \
