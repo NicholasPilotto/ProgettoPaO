@@ -19,6 +19,8 @@
 
 #include "./Utilities/u_vector.hpp"
 #include "qproduct.h"
+#include "showgrid.h"
+#include "showreceipt.h"
 
 class controller;
 
