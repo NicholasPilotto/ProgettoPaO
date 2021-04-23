@@ -32,4 +32,4 @@ class controller : public QObject {
  public slots:
 };
 
-#endif // CONTROLLER_H
+#endif  // CONTROLLER_H

@@ -26,17 +26,6 @@ enum taste {
     // smooth -> invecchiata
     // amable -> più amabile
 
-enum color {
-  yellow,
-  red,
-  pink,
-  brown,
-  black,
-  violet,
-  white,
-  green,
-  white_trasparent,
-  yellow_trasparent
-};
+enum color { yellow, red, pink, brown, black, violet, white, green, white_trasparent, yellow_trasparent };
 
 #endif  // ENUM_H_

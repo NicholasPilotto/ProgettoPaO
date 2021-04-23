@@ -1,23 +1,24 @@
 #ifndef QPRODUCT_H
 #define QPRODUCT_H
 
-#include <QWidget>
 #include <QFrame>
-#include <QLabel>
 #include <QHBoxLayout>
+#include <QLabel>
 #include <QVBoxLayout>
+#include <QWidget>
 
-#include "controller.h"
 #include "Utilities/deep_ptr.hpp"
+#include "controller.h"
 
 class QProduct : public QWidget {
-    Q_OBJECT
-private:
-    QFrame* left_widget_image;
-    QLabel* left_widget_name;
-    QLabel* left_widget_price;
-    controller* presenter;
-public:
-    explicit QProduct(QWidget* parent = nullptr, deep_ptr<product> = nullptr);
+  Q_OBJECT
+ private:
+  QFrame* left_widget_image;
+  QLabel* left_widget_name;
+  QLabel* left_widget_price;
+  controller* presenter;
+
+ public:
+  explicit QProduct(QWidget* parent = nullptr, deep_ptr<product> = nullptr);
 };
-#endif // QPRODUCT_H
+#endif  // QPRODUCT_H

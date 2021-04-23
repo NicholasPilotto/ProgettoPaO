@@ -64,6 +64,4 @@ double receipt::total_price() const {
   return price;
 }
 
-u_vector<pair<deep_ptr<product>, int>> receipt::get_items() const {
-  return items;
-}
+u_vector<pair<deep_ptr<product>, int>> receipt::get_items() const { return items; }

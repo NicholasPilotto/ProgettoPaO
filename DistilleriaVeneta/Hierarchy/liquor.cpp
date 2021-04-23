@@ -1,8 +1,8 @@
 #include "liquor.h"
 
 liquor::aux_map_initializer::aux_map_initializer() {
-	ptr = new liquor(color::white, {});
-	_map["liquor"] = ptr;
+  ptr = new liquor(color::white, {});
+  _map["liquor"] = ptr;
 }
 liquor::aux_map_initializer::~aux_map_initializer() { delete ptr; }
 liquor::aux_map_initializer liquor::aux_map;
@@ -30,9 +30,7 @@ const double liquor::max_ac = 38.0;
 
 double const liquor::discount_liquor = 0.90;
 
-liquor* liquor::clone() const {
-  return new liquor(*this);
-}
+liquor* liquor::clone() const { return new liquor(*this); }
 
 double liquor::kind_price() const {
   if (get_kind() == small) {
@@ -43,25 +41,15 @@ double liquor::kind_price() const {
   return 0.00;
 }
 
-double liquor::price_increment() const {
-  return kind_price() + liquor_incr + tastes.size() * taste_incr;
-}
+double liquor::price_increment() const { return kind_price() + liquor_incr + tastes.size() * taste_incr; }
 
-double liquor::get_price() const {
-  return spirits::get_price() + price_increment();
-}
+double liquor::get_price() const { return spirits::get_price() + price_increment(); }
 
-double liquor::promotion() const {
-  return get_price() * discount_liquor;
-}
+double liquor::promotion() const { return get_price() * discount_liquor; }
 
-u_vector<taste> liquor::get_tastes() const {
-  return tastes;
-}
+u_vector<taste> liquor::get_tastes() const { return tastes; }
 
-color liquor::get_color() const {
-  return col;
-}
+color liquor::get_color() const { return col; }
 
 std::string liquor::code() const {
   std::string aux = "SL0";
@@ -78,21 +66,19 @@ std::string liquor::code() const {
   return aux;
 }
 
-std::string liquor::get_image_path() const {
-  return spirits::get_image_path() + "liquor/" + get_name();
-}
+std::string liquor::get_image_path() const { return spirits::get_image_path() + "liquor/" + get_name(); }
 
 liquor* liquor::create(QMap<QString, QVariant>& m) const {
-	color _color = static_cast<color>(m["color"].toString().toInt());
-	u_vector<taste> _tastes;
+  color _color = static_cast<color>(m["color"].toString().toInt());
+  u_vector<taste> _tastes;
 
-	QList<QVariant> list = m["tastes"].toList();
-	for (auto const& element: list) {
-		_tastes.push_back(static_cast<taste>(element.toString().toInt()));
-	}
-	bottle_size _bottle = static_cast<bottle_size>(m["bottle_size"].toString().toInt());
-	std::string _name = m["name"].toString().toStdString();
-	double _alcohol_content = m["alcohol_content"].toString().toDouble();
+  QList<QVariant> list = m["tastes"].toList();
+  for (auto const& element : list) {
+    _tastes.push_back(static_cast<taste>(element.toString().toInt()));
+  }
+  bottle_size _bottle = static_cast<bottle_size>(m["bottle_size"].toString().toInt());
+  std::string _name = m["name"].toString().toStdString();
+  double _alcohol_content = m["alcohol_content"].toString().toDouble();
 
-	return new liquor(_color, _tastes, _bottle, _name, _alcohol_content);
+  return new liquor(_color, _tastes, _bottle, _name, _alcohol_content);
 }

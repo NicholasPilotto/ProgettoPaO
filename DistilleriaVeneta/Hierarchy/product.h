@@ -19,7 +19,7 @@ class product {
  protected:
   static const double fixed_price;
   double get_default_price() const;
-	inline static std::map<std::string, product*> _map;
+  inline static std::map<std::string, product*> _map;
 
  public:
   product(bottle_size = medium, const std::string& = "", double = min_ac);  // da controllare
@@ -40,13 +40,13 @@ class product {
   virtual std::string get_image_path() const;
   std::string get_name() const;
   double taxes() const;
-	double get_alcohol_content() const;
-	bottle_size get_kind() const;
-	static product* unserialize(QMap<QString, QVariant>&);
-	virtual product* create(QMap<QString, QVariant>&) const = 0;
-	//	virtual std::string write() const = 0;
-	double operator+(const product&) const;
-	double operator-(const product&) const;
+  double get_alcohol_content() const;
+  bottle_size get_kind() const;
+  static product* unserialize(QMap<QString, QVariant>&);
+  virtual product* create(QMap<QString, QVariant>&) const = 0;
+  //	virtual std::string write() const = 0;
+  double operator+(const product&) const;
+  double operator-(const product&) const;
 };
 
 #endif  // PRODOTTO_H_
