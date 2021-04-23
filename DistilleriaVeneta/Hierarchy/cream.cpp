@@ -96,7 +96,7 @@ cream* cream::create(QMap<QString, QVariant>& m) const {
 
 	bottle_size _bottle = static_cast<bottle_size>(m["bottle_size"].toString().toInt());
 	std::string _name = m["name"].toString().toStdString();
-	double _alcohol_content = m["min_ac"].toString().toDouble();
+	double _alcohol_content = m["alcohol_content"].toString().toDouble();
 
 	return new cream(_color, _tastes, _bottle, _name, _alcohol_content);
 }
