@@ -33,7 +33,7 @@ class controller : public QObject {
 
  public slots:
     void decrement_item(product*);
-    void delete_receipt();
+    //void delete_receipt();
     void increment_item(product*);
     void refresh_receipt();
     void add_item(product*);

@@ -23,6 +23,7 @@
 #include "showreceipt.h"
 
 class controller;
+class showreceipt;
 
 class view : public QWidget {
   Q_OBJECT
