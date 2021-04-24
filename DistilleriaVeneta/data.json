@@ -8,7 +8,7 @@
       "tastes": [
       	10
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "cream",
@@ -18,7 +18,7 @@
       "tastes": [
         11
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "cream",
@@ -28,7 +28,7 @@
       "tastes": [
         12
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "cream",
@@ -38,7 +38,7 @@
       "tastes": [
         13
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "cream",
@@ -48,7 +48,7 @@
       "tastes": [
         14
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "cream",
@@ -58,7 +58,7 @@
       "tastes": [
         15
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "cream",
@@ -68,7 +68,7 @@
       "tastes": [
         17
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "cream",
@@ -79,7 +79,7 @@
       "tastes": [
         18
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "cream",
@@ -89,7 +89,7 @@
       "tastes": [
         19
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "cream",
@@ -99,7 +99,7 @@
       "tastes": [
         27
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "liquor",
@@ -110,7 +110,7 @@
         24,
         25
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "liquor",
@@ -120,7 +120,7 @@
       "tastes": [
         11
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "liquor",
@@ -130,7 +130,7 @@
       "tastes": [
         10
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "liquor",
@@ -140,7 +140,7 @@
       "tastes": [
         13
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "liquor",
@@ -150,7 +150,7 @@
       "tastes": [
         23
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
       
     },
     "element": {
@@ -161,7 +161,7 @@
       "tastes": [
         22
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "liquor",
@@ -171,7 +171,7 @@
       "tastes": [
         20
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "liquor",
@@ -181,7 +181,7 @@
       "tastes": [
         21
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "young",
@@ -191,7 +191,7 @@
       "tastes": [
         26
       ],
-      "bottle_size": 1,
+      "bottle_size": 1
     },
     "element": {
       "product": "old",
@@ -216,5 +216,6 @@
       "bottle_size": 1,
       "barrique": true,
       "month": 24
-    },
+    }
+  }
 }
