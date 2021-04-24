@@ -1,16 +1,16 @@
 {
   "elements": {
-    "element": {
+    "element1": {
       "product": "cream",
       "name": "Crema al limone",
       "alcohol_content": 18,
       "color": 0,
       "tastes": [
-      	10
+        10
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element2": {
       "product": "cream",
       "name": "Crema alla nocciola",
       "alcohol_content": 18,
@@ -20,7 +20,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element3": {
       "product": "cream",
       "name": "Crema al caffè",
       "alcohol_content": 18,
@@ -30,7 +30,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element4": {
       "product": "cream",
       "name": "Crema alla liquirizia",
       "alcohol_content": 18,
@@ -40,7 +40,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element5": {
       "product": "cream",
       "name": "Crema al cioccolato",
       "alcohol_content": 18,
@@ -50,7 +50,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element6": {
       "product": "cream",
       "name": "Crema all'uovo",
       "alcohol_content": 18,
@@ -60,7 +60,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element7": {
       "product": "cream",
       "name": "Crema alla panna",
       "alcohol_content": 18,
@@ -70,7 +70,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element8": {
       "product": "cream",
       "name": "Crema alla fragola",
 
@@ -81,7 +81,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element9": {
       "product": "cream",
       "name": "Crema ai frutti di bosco",
       "alcohol_content": 18,
@@ -91,7 +91,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element10": {
       "product": "cream",
       "name": "Crema alla menta",
       "alcohol_content": 18,
@@ -101,7 +101,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element11": {
       "product": "liquor",
       "name": "Rum",
       "alcohol_content": 38,
@@ -112,7 +112,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element12": {
       "product": "liquor",
       "name": "Liquore alla nocciola",
       "alcohol_content": 30,
@@ -132,7 +132,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element13": {
       "product": "liquor",
       "name": "Liquirizia",
       "alcohol_content": 30,
@@ -142,7 +142,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element14": {
       "product": "liquor",
       "name": "Liquore al miele",
       "alcohol_content": 30,
@@ -151,9 +151,9 @@
         23
       ],
       "bottle_size": 1
-      
+
     },
-    "element": {
+    "element15": {
       "product": "liquor",
       "name": "Prugna",
       "alcohol_content": 30,
@@ -163,7 +163,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element16": {
       "product": "liquor",
       "name": "Liquore al mirtillo",
       "alcohol_content": 30,
@@ -173,7 +173,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element17": {
       "product": "liquor",
       "name": "Liquore al ribes",
       "alcohol_content": 30,
@@ -183,7 +183,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element18": {
       "product": "young",
       "name": "Grappa giovane",
       "alcohol_content": 42,
@@ -193,7 +193,7 @@
       ],
       "bottle_size": 1
     },
-    "element": {
+    "element19": {
       "product": "old",
       "name": "Grappa invecchiata",
       "alcohol_content": 42,
@@ -201,11 +201,11 @@
       "tastes": [
         25
       ],
-      "bottle_size": 1,      
+      "bottle_size": 1,
       "barrique": false,
       "month": 18
     },
-    "element": {
+    "element20": {
       "product": "old",
       "name": "Grappa invecchiata barricata",
       "alcohol_content": 42,
