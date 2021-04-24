@@ -7,6 +7,8 @@
 #include "model.h"
 #include "view.h"
 
+class view;
+
 class controller : public QObject {
   Q_OBJECT
  private:
@@ -17,19 +19,25 @@ class controller : public QObject {
   explicit controller(QObject* = nullptr);
   void link_model(model*);
   void link_view(view*);
-  void add_item(product*);
+
   void save_receipt() const;
   //  void add_package()
   //  void remove_packege()
   //  u_vector<std::pair<package, int>> get_package() const
-  void delete_receipt();
+
   void pay();
-  void decrement_item(product*);
-  void increment_item(product*);
-  void remove_item(product*);
+  // non serve perchè nel main vengono già distrutti...
   virtual ~controller();
 
+
+
  public slots:
+    void decrement_item(product*);
+    void delete_receipt();
+    void increment_item(product*);
+    void refresh_receipt();
+    void add_item(product*);
+      void remove_item(product*);
 };
 
 #endif  // CONTROLLER_H

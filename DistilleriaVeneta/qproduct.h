@@ -16,9 +16,8 @@ class QProduct : public QWidget {
   QFrame* left_widget_image;
   QLabel* left_widget_name;
   QLabel* left_widget_price;
-  controller* presenter;
 
  public:
-  explicit QProduct(QWidget* parent = nullptr, deep_ptr<product> = nullptr);
+  explicit QProduct(deep_ptr<product>, QWidget* parent = nullptr);
 };
 #endif  // QPRODUCT_H

@@ -6,7 +6,18 @@
 
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
-  view v;
-  v.show();
+
+  controller c;
+  model m;
+
+
+  view w;
+
+  c.link_view(&w);
+  c.link_model(&m);
+  w.set_controller(&c);
+
+  w.show();
+
   return a.exec();
 }

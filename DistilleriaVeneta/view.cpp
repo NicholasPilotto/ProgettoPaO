@@ -13,6 +13,17 @@ double view::calc_total_per_item() {
   return total_per_item /* moltiplicato per number of items */;
 }
 
+u_vector<deep_ptr<product> > view::load_products(const std::string & path) const
+{
+    io_json* io = new io_json(path);
+    return io->read();
+}
+
+void view::refresh_receipt(u_vector<pair<deep_ptr<product>, int> > items) const
+{
+   showrec->refreshtable(items);
+}
+
 double view::calc_total() {
   double total = 0.0;
   // for per sommare tutti i prodotti a carrello tramite la funzione calc_total_per_item
@@ -37,7 +48,6 @@ void view::add_menu_bar(QVBoxLayout *main_layout) {
   QMenu *file;
   QMenu *filters;
   QMenu *alcohols;
-  // QAction* codes;
   QMenu *colours;
   QMenu *flavors;
 
@@ -113,41 +123,13 @@ void view::add_grid(QHBoxLayout *main_object_layout) {
   products_title->setContentsMargins(0, 20, 0, 20);
   products_title->setAlignment(Qt::AlignCenter);
 
-  /*QTableView* table_list = new QTableView;
-  table_list->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-  table_list-
-*/
-
   left_app->addWidget(products_title);
 
-  QScrollArea *product_area = new QScrollArea;
-  product_area->setMinimumSize(QSize(500, 500));
-  product_area->setWidgetResizable(true);
-  product_area->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+  auto products = load_products();
 
-  QFrame *contenitore = new QFrame();
+  showgrid* grid = new showgrid(products);
 
-  QGridLayout *layout = new QGridLayout();
-
-  contenitore->setLayout(layout);
-
-  product_area->setWidget(contenitore);
-
-  int r = 1, c = 1, n_ele = 3;
-
-  for (int i = 0; i < 9; i++) {
-    QProduct *p = new QProduct();
-
-    layout->addWidget(p, r, c);
-
-    if (c == n_ele) {
-      r++;
-      c = 1;
-    } else
-      c++;
-  }
-
-  left_app->addWidget(product_area);
+  left_app->addWidget(grid);
   left_app->addLayout(add_filter_buttons());
   left_app->setSpacing(0);
   left_app->setContentsMargins(20, 20, 20, 20);
@@ -165,46 +147,13 @@ void view::add_receipt(QHBoxLayout *main_object_layout) {
   receipt_title->setAlignment(Qt::AlignCenter);
   receipt_title->setContentsMargins(0, 20, 0, 20);
 
-  // Receipt Menu
-
-  QHBoxLayout *receipt_menu = new QHBoxLayout;
-  QLabel *name_receipt = new QLabel("Nome");
-  name_receipt->setAlignment(Qt::AlignCenter);
-  name_receipt->setContentsMargins(40, 20, 0, 20);
-  QLabel *size_receipt = new QLabel("Dimensione");
-  size_receipt->setAlignment(Qt::AlignCenter);
-  size_receipt->setContentsMargins(50, 20, 0, 20);
-  QLabel *quantity_receipt = new QLabel("Quantità");
-  quantity_receipt->setAlignment(Qt::AlignCenter);
-  quantity_receipt->setContentsMargins(50, 20, 0, 20);
-  QLabel *price_receipt = new QLabel("Prezzo");
-  price_receipt->setAlignment(Qt::AlignCenter);
-  price_receipt->setContentsMargins(0, 20, 0, 20);
-
-  receipt_menu->addWidget(name_receipt);
-  receipt_menu->addWidget(size_receipt);
-  receipt_menu->addWidget(quantity_receipt);
-  receipt_menu->addWidget(price_receipt);
-
   // List
-
-  QScrollArea *receipt_area = new QScrollArea;
-  receipt_area->setMinimumSize(QSize(500, 500));
-  receipt_area->setWidgetResizable(true);
-  receipt_area->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-  QFrame *receipt_background = new QFrame;
-  QVBoxLayout *receipt_list = new QVBoxLayout;
-  receipt_area->setWidget(receipt_background);
-  receipt_background->setLayout(receipt_list);
-  for (int i = 0; i < 50; i++) receipt_list->addWidget(new QReceiptitem);
+  showrec = new showreceipt();
 
   // Right app
 
   right_app->addWidget(receipt_title);
-
-  right_app->addLayout(receipt_menu);
-
-  right_app->addWidget(receipt_area);
+  right_app->addWidget(showrec);
   right_app->addLayout(add_receipt_buttons());
 
   right_app->setSpacing(0);
@@ -263,63 +212,10 @@ view::view(QWidget *parent) : QWidget(parent) {
   setLayout(main_layout);
 }
 
-QProduct::QProduct(QWidget *parent) : QWidget(parent) {
-  QVBoxLayout *mainlayout = new QVBoxLayout;
-  QHBoxLayout *image_layout = new QHBoxLayout;
-  left_widget_image = new QFrame;
-  left_widget_image->setStyleSheet("background-color: rgb(50,50,50)");
-  left_widget_image->setLayout(image_layout);
-  // left_widget_image->layout()->setMargin(0);
-  left_widget_image->layout()->setSpacing(0);
-  left_widget_image->layout()->setAlignment(Qt::AlignCenter);
-  left_widget_image->setMinimumSize(100, 178);
-  left_widget_image->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+void view::set_controller(controller * ctr)
+{
+   presenter = ctr;
 
-  mainlayout->addWidget(left_widget_image, Qt::AlignCenter);
-  left_widget_name = new QLabel("Liquirizia");  // getname
-  left_widget_name->setAlignment(Qt::AlignCenter);
-  mainlayout->addWidget(left_widget_name, Qt::AlignCenter);
-  left_widget_price = new QLabel("10.50");
-  left_widget_price->setAlignment((Qt::AlignCenter));
-  mainlayout->addWidget(left_widget_price, Qt::AlignHCenter);
-
-  setLayout(mainlayout);
-}
-
-QReceiptitem::QReceiptitem(QWidget *parent) : QWidget(parent) {
-  QHBoxLayout *left_widget = new QHBoxLayout;
-
-  QPushButton *bin_line = new QPushButton("bin");
-
-  left_widget_name = new QLabel("Nome Prodotto");
-  left_widget_name->setAlignment(Qt::AlignCenter);
-  left_widget_name->setContentsMargins(30, 0, 10, 0);
-
-  left_widget_dim = new QLabel("Grande");  // richiamo funzione code
-  left_widget_dim->setAlignment(Qt::AlignCenter);
-  left_widget_dim->setContentsMargins(50, 0, 60, 0);
-
-  QPushButton *minus = new QPushButton("-");
-
-  left_widget_n_items = new QLabel(QString::number(10));
-  left_widget_n_items->setAlignment(Qt::AlignCenter);
-  left_widget_n_items->setContentsMargins(0, 0, 0, 0);
-
-  QPushButton *plus = new QPushButton("+");
-
-  left_widget_line_price = new QLabel("€ " + QString::number(70.20));
-  left_widget_line_price->setAlignment(Qt::AlignCenter);
-  left_widget_line_price->setContentsMargins(30, 0, 0, 0);
-
-  // left_widget->addWidget(new QLabel(this));
-
-  left_widget->addWidget(bin_line);
-  left_widget->addWidget(left_widget_name);
-  left_widget->addWidget(left_widget_dim);
-  left_widget->addWidget(minus);
-  left_widget->addWidget(left_widget_n_items);
-  left_widget->addWidget(plus);
-  left_widget->addWidget(left_widget_line_price);
-
-  setLayout(left_widget);
+   //segnali
+   //segnale inserimento OK su prodotto -> slot: refresh_receipt
 }

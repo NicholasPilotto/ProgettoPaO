@@ -65,3 +65,16 @@ double receipt::total_price() const {
 }
 
 u_vector<pair<deep_ptr<product>, int>> receipt::get_items() const { return items; }
+
+double receipt::total_taxes() const
+{
+      double taxes = 0;
+      u_vector<pair<deep_ptr<product>, int>>::iterator it = items.begin();
+      u_vector<pair<deep_ptr<product>, int>>::iterator end = items.end();
+
+      for (; it != end; it++) {
+        taxes += (it->first->taxes() * it->second);
+      }
+
+      return taxes;
+}

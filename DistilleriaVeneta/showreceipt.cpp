@@ -4,31 +4,37 @@ showreceipt::showreceipt(QWidget* parent) : QWidget(parent) {
   QVBoxLayout* main_receipt = new QVBoxLayout();
   main_receipt->setContentsMargins(0, 0, 0, 0);
   addTable(main_receipt);
-  refreshtable();
+  //refreshtable();
 }
 
-void showreceipt::refreshtable() const {
-  unsigned int rows = 4;  // numero di elementi dello scontrino
+void showreceipt::refreshtable(u_vector<pair<deep_ptr<product>, int>> items) const {
+  unsigned int rows = items.size();  // numero di elementi dello scontrino
   table->setRowCount(rows);
 
   unsigned int r = rows - 1;
   QTableWidgetItem* item;
 
-  for (;;) {
+auto it = items.begin();
+auto end = items.end();
+  for (;it != end; it++) {
     item = new QTableWidgetItem();
-    QIcon* bin = new QIcon("../Grafica/Immagini/delete@x2");
-
-    item->setIcon(*bin);
-    item->setTextAlignment(Qt::AlignCenter);
-    table->setItem(r, 0, item);
+    const QIcon* bin = new QIcon("../Grafica/Immagini/delete@x2");
+    QPushButton* cestino = new QPushButton(*bin,"");
+    table->setCellWidget(r, 0, cestino);
 
     item = new QTableWidgetItem();
-    item->setText(QString::fromStdString(""));  // nome prodotto
+    item->setText(QString::fromStdString((*it).first->get_name()));  // nome prodotto
     item->setTextAlignment(Qt::AlignCenter);
     table->setItem(r, 1, item);
 
+    /* spinbox di un prodotto -> premo il -/+ -> spinbox emette segnale valueModified()
+     * (devo aver prima collegato questo a segnale al corrispondente slot che si occupa di modificare nel model quel valore)
+     *
+     * segnale viene catturato dal controller -> controller (nel suo slot) invoca il medoto del model per aggiornare il valore del prodotto
+     */
+
     item = new QTableWidgetItem();
-    item->setText(QString::fromStdString(presenter->));  // dimensione
+    item->setText(QString::fromStdString(""));  // dimensione
     item->setTextAlignment(Qt::AlignCenter);
     table->setItem(r, 2, item);
 
@@ -40,7 +46,7 @@ void showreceipt::refreshtable() const {
     //            table->setItem(r,3,item);
 
     item = new QTableWidgetItem();
-    item->setText(QString::number(70.20) + QString::fromStdString(" €"));  // prezzo * numero elementi
+    item->setText(QString::number((*it).first->get_price() * (*it).second, 'f', 2) + QString::fromStdString(" €"));  // prezzo * numero elementi
     item->setTextAlignment(Qt::AlignCenter);
     table->setItem(r, 4, item);
   }
@@ -79,4 +85,3 @@ void showreceipt::showdeleteline() {
   dialog->addButton(NoButton, QMessageBox::NoRole);
 }
 
-void showreceipt::setcontroller(controller* c) { presenter = c; }

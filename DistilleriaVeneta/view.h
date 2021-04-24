@@ -38,6 +38,9 @@ class view : public QWidget {
   QPushButton* delete_receipt;
   QPushButton* pay_button;
   controller* presenter;
+
+  showreceipt* showrec;
+
   void add_menu_bar(QVBoxLayout*);     // OK
   void add_title(QVBoxLayout*);        // OK
   void add_grid(QHBoxLayout*);         // OK
@@ -47,17 +50,15 @@ class view : public QWidget {
   unsigned int number_items();         // DA FARE
   double calc_total_per_item();        // DA FARE
   void show_alert(QDialog*);           // NON FATTO
+  u_vector<deep_ptr<product>> load_products(const std::string& = ":/data/data.json") const;
 
  public:
   view(QWidget* = nullptr);           // OK
   void set_controller(controller*);   // NON FATTO
-  void upload_grid_item();            // 1/2
-  void modify_grid_item();            // NON FATTO
-  void remove_grid_item();            // NON FATTO
-  QString add_dialog_choice();        // OK
   void show_warning(const QString&);  // OK
   double calc_total();                // DA FARE
   void pay_banner(QDialog*);          // NON FATTO
+  void refresh_receipt(u_vector<pair<deep_ptr<product>, int>> items) const;
 };
 
 #endif  // VIEW_H_

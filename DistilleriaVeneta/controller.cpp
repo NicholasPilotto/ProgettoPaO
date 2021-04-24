@@ -7,6 +7,14 @@ controller::~controller() {
   delete _model;
 }
 
+void controller::refresh_receipt()
+{
+    auto receipt_items = _model->get_receipt_item(); //items
+
+    _view->refresh_receipt(receipt_items);
+
+}
+
 void controller::link_model(model* model) { _model = model; }
 
 void controller::link_view(view* view) { _view = view; }

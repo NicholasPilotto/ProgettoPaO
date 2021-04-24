@@ -9,20 +9,21 @@
 #include <QTableWidgetItem>
 
 #include "controller.h"
+#include "model.h"
 
 class showreceipt : public QWidget {
   Q_OBJECT
  private:
-  controller* presenter;
   QTableWidget* table;
 
   void addTable(QVBoxLayout*);
-  void refreshtable() const;
+  //void refreshtable(u_vector<pair<deep_ptr<product>, int>> items) const;
   void showdeleteline();
-  void setcontroller(controller* c);
+
 
  public:
   explicit showreceipt(QWidget* = nullptr);
+  void refreshtable(u_vector<pair<deep_ptr<product>, int>> items) const;
 };
 
 #endif  // SHOWRECEIPT_H

@@ -32,6 +32,13 @@ u_vector<deep_ptr<product>> model::load_from_file(const std::string& path) const
   io_json* io = new io_json(path);
   return io->read();
 }
+
+u_vector<pair<deep_ptr<product>, int> > model::get_receipt_item() const
+{
+    return r->get_items();
+}
+
+
 /*
 void model::delete_list() {
     delete r;

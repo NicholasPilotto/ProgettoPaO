@@ -7,6 +7,7 @@
 
 #include "controller.h"
 #include "qproduct.h"
+#include "model.h"
 
 class showgrid : public QWidget {
   Q_OBJECT
@@ -14,11 +15,11 @@ class showgrid : public QWidget {
   QScrollArea *product_area;
   QFrame *contenitore;
   QGridLayout *layout;
-  controller *presenter;
+
+  //u_vector<deep_ptr<product>> products;
 
  public:
-  showgrid(QWidget * = nullptr);
-  void setcontroller(controller *);
+  showgrid(u_vector<deep_ptr<product>>, QWidget * = nullptr);
 };
 
 #endif  // SHOWGRID_H
