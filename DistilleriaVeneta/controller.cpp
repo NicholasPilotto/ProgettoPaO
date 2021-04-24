@@ -18,6 +18,11 @@ void controller::refresh_receipt()
 void controller::link_model(model* model) { _model = model; }
 
 void controller::link_view(view* view) { _view = view; }
+//aggiunto dopo
+u_vector<deep_ptr<product> > controller::load_products() const
+{
+    return _model->load_from_file();
+}
 
 void controller::add_item(product* p) { _model->add_item(p); }
 

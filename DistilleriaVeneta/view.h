@@ -51,7 +51,8 @@ class view : public QWidget {
   unsigned int number_items();         // DA FARE
   double calc_total_per_item();        // DA FARE
   void show_alert(QDialog*);           // NON FATTO
-  u_vector<deep_ptr<product>> load_products(const std::string& = ":/data/data.json") const;
+  //u_vector<deep_ptr<product>> load_products(const std::string& = ":/data/data.json") const;
+  u_vector<deep_ptr<product>> loading_products() const;
 
  public:
   view(QWidget* = nullptr);           // OK

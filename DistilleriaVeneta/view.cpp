@@ -13,10 +13,15 @@ double view::calc_total_per_item() {
   return total_per_item /* moltiplicato per number of items */;
 }
 
-u_vector<deep_ptr<product> > view::load_products(const std::string & path) const
+//u_vector<deep_ptr<product> > view::load_products(const std::string & path) const
+//{
+//    io_json* io = new io_json(path);
+//    return io->read();
+//}
+
+u_vector<deep_ptr<product> > view::loading_products() const
 {
-    io_json* io = new io_json(path);
-    return io->read();
+    return presenter->load_products();
 }
 
 void view::refresh_receipt(u_vector<pair<deep_ptr<product>, int> > items) const
@@ -125,7 +130,7 @@ void view::add_grid(QHBoxLayout *main_object_layout) {
 
   left_app->addWidget(products_title);
 
-  auto products = load_products();
+  auto products = loading_products();
 
   showgrid* grid = new showgrid(products);
 

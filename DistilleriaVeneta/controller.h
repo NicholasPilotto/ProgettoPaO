@@ -19,7 +19,8 @@ class controller : public QObject {
   explicit controller(QObject* = nullptr);
   void link_model(model*);
   void link_view(view*);
-
+  //aggiunto dopo
+  u_vector<deep_ptr<product> > load_products() const;
   void save_receipt() const;
   //  void add_package()
   //  void remove_packege()
