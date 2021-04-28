@@ -30,8 +30,8 @@ class product {
   static const double min_ac;
   static const double max_ac;
   virtual product* clone() const = 0;
-  virtual double kind_price() const;
-  virtual double price_increment() const = 0;
+  double kind_price() const;
+  double price_increment() const;
   virtual double get_price() const = 0;  // chiamata ricorsiva e prezzi sballati
   virtual std::string code() const = 0;
   virtual double promotion() const = 0;

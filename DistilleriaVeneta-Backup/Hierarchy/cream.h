@@ -30,8 +30,8 @@ class cream : public non_spirits {
     static const double min_ac;
     static const double max_ac;
     virtual cream* clone() const override;
-    virtual double kind_price() const override;
-    virtual double price_increment() const override;
+    double kind_price() const;
+    double price_increment() const ;
     virtual double get_price() const override;
     virtual double promotion() const override;
     virtual u_vector<taste> get_tastes() const override;

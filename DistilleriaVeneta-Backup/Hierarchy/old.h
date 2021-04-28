@@ -30,8 +30,8 @@ class old : public grappa {
     old& operator=(const old&);                                                                                                                                         // da fare
     static const double discount_old;
     virtual old* clone() const override;
-    virtual double kind_price() const override;
-  virtual double price_increment() const override;
+    double kind_price() const;
+  double price_increment() const;
   virtual double get_price() const override;
   virtual double promotion() const override;
   virtual u_vector<taste> get_tastes() const override;

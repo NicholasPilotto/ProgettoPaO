@@ -15,8 +15,8 @@ class grappa : public spirits {
     grappa& operator=(const grappa&);
     static const double min_ac;
     static const double max_ac;
-    virtual double kind_price() const override;
-    virtual double price_increment() const override;
+    double kind_price() const;
+    double price_increment() const;
     virtual double get_price() const override;
     virtual std::string code() const override;
     virtual std::string get_image_path() const override;
