@@ -50,10 +50,7 @@ double cream::price_increment() const {
 }
 
 double cream::get_price() const {
-  auto t = non_spirits::get_price();
-  auto m = price_increment();
-
-  return t + m;
+  return non_spirits::get_price() + price_increment();;
 }
 
 double cream::promotion() const {
