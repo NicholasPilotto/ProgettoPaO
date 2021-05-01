@@ -16,6 +16,7 @@ private:
     QFrame* left_widget_image;
     QLabel* left_widget_name;
     QLabel* left_widget_price;
+
 public:
     explicit QProduct(const deep_ptr<product>&, QWidget* parent = nullptr);
 };

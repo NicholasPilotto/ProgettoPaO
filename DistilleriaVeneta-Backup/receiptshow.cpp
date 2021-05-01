@@ -16,9 +16,9 @@ void receiptshow::addTable() {
                 << "Quantità"
                 << "Prezzo";
   table->setHorizontalHeaderLabels(names_columns);
-  table->setRowCount(4);
+  table->setRowCount(20);
 
-  for(int i=0; i<4; i++)
+  for(int i=0; i<20; i++)
   table->setRowHeight(i,50);
 
   // Non rende visibile una selezione
@@ -26,11 +26,12 @@ void receiptshow::addTable() {
   table->setEditTriggers(QAbstractItemView::NoEditTriggers);
   table->setFocusPolicy(Qt::NoFocus);
   table->setSelectionMode(QAbstractItemView::NoSelection);
+  //table->setStyleSheet("gridline-color: white");  // rende bianche le linee poi gli oggetti che inseriamo mettiamo i bordi alti e bassi così da avere solo linee
+
   //Cestini
-  int i = 0;
   const QIcon* icon = new QIcon("../Grafica/Immagini/delete.png");
   QTableWidgetItem* item = new QTableWidgetItem(*icon,"");
-  for(; i<4; i++){
+  for(int i = 0; i < 20; i++){
     table->setVerticalHeaderItem(i,item);
   }
 

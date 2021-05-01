@@ -4,8 +4,10 @@
 #include <QScrollArea>
 #include <QFrame>
 #include <QGridLayout>
+#include <QStackedWidget>
 
 #include "qproduct.h"
+#include "overlay.h"
 #include "Hierarchy/product.h"
 #include "Utilities/u_vector.hpp"
 #include "Utilities/deep_ptr.hpp"
@@ -14,8 +16,11 @@ class gridshow : public QWidget
 {
     Q_OBJECT
 private:
-QScrollArea *product_area;
-QFrame *contenitore;
+    QVBoxLayout* main_layout;
+    QScrollArea *product_area;
+    QFrame *contenitore;
+    QGridLayout* grid;
+    QStackedWidget* stack;
 
 public:
     gridshow(const u_vector<deep_ptr<product>>&, QWidget* parent = nullptr);

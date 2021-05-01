@@ -16,6 +16,8 @@
 #include <QString>
 #include <QTableView>
 #include <QVBoxLayout>
+#include <QInputDialog> // per pay_banner
+
 
 #include "./Utilities/u_vector.hpp"
 #include "qproduct.h"
@@ -49,12 +51,12 @@ class view : public QWidget {
 
  public:
   view(QWidget* = nullptr);                         // OK
-  void set_controller(controller*);                 // OK (NO SEGNALI)
+  void set_controller(controller*);                 // DA FARE
   void show_warning(const QString&);                // OK
   unsigned int number_items();                      // DA FARE
   double calc_total_per_item();                     // DA FARE
   double calc_total();                              // DA FARE
-  void pay_banner(QDialog*);                        // NON FATTO
+  void pay_banner();                        // NON FATTO
   u_vector<pair<deep_ptr<product>, int>> get_receipt_items();
 
 };

@@ -22,6 +22,34 @@ double view::calc_total()
     return total;
 }
 
+void view::pay_banner()
+{
+    QDialog *pay_dialog = new QDialog(this);
+
+    QGridLayout* datas = new QGridLayout();
+    datas->addWidget(new QLabel("Il cliente ha pagato:"),0,0,1,1);
+
+    QLineEdit* pay_customer = new QLineEdit();
+    pay_customer->setValidator(new QDoubleValidator(0,2147483647,2,this));
+    QString paid = pay_customer->text();
+    double num_paid = paid.toDouble();
+
+    datas->addWidget(pay_customer,0,1,1,1);
+    datas->addWidget(new QLabel("Totale dovuto"),1,1,1,1);
+    datas->addWidget(new QLabel(QString::number(calc_total())),2,1,1,1);
+    datas->addWidget(new QLabel("Resto"),1,2,1,1);
+    datas->addWidget(new QLabel(QString::number(calc_total()-num_paid)),2,2,1,1);
+
+    pay_dialog->setLayout(datas);
+
+    pay_dialog->layout()->setAlignment(Qt::AlignCenter);
+    pay_dialog->setMinimumWidth(120);
+    pay_dialog->setMaximumWidth(500);
+    // chiamare elimina tutto poichè il tutto viene pagato e o scontrino ritorna a 0 elementi (SIGNAL E SLOT)
+
+    pay_dialog->show();
+}
+
 void view::show_warning(const QString &message)
 {
     QDialog *dialog = new QDialog(this);
@@ -225,4 +253,9 @@ view::view(QWidget *parent) : QWidget(parent)
 
       main_layout->setSpacing(20);
       setLayout(main_layout);
+}
+
+void view::set_controller(controller* c)
+{
+    presenter = c;
 }

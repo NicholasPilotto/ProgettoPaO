@@ -2,7 +2,7 @@
 
 gridshow::gridshow(const u_vector<deep_ptr<product>>& _products, QWidget* parent) : QWidget(parent)
 {
-    QVBoxLayout* main_layout = new QVBoxLayout();
+    main_layout = new QVBoxLayout();
 
     // ScrollArea
 
@@ -14,14 +14,12 @@ gridshow::gridshow(const u_vector<deep_ptr<product>>& _products, QWidget* parent
     // Mettere la griglia sul contenitore e settare il widget sulla ScrollArea
 
     contenitore = new QFrame();
-    QGridLayout *layout = new QGridLayout();
+    grid = new QGridLayout();
 
-    contenitore->setLayout(layout);
+    contenitore->setLayout(grid);
     product_area->setWidget(contenitore);
 
     // Inserimento Prodotti
-
-
 
     int r = 1, c = 1, n_ele = 3;
     u_vector<deep_ptr<product>>::iterator it = _products.begin();
@@ -29,9 +27,13 @@ gridshow::gridshow(const u_vector<deep_ptr<product>>& _products, QWidget* parent
 
     for (; it != end; it++)
     {
-        QProduct *p = new QProduct(*it);
+        stack = new QStackedWidget();
+        QProduct* p = new QProduct(*it);
+        overlay* o = new overlay();
+        stack->addWidget(p);
+        stack->addWidget(o);
 
-        layout->addWidget(p, r, c);
+        grid->addWidget(stack, r, c);
 
         if (c == n_ele)
         {
