@@ -56,8 +56,7 @@ class view : public QWidget {
   unsigned int number_items();                      // DA FARE
   double calc_total_per_item();                     // DA FARE
   double calc_total();                              // DA FARE
-  void pay_banner();                        // NON FATTO
-  u_vector<pair<deep_ptr<product>, int>> get_receipt_items();
+  void pay_banner();                                // NON FATTO
 
 };
 

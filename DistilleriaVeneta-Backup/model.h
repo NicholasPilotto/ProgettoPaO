@@ -26,6 +26,7 @@ class model {
     void delete_list();
     void save_receipt();
     u_vector<deep_ptr<product>> load_from_file(const std::string& = ":/data/data.json") const;
+    u_vector<pair<deep_ptr<product>, int>> get_receipt_items();
 };
 #endif
 

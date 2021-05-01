@@ -188,7 +188,9 @@ void view::add_receipt(QHBoxLayout *main_object_layout)
     receipt_title->setAlignment(Qt::AlignCenter);
     receipt_title->setContentsMargins(0, 20, 0, 20);
 
-    receiptshow* receipt_area = new receiptshow();
+//    u_vector<std::pair<deep_ptr<product>,int>> tmp = presenter->get_receipt_items();
+
+    receiptshow* receipt_area = new receiptshow(/*tmp*/);
     //Right app
 
     right_app->addWidget(receipt_title);

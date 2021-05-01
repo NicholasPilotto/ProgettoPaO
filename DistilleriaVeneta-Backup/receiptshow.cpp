@@ -2,24 +2,27 @@
 
 receiptshow::receiptshow(QWidget* parent) : QWidget(parent)
 {
-    addTable();
+    QVBoxLayout* table_layout = new QVBoxLayout();
+    addTable(table_layout);
+    refreshTable();
+
+    setLayout(table_layout);
 }
 
-void receiptshow::addTable() {
-  table_layout = new QVBoxLayout();
+void receiptshow::addTable(QVBoxLayout* table_layout) {
+
   table = new QTableWidget(this);
   table->setMinimumSize(500,500);
   table->setColumnCount(4);
+
   QStringList names_columns;
   names_columns << "Nome Prodotto"
                 << "Dimensione"
                 << "Quantità"
                 << "Prezzo";
-  table->setHorizontalHeaderLabels(names_columns);
-  table->setRowCount(20);
 
-  for(int i=0; i<20; i++)
-  table->setRowHeight(i,50);
+  table->setHorizontalHeaderLabels(names_columns);
+
 
   // Non rende visibile una selezione
 
@@ -28,15 +31,22 @@ void receiptshow::addTable() {
   table->setSelectionMode(QAbstractItemView::NoSelection);
   //table->setStyleSheet("gridline-color: white");  // rende bianche le linee poi gli oggetti che inseriamo mettiamo i bordi alti e bassi così da avere solo linee
 
-  //Cestini
-  const QIcon* icon = new QIcon("../Grafica/Immagini/delete.png");
-  QTableWidgetItem* item = new QTableWidgetItem(*icon,"");
-  for(int i = 0; i < 20; i++){
-    table->setVerticalHeaderItem(i,item);
-  }
-
-  table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
   table_layout->addWidget(table);
-  setLayout(table_layout);
+}
+
+void receiptshow::refreshTable()
+{
+    table->setRowCount(1);
+
+    for(int i=0; i<1; i++)
+    table->setRowHeight(i,50);
+
+    //Cestini
+    const QIcon* icon = new QIcon("../Grafica/Immagini/delete.png");
+    QTableWidgetItem* item = new QTableWidgetItem(*icon,"");
+    for(int i = 0; i < 1; i++){
+      table->setVerticalHeaderItem(i,item);
+    }
+
+    table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }

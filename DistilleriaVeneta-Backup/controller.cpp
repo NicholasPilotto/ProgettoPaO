@@ -26,7 +26,12 @@ void controller::increment_item(product* p) { _model->increment_item(p); }
 
 void controller::remove_item(product* p) { _model->remove_item(p); }
 
-u_vector<deep_ptr<product> > controller::load_from_file(const std::string &path) const
+u_vector<deep_ptr<product>> controller::load_from_file(const std::string &path) const
 {
     return _model->load_from_file(path);
+}
+
+u_vector<pair<deep_ptr<product>,int>> controller::get_receipt_items()
+{
+    return _model->get_receipt_items();
 }

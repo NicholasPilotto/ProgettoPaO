@@ -8,15 +8,20 @@
 #include <QTableWidgetItem>
 #include <QIcon>
 
+#include "Hierarchy/product.h"
+#include "Utilities/deep_ptr.hpp"
+#include "Utilities/u_vector.hpp"
+using std::pair;
+
 class receiptshow : public QWidget
 {
     Q_OBJECT
 private:
     QTableWidget* table;
-    QVBoxLayout* table_layout;
 public:
     receiptshow(QWidget* = nullptr);
-    void addTable();
+    void addTable(QVBoxLayout*);
+    void refreshTable();
 };
 
 #endif // RECEIPTSHOW_H

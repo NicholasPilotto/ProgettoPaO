@@ -24,6 +24,6 @@ class receipt {
   void decrease_item(product*);
   double total_price() const;
   double total_taxes() const;
-  u_vector<pair<deep_ptr<product>, int>> get_items() const;
+  u_vector<pair<deep_ptr<product>, int>> get_items();
 };
 #endif  // __RECEIPT_H__

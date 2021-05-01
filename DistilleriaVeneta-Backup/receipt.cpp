@@ -76,6 +76,6 @@ double receipt::total_taxes() const {
   return tot_taxes;
 }
 
-u_vector<pair<deep_ptr<product>, int>> receipt::get_items() const {
+u_vector<pair<deep_ptr<product>, int>> receipt::get_items(){
   return items;
 }
