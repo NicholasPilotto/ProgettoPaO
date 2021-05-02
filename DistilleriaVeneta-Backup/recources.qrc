@@ -2,4 +2,33 @@
     <qresource prefix="/data">
         <file>data.json</file>
     </qresource>
+    <qresource prefix="/product/non_spirits/cream/">
+        <file>Crema al caffè.png</file>
+        <file>Crema al cioccolato.png</file>
+        <file>Crema all'uovo.png</file>
+        <file>Crema alla fragola.png</file>
+        <file>Crema alla liquirizia.png</file>
+        <file>Crema alla menta.png</file>
+        <file>Crema alla nocciola.png</file>
+        <file>Crema alla panna.png</file>
+        <file>Crema frutti di bosco.png</file>
+        <file>Crema al limone.png</file>
+    </qresource>
+    <qresource prefix="/product/spirits/liquor/">
+        <file>Limoncello.png</file>
+        <file>Liquore al miele.png</file>
+        <file>Liquore al mirtillo.png</file>
+        <file>Liquore al ribes.png</file>
+        <file>Liquore alla liquirizia.png</file>
+        <file>Liquore alla nocciola.png</file>
+        <file>Liquore alla prugna.png</file>
+        <file>Rum.png</file>
+    </qresource>
+    <qresource prefix="/product/spirits/grappa/young/">
+        <file>Grappa giovane.png</file>
+    </qresource>
+    <qresource prefix="/product/spirits/grappa/old/">
+        <file>Grappa invecchiata.png</file>
+        <file>Grappa barricata.png</file>
+    </qresource>
 </RCC>
