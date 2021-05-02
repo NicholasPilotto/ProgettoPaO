@@ -24,9 +24,9 @@ class young : public grappa {
   young& operator=(const young&);                                                                                                      // da fare
   static const double discount_young;
   virtual young* clone() const override;
-  virtual double kind_price() const override;
+  double kind_price() const override;
   virtual double price_increment() const override;
-  virtual double get_price() const override;
+  double get_price() const override;
   virtual double promotion() const override;
   virtual u_vector<taste> get_tastes() const override;
   virtual color get_color() const override;
