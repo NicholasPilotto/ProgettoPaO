@@ -16,7 +16,7 @@ class controller : public QObject {
   model* _model;
 
  public:
-  explicit controller(QObject* = nullptr);
+  explicit controller(model* = nullptr, QObject* = nullptr);
   void link_model(model*);
   void link_view(view*);
   void add_item(product*);

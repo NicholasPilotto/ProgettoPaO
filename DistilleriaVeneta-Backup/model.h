@@ -17,16 +17,16 @@ class model {
   model();
   ~model();
   double total_TAX() const;
-    void add_item(product*);
-    void remove_item(product*);
-    void increment_item(product*);
-    void decrement_item(product*);
-    double total_price() const;
-    unsigned int get_total_number_items() const;
-    void delete_list();
-    void save_receipt();
-    u_vector<deep_ptr<product>> load_from_file(const std::string& = ":/data/data.json") const;
-    u_vector<pair<deep_ptr<product>, int>> get_receipt_items();
+  void add_item(product*);
+  void remove_item(product*);
+  void increment_item(product*);
+  void decrement_item(product*);
+  double total_price() const;
+  unsigned int get_total_number_items() const;
+  void delete_list();
+  void save_receipt();
+  u_vector<deep_ptr<product>> load_from_file(const std::string& = ":/data/data.json") const;
+  u_vector<pair<deep_ptr<product>, int>> get_receipt_items();
 };
 #endif
 

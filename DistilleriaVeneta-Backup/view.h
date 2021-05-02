@@ -50,7 +50,7 @@ class view : public QWidget {
   void show_alert(QDialog*);                        // NON FATTO
 
  public:
-  view(QWidget* = nullptr);                         // OK
+  view(controller* = nullptr, QWidget* = nullptr);  // OK
   void set_controller(controller*);                 // DA FARE
   void show_warning(const QString&);                // OK
   unsigned int number_items();                      // DA FARE

@@ -1,7 +1,7 @@
 #include "controller.h"
 #include <QDebug>
 
-controller::controller(QObject* parent) : QObject(parent) {}
+controller::controller(model* m, QObject* parent) : QObject(parent), _model(m) {}
 
 controller::~controller() {
   delete _view;
@@ -17,8 +17,8 @@ void controller::add_item(product* p) { _model->add_item(p); }
 void controller::save_receipt() const {}
 
 void controller::pay() {
-  double total_price = _model->total_price();
-  double total_tax = _model->total_TAX();
+  //  double total_price = _model->total_price();
+  //  double total_tax = _model->total_TAX();
 }
 
 void controller::decrement_item(product* p) { _model->decrement_item(p); }
@@ -27,13 +27,6 @@ void controller::increment_item(product* p) { _model->increment_item(p); }
 
 void controller::remove_item(product* p) { _model->remove_item(p); }
 
-u_vector<deep_ptr<product>> controller::load_from_file(const std::string &path) const
-{
-    return _model->load_from_file(path);
-}
+u_vector<deep_ptr<product>> controller::load_from_file(const std::string& path) const { return _model->load_from_file(path); }
 
-u_vector<pair<deep_ptr<product>,int>> controller::get_receipt_items()
-{
-    qDebug() << _model;
-    return _model->get_receipt_items();
-}
+u_vector<pair<deep_ptr<product>, int>> controller::get_receipt_items() { return _model->get_receipt_items(); }
