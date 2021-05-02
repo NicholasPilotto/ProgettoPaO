@@ -1,6 +1,9 @@
 #include "model.h"
+#include <QDebug>
 
-model::model() : r(new receipt) {}
+model::model() : r(new receipt()) {
+    qDebug() << r;
+}
 
 model::~model() {
   delete r;
@@ -47,7 +50,11 @@ u_vector<deep_ptr<product>> model::load_from_file(const std::string& path) const
 
 u_vector<pair<deep_ptr<product>, int> > model::get_receipt_items()
 {
-    return r->get_items();
+    if (r != nullptr) {
+        return r->get_items();
+        }
+
+        return {};
 }
 /*
 void model::delete_list() {

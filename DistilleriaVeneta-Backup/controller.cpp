@@ -1,4 +1,5 @@
 #include "controller.h"
+#include <QDebug>
 
 controller::controller(QObject* parent) : QObject(parent) {}
 
@@ -33,5 +34,6 @@ u_vector<deep_ptr<product>> controller::load_from_file(const std::string &path) 
 
 u_vector<pair<deep_ptr<product>,int>> controller::get_receipt_items()
 {
+    qDebug() << _model;
     return _model->get_receipt_items();
 }

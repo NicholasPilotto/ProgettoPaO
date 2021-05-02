@@ -1,10 +1,10 @@
 #include "receiptshow.h"
 
-receiptshow::receiptshow(QWidget* parent) : QWidget(parent)
+receiptshow::receiptshow(const u_vector<std::pair<deep_ptr<product>,int>>& _products, QWidget* parent) : QWidget(parent)
 {
     QVBoxLayout* table_layout = new QVBoxLayout();
     addTable(table_layout);
-    refreshTable();
+   refreshTable(_products);
 
     setLayout(table_layout);
 }
@@ -26,19 +26,46 @@ void receiptshow::addTable(QVBoxLayout* table_layout) {
   table_layout->addWidget(table);
 }
 
-void receiptshow::refreshTable()
+void receiptshow::refreshTable(const u_vector<std::pair<deep_ptr<product>,int>>& _products)
 {
-    table->setRowCount(20);
+    int rows = _products.size();
+    table->setRowCount(rows);
 
-    for(int i=0; i<20; i++)
-    table->setRowHeight(i,50);
+    auto cit = _products.const_begin();
+    auto end = _products.const_end();
+
+    for(int i=0; cit != end; cit++, i++){
+        table->setRowHeight(i,50);
+
+        const QIcon* icon = new QIcon("../Grafica/Immagini/delete.png");
+        QTableWidgetItem* bin_item = new QTableWidgetItem(*icon,"");
+        table->setVerticalHeaderItem(i,bin_item);
+
+        QTableWidgetItem* name_item=new QTableWidgetItem();
+        name_item->setText((*cit).first->get_name().data());
+        name_item->setTextAlignment(Qt::AlignCenter);
+        table->setItem(i,0,name_item);
+
+        QTableWidgetItem* dim_item=new QTableWidgetItem();
+        dim_item->setText((*cit).first->get_name().data());
+        dim_item->setTextAlignment(Qt::AlignCenter);
+        table->setItem(i,1,dim_item);
+
+        QTableWidgetItem* num_item=new QTableWidgetItem();
+        num_item->setText((*cit).first->get_name().data());
+        num_item->setTextAlignment(Qt::AlignCenter);
+        table->setItem(i,2,num_item);
+
+        QTableWidgetItem* price_item=new QTableWidgetItem();
+        price_item->setText((*cit).first->get_name().data());
+        price_item->setTextAlignment(Qt::AlignCenter);
+        table->setItem(i,3,price_item);
+    }
+
 
     //Cestini
-    const QIcon* icon = new QIcon("../Grafica/Immagini/delete.png");
-    QTableWidgetItem* item = new QTableWidgetItem(*icon,"");
-    for(int i = 0; i < 20; i++){
-      table->setVerticalHeaderItem(i,item);
-    }
+
+
 
     table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     // Non rende visibile una selezione

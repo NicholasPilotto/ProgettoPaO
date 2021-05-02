@@ -19,9 +19,9 @@ class receiptshow : public QWidget
 private:
     QTableWidget* table;
 public:
-    receiptshow(QWidget* = nullptr);
+    receiptshow(const u_vector<std::pair<deep_ptr<product>,int>>&, QWidget* = nullptr);
     void addTable(QVBoxLayout*);
-    void refreshTable();
+    void refreshTable(const u_vector<std::pair<deep_ptr<product>,int>>&);
 };
 
 #endif // RECEIPTSHOW_H

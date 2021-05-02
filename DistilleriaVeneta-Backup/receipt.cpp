@@ -1,6 +1,6 @@
 #include "receipt.h"
 
-receipt::receipt() : date(steady_clock::now()), items(u_vector<pair<deep_ptr<product>, int>>()) {}
+receipt::receipt() : date(steady_clock::now()), items({}) {}
 
 void receipt::add_item(product* p) {
   pair<deep_ptr<product>, int> element(p, 1);
@@ -63,6 +63,8 @@ double receipt::total_price() const {
 
   return price;
 }
+
+//da fare total_price_line
 
 double receipt::total_taxes() const {
   double tot_taxes = 0;

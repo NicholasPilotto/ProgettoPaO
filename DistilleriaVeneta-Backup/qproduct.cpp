@@ -9,7 +9,7 @@ QProduct::QProduct(const deep_ptr<product>& _product, QWidget *parent) : QWidget
     left_widget_image = new QFrame;
     left_widget_image->setStyleSheet("background-color: rgb(239,235,231)");
     QLabel* img = new QLabel();
-    QPixmap* pix = new QPixmap(_product->get_image_path().data());
+    QPixmap* pix = new QPixmap("../Grafica/Immagini/herbal-liquor.png");
     img->setPixmap(*pix);
     image_layout->addWidget(img);
     left_widget_image->setLayout(image_layout);
