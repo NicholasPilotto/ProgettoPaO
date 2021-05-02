@@ -1,5 +1,5 @@
 #include "cream.h"
-
+#include <QDebug>
 cream::aux_map_initializer::aux_map_initializer() {
     ptr = new cream();
     _map["cream"] = ptr;
@@ -82,7 +82,8 @@ std::string cream::code() const {
 }
 
 std::string cream::get_image_path() const {
-  return non_spirits::get_image_path() + "cream/" + get_name();
+   qDebug() << (non_spirits::get_image_path() + "cream/" + get_name()).data();
+  return non_spirits::get_image_path() + "cream/" + get_name() + ".png";
 }
 
 cream* cream::create(QMap<QString, QVariant>& m) const {

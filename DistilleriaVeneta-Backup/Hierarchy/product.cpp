@@ -37,7 +37,7 @@ double product::kind_price() const {
 }
 
 std::string product::get_image_path() const {
-  return "product/";
+  return ":/product/";
 }
 
 std::string product::get_name() const {

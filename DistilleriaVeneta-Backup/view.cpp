@@ -31,14 +31,12 @@ void view::pay_banner()
 
     QLineEdit* pay_customer = new QLineEdit();
     pay_customer->setValidator(new QDoubleValidator(0,2147483647,2,this));
-    QString paid = pay_customer->text();
-    double num_paid = paid.toDouble();
 
     datas->addWidget(pay_customer,0,1,1,1);
     datas->addWidget(new QLabel("Totale dovuto"),1,1,1,1);
     datas->addWidget(new QLabel(QString::number(calc_total())),2,1,1,1);
     datas->addWidget(new QLabel("Resto"),1,2,1,1);
-    datas->addWidget(new QLabel(QString::number(calc_total()-num_paid)),2,2,1,1);
+    datas->addWidget(new QLabel(QString::number(calc_total()-pay_customer->text().toDouble())),2,2,1,1);
 
     pay_dialog->setLayout(datas);
 

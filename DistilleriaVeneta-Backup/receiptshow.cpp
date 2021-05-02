@@ -23,30 +23,28 @@ void receiptshow::addTable(QVBoxLayout* table_layout) {
 
   table->setHorizontalHeaderLabels(names_columns);
 
-
-  // Non rende visibile una selezione
-
-  table->setEditTriggers(QAbstractItemView::NoEditTriggers);
-  table->setFocusPolicy(Qt::NoFocus);
-  table->setSelectionMode(QAbstractItemView::NoSelection);
-  //table->setStyleSheet("gridline-color: white");  // rende bianche le linee poi gli oggetti che inseriamo mettiamo i bordi alti e bassi così da avere solo linee
-
   table_layout->addWidget(table);
 }
 
 void receiptshow::refreshTable()
 {
-    table->setRowCount(1);
+    table->setRowCount(20);
 
-    for(int i=0; i<1; i++)
+    for(int i=0; i<20; i++)
     table->setRowHeight(i,50);
 
     //Cestini
     const QIcon* icon = new QIcon("../Grafica/Immagini/delete.png");
     QTableWidgetItem* item = new QTableWidgetItem(*icon,"");
-    for(int i = 0; i < 1; i++){
+    for(int i = 0; i < 20; i++){
       table->setVerticalHeaderItem(i,item);
     }
 
     table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    // Non rende visibile una selezione
+
+    table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    table->setFocusPolicy(Qt::NoFocus);
+    table->setSelectionMode(QAbstractItemView::NoSelection);
+    //table->setStyleSheet("gridline-color: white");  // rende bianche le linee poi gli oggetti che inseriamo mettiamo i bordi alti e bassi così da avere solo linee
 }
