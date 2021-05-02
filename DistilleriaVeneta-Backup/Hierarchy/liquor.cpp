@@ -79,7 +79,9 @@ std::string liquor::code() const {
 }
 
 std::string liquor::get_image_path() const {
-  return spirits::get_image_path() + "liquor/" + get_name();
+  std::string name = get_name();
+  name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
+  return spirits::get_image_path() + "liquor/" + name;
 }
 
 liquor* liquor::create(QMap<QString, QVariant>& m) const {

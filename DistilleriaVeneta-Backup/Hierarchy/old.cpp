@@ -1,5 +1,7 @@
 #include "old.h"
 
+#include <QDebug>
+
 old::aux_map_initializer::aux_map_initializer() {
     ptr = new old();
     _map["old"] = ptr;
@@ -79,7 +81,9 @@ std::string old::code() const {
 }
 
 std::string old::get_image_path() const {
-  return grappa::get_image_path() + "old/" + get_name();
+  std::string name = get_name();
+  name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
+  return grappa::get_image_path() + "old/" + name;
 }
 
 bool old::is_barrique() const {

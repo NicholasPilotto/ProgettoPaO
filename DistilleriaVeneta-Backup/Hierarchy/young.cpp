@@ -74,7 +74,9 @@ std::string young::code() const {
 }
 
 std::string young::get_image_path() const {
-  return grappa::get_image_path() + "young/" + get_name();
+  std::string name = get_name();
+  name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
+  return grappa::get_image_path() + "young/" + name;
 }
 
 young* young::create(QMap<QString, QVariant>& m) const {
