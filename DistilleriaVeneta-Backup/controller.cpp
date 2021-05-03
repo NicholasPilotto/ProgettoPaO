@@ -1,4 +1,5 @@
 #include "controller.h"
+
 #include <QDebug>
 
 controller::controller(model* m, QObject* parent) : QObject(parent), _model(m) {}

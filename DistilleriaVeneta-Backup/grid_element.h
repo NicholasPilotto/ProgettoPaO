@@ -3,13 +3,12 @@
 
 #include <QStackedWidget>
 
-#include "qproduct.h"
 #include "overlay.h"
+#include "qproduct.h"
 
-class grid_element : public QStackedWidget
-{
-public:
-    grid_element(QProduct*, overlay*, QStackedWidget* = nullptr);
+class grid_element : public QStackedWidget {
+ public:
+  grid_element(QProduct*, overlay*, QStackedWidget* = nullptr);
 };
 
-#endif // GRID_ELEMENT_H
+#endif  // GRID_ELEMENT_H

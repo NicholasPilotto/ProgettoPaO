@@ -1,24 +1,24 @@
 #ifndef QPRODUCT_H
 #define QPRODUCT_H
 
-#include <QWidget>
-#include <QLabel>
 #include <QFrame>
 #include <QHBoxLayout>
+#include <QLabel>
 #include <QVBoxLayout>
+#include <QWidget>
 
-#include "Utilities/deep_ptr.hpp"
 #include "Hierarchy/product.h"
+#include "Utilities/deep_ptr.hpp"
 
 class QProduct : public QWidget {
-    Q_OBJECT
-private:
-    QFrame* left_widget_image;
-    QLabel* left_widget_name;
-    QLabel* left_widget_price;
+  Q_OBJECT
+ private:
+  QFrame* left_widget_image;
+  QLabel* left_widget_name;
+  QLabel* left_widget_price;
 
-public:
-    explicit QProduct(const deep_ptr<product>&, QWidget* parent = nullptr);
+ public:
+  explicit QProduct(const deep_ptr<product>&, QWidget* parent = nullptr);
 };
 
-#endif // QPRODUCT_H
+#endif  // QPRODUCT_H

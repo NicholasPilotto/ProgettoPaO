@@ -15,12 +15,12 @@
 
 class io_json {
  private:
-	std::string __file_path;
+  std::string __file_path;
 
  public:
-	io_json(const std::string&);
+  io_json(const std::string&);
 
-	u_vector<deep_ptr<product>> read();
+  u_vector<deep_ptr<product>> read();
 };
 
-#endif // IO_JSON_H
+#endif  // IO_JSON_H

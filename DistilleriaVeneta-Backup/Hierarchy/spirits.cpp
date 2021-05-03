@@ -24,18 +24,10 @@ double spirits::kind_price() const {
   return 0.00;
 }
 
-double spirits::price_increment() const {
-  return kind_price();
-}
+double spirits::price_increment() const { return kind_price(); }
 
-double spirits::get_price() const {
-  return get_default_price() + price_increment();
-}
+double spirits::get_price() const { return get_default_price() + price_increment(); }
 
-std::string spirits::code() const {
-  return "S";
-}
+std::string spirits::code() const { return "S"; }
 
-std::string spirits::get_image_path() const {
-  return product::get_image_path() + "spirits/";
-}
+std::string spirits::get_image_path() const { return product::get_image_path() + "spirits/"; }

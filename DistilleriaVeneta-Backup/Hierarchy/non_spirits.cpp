@@ -24,21 +24,13 @@ double non_spirits::kind_price() const {
   return 0.00;
 }
 
-double non_spirits::price_increment() const {
-  return kind_price();
-}
+double non_spirits::price_increment() const { return kind_price(); }
 
-double non_spirits::get_price() const {
-  return get_default_price() + price_increment();
-}
+double non_spirits::get_price() const { return get_default_price() + price_increment(); }
 
-std::string non_spirits::code() const {
-  return "A";
-}
+std::string non_spirits::code() const { return "A"; }
 
-std::string non_spirits::get_image_path() const {
-  return product::get_image_path() + "non_spirits/";
-}
+std::string non_spirits::get_image_path() const { return product::get_image_path() + "non_spirits/"; }
 
 product* p = nullptr;
 non_spirits* ns = dynamic_cast<non_spirits*>(p);

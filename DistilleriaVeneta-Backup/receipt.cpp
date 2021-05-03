@@ -64,7 +64,7 @@ double receipt::total_price() const {
   return price;
 }
 
-//da fare total_price_line
+// da fare total_price_line
 
 double receipt::total_taxes() const {
   double tot_taxes = 0;
@@ -78,6 +78,4 @@ double receipt::total_taxes() const {
   return tot_taxes;
 }
 
-u_vector<pair<deep_ptr<product>, int>> receipt::get_items(){
-  return items;
-}
+u_vector<pair<deep_ptr<product>, int>> receipt::get_items() { return items; }

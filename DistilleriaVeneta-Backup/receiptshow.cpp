@@ -2,19 +2,17 @@
 
 #include <QDebug>
 
-receiptshow::receiptshow(const u_vector<std::pair<deep_ptr<product>,int>>& _products, QWidget* parent) : QWidget(parent)
-{
-    QVBoxLayout* table_layout = new QVBoxLayout();
-    addTable(table_layout);
-   refreshTable(_products);
+receiptshow::receiptshow(const u_vector<std::pair<deep_ptr<product>, int>>& _products, QWidget* parent) : QWidget(parent) {
+  QVBoxLayout* table_layout = new QVBoxLayout();
+  addTable(table_layout);
+  refreshTable(_products);
 
-    setLayout(table_layout);
+  setLayout(table_layout);
 }
 
 void receiptshow::addTable(QVBoxLayout* table_layout) {
-
   table = new QTableWidget(this);
-  table->setMinimumSize(500,500);
+  table->setMinimumSize(500, 500);
   table->setColumnCount(4);
 
   QStringList names_columns;
