@@ -16,6 +16,10 @@ class QProduct : public QWidget {
   QFrame* left_widget_image;
   QLabel* left_widget_name;
   QLabel* left_widget_price;
+  QLabel* img;
+  QPixmap* pix;
+  QVBoxLayout* mainlayout;
+  QHBoxLayout* image_layout;
 
  public:
   explicit QProduct(const deep_ptr<product>&, QWidget* parent = nullptr);

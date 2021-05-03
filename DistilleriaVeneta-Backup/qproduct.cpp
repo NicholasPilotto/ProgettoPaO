@@ -3,12 +3,12 @@
 #include <QDebug>
 
 QProduct::QProduct(const deep_ptr<product>& _product, QWidget* parent) : QWidget(parent) {
-  QVBoxLayout* mainlayout = new QVBoxLayout;
-  QHBoxLayout* image_layout = new QHBoxLayout;
-  left_widget_image = new QFrame;
+  mainlayout = new QVBoxLayout();
+  image_layout = new QHBoxLayout();
+  left_widget_image = new QFrame();
   left_widget_image->setStyleSheet("background-color: rgb(239,235,231)");
-  QLabel* img = new QLabel();
-  QPixmap* pix = new QPixmap(_product->get_image_path().data());
+  img = new QLabel();
+  pix = new QPixmap(_product->get_image_path().data());
   img->setPixmap(*pix);
   image_layout->addWidget(img);
   left_widget_image->setLayout(image_layout);
@@ -30,6 +30,10 @@ QProduct::QProduct(const deep_ptr<product>& _product, QWidget* parent) : QWidget
 }
 
 QProduct::~QProduct() {
+  delete mainlayout;
+  delete image_layout;
+  delete img;
+  delete pix;
   delete left_widget_image;
   delete left_widget_name;
   delete left_widget_price;

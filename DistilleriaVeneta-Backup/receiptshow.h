@@ -3,11 +3,11 @@
 
 #include <QHeaderView>
 #include <QIcon>
+#include <QSpinBox>
 #include <QTableWidget>
 #include <QTableWidgetItem>
 #include <QVBoxLayout>
 #include <QWidget>
-#include <QSpinBox>
 
 #include "Hierarchy/product.h"
 #include "Utilities/deep_ptr.hpp"

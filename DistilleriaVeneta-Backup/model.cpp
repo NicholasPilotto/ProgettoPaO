@@ -16,16 +16,11 @@ void model::increment_item(const deep_ptr<product>& p) { r->increase_item(p); }
 
 void model::decrement_item(const deep_ptr<product>& p) { r->decrease_item(p); }
 
-double model::total_price_line(int i) const
-{
-    r->total_price_line(i);
-}
+double model::total_price_line(int i) const { r->total_price_line(i); }
 
 double model::total_price() const { return r->total_price(); }
 
-unsigned int model::get_total_number_items() const {
-    r->total_number_items();
-}
+unsigned int model::get_total_number_items() const { r->total_number_items(); }
 
 u_vector<deep_ptr<product>> model::load_from_file(const std::string& path) const {
   io_json* io = new io_json(path);

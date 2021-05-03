@@ -18,6 +18,7 @@
 #include <QTableView>
 #include <QVBoxLayout>
 
+#include "./Utilities/deep_ptr.hpp"
 #include "./Utilities/u_vector.hpp"
 #include "controller.h"
 #include "gridshow.h"
@@ -33,7 +34,7 @@ class view : public QWidget {
   QMenu* filters;
   QMenu* alcohols;
   // QAction* codes;
-  QMenu* colours;
+  QMenu* colors;
   QMenu* flavors;
   QMenuBar* menu_bar;               // Used
   QVBoxLayout* main_layout;         // Used
@@ -44,6 +45,19 @@ class view : public QWidget {
   QPushButton* delete_receipt;      // Used
   QPushButton* pay_button;          // Used
   controller* presenter;
+  QAction* cresc;
+  QAction* desc;
+  QAction* close_action;
+  QLabel* title;
+  QGridLayout* resoconto;
+  QHBoxLayout* filter_buttons;
+  QHBoxLayout* receipt_buttons;
+  receiptshow* receipt_area;
+  QLabel* receipt_title;
+  QVBoxLayout* right_app;
+  QVBoxLayout* left_app;
+  gridshow* product_area;
+  QLabel* products_title;
 
   void add_menu_bar(QVBoxLayout*);               // OK
   void add_title(QVBoxLayout*, const QString&);  // OK
@@ -54,13 +68,13 @@ class view : public QWidget {
   void show_alert(QDialog*);                     // NON FATTO
 
  public:
-  view(QWidget* = nullptr);           // OK
+  view(QWidget* = nullptr);  // OK
   ~view();
   void set_controller(const deep_ptr<controller>&);  // DA FARE
-  void show_warning(const QString&);  // OK
-  unsigned int total_number_items();  // DA RICHIAMARE
-  double calc_total();                // DA FARE
-  void pay_banner();                  // NON FATTO
+  void show_warning(const QString&);                 // OK
+  unsigned int total_number_items();                 // DA RICHIAMARE
+  double calc_total();                               // DA FARE
+  void pay_banner();                                 // NON FATTO
   void add_elements();
 };
 

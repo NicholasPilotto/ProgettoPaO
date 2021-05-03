@@ -28,10 +28,7 @@ void controller::increment_item(const deep_ptr<product>& p) { _model->increment_
 
 void controller::remove_item(const deep_ptr<product>& p) { _model->remove_item(p); }
 
-double controller::total_taxes()
-{
-    return _model->total_TAX();
-}
+double controller::total_taxes() { return _model->total_TAX(); }
 
 double controller::total_price_line(int i) const { return _model->total_price_line(i); }
 

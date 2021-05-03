@@ -1,5 +1,8 @@
 #include "view.h"
 // Nuova versione
+#include <QApplication>
+#include <QDesktopWidget>
+
 #include "./Hierarchy/cream.h"
 
 view::view(QWidget* parent) : QWidget(parent) {}
@@ -9,7 +12,7 @@ view::~view() {
   delete filters;
   delete alcohols;
   // delete codes;
-  delete colours;
+  delete colors;
   delete flavors;
   delete menu_bar;
   delete main_layout;
@@ -20,13 +23,31 @@ view::~view() {
   delete delete_receipt;
   delete pay_button;
   delete presenter;
+  delete cresc;
+  delete desc;
+  delete close_action;
+  delete title;
+  delete filter_buttons;
+  delete receipt_area;
+  delete receipt_buttons;
+  delete resoconto;
+  delete receipt_title;
+  delete right_app;
+  delete left_app;
+  delete product_area;
+  delete products_title;
 }
 
 void view::add_elements() {
-  QVBoxLayout* main_layout = new QVBoxLayout;
-  QHBoxLayout* main_object_layout = new QHBoxLayout;
+  main_layout = new QVBoxLayout;
+  main_object_layout = new QHBoxLayout;
 
   add_menu_bar(main_layout);
+
+  QRect desktopRect = QApplication::desktop()->availableGeometry(this);
+  QPoint center = desktopRect.center();
+
+  move(center.x() - width(), 0);
 
   add_title(main_layout, "Distilleria Veneta");
 
@@ -87,7 +108,7 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
 
   file = new QMenu("File", menu_bar);
   filters = new QMenu("Filtri", menu_bar);
-  colours = new QMenu("Colore", filters);
+  colors = new QMenu("Colore", filters);
   alcohols = new QMenu("Contenuto Alcolico", filters);
   // codes = new QAction("Codice", filters);
   flavors = new QMenu("Gusto", filters);
@@ -96,10 +117,10 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   menu_bar->addMenu(filters);
   filters->addMenu(alcohols);
   // filters->addAction(codes);
-  filters->addMenu(colours);
+  filters->addMenu(colors);
   filters->addMenu(flavors);
 
-  QAction* close_action = new QAction("Chiudi", file);
+  close_action = new QAction("Chiudi", file);
   const QKeySequence* closing = new QKeySequence("Ctrl+Q");
   close_action->setShortcut(*closing);
   file->addAction(close_action);
@@ -107,8 +128,8 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   // Alcohols incompleto
   // Si può risolvere con Qlistview(non utilizzata per il momento)
   // Problema di non contemporaneità
-  QAction* cresc = new QAction("Ordine Crescente", alcohols);
-  QAction* desc = new QAction("Ordine Decrescente", alcohols);
+  cresc = new QAction("Ordine Crescente", alcohols);
+  desc = new QAction("Ordine Decrescente", alcohols);
   cresc->setCheckable(true);
   cresc->setChecked(true);
   desc->setCheckable(true);
@@ -117,18 +138,28 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   alcohols->addAction(desc);
 
   // Colours
-  u_vector<QString> colours_actions = {
-      "Giallo", "Rosso", "Rosa", "Marrone", "Nero", "Violetto", "Bianco", "Verde", "Bianco Trasparente", "Giallo Trasparente",
-  };
+  u_vector<QString> colours_actions({
+      "Giallo",
+      "Rosso",
+      "Rosa",
+      "Marrone",
+      "Nero",
+      "Violetto",
+      "Bianco",
+      "Verde",
+      "Bianco Trasparente",
+      "Giallo Trasparente",
+  });
   for (auto cit = colours_actions.const_begin(); cit != colours_actions.const_end(); cit++) {
-    QAction* action = new QAction(*cit, colours);
+    QAction* action = new QAction(*cit, colors);
     action->setCheckable(true);
     action->setChecked(false);
-    colours->addAction(action);
+    colors->addAction(action);
   }
 
   // Flavors incompleto
-  u_vector<QString> flavors_actions{"Nocciola", "Caffè", "Liquirizia", "Cioccolato", "Uovo", "Rum", "Panna", "Fragola", "Frutti di Bosco", "Mirtillo", "Ribes", "Prugna", "Miele", "Secco", "Fruttato", "Amabile", "Menta"};
+  u_vector<QString> flavors_actions({"Nocciola", "Caffè", "Liquirizia", "Cioccolato", "Uovo", "Rum", "Panna", "Fragola", "Frutti di Bosco", "Mirtillo", "Ribes", "Prugna", "Miele", "Secco", "Fruttato", "Amabile", "Menta"});
+
   for (auto cit = flavors_actions.const_begin(); cit != flavors_actions.const_end(); cit++) {
     QAction* action = new QAction(*cit, flavors);
     action->setCheckable(true);
@@ -142,7 +173,7 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
 }
 
 void view::add_title(QVBoxLayout* main_layout, const QString& message) {
-  QLabel* title = new QLabel(message);
+  title = new QLabel(message);
 
   title->setAlignment(Qt::AlignCenter);
   title->setContentsMargins(10, 10, 10, 10);
@@ -151,16 +182,16 @@ void view::add_title(QVBoxLayout* main_layout, const QString& message) {
 }
 
 void view::add_grid(QHBoxLayout* main_object_layout) {
-  QVBoxLayout* left_app = new QVBoxLayout;
+  left_app = new QVBoxLayout;
 
-  QLabel* products_title = new QLabel("Prodotti");
+  products_title = new QLabel("Prodotti");
   products_title->setContentsMargins(0, 20, 0, 20);
   products_title->setAlignment(Qt::AlignCenter);
 
   left_app->addWidget(products_title);
 
   u_vector<deep_ptr<product>> aux = presenter->load_from_file(":/data/data.json");
-  gridshow* product_area = new gridshow(aux);
+  product_area = new gridshow(aux);
 
   left_app->addWidget(product_area);
   left_app->addLayout(add_filter_buttons());
@@ -170,13 +201,13 @@ void view::add_grid(QHBoxLayout* main_object_layout) {
   main_object_layout->addLayout(left_app);
 }
 
-//Utilizzare il ciclo for per l'inizializzazione
+// Utilizzare il ciclo for per l'inizializzazione
 void view::add_receipt(QHBoxLayout* main_object_layout) {
-  QVBoxLayout* right_app = new QVBoxLayout;
+  right_app = new QVBoxLayout();
 
   // Receipt Title
 
-  QLabel* receipt_title = new QLabel("Scontrino");
+  receipt_title = new QLabel("Scontrino");
   receipt_title->setAlignment(Qt::AlignCenter);
   receipt_title->setContentsMargins(0, 20, 0, 20);
 
@@ -184,16 +215,16 @@ void view::add_receipt(QHBoxLayout* main_object_layout) {
 
   u_vector<std::pair<deep_ptr<product>, int>> tmp = presenter->get_receipt_items();
 
-  receiptshow* receipt_area = new receiptshow(tmp);
+  receipt_area = new receiptshow(tmp);
 
   // Comparsa totale
 
-  QGridLayout* resoconto = new QGridLayout();
+  resoconto = new QGridLayout();
 
-  resoconto->addWidget(new QLabel(("TOTALE:")),0,0,1,1, Qt::AlignLeft);
-  resoconto->addWidget(new QLabel(QString::number(calc_total(), 'f', 2) + " €"),0,1,1,1, Qt::AlignRight);
-  resoconto->addWidget(new QLabel("Tasse:"),1,0,1,1, Qt::AlignLeft);
-  resoconto->addWidget(new QLabel(QString::number(presenter->total_taxes(), 'f', 2) + " €"),1,1,1,1, Qt::AlignRight);
+  resoconto->addWidget(new QLabel(("TOTALE:")), 0, 0, 1, 1, Qt::AlignLeft);
+  resoconto->addWidget(new QLabel(QString::number(calc_total(), 'f', 2) + " €"), 0, 1, 1, 1, Qt::AlignRight);
+  resoconto->addWidget(new QLabel("Tasse:"), 1, 0, 1, 1, Qt::AlignLeft);
+  resoconto->addWidget(new QLabel(QString::number(presenter->total_taxes(), 'f', 2) + " €"), 1, 1, 1, 1, Qt::AlignRight);
 
   // Right app
 
@@ -211,10 +242,10 @@ void view::add_receipt(QHBoxLayout* main_object_layout) {
   main_object_layout->addLayout(right_app);
 }
 
-//SetShortcut
+// SetShortcut
 
 QHBoxLayout* view::add_filter_buttons() {
-  QHBoxLayout* filter_buttons = new QHBoxLayout;
+  filter_buttons = new QHBoxLayout();
 
   grappa_button = new QPushButton("Grappa");
   liquor_button = new QPushButton("Liquore");
@@ -230,7 +261,7 @@ QHBoxLayout* view::add_filter_buttons() {
 }
 
 QHBoxLayout* view::add_receipt_buttons() {
-  QHBoxLayout* receipt_buttons = new QHBoxLayout;
+  receipt_buttons = new QHBoxLayout();
 
   pay_button = new QPushButton("Elimina");
   delete_receipt = new QPushButton("Paga");

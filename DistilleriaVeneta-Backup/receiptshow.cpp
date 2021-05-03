@@ -54,11 +54,11 @@ void receiptshow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>>
     table->setItem(i, 1, dim_item);
 
     QSpinBox* num_item = new QSpinBox();
-    num_item->setRange(1,2147483647);
+    num_item->setRange(1, 2147483647);
     table->setCellWidget(i, 2, num_item);
 
     QTableWidgetItem* price_item = new QTableWidgetItem();
-    price_item->setText((*cit).first->get_name().data()); // la funzione che calcola il totale per item??
+    price_item->setText((*cit).first->get_name().data());  // la funzione che calcola il totale per item??
     price_item->setTextAlignment(Qt::AlignCenter);
     table->setItem(i, 3, price_item);
   }
