@@ -26,7 +26,12 @@ void view::add_elements() {
 unsigned int view::number_items()
 {
     unsigned int count = 0;
-    //for per sommare tutti i numeri di elementi
+    u_vector<std::pair<deep_ptr<product>,int>> aux = presenter->get_receipt_items();
+    auto cit = aux.const_begin();
+    auto end = aux.const_end();
+
+    for(; cit != end; cit++)
+        count += (*cit).second;
     return count;
 }
 
