@@ -2,11 +2,12 @@
 // Nuova versione
 #include "./Hierarchy/cream.h"
 
-view::view(controller* c, QWidget* parent) : QWidget(parent) {
+view::view(QWidget* parent) : QWidget(parent) {}
+
+void view::add_elements() {
   QVBoxLayout* main_layout = new QVBoxLayout;
   QHBoxLayout* main_object_layout = new QHBoxLayout;
 
-  set_controller(c);
   add_menu_bar(main_layout);
 
   add_title(main_layout, "Distilleria Veneta");

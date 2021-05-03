@@ -50,14 +50,14 @@ class view : public QWidget {
   void show_alert(QDialog*);                        // NON FATTO
 
  public:
-  view(controller* = nullptr, QWidget* = nullptr);  // OK
+  view(QWidget* = nullptr);                         // OK
   void set_controller(controller*);                 // DA FARE
   void show_warning(const QString&);                // OK
   unsigned int number_items();                      // DA FARE
   double calc_total_per_item();                     // DA FARE
   double calc_total();                              // DA FARE
   void pay_banner();                                // NON FATTO
-
+  void add_elements();
 };
 
 #endif  // VIEW_H_
