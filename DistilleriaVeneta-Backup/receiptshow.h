@@ -20,6 +20,7 @@ class receiptshow : public QWidget {
 
  public:
   receiptshow(const u_vector<std::pair<deep_ptr<product>, int>>&, QWidget* = nullptr);
+  ~receiptshow();
   void addTable(QVBoxLayout*);
   void refreshTable(const u_vector<std::pair<deep_ptr<product>, int>>&);
 };

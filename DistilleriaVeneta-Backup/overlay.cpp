@@ -12,3 +12,10 @@ overlay::overlay(QWidget* parent) : QWidget(parent) {
 
   setLayout(overlay_layout);
 }
+
+overlay::~overlay() {
+  delete small_button;
+  delete medium_button;
+  delete large_button;
+  delete overlay_layout;
+}

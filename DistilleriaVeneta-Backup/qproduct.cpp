@@ -28,3 +28,9 @@ QProduct::QProduct(const deep_ptr<product>& _product, QWidget* parent) : QWidget
 
   setLayout(mainlayout);
 }
+
+QProduct::~QProduct() {
+  delete left_widget_image;
+  delete left_widget_name;
+  delete left_widget_price;
+}

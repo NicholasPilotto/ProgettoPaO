@@ -10,6 +10,8 @@ receiptshow::receiptshow(const u_vector<std::pair<deep_ptr<product>, int>>& _pro
   setLayout(table_layout);
 }
 
+receiptshow::~receiptshow() { delete table; }
+
 void receiptshow::addTable(QVBoxLayout* table_layout) {
   table = new QTableWidget(this);
   table->setMinimumSize(500, 500);

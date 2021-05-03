@@ -4,6 +4,24 @@
 
 view::view(QWidget* parent) : QWidget(parent) {}
 
+view::~view() {
+  delete file;
+  delete filters;
+  delete alcohols;
+  // delete codes;
+  delete colours;
+  delete flavors;
+  delete menu_bar;
+  delete main_layout;
+  delete main_object_layout;
+  delete grappa_button;
+  delete liquor_button;
+  delete cream_button;
+  delete delete_receipt;
+  delete pay_button;
+  delete presenter;
+}
+
 void view::add_elements() {
   QVBoxLayout* main_layout = new QVBoxLayout;
   QHBoxLayout* main_object_layout = new QHBoxLayout;
@@ -87,13 +105,6 @@ void view::show_warning(const QString& message) {
 
 void view::add_menu_bar(QVBoxLayout* main_layout) {
   menu_bar = new QMenuBar(this);
-
-  QMenu* file;
-  QMenu* filters;
-  QMenu* alcohols;
-  // QAction* codes;
-  QMenu* colours;
-  QMenu* flavors;
 
   file = new QMenu("File", menu_bar);
   filters = new QMenu("Filtri", menu_bar);

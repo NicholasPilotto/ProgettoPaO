@@ -19,6 +19,7 @@ class QProduct : public QWidget {
 
  public:
   explicit QProduct(const deep_ptr<product>&, QWidget* parent = nullptr);
+  ~QProduct();
 };
 
 #endif  // QPRODUCT_H

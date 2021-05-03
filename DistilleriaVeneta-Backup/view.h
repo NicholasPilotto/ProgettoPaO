@@ -29,6 +29,12 @@ class controller;
 class view : public QWidget {
   Q_OBJECT
  private:
+  QMenu* file;
+  QMenu* filters;
+  QMenu* alcohols;
+  // QAction* codes;
+  QMenu* colours;
+  QMenu* flavors;
   QMenuBar* menu_bar;               // Used
   QVBoxLayout* main_layout;         // Used
   QHBoxLayout* main_object_layout;  // Used
@@ -49,6 +55,7 @@ class view : public QWidget {
 
  public:
   view(QWidget* = nullptr);           // OK
+  ~view();
   void set_controller(controller*);   // DA FARE
   void show_warning(const QString&);  // OK
   unsigned int number_items();        // DA FARE

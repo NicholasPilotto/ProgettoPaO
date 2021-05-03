@@ -15,6 +15,7 @@ class overlay : public QWidget {
 
  public:
   overlay(QWidget* = nullptr);
+  ~overlay();
 };
 
 #endif  // OVERLAY_H
