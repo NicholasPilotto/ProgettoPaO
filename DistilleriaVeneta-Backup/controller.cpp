@@ -33,6 +33,21 @@ double controller::total_taxes()
     return _model->total_TAX();
 }
 
+double controller::total_price_line(int i) const
+{
+    _model->total_price_line(i);
+}
+
+double controller::total_price()
+{
+    return _model->total_price();
+}
+
+unsigned int controller::total_number_items()
+{
+    return _model->get_total_number_items();
+}
+
 u_vector<deep_ptr<product>> controller::load_from_file(const std::string& path) const { return _model->load_from_file(path); }
 
 u_vector<pair<deep_ptr<product>, int>> controller::get_receipt_items() { return _model->get_receipt_items(); }

@@ -53,10 +53,8 @@ void receiptshow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>>
     dim_item->setTextAlignment(Qt::AlignCenter);
     table->setItem(i, 1, dim_item);
 
-    QTableWidgetItem* num_item = new QTableWidgetItem();
-    num_item->setText((*cit).first->get_name().data());
-    num_item->setTextAlignment(Qt::AlignCenter);
-    table->setItem(i, 2, num_item);
+    QSpinBox* num_item = new QSpinBox();
+    table->setCellWidget(i, 2, num_item);
 
     QTableWidgetItem* price_item = new QTableWidgetItem();
     price_item->setText((*cit).first->get_name().data());

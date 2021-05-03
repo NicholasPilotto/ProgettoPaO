@@ -58,8 +58,7 @@ class view : public QWidget {
   ~view();
   void set_controller(controller*);   // DA FARE
   void show_warning(const QString&);  // OK
-  unsigned int number_items();        // DA FARE
-  double calc_total_per_item();       // DA FARE
+  unsigned int total_number_items();  // DA RICHIAMARE
   double calc_total();                // DA FARE
   void pay_banner();                  // NON FATTO
   void add_elements();

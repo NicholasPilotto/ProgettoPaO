@@ -21,6 +21,7 @@ class model {
   void remove_item(product*);
   void increment_item(product*);
   void decrement_item(product*);
+  double total_price_line(int) const;
   double total_price() const;
   unsigned int get_total_number_items() const;
   void delete_list();

@@ -52,6 +52,19 @@ void receipt::decrease_item(product* p) {
   }
 }
 
+unsigned int receipt::total_number_items()
+{
+    unsigned int count = 0;
+    u_vector<std::pair<deep_ptr<product>,int>> aux = get_items();
+    auto cit = aux.const_begin();
+    auto end = aux.const_end();
+
+    for(; cit != end; cit++)
+        count += (*cit).second;
+
+    return count;
+}
+
 double receipt::total_price() const {
   double price = 0;
   u_vector<pair<deep_ptr<product>, int>>::iterator it = items.begin();
@@ -64,7 +77,11 @@ double receipt::total_price() const {
   return price;
 }
 
-// da fare total_price_line
+double receipt::total_price_line(int i) const
+{
+    auto pos = items.at(i);
+    return pos.first->get_price() * pos.second;
+}
 
 double receipt::total_taxes() const {
   double tot_taxes = 0;

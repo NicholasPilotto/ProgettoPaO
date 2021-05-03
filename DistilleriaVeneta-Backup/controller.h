@@ -27,6 +27,9 @@ class controller : public QObject {
   void increment_item(product*);
   void remove_item(product*);
   double total_taxes();
+  double total_price_line(int) const;
+  double total_price();
+  unsigned int total_number_items();
   u_vector<deep_ptr<product>> load_from_file(const std::string& path) const;
   u_vector<pair<deep_ptr<product>, int>> get_receipt_items();
   virtual ~controller();

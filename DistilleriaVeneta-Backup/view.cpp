@@ -41,29 +41,14 @@ void view::add_elements() {
 }
 
 // TODO
-unsigned int view::number_items()
+unsigned int view::total_number_items()
 {
-    unsigned int count = 0;
-    u_vector<std::pair<deep_ptr<product>,int>> aux = presenter->get_receipt_items();
-    auto cit = aux.const_begin();
-    auto end = aux.const_end();
-
-    for(; cit != end; cit++)
-        count += (*cit).second;
-    return count;
-}
-
-double view::calc_total_per_item()
-{
-    double total_per_item = 0.0;
-    return total_per_item /* moltiplicato per number of items */;
+    return presenter->total_number_items();
 }
 
 double view::calc_total()
 {
-    double total = 0.0;
-    //for per sommare tutti i prodotti a carrello tramite la funzione calc_total_per_item
-    return total;
+    presenter->total_price();
 }
 
 void view::pay_banner() {
@@ -79,7 +64,7 @@ void view::pay_banner() {
   datas->addWidget(new QLabel("Totale dovuto"), 1, 1, 1, 1);
   datas->addWidget(new QLabel(QString::number(calc_total())), 2, 1, 1, 1);
   datas->addWidget(new QLabel("Resto"), 1, 2, 1, 1);
-  datas->addWidget(new QLabel(QString::number(calc_total() - pay_customer->text().toDouble())), 2, 2, 1, 1);
+  datas->addWidget(new QLabel(QString::number(pay_customer->text().toDouble() - calc_total())), 2, 2, 1, 1);
 
   pay_dialog->setLayout(datas);
 

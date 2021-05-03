@@ -22,6 +22,8 @@ class receipt {
   void remove_item(product*);
   void increase_item(product*);
   void decrease_item(product*);
+  unsigned int total_number_items();
+  double total_price_line(int i) const;
   double total_price() const;
   double total_taxes() const;
   u_vector<pair<deep_ptr<product>, int>> get_items();

@@ -16,16 +16,15 @@ void model::increment_item(product* p) { r->increase_item(p); }
 
 void model::decrement_item(product* p) { r->decrease_item(p); }
 
+double model::total_price_line(int i) const
+{
+    r->total_price_line(i);
+}
+
 double model::total_price() const { return r->total_price(); }
 
 unsigned int model::get_total_number_items() const {
-  unsigned int count = 0;
-  u_vector<std::pair<deep_ptr<product>, int>>::const_iterator cit = r->get_items().const_begin();
-  u_vector<std::pair<deep_ptr<product>, int>>::const_iterator end = r->get_items().const_end();
-  for (; cit != end; cit++) {
-    count += (*cit).second;
-  }
-  return count;
+    r->total_number_items();
 }
 
 u_vector<deep_ptr<product>> model::load_from_file(const std::string& path) const {
