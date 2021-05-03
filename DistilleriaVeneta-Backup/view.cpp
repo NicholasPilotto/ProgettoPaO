@@ -190,14 +190,29 @@ void view::add_receipt(QHBoxLayout* main_object_layout) {
   receipt_title->setAlignment(Qt::AlignCenter);
   receipt_title->setContentsMargins(0, 20, 0, 20);
 
+  // Creazione tabella
+
   u_vector<std::pair<deep_ptr<product>, int>> tmp = presenter->get_receipt_items();
 
   receiptshow* receipt_area = new receiptshow(tmp);
+
+  // Comparsa totale
+
+  QGridLayout* resoconto = new QGridLayout();
+
+  resoconto->addWidget(new QLabel(("TOTALE:")),0,0,1,1, Qt::AlignLeft);
+  resoconto->addWidget(new QLabel(QString::number(calc_total(), 'f', 2) + " €"),0,1,1,1, Qt::AlignRight);
+  resoconto->addWidget(new QLabel("Tasse:"),1,0,1,1, Qt::AlignLeft);
+  resoconto->addWidget(new QLabel(QString::number(presenter->total_taxes(), 'f', 2) + " €"),1,1,1,1, Qt::AlignRight);
+
   // Right app
 
   right_app->addWidget(receipt_title);
 
   right_app->addWidget(receipt_area);
+
+  right_app->addLayout(resoconto);
+
   right_app->addLayout(add_receipt_buttons());
 
   right_app->setSpacing(0);
