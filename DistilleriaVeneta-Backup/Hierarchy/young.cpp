@@ -40,9 +40,6 @@ double young::price_increment() const {
 }
 
 double young::get_price() const {
-  auto t = grappa::get_price();
-  auto m = price_increment();
-
     return grappa::get_price() + price_increment();
 }
 
