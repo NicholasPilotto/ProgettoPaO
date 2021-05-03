@@ -41,15 +41,9 @@ void view::add_elements() {
 }
 
 // TODO
-unsigned int view::total_number_items()
-{
-    return presenter->total_number_items();
-}
+unsigned int view::total_number_items() { return presenter->total_number_items(); }
 
-double view::calc_total()
-{
-    presenter->total_price();
-}
+double view::calc_total() { return presenter->total_price(); }
 
 void view::pay_banner() {
   QDialog* pay_dialog = new QDialog(this);
@@ -249,4 +243,4 @@ QHBoxLayout* view::add_receipt_buttons() {
   return receipt_buttons;
 }
 
-void view::set_controller(controller* c) { presenter = c; }
+void view::set_controller(const deep_ptr<controller>& c) { presenter = c.get(); }

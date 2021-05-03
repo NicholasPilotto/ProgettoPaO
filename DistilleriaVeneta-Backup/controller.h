@@ -17,15 +17,15 @@ class controller : public QObject {
 
  public:
   explicit controller(model* = nullptr, QObject* = nullptr);
-  void link_model(model*);
-  void link_view(view*);
-  void add_item(product*);
+  void link_model(const deep_ptr<model>&);
+  void link_view(const deep_ptr<view>&);
+  void add_item(const deep_ptr<product>&);
   void save_receipt() const;
   void delete_receipt();
   void pay();
-  void decrement_item(product*);
-  void increment_item(product*);
-  void remove_item(product*);
+  void decrement_item(const deep_ptr<product>&);
+  void increment_item(const deep_ptr<product>&);
+  void remove_item(const deep_ptr<product>&);
   double total_taxes();
   double total_price_line(int) const;
   double total_price();

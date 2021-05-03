@@ -17,10 +17,10 @@ class model {
   model();
   ~model();
   double total_TAX() const;
-  void add_item(product*);
-  void remove_item(product*);
-  void increment_item(product*);
-  void decrement_item(product*);
+  void add_item(const deep_ptr<product>&);
+  void remove_item(const deep_ptr<product>&);
+  void increment_item(const deep_ptr<product>&);
+  void decrement_item(const deep_ptr<product>&);
   double total_price_line(int) const;
   double total_price() const;
   unsigned int get_total_number_items() const;

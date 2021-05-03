@@ -56,7 +56,7 @@ class view : public QWidget {
  public:
   view(QWidget* = nullptr);           // OK
   ~view();
-  void set_controller(controller*);   // DA FARE
+  void set_controller(const deep_ptr<controller>&);  // DA FARE
   void show_warning(const QString&);  // OK
   unsigned int total_number_items();  // DA RICHIAMARE
   double calc_total();                // DA FARE

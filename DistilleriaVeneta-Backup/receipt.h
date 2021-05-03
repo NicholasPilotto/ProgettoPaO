@@ -18,12 +18,12 @@ class receipt {
 
  public:
   receipt();
-  void add_item(product*);
-  void remove_item(product*);
-  void increase_item(product*);
-  void decrease_item(product*);
+  void add_item(const deep_ptr<product>&);
+  void remove_item(const deep_ptr<product>&);
+  void increase_item(const deep_ptr<product>&);
+  void decrease_item(const deep_ptr<product>&);
   unsigned int total_number_items();
-  double total_price_line(int i) const;
+  double total_price_line(unsigned int i) const;
   double total_price() const;
   double total_taxes() const;
   u_vector<pair<deep_ptr<product>, int>> get_items();

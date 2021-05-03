@@ -8,13 +8,13 @@ model::~model() { delete r; }
 
 double model::total_TAX() const { return r->total_taxes(); }
 
-void model::add_item(product* p) { r->add_item(p); }
+void model::add_item(const deep_ptr<product>& p) { r->add_item(p); }
 
-void model::remove_item(product* p) { r->remove_item(p); }
+void model::remove_item(const deep_ptr<product>& p) { r->remove_item(p); }
 
-void model::increment_item(product* p) { r->increase_item(p); }
+void model::increment_item(const deep_ptr<product>& p) { r->increase_item(p); }
 
-void model::decrement_item(product* p) { r->decrease_item(p); }
+void model::decrement_item(const deep_ptr<product>& p) { r->decrease_item(p); }
 
 double model::total_price_line(int i) const
 {

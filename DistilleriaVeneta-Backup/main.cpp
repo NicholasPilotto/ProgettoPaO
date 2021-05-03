@@ -1,5 +1,6 @@
 #include <QApplication>
 #include <QDebug>
+#include <QDesktopWidget>
 
 #include "./Utilities/deep_ptr.hpp"
 #include "./Utilities/u_vector.hpp"
@@ -16,15 +17,16 @@ int main(int argc, char* argv[]) {
   a.setStyleSheet(style);
   style_file.close();
 
-  model m;
-  controller c;
-  view w;
+  deep_ptr<model> m(new model);
+  deep_ptr<controller> c(new controller);
+  deep_ptr<view> w(new view);
 
-  c.link_view(&w);
-  c.link_model(&m);
-  w.set_controller(&c);
-  w.show();
-  w.add_elements();
+  c->link_view(w);
+  c->link_model(m);
+  w->set_controller(c);
+
+  w->show();
+  w->add_elements();
 
   return a.exec();
 }
