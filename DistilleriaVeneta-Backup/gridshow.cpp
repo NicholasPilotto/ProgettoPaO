@@ -27,11 +27,9 @@ gridshow::gridshow(const u_vector<deep_ptr<product>>& _products, QWidget* parent
 
     for (; it != end; it++)
     {
-        stack = new QStackedWidget();
         QProduct* p = new QProduct(*it);
         overlay* o = new overlay();
-        stack->addWidget(p);
-        stack->addWidget(o);
+        stack = new grid_element(p,o);
 
         grid->addWidget(stack, r, c);
 

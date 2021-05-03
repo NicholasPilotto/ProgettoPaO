@@ -26,7 +26,8 @@ SOURCES += \
   ./Hierarchy/liquor.cpp \
   ./Hierarchy/non_spirits.cpp \
   ./Hierarchy/cream.cpp \
-    overlay.cpp
+    overlay.cpp \
+    grid_element.cpp
 
 HEADERS += \
   controller.h \
@@ -49,7 +50,8 @@ HEADERS += \
   ./Utilities/u_vector.hpp \
   ./Utilities/deep_ptr.hpp \
   ./Utilities/aux_func.hpp \
-    overlay.h
+    overlay.h \
+    grid_element.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -8,6 +8,7 @@
 
 #include "qproduct.h"
 #include "overlay.h"
+#include "grid_element.h"
 #include "Hierarchy/product.h"
 #include "Utilities/u_vector.hpp"
 #include "Utilities/deep_ptr.hpp"
@@ -20,7 +21,7 @@ private:
     QScrollArea *product_area;
     QFrame *contenitore;
     QGridLayout* grid;
-    QStackedWidget* stack;
+    grid_element* stack;
 
 public:
     gridshow(const u_vector<deep_ptr<product>>&, QWidget* parent = nullptr);
