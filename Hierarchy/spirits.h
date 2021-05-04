@@ -6,8 +6,8 @@
 class spirits : public product {
  public:
   spirits(bottle_size = medium, const std::string& = " ", double = min_ac);  // da controllare
-  spirits(const spirits&);                                                 // da controllare
-  spirits& operator=(const spirits&);                                      // da controllare
+  spirits(const spirits&);                                                   // da controllare
+  spirits& operator=(const spirits&);                                        // da controllare
   static const double min_ac;
   static const double max_ac;
   virtual double kind_price() const override;

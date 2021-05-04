@@ -17,15 +17,11 @@ old& old::operator=(const old& o) {
 
 const double old::month_incr = 0.20;
 
-unsigned int old::get_month_old() const {
-  return month;
-}
+unsigned int old::get_month_old() const { return month; }
 
 double const old::discount_old = 0.80;
 
-old* old::clone() const {
-  return new old(*this);
-}
+old* old::clone() const { return new old(*this); }
 
 double old::kind_price() const {
   if (kind_price() == small) {
@@ -36,25 +32,15 @@ double old::kind_price() const {
   return 0.00;
 }
 
-double old::price_increment() const {
-  return kind_price() + month_incr * month + (is_barrique() ? 3.00 : 0.00);
-}
+double old::price_increment() const { return kind_price() + month_incr * month + (is_barrique() ? 3.00 : 0.00); }
 
-double old::get_price() const {
-  return grappa::get_price() + price_increment();
-}
+double old::get_price() const { return grappa::get_price() + price_increment(); }
 
-double old::promotion() const {
-  return get_price() * discount_old;
-}
+double old::promotion() const { return get_price() * discount_old; }
 
-u_vector<taste> old::get_tastes() const {
-  return tastes;
-}
+u_vector<taste> old::get_tastes() const { return tastes; }
 
-color old::get_color() const {
-  return col;
-}
+color old::get_color() const { return col; }
 
 std::string old::code() const {
   std::string aux = "SGO";
@@ -71,10 +57,6 @@ std::string old::code() const {
   return aux;
 }
 
-std::string old::get_image_path() const {
-  return grappa::get_image_path() + "old/" + get_name();
-}
+std::string old::get_image_path() const { return grappa::get_image_path() + "old/" + get_name(); }
 
-bool old::is_barrique() const {
-  return barrique;
-}
+bool old::is_barrique() const { return barrique; }

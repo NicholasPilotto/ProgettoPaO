@@ -73,7 +73,7 @@ void view::pay_banner() {
   datas->addWidget(new QLabel("Il cliente ha pagato:"), 0, 0, 1, 1);
 
   QLineEdit* pay_customer = new QLineEdit();
-  pay_customer->setValidator(new QDoubleValidator(0, 2147483647, 2, this));
+  pay_customer->setValidator(new QDoubleValidator(0, INT8_MAX, 2, this));
 
   datas->addWidget(pay_customer, 0, 1, 1, 1);
   datas->addWidget(new QLabel("Totale dovuto"), 1, 1, 1, 1);
@@ -158,7 +158,25 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   }
 
   // Flavors incompleto
-  u_vector<QString> flavors_actions({"Nocciola", "Caffè", "Liquirizia", "Cioccolato", "Uovo", "Rum", "Panna", "Fragola", "Frutti di Bosco", "Mirtillo", "Ribes", "Prugna", "Miele", "Secco", "Fruttato", "Amabile", "Menta"});
+  u_vector<QString> flavors_actions({
+      "Nocciola",
+      "Caffè",
+      "Liquirizia",
+      "Cioccolato",
+      "Uovo",
+      "Rum",
+      "Panna",
+      "Fragola",
+      "Frutti di Bosco",
+      "Mirtillo",
+      "Ribes",
+      "Prugna",
+      "Miele",
+      "Secco",
+      "Fruttato",
+      "Amabile",
+      "Menta",
+  });
 
   for (auto cit = flavors_actions.const_begin(); cit != flavors_actions.const_end(); cit++) {
     QAction* action = new QAction(*cit, flavors);

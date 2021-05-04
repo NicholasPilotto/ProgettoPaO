@@ -1,11 +1,7 @@
 #ifndef ENUM_H_
 #define ENUM_H_
 
-enum bottle_size {
-  small,
-  medium,
-  big
-};
+enum bottle_size { small, medium, big };
 
 enum taste {
   _lemon = 10,
@@ -30,17 +26,6 @@ enum taste {
     // smooth -> invecchiata
     // amable -> più amabile
 
-enum color {
-  yellow,
-  red,
-  pink,
-  brown,
-  black,
-  violet,
-  white,
-  green,
-  white_trasparent,
-  yellow_trasparent
-};
+enum color { yellow, red, pink, brown, black, violet, white, green, white_trasparent, yellow_trasparent };
 
 #endif  // ENUM_H_

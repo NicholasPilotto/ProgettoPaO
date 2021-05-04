@@ -4,9 +4,7 @@ cream::aux_map_initializer::aux_map_initializer() {
   ptr = new cream();
   _map["cream"] = ptr;
 }
-cream::aux_map_initializer::~aux_map_initializer() {
-  delete ptr;
-}
+cream::aux_map_initializer::~aux_map_initializer() { delete ptr; }
 
 cream::cream(color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : non_spirits(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
 
@@ -32,9 +30,7 @@ const double cream::max_ac = 21.0;
 
 const double cream::min_ac = 18.0;
 
-cream* cream::clone() const {
-  return new cream(*this);
-}
+cream* cream::clone() const { return new cream(*this); }
 
 double cream::kind_price() const {
   if (get_kind() == small) {
@@ -45,27 +41,17 @@ double cream::kind_price() const {
   return 0.00;
 }
 
-double cream::price_increment() const {
-  return kind_price() + cream_incr;
-}
+double cream::price_increment() const { return kind_price() + cream_incr; }
 
-double cream::get_price() const {
-  return non_spirits::get_price() + price_increment();
-}
+double cream::get_price() const { return non_spirits::get_price() + price_increment(); }
 
-double cream::promotion() const {
-  return get_price() * discount_cream;
-}
+double cream::promotion() const { return get_price() * discount_cream; }
 
-u_vector<taste> cream::get_tastes() const {
-  return tastes;
-}
+u_vector<taste> cream::get_tastes() const { return tastes; }
 
-color cream::get_color() const {
-  return col;
-}
+color cream::get_color() const { return col; }
 
-//da modificare con la proposta di liquor???
+// da modificare con la proposta di liquor???
 std::string cream::code() const {
   std::string aux = "AC0";
   int count = 0;
@@ -81,10 +67,6 @@ std::string cream::code() const {
   return aux;
 }
 
-std::string cream::get_image_path() const {
-  return non_spirits::get_image_path() + "cream/" + get_name();
-}
+std::string cream::get_image_path() const { return non_spirits::get_image_path() + "cream/" + get_name(); }
 
-cream* cream::create(std::map<std::string, QVariant>& m) const {
-    return new cream();
-}
+cream* cream::create(std::map<std::string, QVariant>& m) const { return new cream(); }

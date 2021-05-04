@@ -23,9 +23,7 @@ const double liquor::max_ac = 38.0;
 
 double const liquor::discount_liquor = 0.90;
 
-liquor* liquor::clone() const {
-  return new liquor(*this);
-}
+liquor* liquor::clone() const { return new liquor(*this); }
 
 double liquor::kind_price() const {
   if (get_kind() == small) {
@@ -36,25 +34,15 @@ double liquor::kind_price() const {
   return 0.00;
 }
 
-double liquor::price_increment() const {
-  return kind_price() + liquor_incr + tastes.size() * taste_incr;
-}
+double liquor::price_increment() const { return kind_price() + liquor_incr + tastes.size() * taste_incr; }
 
-double liquor::get_price() const {
-  return spirits::get_price() + price_increment();
-}
+double liquor::get_price() const { return spirits::get_price() + price_increment(); }
 
-double liquor::promotion() const {
-  return get_price() * discount_liquor;
-}
+double liquor::promotion() const { return get_price() * discount_liquor; }
 
-u_vector<taste> liquor::get_tastes() const {
-  return tastes;
-}
+u_vector<taste> liquor::get_tastes() const { return tastes; }
 
-color liquor::get_color() const {
-  return col;
-}
+color liquor::get_color() const { return col; }
 
 std::string liquor::code() const {
   std::string aux = "SL0";
@@ -71,6 +59,4 @@ std::string liquor::code() const {
   return aux;
 }
 
-std::string liquor::get_image_path() const {
-  return spirits::get_image_path() + "liquor/" + get_name();
-}
+std::string liquor::get_image_path() const { return spirits::get_image_path() + "liquor/" + get_name(); }

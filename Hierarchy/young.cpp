@@ -15,9 +15,7 @@ young& young::operator=(const young& y) {
 
 double const young::discount_young = 0.85;
 
-young* young::clone() const {
-  return new young(*this);
-}
+young* young::clone() const { return new young(*this); }
 
 double young::kind_price() const {
   if (get_kind() == small) {
@@ -28,25 +26,15 @@ double young::kind_price() const {
   return 0.00;
 }
 
-double young::price_increment() const {
-  return kind_price();
-}
+double young::price_increment() const { return kind_price(); }
 
-double young::get_price() const {
-  return grappa::get_price() + price_increment();
-}
+double young::get_price() const { return grappa::get_price() + price_increment(); }
 
-double young::promotion() const {
-  return get_price() * discount_young;
-}
+double young::promotion() const { return get_price() * discount_young; }
 
-u_vector<taste> young::get_tastes() const {
-  return tastes;
-}
+u_vector<taste> young::get_tastes() const { return tastes; }
 
-color young::get_color() const {
-  return col;
-}
+color young::get_color() const { return col; }
 
 std::string young::code() const {
   std::string aux = "SGY";
@@ -63,6 +51,4 @@ std::string young::code() const {
   return aux;
 }
 
-std::string young::get_image_path() const {
-  return grappa::get_image_path() + "young/" + get_name();
-}
+std::string young::get_image_path() const { return grappa::get_image_path() + "young/" + get_name(); }

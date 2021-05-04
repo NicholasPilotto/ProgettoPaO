@@ -14,8 +14,8 @@ class liquor : public spirits {
 
  public:
   liquor(color, const u_vector<taste>&, bottle_size = medium, const std::string& = "", double = min_ac);  // da controllare
-  liquor(const liquor&);                                                                                // da controllare
-  liquor& operator=(const liquor&);                                                                     // da controllare
+  liquor(const liquor&);                                                                                  // da controllare
+  liquor& operator=(const liquor&);                                                                       // da controllare
   static const double min_ac;
   static const double max_ac;
   static const double discount_liquor;
