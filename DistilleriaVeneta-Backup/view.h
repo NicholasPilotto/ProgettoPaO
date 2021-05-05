@@ -58,6 +58,7 @@ class view : public QWidget {
   QVBoxLayout* left_app;
   gridshow* product_area;
   QLabel* products_title;
+  QDialog* pay_dialog;
 
   void add_menu_bar(QVBoxLayout*);               // OK
   void add_title(QVBoxLayout*, const QString&);  // OK
@@ -74,8 +75,9 @@ class view : public QWidget {
   void show_warning(const QString&);                 // OK
   unsigned int total_number_items();                 // DA RICHIAMARE
   double calc_total();                               // DA FARE
-  void pay_banner();                                 // NON FATTO
   void add_elements();
+public slots:
+  void pay_banner();                                 // FATTO
 };
 
 #endif  // VIEW_H_

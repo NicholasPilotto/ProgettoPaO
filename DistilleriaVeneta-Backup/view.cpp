@@ -67,25 +67,28 @@ unsigned int view::total_number_items() { return presenter->total_number_items()
 double view::calc_total() { return presenter->total_price(); }
 
 void view::pay_banner() {
-  QDialog* pay_dialog = new QDialog(this);
+  pay_dialog = new QDialog(this);
 
   QGridLayout* datas = new QGridLayout();
-  datas->addWidget(new QLabel("Il cliente ha pagato:"), 0, 0, 1, 1);
 
   QLineEdit* pay_customer = new QLineEdit();
-  pay_customer->setValidator(new QDoubleValidator(0, INT8_MAX, 2, this));
+  pay_customer->setValidator(new QDoubleValidator(0, INT16_MAX, 2, this));
 
+  QPushButton* ok_button = new QPushButton("OK");
+
+  datas->addWidget(new QLabel("Il cliente ha pagato:"), 0, 0, 1, 1);
   datas->addWidget(pay_customer, 0, 1, 1, 1);
-  datas->addWidget(new QLabel("Totale dovuto"), 1, 1, 1, 1);
-  datas->addWidget(new QLabel(QString::number(calc_total())), 2, 1, 1, 1);
-  datas->addWidget(new QLabel("Resto"), 1, 2, 1, 1);
-  datas->addWidget(new QLabel(QString::number(pay_customer->text().toDouble() - calc_total())), 2, 2, 1, 1);
+  datas->addWidget(new QLabel("Totale dovuto: "), 1, 0, 1, 1);
+  datas->addWidget(new QLabel(QString::number(calc_total(), 'f', 2) + " €"), 1, 1, 1, 1, Qt::AlignRight);
+  datas->addWidget(new QLabel("Resto: "), 2, 0, 1, 1);
+  datas->addWidget(new QLabel(QString::number(pay_customer->text().toDouble() - calc_total(), 'f', 2) + " €"), 2, 1, 1, 1, Qt::AlignRight);
+  datas->addWidget(ok_button,3,0,1,2,Qt::AlignRight);
 
   pay_dialog->setLayout(datas);
 
   pay_dialog->layout()->setAlignment(Qt::AlignCenter);
-  pay_dialog->setMinimumWidth(120);
-  pay_dialog->setMaximumWidth(500);
+  pay_dialog->setMinimumWidth(300);
+  pay_dialog->setMinimumHeight(200);
   // chiamare elimina tutto poichè il tutto viene pagato e o scontrino ritorna a 0 elementi (SIGNAL E SLOT)
 
   pay_dialog->show();
@@ -281,14 +284,15 @@ QHBoxLayout* view::add_filter_buttons() {
 QHBoxLayout* view::add_receipt_buttons() {
   receipt_buttons = new QHBoxLayout();
 
-  pay_button = new QPushButton("Elimina");
-  delete_receipt = new QPushButton("Paga");
+  delete_receipt = new QPushButton("Elimina");
+  pay_button = new QPushButton("Paga");
 
-  receipt_buttons->addWidget(pay_button);
   receipt_buttons->addWidget(delete_receipt);
+  receipt_buttons->addWidget(pay_button);
   receipt_buttons->setSpacing(50);
   receipt_buttons->setContentsMargins(100, 20, 100, 20);
 
+  connect(pay_button, SIGNAL(clicked()), this, SLOT(pay_banner()));
   return receipt_buttons;
 }
 
