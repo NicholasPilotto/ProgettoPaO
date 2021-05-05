@@ -10,6 +10,7 @@ CONFIG += c++1z
 
 SOURCES += \
   controller.cpp \
+  filter.cpp \
     gridshow.cpp \
   io_json.cpp \
   main.cpp \
@@ -31,6 +32,7 @@ SOURCES += \
 
 HEADERS += \
   controller.h \
+  filter.h \
     gridshow.h \
   io_json.h \
     qproduct.h \
