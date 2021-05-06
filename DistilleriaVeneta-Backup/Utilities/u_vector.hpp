@@ -1,6 +1,8 @@
 #ifndef __U_VECTOR_H__
 #define __U_VECTOR_H__
 
+#include <limits.h>
+
 #include <functional>
 #include <iostream>
 
