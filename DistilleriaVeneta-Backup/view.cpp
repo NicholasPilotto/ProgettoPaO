@@ -59,6 +59,8 @@ void view::add_elements() {
 
   main_layout->setSpacing(20);
   setLayout(main_layout);
+
+  create_connections();
 }
 
 // TODO
@@ -243,9 +245,9 @@ void view::add_receipt(QHBoxLayout* main_object_layout) {
   resoconto = new QGridLayout();
 
   resoconto->addWidget(new QLabel(("TOTALE:")), 0, 0, 1, 1, Qt::AlignLeft);
-  resoconto->addWidget(new QLabel(QString::number(calc_total(), 'f', 2) + " €"), 0, 1, 1, 1, Qt::AlignRight);
+  resoconto->addWidget(new QLabel("€" + QString::number(calc_total(), 'f', 2)), 0, 1, 1, 1, Qt::AlignRight);
   resoconto->addWidget(new QLabel("Tasse:"), 1, 0, 1, 1, Qt::AlignLeft);
-  resoconto->addWidget(new QLabel(QString::number(presenter->total_taxes(), 'f', 2) + " €"), 1, 1, 1, 1, Qt::AlignRight);
+  resoconto->addWidget(new QLabel("€" + QString::number(presenter->total_taxes(), 'f', 2)), 1, 1, 1, 1, Qt::AlignRight);
 
   // Right app
 
@@ -292,8 +294,9 @@ QHBoxLayout* view::add_receipt_buttons() {
   receipt_buttons->setSpacing(50);
   receipt_buttons->setContentsMargins(100, 20, 100, 20);
 
-  connect(pay_button, SIGNAL(clicked()), this, SLOT(pay_banner()));
   return receipt_buttons;
 }
 
 void view::set_controller(const deep_ptr<controller>& c) { presenter = c.get(); }
+
+void view::create_connections() { connect(pay_button, SIGNAL(clicked()), this, SLOT(pay_banner())); }

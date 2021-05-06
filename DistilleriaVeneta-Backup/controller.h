@@ -22,7 +22,6 @@ class controller : public QObject {
   void add_item(const deep_ptr<product>&);
   void save_receipt() const;
   void delete_receipt();
-  void pay();
   void decrement_item(const deep_ptr<product>&);
   void increment_item(const deep_ptr<product>&);
   void remove_item(const deep_ptr<product>&);
@@ -35,6 +34,7 @@ class controller : public QObject {
   virtual ~controller();
 
  public slots:
+  void pay();
 };
 
 #endif  // CONTROLLER_H

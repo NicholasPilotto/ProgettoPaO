@@ -20,6 +20,7 @@ void controller::save_receipt() const {}
 void controller::pay() {
   //  double total_price = _model->total_price();
   //  double total_tax = _model->total_TAX();
+  qDebug() << "pagato";
 }
 
 void controller::decrement_item(const deep_ptr<product>& p) { _model->decrement_item(p); }

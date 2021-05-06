@@ -76,7 +76,8 @@ class view : public QWidget {
   unsigned int total_number_items();                 // DA RICHIAMARE
   double calc_total();                               // DA FARE
   void add_elements();
-public slots:
+  void create_connections();
+ public slots:
   void pay_banner();                                 // FATTO
 };
 
