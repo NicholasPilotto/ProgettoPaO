@@ -37,6 +37,11 @@ class u_vector {
   T* deep_copy(unsigned int, unsigned int) const;
 
  public:
+  using iterator_category = std::forward_iterator_tag;
+  using difference_type = std::ptrdiff_t;
+  using value_type = T;
+  using pointer = value_type*;
+  using reference = value_type&;
   //* ---------- CONST_ITERATOR ----------
   /**
    * @brief classe const_iterator che identifica l'iteratore costante della classe u_vector
