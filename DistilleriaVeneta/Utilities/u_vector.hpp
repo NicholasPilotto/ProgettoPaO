@@ -1,6 +1,8 @@
 #ifndef __U_VECTOR_H__
 #define __U_VECTOR_H__
 
+#include <limits.h>
+
 #include <functional>
 #include <iostream>
 
@@ -54,6 +56,11 @@ class u_vector {
     const_iterator(const T*);
 
    public:
+    using iterator_category = std::forward_iterator_tag;
+    using difference_type = std::ptrdiff_t;
+    using value_type = T;
+    using pointer = value_type*;
+    using reference = value_type&;
     /**
      * @brief operator++ prefisso
      * @return const_iterator&, indirizzo dell'oggetto di invocazione + 1
