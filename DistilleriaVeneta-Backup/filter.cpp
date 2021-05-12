@@ -1,9 +1,6 @@
 #include "filter.h"
 
-filter::filter()
-{
-  
-}
+filter::filter() {}
 
 u_vector<deep_ptr<product>> filter::colors(const u_vector<deep_ptr<product>>& _vector, const unsigned int __value) {
   u_vector<deep_ptr<product>> _result;

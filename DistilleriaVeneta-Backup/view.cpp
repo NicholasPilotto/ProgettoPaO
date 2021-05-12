@@ -84,7 +84,7 @@ void view::pay_banner() {
   datas->addWidget(new QLabel(QString::number(calc_total(), 'f', 2) + " €"), 1, 1, 1, 1, Qt::AlignRight);
   datas->addWidget(new QLabel("Resto: "), 2, 0, 1, 1);
   datas->addWidget(new QLabel(QString::number(pay_customer->text().toDouble() - calc_total(), 'f', 2) + " €"), 2, 1, 1, 1, Qt::AlignRight);
-  datas->addWidget(ok_button,3,0,1,2,Qt::AlignRight);
+  datas->addWidget(ok_button, 3, 0, 1, 2, Qt::AlignRight);
 
   pay_dialog->setLayout(datas);
 

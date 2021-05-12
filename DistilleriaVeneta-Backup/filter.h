@@ -9,8 +9,7 @@
 #include "./Utilities/deep_ptr.hpp"
 #include "./Utilities/u_vector.hpp"
 
-class filter
-{
+class filter {
  public:
   filter();
   static u_vector<deep_ptr<product>> colors(const u_vector<deep_ptr<product>>& = {}, const unsigned int = 0);
@@ -18,4 +17,4 @@ class filter
   static u_vector<deep_ptr<product>> tastes(const u_vector<deep_ptr<product>>& = {}, const taste = taste::_amable);
 };
 
-#endif // FILTER_H
+#endif  // FILTER_H

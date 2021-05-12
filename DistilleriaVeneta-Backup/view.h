@@ -78,7 +78,7 @@ class view : public QWidget {
   void add_elements();
   void create_connections();
  public slots:
-  void pay_banner();                                 // FATTO
+  void pay_banner();  // FATTO
 };
 
 #endif  // VIEW_H_
