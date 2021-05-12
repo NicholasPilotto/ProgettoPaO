@@ -32,6 +32,7 @@ class cream : public non_spirits {
   virtual cream* clone() const override;
   double kind_price() const;
   double price_increment() const;
+  virtual std::string get_product() const;
   virtual double get_price() const override;
   virtual double promotion() const override;
   virtual u_vector<taste> get_tastes() const override;

@@ -33,6 +33,7 @@ class product {
   double kind_price() const;
   double price_increment() const;
   virtual double get_price() const = 0;  // chiamata ricorsiva e prezzi sballati
+  virtual std::string get_product() const = 0;
   virtual std::string code() const = 0;
   virtual double promotion() const = 0;
   virtual u_vector<taste> get_tastes() const = 0;

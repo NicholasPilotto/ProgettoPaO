@@ -47,6 +47,8 @@ double cream::kind_price() const {
 
 double cream::price_increment() const { return kind_price() + cream_incr; }
 
+std::string cream::get_product() const { return "cream"; }
+
 double cream::get_price() const {
   return non_spirits::get_price() + price_increment();
   ;

@@ -43,6 +43,8 @@ double liquor::kind_price() const {
 
 double liquor::price_increment() const { return kind_price() + liquor_incr + tastes.size() * taste_incr; }
 
+std::string liquor::get_product() const { return "liquor"; }
+
 double liquor::get_price() const { return spirits::get_price() + price_increment(); }
 
 double liquor::promotion() const { return get_price() * discount_liquor; }
