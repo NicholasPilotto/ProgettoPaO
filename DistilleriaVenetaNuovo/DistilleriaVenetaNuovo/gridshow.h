@@ -9,6 +9,7 @@
 #include "Hierarchy/product.h"
 #include "Utilities/deep_ptr.hpp"
 #include "Utilities/u_vector.hpp"
+#include "qstackedwidgethover.h"
 #include "overlay.h"
 #include "qproduct.h"
 
@@ -19,17 +20,11 @@ class QGridShow : public QWidget {
   QScrollArea* product_area;
   QFrame* contenitore;
   QGridLayout* grid;
-  QStackedWidget* stack;
+  QStackedWidgetHover* stack;
 
  public:
   QGridShow(QWidget* parent = nullptr);
   void refresh_grid(const u_vector<deep_ptr<product>>& _products);
-
-signals:
-  void mouseMoveEvent();
-
-public slots:
-  void change_overlay();
 };
 
 #endif  // GRIDSHOW_H

@@ -36,10 +36,7 @@ void QGridShow::refresh_grid(const u_vector<deep_ptr<product>>& _products) {
     for (; it != end; it++) {
       QProduct* p = new QProduct(*it);
       QOverlay* o = new QOverlay();
-      stack = new QStackedWidget(this);
-      stack->addWidget(p);
-      stack->addWidget(o);
-      stack->setMouseTracking(true);
+      stack = new QStackedWidgetHover(p,o);
 
       grid->addWidget(stack, r, c);
 
@@ -49,8 +46,5 @@ void QGridShow::refresh_grid(const u_vector<deep_ptr<product>>& _products) {
       } else
         c++;
     }
-}
 
-void QGridShow::change_overlay() {
-    stack->setCurrentIndex(1);
 }
