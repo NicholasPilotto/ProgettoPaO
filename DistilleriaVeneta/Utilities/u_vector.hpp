@@ -46,11 +46,11 @@ class u_vector {
     friend class u_vector<T>;
 
    private:
-    const T* pointer;
+    const T* p;
 
     /**
      * @brief costruttore di const_iterator
-     * @param p: const T*, puntatore con cui inizializzare `pointer`
+     * @param p: const T*, puntatore con cui inizializzare `p`
      * @param pte: bool, valore indicante se è past the end, di default = false
      */
     const_iterator(const T*);
@@ -61,6 +61,7 @@ class u_vector {
     using value_type = T;
     using pointer = value_type*;
     using reference = value_type&;
+
     /**
      * @brief operator++ prefisso
      * @return const_iterator&, indirizzo dell'oggetto di invocazione + 1
@@ -184,16 +185,21 @@ class u_vector {
     friend class u_vector<T>;
 
    private:
-    T* pointer;
+    T* p;
 
     /**
      * @brief costruttore di iterator
-     * @param p: const T*, puntatore con cui inizializzare `pointer`
+     * @param p: const T*, puntatore con cui inizializzare `p`
      * @param pte: bool, valore indicante se è past the end, di default = false
      */
     iterator(T*);
 
    public:
+    using iterator_category = std::forward_iterator_tag;
+    using difference_type = std::ptrdiff_t;
+    using value_type = T;
+    using pointer = value_type*;
+    using reference = value_type&;
     /**
      * @brief operator++ prefisso
      * @return iterator&, indirizzo dell'oggetto di invocazione + 1
@@ -569,197 +575,197 @@ class u_vector {
 //* ---------- ITERATOR ----------
 
 template <class T>
-u_vector<T>::iterator::iterator(T* p) : pointer(p) {}
+u_vector<T>::iterator::iterator(T* p) : p(p) {}
 
 template <class T>
 typename u_vector<T>::iterator& u_vector<T>::iterator::operator++() {
-  pointer++;
+  p++;
   return *this;
 }
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::iterator::operator++(int) {
   iterator aux(*this);
-  pointer++;
+  p++;
   return aux;
 }
 
 template <class T>
 typename u_vector<T>::iterator& u_vector<T>::iterator::operator--() {
-  pointer--;
+  p--;
   return *this;
 }
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::iterator::operator--(int) {
   iterator aux(*this);
-  pointer--;
+  p--;
   return aux;
 }
 
 template <class T>
 bool u_vector<T>::iterator::operator==(const u_vector<T>::iterator& it) const {
-  return pointer == it.pointer;
+  return p == it.p;
 }
 
 template <class T>
 bool u_vector<T>::iterator::operator!=(const u_vector<T>::iterator& it) const {
-  return pointer != it.pointer;
+  return p != it.p;
 }
 
 template <class T>
 bool u_vector<T>::iterator::operator<(const u_vector<T>::iterator& it) const {
-  return pointer < it.pointer;
+  return p < it.p;
 }
 
 template <class T>
 bool u_vector<T>::iterator::operator<=(const u_vector<T>::iterator& it) const {
-  return pointer <= it.pointer;
+  return p <= it.p;
 }
 
 template <class T>
 bool u_vector<T>::iterator::operator>(const u_vector<T>::iterator& it) const {
-  return pointer > it.pointer;
+  return p > it.p;
 }
 
 template <class T>
 bool u_vector<T>::iterator::operator>=(const u_vector<T>::iterator& it) const {
-  return pointer >= it.pointer;
+  return p >= it.p;
 }
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::iterator::operator+(int value) const {
-  return iterator(pointer + value);
+  return iterator(p + value);
 }
 
 template <class T>
 typename u_vector<T>::iterator& u_vector<T>::iterator::operator+=(int value) {
-  pointer += value;
+  p += value;
   return *this;
 }
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::iterator::operator-(int value) const {
-  return iterator(pointer - value);
+  return iterator(p - value);
 }
 
 template <class T>
 typename u_vector<T>::iterator& u_vector<T>::iterator::operator-=(int value) {
-  pointer += value;
+  p += value;
   return *this;
 }
 
 template <class T>
 T& u_vector<T>::iterator::operator*() const {
-  return *pointer;
+  return *p;
 }
 
 template <class T>
 T* u_vector<T>::iterator::operator->() const {
-  return pointer;
+  return p;
 }
 
 template <class T>
 T& u_vector<T>::iterator::operator[](unsigned int index) const {
-  return *(pointer + index);
+  return *(p + index);
 }
 
 //* ---------- CONST_ITERATOR ----------
 
 template <class T>
-u_vector<T>::const_iterator::const_iterator(const T* p) : pointer(p) {}
+u_vector<T>::const_iterator::const_iterator(const T* p) : p(p) {}
 
 template <class T>
 typename u_vector<T>::const_iterator& u_vector<T>::const_iterator::operator++() {
-  pointer++;
+  p++;
   return *this;
 }
 
 template <class T>
 typename u_vector<T>::const_iterator u_vector<T>::const_iterator::operator++(int) {
   const_iterator aux(*this);
-  pointer++;
+  p++;
   return aux;
 }
 
 template <class T>
 typename u_vector<T>::const_iterator& u_vector<T>::const_iterator::operator--() {
-  pointer--;
+  p--;
   return *this;
 }
 
 template <class T>
 typename u_vector<T>::const_iterator u_vector<T>::const_iterator::operator--(int) {
   const_iterator aux(*this);
-  pointer--;
+  p--;
   return aux;
 }
 
 template <class T>
 bool u_vector<T>::const_iterator::operator==(const u_vector<T>::const_iterator& it) const {
-  return pointer == it.pointer;
+  return p == it.p;
 }
 
 template <class T>
 bool u_vector<T>::const_iterator::operator!=(const u_vector<T>::const_iterator& it) const {
-  return pointer != it.pointer;
+  return p != it.p;
 }
 
 template <class T>
 bool u_vector<T>::const_iterator::operator<(const u_vector<T>::const_iterator& it) const {
-  return pointer < it.pointer;
+  return p < it.p;
 }
 
 template <class T>
 bool u_vector<T>::const_iterator::operator<=(const u_vector<T>::const_iterator& it) const {
-  return pointer <= it.pointer;
+  return p <= it.p;
 }
 
 template <class T>
 bool u_vector<T>::const_iterator::operator>(const u_vector<T>::const_iterator& it) const {
-  return pointer > it.pointer;
+  return p > it.p;
 }
 
 template <class T>
 bool u_vector<T>::const_iterator::operator>=(const u_vector<T>::const_iterator& it) const {
-  return pointer >= it.pointer;
+  return p >= it.p;
 }
 
 template <class T>
 typename u_vector<T>::const_iterator u_vector<T>::const_iterator::operator+(int value) const {
-  return const_iterator(pointer + value);
+  return const_iterator(p + value);
 }
 
 template <class T>
 typename u_vector<T>::const_iterator& u_vector<T>::const_iterator::operator+=(int value) {
-  pointer += value;
+  p += value;
   return *this;
 }
 
 template <class T>
 typename u_vector<T>::const_iterator u_vector<T>::const_iterator::operator-(int value) const {
-  return const_iterator(pointer - value);
+  return const_iterator(p - value);
 }
 
 template <class T>
 typename u_vector<T>::const_iterator& u_vector<T>::const_iterator::operator-=(int value) {
-  pointer -= value;
+  p -= value;
   return *this;
 }
 
 template <class T>
 const T& u_vector<T>::const_iterator::operator*() const {
-  return *pointer;
+  return *p;
 }
 
 template <class T>
 const T* u_vector<T>::const_iterator::operator->() const {
-  return &pointer;
+  return &p;
 }
 
 template <class T>
 const T& u_vector<T>::const_iterator::operator[](unsigned int index) const {
-  return *(pointer + index);
+  return *(p + index);
 }
 
 //* ---------- U_VECTOR ----------
@@ -912,7 +918,7 @@ template <class T>
 typename u_vector<T>::iterator u_vector<T>::insert(u_vector<T>::iterator position, const T& element) {
   ++__size;
   if (__size >= __capacity) {
-    unsigned int offset = static_cast<unsigned int>(position.pointer - array);
+    unsigned int offset = static_cast<unsigned int>(position.p - array);
     __capacity *= 2;
     T* aux = deep_copy(offset, __capacity);
     aux[offset] = element;
@@ -930,7 +936,7 @@ typename u_vector<T>::iterator u_vector<T>::insert(u_vector<T>::iterator positio
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::insert(u_vector<T>::const_iterator position, const T& element) {
-  auto it = iterator(const_cast<T*>(position.pointer));
+  auto it = iterator(const_cast<T*>(position.p));
   return insert(it, element);
 }
 
@@ -938,7 +944,7 @@ template <class T>
 void u_vector<T>::insert(u_vector<T>::iterator position, size_t count, const T& element) {
   __size += count;
   if (__size >= __capacity) {
-    int offset = static_cast<int>(position.pointer - array);
+    int offset = static_cast<int>(position.p - array);
     __capacity = 2 * (__size + count);
     T* aux = deep_copy(offset, __capacity);
     for (size_t i = 0; i < count; ++i) {
@@ -1003,7 +1009,7 @@ typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::iterator position
   u_vector<T>::iterator last_iterator = end();
   if (position < last_iterator && position >= first_iterator) {
     T* aux = nullptr;
-    unsigned int offset = static_cast<unsigned int>(position.pointer - array);
+    unsigned int offset = static_cast<unsigned int>(position.p - array);
     iterator result = iterator(array + offset);
     aux = deep_copy(offset, __capacity);
     std::copy(position + 1, last_iterator, iterator(aux + offset));
@@ -1020,8 +1026,8 @@ template <class T>
 typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::iterator first, u_vector<T>::iterator last) {
   u_vector<T>::iterator last_iterator = end();
   if (first != last) {
-    unsigned int offset_first = static_cast<unsigned int>(first.pointer - array);
-    unsigned int offset_last = static_cast<unsigned int>(last.pointer - array);
+    unsigned int offset_first = static_cast<unsigned int>(first.p - array);
+    unsigned int offset_last = static_cast<unsigned int>(last.p - array);
     unsigned int range = offset_last - offset_first;
     T* aux = deep_copy(offset_first, __capacity);
     std::copy(last, last_iterator, iterator(aux + offset_first));
@@ -1035,12 +1041,12 @@ typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::iterator first, u
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::const_iterator position) {
-  return erase(iterator(const_cast<T*>(position.pointer)));
+  return erase(iterator(const_cast<T*>(position.p)));
 }
 
 template <class T>
 typename u_vector<T>::iterator u_vector<T>::erase(u_vector<T>::const_iterator first, u_vector<T>::const_iterator last) {
-  return erase(iterator(const_cast<T*>(first.pointer)), iterator(const_cast<T*>(last.pointer)));
+  return erase(iterator(const_cast<T*>(first.p)), iterator(const_cast<T*>(last.p)));
 }
 
 template <class T>
