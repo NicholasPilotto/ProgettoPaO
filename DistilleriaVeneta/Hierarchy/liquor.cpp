@@ -43,6 +43,8 @@ double liquor::kind_price() const {
 
 double liquor::price_increment() const { return kind_price() + liquor_incr + tastes.size() * taste_incr; }
 
+std::string liquor::get_product() const { return "liquor"; }
+
 double liquor::get_price() const { return spirits::get_price() + price_increment(); }
 
 double liquor::promotion() const { return get_price() * discount_liquor; }
@@ -66,7 +68,11 @@ std::string liquor::code() const {
   return aux;
 }
 
-std::string liquor::get_image_path() const { return spirits::get_image_path() + "liquor/" + get_name(); }
+std::string liquor::get_image_path() const {
+  std::string name = get_name();
+  name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
+  return spirits::get_image_path() + "liquor/" + name;
+}
 
 liquor* liquor::create(QMap<QString, QVariant>& m) const {
   color _color = static_cast<color>(m["color"].toString().toInt());

@@ -1,5 +1,7 @@
 #include "old.h"
 
+#include <QDebug>
+
 old::aux_map_initializer::aux_map_initializer() {
   ptr = new old();
   _map["old"] = ptr;
@@ -31,15 +33,17 @@ double const old::discount_old = 0.80;
 old* old::clone() const { return new old(*this); }
 
 double old::kind_price() const {
-  if (kind_price() == small) {
+  if (get_kind() == small) {
     return -1.50 + (is_barrique() ? -1.50 : 0.00);
-  } else if (kind_price() == big) {
+  } else if (get_kind() == big) {
     return 1.00 + (is_barrique() ? 1.20 : 0.00);
   }
   return 0.00;
 }
 
 double old::price_increment() const { return kind_price() + month_incr * month + (is_barrique() ? 3.00 : 0.00); }
+
+std::string old::get_product() const { return "old"; }
 
 double old::get_price() const { return grappa::get_price() + price_increment(); }
 
@@ -64,7 +68,11 @@ std::string old::code() const {
   return aux;
 }
 
-std::string old::get_image_path() const { return grappa::get_image_path() + "old/" + get_name(); }
+std::string old::get_image_path() const {
+  std::string name = get_name();
+  name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
+  return grappa::get_image_path() + "old/" + name;
+}
 
 bool old::is_barrique() const { return barrique; }
 

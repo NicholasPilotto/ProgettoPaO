@@ -6,7 +6,7 @@ product::product(bottle_size bs, const std::string& n, double ac) : kind(bs), na
 
 const double product::fixed_price = 5.00;
 
-double product::get_default_price() const { return kind_price() + fixed_price; }
+double product::get_default_price() const { return price_increment() + fixed_price + taxes(); }
 
 product::product(const product& p) : kind(p.kind), name(p.name), alcohol_content(p.alcohol_content < max_ac && p.alcohol_content >= min_ac ? p.alcohol_content : min_ac) {}
 
@@ -34,7 +34,9 @@ double product::kind_price() const {
   return 0.00;
 }
 
-std::string product::get_image_path() const { return "product/"; }
+double product::price_increment() const { return kind_price(); }
+
+std::string product::get_image_path() const { return ":/product/"; }
 
 std::string product::get_name() const { return name; }
 
@@ -51,6 +53,8 @@ double product::taxes() const {
 double product::get_alcohol_content() const { return alcohol_content; }
 
 bottle_size product::get_kind() const { return kind; }
+
+void product::set_kind_bottle(bottle_size __bottle_size) { kind = __bottle_size; }
 
 double product::operator+(const product& p) const { return get_price() + p.get_price(); }
 

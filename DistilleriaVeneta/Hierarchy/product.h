@@ -19,10 +19,10 @@ class product {
  protected:
   static const double fixed_price;
   double get_default_price() const;
-  inline static std::map<std::string, product*> _map;
+  inline static std::map<std::string, product*> _map;  // non inline
 
  public:
-  product(bottle_size = medium, const std::string& = "", double = min_ac);  // da controllare
+  product(bottle_size = medium, const std::string& = "", double = min_ac);
   product(const product&);
   product& operator=(const product&);
   virtual ~product() = default;
@@ -30,10 +30,11 @@ class product {
   static const double min_ac;
   static const double max_ac;
   virtual product* clone() const = 0;
-  virtual double kind_price() const;
-  virtual double price_increment() const = 0;
-  virtual double get_price() const = 0;  // chiamata ricorsiva
-  virtual std::string code() const = 0;  // problema delle prime tre lettere ricorsive con differenza tra creme/liquori e old/young
+  double kind_price() const;
+  double price_increment() const;
+  virtual double get_price() const = 0;  // chiamata ricorsiva e prezzi sballati
+  virtual std::string get_product() const = 0;
+  virtual std::string code() const = 0;
   virtual double promotion() const = 0;
   virtual u_vector<taste> get_tastes() const = 0;
   virtual color get_color() const = 0;
@@ -42,6 +43,7 @@ class product {
   double taxes() const;
   double get_alcohol_content() const;
   bottle_size get_kind() const;
+  void set_kind_bottle(bottle_size = bottle_size::medium);
   static product* unserialize(QMap<QString, QVariant>&);
   virtual product* create(QMap<QString, QVariant>&) const = 0;
   //	virtual std::string write() const = 0;

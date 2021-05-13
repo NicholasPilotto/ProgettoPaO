@@ -1,5 +1,7 @@
 #include "cream.h"
 
+#include <QDebug>
+
 cream::aux_map_initializer::aux_map_initializer() {
   ptr = new cream();
   _map["cream"] = ptr;
@@ -45,7 +47,12 @@ double cream::kind_price() const {
 
 double cream::price_increment() const { return kind_price() + cream_incr; }
 
-double cream::get_price() const { return non_spirits::get_price() + price_increment(); }
+std::string cream::get_product() const { return "cream"; }
+
+double cream::get_price() const {
+  return non_spirits::get_price() + price_increment();
+  ;
+}
 
 double cream::promotion() const { return get_price() * discount_cream; }
 
@@ -69,7 +76,11 @@ std::string cream::code() const {
   return aux;
 }
 
-std::string cream::get_image_path() const { return non_spirits::get_image_path() + "cream/" + get_name(); }
+std::string cream::get_image_path() const {
+  std::string name = get_name();
+  name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
+  return non_spirits::get_image_path() + "cream/" + name + ".png";
+}
 
 cream* cream::create(QMap<QString, QVariant>& m) const {
   color _color = static_cast<color>(m["color"].toString().toInt());

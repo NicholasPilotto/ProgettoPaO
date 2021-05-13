@@ -35,6 +35,8 @@ double young::kind_price() const {
 
 double young::price_increment() const { return kind_price(); }
 
+std::string young::get_product() const { return "young"; }
+
 double young::get_price() const { return grappa::get_price() + price_increment(); }
 
 double young::promotion() const { return get_price() * discount_young; }
@@ -58,7 +60,11 @@ std::string young::code() const {
   return aux;
 }
 
-std::string young::get_image_path() const { return grappa::get_image_path() + "young/" + get_name(); }
+std::string young::get_image_path() const {
+  std::string name = get_name();
+  name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
+  return grappa::get_image_path() + "young/" + name;
+}
 
 young* young::create(QMap<QString, QVariant>& m) const {
   color _color = static_cast<color>(m["color"].toString().toInt());

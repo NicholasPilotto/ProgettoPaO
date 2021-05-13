@@ -30,7 +30,6 @@ double grappa::price_increment() const { return kind_price() + grappa_incr; }
 
 double grappa::get_price() const { return spirits::get_price() + price_increment(); }
 
-// da modificare??
 std::string grappa::code() const { return "SG"; }
 
 std::string grappa::get_image_path() const { return spirits::get_image_path() + "grappa/"; }
