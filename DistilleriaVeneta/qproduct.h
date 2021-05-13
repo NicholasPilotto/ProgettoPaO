@@ -7,17 +7,23 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
+#include "Hierarchy/product.h"
 #include "Utilities/deep_ptr.hpp"
-#include "controller.h"
 
 class QProduct : public QWidget {
   Q_OBJECT
  private:
+  QVBoxLayout* mainlayout;
+  QHBoxLayout* image_layout;
+  QLabel* img;
+  QPixmap* pix;
   QFrame* left_widget_image;
   QLabel* left_widget_name;
   QLabel* left_widget_price;
 
  public:
-  explicit QProduct(deep_ptr<product>, QWidget* parent = nullptr);
+  explicit QProduct(const deep_ptr<product>&, QWidget* parent = nullptr);
+
 };
+
 #endif  // QPRODUCT_H
