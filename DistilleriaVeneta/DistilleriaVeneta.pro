@@ -9,15 +9,6 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-  controller.cpp \
-  io_json.cpp \
-  main.cpp \
-  model.cpp \
-    qproduct.cpp \
-  receipt.cpp \
-    showgrid.cpp \
-    showreceipt.cpp \
-  view.cpp \
   ./Hierarchy/product.cpp \
   ./Hierarchy/spirits.cpp \
   ./Hierarchy/grappa.cpp \
@@ -26,17 +17,21 @@ SOURCES += \
   ./Hierarchy/liquor.cpp \
   ./Hierarchy/non_spirits.cpp \
   ./Hierarchy/cream.cpp \
+  io_json.cpp \
+  main.cpp \
+  model.cpp \
+  view.cpp \
+  controller.cpp \
+  qproduct.cpp \
+  receipt.cpp \
+  showgrid.cpp \
+  showreceipt.cpp \
+  overlay.cpp \
+  qstackedwidgethover.cpp \
+  receiptshow.cpp \
+  gridshow.cpp \
 
 HEADERS += \
-  controller.h \
-  io_json.h \
-    qproduct.h \
-  receipt.h \
-  model.h \
-    showgrid.h \
-    showreceipt.h \
-  view.h \
-  ./Hierarchy/enum.h \
   ./Hierarchy/product.h \
   ./Hierarchy/spirits.h \
   ./Hierarchy/grappa.h \
@@ -45,9 +40,19 @@ HEADERS += \
   ./Hierarchy/liquor.h \
   ./Hierarchy/non_spirits.h \
   ./Hierarchy/cream.h \
-  ./Utilities/u_vector.hpp \
-  ./Utilities/deep_ptr.hpp \
-  ./Utilities/aux_func.hpp \
+  io_json.h \
+  main.h \
+  model.h \
+  view.h \
+  controller.h \
+  qproduct.h \
+  receipt.h \
+  showgrid.h \
+  showreceipt.h \
+  overlay.h \
+  qstackedwidgethover.h \
+  receiptshow.h \
+  gridshow.h \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
