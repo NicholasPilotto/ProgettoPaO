@@ -1,0 +1,20 @@
+QStackedWidget {
+    background-color: white;
+}
+
+QGridLayout {
+    background-color: white;
+}
+
+QScrollArea {
+    background-color: white;
+}
+
+QVBoxLayout {
+    background-color: white;
+}
+
+#contenitore-product {
+    background-color: white;
+}
+
