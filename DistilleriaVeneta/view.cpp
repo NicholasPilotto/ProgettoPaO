@@ -1,42 +1,281 @@
 #include "view.h"
-// Nuova versione
 
-// TODO
-unsigned int view::number_items() {
-  unsigned int count = 0;
-  // for per sommare tutti i numeri di elementi
-  return count;
+void view::add_menu_bar(QVBoxLayout* main_layout) {
+
+    menu_bar = new QMenuBar(this);
+
+    file = new QMenu("File", menu_bar);
+    filters = new QMenu("Filtri", menu_bar);
+
+    alcohols = new QMenu("Contenuto Alcolico", filters);
+    colors = new QMenu("Colore", filters);
+    flavors = new QMenu("Gusto", filters);
+
+    menu_bar->addMenu(file);
+    menu_bar->addMenu(filters);
+
+    filters->addMenu(alcohols);
+    filters->addMenu(colors);
+    filters->addMenu(flavors);
+
+    // Azioni in file
+
+    close_action = new QAction("Chiudi", file);
+    const QKeySequence* closing = new QKeySequence("Ctrl+Q");
+    close_action->setShortcut(*closing);
+    file->addAction(close_action);
+
+    // Azioni in Contenuto Alcolico
+
+    QAction* cresc = new QAction("Ordine Crescente", alcohols);
+    QAction* desc = new QAction("Ordine Decrescente", alcohols);
+    cresc->setCheckable(true);
+    cresc->setChecked(true);
+    desc->setCheckable(true);
+    desc->setChecked(false);
+    alcohols->addAction(cresc);
+    alcohols->addAction(desc);
+
+    // Azioni in Colore
+
+    u_vector<QString> colours_actions = {
+          "Giallo",
+          "Rosso",
+          "Rosa",
+          "Marrone",
+          "Nero",
+          "Violetto",
+          "Bianco",
+          "Verde",
+          "Bianco Trasparente",
+          "Giallo Trasparente",
+      };
+
+      for (auto cit = colours_actions.const_begin(); cit != colours_actions.const_end(); cit++) {
+        QAction* action = new QAction(*cit,colors);
+        action->setCheckable(true);
+        action->setChecked(false);
+        colors->addAction(action);
+      }
+
+      // Azioni in gusto
+
+      u_vector<QString> flavors_actions = {
+          "Nocciola",
+          "Caffè",
+          "Liquirizia",
+          "Cioccolato",
+          "Uovo",
+          "Rum",
+          "Panna",
+          "Fragola",
+          "Frutti di Bosco",
+          "Mirtillo",
+          "Ribes",
+          "Prugna",
+          "Miele",
+          "Secco",
+          "Fruttato",
+          "Amabile",
+          "Menta",
+      };
+
+      for (auto cit = flavors_actions.const_begin(); cit != flavors_actions.const_end(); cit++) {
+        QAction* action = new QAction(*cit, flavors);
+        action->setCheckable(true);
+        action->setChecked(false);
+        flavors->addAction(action);
+      }
+
+      // Aggiunta del menù
+
+      main_layout->addWidget(menu_bar);
+
 }
 
-double view::calc_total_per_item() {
-  double total_per_item = 0.0;
-  return total_per_item /* moltiplicato per number of items */;
+void view::add_title(QVBoxLayout* layout, const QString& message) {
+
+      title = new QLabel(message,this);
+      title->setAlignment(Qt::AlignCenter);
+      title->setContentsMargins(5, 5, 5, 5);
+
+      layout->addWidget(title);
+
 }
 
-//u_vector<deep_ptr<product> > view::load_products(const std::string & path) const
-//{
-//    io_json* io = new io_json(path);
-//    return io->read();
-//}
+QHBoxLayout* view::add_filter_buttons() {
 
-u_vector<deep_ptr<product> > view::loading_products() const
-{
-    return presenter->load_products();
+    filter_buttons = new QHBoxLayout(this);
+
+    // Creazione bottoni
+
+    grappa_button = new QPushButton("Grappa");
+    liquor_button = new QPushButton("Liquore");
+    cream_button = new QPushButton("Crema");
+
+    // Aggiunta bottoni
+
+    filter_buttons->addWidget(grappa_button);
+    filter_buttons->addWidget(liquor_button);
+    filter_buttons->addWidget(cream_button);
+
+    // Ritorno layout
+
+    filter_buttons->setSpacing(50);
+    filter_buttons->setContentsMargins(50, 20, 50, 20);
+    return filter_buttons;
+
 }
 
-void view::refresh_receipt(u_vector<pair<deep_ptr<product>, int> > items) const
-{
-   showrec->refreshtable(items);
+void view::add_grid(QHBoxLayout* object_layout) {
+
+    left_app = new QVBoxLayout(this);
+
+    // Aggiunta sottotitolo
+
+    add_title(left_app, "Prodotti");
+
+    // Creazione e aggiunta griglia vuota
+
+    product_area = new QGridShow();
+    left_app->addWidget(product_area);
+
+    // Aggiunta pulsanti di filtro veloci
+
+    left_app->addLayout(add_filter_buttons());
+
+    // Aggiunta parte sinistra al layout orizzontale
+
+    left_app->setSpacing(0);
+    left_app->setContentsMargins(20, 20, 20, 20);
+    object_layout->addLayout(left_app);
+
 }
 
-double view::calc_total() {
-  double total = 0.0;
-  // for per sommare tutti i prodotti a carrello tramite la funzione calc_total_per_item
-  return total;
+QHBoxLayout* view::add_receipt_buttons() {
+
+    receipt_buttons = new QHBoxLayout(this);
+
+    // Creazione bottoni
+
+    delete_receipt = new QPushButton("Elimina");
+    pay_button = new QPushButton("Paga");
+
+    // Aggiunta bottoni
+
+    receipt_buttons->addWidget(delete_receipt);
+    receipt_buttons->addWidget(pay_button);
+
+    // Ritorno layout
+
+    receipt_buttons->setSpacing(50);
+    receipt_buttons->setContentsMargins(100, 20, 100, 20);
+    return receipt_buttons;
+
 }
 
-void view::show_warning(const QString &message) {
-  QDialog *dialog = new QDialog(this);
+QGridLayout* view::add_total() {
+    resoconto = new QGridLayout();
+
+    resoconto->addWidget(new QLabel("TOTALE:"), 0, 0, 1, 1, Qt::AlignLeft);
+//    resoconto->addWidget(new QLabel("€ -.--"), 0, 1, 1, 1, Qt::AlignRight);
+    resoconto->addWidget(new QLabel("Tasse:"), 1, 0, 1, 1, Qt::AlignLeft);
+//    resoconto->addWidget(new QLabel("€ -.--"), 1, 1, 1, 1, Qt::AlignRight);
+
+    return resoconto;
+}
+
+void view::add_receipt(QHBoxLayout* object_layout) {
+
+    right_app = new QVBoxLayout(this);
+
+    // Aggiungi sottotitolo
+
+    add_title(right_app, "Scontrino");
+
+    // Creazione e aggiunta della tabella
+
+    receipt_area = new QReceiptShow();
+    right_app->addWidget(receipt_area);
+
+    // Aggiunta del totale dello scontrino
+
+    right_app->addLayout(add_total());
+
+    // Aggiunta dei pulsanti per lo scontrino
+
+    right_app->addLayout(add_receipt_buttons());
+
+    // Aggiunta layout
+
+    right_app->setSpacing(0);
+    right_app->setContentsMargins(20, 20, 20, 20);
+    object_layout->addLayout(right_app);
+
+}
+
+void view::update_json() {
+
+    auto aux = presenter->get_products_json();
+    product_area->refresh_grid(aux);
+
+}
+
+
+
+view::view(QWidget* parent) : QWidget(parent) {
+
+    main_layout = new QVBoxLayout(this);
+    object_layout = new QHBoxLayout();
+
+    // Aggiunta della barra dei menù
+
+    add_menu_bar(main_layout);
+
+    // Aggiunta del titolo
+
+    add_title(main_layout, "Distilleria Veneta");
+
+    // Creazione  layout orizzontale con aggiunta delle 2 tabelle (left-to-right)
+
+    add_grid(object_layout);
+    add_receipt(object_layout);
+
+    // Aggiunta del layout al main e setto il main
+
+    main_layout->addLayout(object_layout);
+    main_layout->setSpacing(20);
+    setLayout(main_layout);
+
+}
+
+void view::set_controller(controller* c) {
+
+    // Controller viene settato
+
+    presenter = c;
+
+    // Update del file json
+
+    update_json();
+
+    // Segnali
+
+    // Segnali della Menubar
+    connect(file->actions()[0], SIGNAL(triggered()), this, SLOT(close()));
+
+    // Segnali right_app
+    connect(pay_button, SIGNAL(clicked()), this, SLOT(pay_banner()));
+
+}
+
+void view::show_warning(const QString& message) {
+
+  // Creazione dialog
+
+  QDialog* dialog = new QDialog(this);
+
+  // Aggiunta Label e show
 
   dialog->setLayout(new QHBoxLayout);
   dialog->layout()->addWidget(new QLabel(message, dialog));
@@ -45,182 +284,37 @@ void view::show_warning(const QString &message) {
   dialog->setMaximumWidth(500);
 
   dialog->show();
+  
 }
 
-void view::add_menu_bar(QVBoxLayout *main_layout) {
-  menu_bar = new QMenuBar(this);
+// SLOTS
 
-  QMenu *file;
-  QMenu *filters;
-  QMenu *alcohols;
-  QMenu *colours;
-  QMenu *flavors;
+void view::pay_banner() {
+    pay_dialog = new QDialog(this);
 
-  file = new QMenu("File", menu_bar);
-  filters = new QMenu("Filtri", menu_bar);
-  colours = new QMenu("Colore", filters);
-  alcohols = new QMenu("Contenuto Alcolico", filters);
-  // codes = new QAction("Codice", filters);
-  flavors = new QMenu("Gusto", filters);
+    QGridLayout* datas = new QGridLayout(pay_dialog);
 
-  menu_bar->addMenu(file);
-  menu_bar->addMenu(filters);
-  filters->addMenu(alcohols);
-  // filters->addAction(codes);
-  filters->addMenu(colours);
-  filters->addMenu(flavors);
+    QLineEdit* pay_customer = new QLineEdit(pay_dialog);
+    pay_customer->setValidator(new QDoubleValidator(0, INT16_MAX, 2, this));
 
-  QAction *close_action = new QAction("Chiudi", file);
-  const QKeySequence *closing = new QKeySequence("Ctrl+Q");
-  close_action->setShortcut(*closing);
-  file->addAction(close_action);
+    QPushButton* ok_button = new QPushButton("OK",pay_dialog);
+    QPushButton* annulla_button = new QPushButton("Annulla",pay_dialog);
 
-  // Alcohols incompleto
-  // Si può risolvere con Qlistview(non utilizzata per il momento)
-  // Problema di non contemporaneità
-  QAction *cresc = new QAction("Ordine Crescente", alcohols);
-  QAction *desc = new QAction("Ordine Decrescente", alcohols);
-  cresc->setCheckable(true);
-  cresc->setChecked(true);
-  desc->setCheckable(true);
-  desc->setChecked(false);
-  alcohols->addAction(cresc);
-  alcohols->addAction(desc);
+    datas->addWidget(new QLabel("Il cliente ha pagato:",pay_dialog), 0, 0, 1, 1);
+    datas->addWidget(pay_customer, 0, 1, 1, 1);
+    datas->addWidget(new QLabel("Totale dovuto: ",pay_dialog), 1, 0, 1, 1);
+    datas->addWidget(new QLabel(QString::number(presenter->total_price(), 'f', 2) + " €",pay_dialog), 1, 1, 1, 1, Qt::AlignRight);
+    datas->addWidget(new QLabel("Resto: ",pay_dialog), 2, 0, 1, 1);
+    datas->addWidget(new QLabel(QString::number(pay_customer->text().toDouble() - presenter->total_price(), 'f', 2) + " €",pay_dialog), 2, 1, 1, 1, Qt::AlignRight);
+    datas->addWidget(annulla_button,3,0,1,1,Qt::AlignLeft);
+    datas->addWidget(ok_button,3,1,1,1,Qt::AlignRight);
 
-  // Colours
-  u_vector<QString> colours_actions = {
-      "Giallo", "Rosso", "Rosa", "Marrone", "Nero", "Violetto", "Bianco", "Verde", "Bianco Trasparente", "Giallo Trasparente",
-  };
-  for (auto cit = colours_actions.const_begin(); cit != colours_actions.const_end(); cit++) {
-    QAction *action = new QAction(*cit, colours);
-    action->setCheckable(true);
-    action->setChecked(false);
-    colours->addAction(action);
-  }
+    pay_dialog->setLayout(datas);
 
-  // Flavors incompleto
-  u_vector<QString> flavors_actions(17, 17);
-  flavors_actions = {"Nocciola", "Caffè", "Liquirizia", "Cioccolato", "Uovo", "Rum", "Panna", "Fragola", "Frutti di Bosco", "Mirtillo", "Ribes", "Prugna", "Miele", "Secco", "Fruttato", "Amabile", "Menta"};
-  for (auto cit = flavors_actions.const_begin(); cit != flavors_actions.const_end(); cit++) {
-    QAction *action = new QAction(*cit, flavors);
-    action->setCheckable(true);
-    action->setChecked(false);
-    flavors->addAction(action);
-  }
+    pay_dialog->layout()->setAlignment(Qt::AlignCenter);
+    pay_dialog->setMinimumWidth(300);
+    pay_dialog->setMinimumHeight(175);
+    // chiamare elimina tutto poichè il tutto viene pagato e o scontrino ritorna a 0 elementi (SIGNAL E SLOT)
 
-  connect(file->actions()[0], SIGNAL(triggered()), this, SLOT(close()));
-
-  main_layout->addWidget(menu_bar);
-}
-
-void view::add_title(QVBoxLayout *main_layout) {
-  QLabel *title = new QLabel("Distilleria Veneta");
-
-  title->setAlignment(Qt::AlignCenter);
-
-  main_layout->addWidget(title);
-}
-
-void view::add_grid(QHBoxLayout *main_object_layout) {
-  QVBoxLayout *left_app = new QVBoxLayout;
-
-  QLabel *products_title = new QLabel("Prodotti");
-  products_title->setContentsMargins(0, 20, 0, 20);
-  products_title->setAlignment(Qt::AlignCenter);
-
-  left_app->addWidget(products_title);
-
-  auto products = loading_products();
-
-  showgrid* grid = new showgrid(products);
-
-  left_app->addWidget(grid);
-  left_app->addLayout(add_filter_buttons());
-  left_app->setSpacing(0);
-  left_app->setContentsMargins(20, 20, 20, 20);
-
-  main_object_layout->addLayout(left_app);
-}
-
-// Utilizzare il ciclo for per l'inizializzazione
-void view::add_receipt(QHBoxLayout *main_object_layout) {
-  QVBoxLayout *right_app = new QVBoxLayout;
-
-  // Receipt Title
-
-  QLabel *receipt_title = new QLabel("Scontrino");
-  receipt_title->setAlignment(Qt::AlignCenter);
-  receipt_title->setContentsMargins(0, 20, 0, 20);
-
-  // List
-  showrec = new showreceipt();
-
-  // Right app
-
-  right_app->addWidget(receipt_title);
-  right_app->addWidget(showrec);
-  right_app->addLayout(add_receipt_buttons());
-
-  right_app->setSpacing(0);
-  right_app->setContentsMargins(20, 20, 20, 20);
-
-  main_object_layout->addLayout(right_app);
-}
-
-// SetShortcut
-
-QHBoxLayout *view::add_filter_buttons() {
-  QHBoxLayout *filter_buttons = new QHBoxLayout;
-
-  grappa_button = new QPushButton("Grappa");
-  liquor_button = new QPushButton("Liquore");
-  cream_button = new QPushButton("Crema");
-
-  filter_buttons->addWidget(grappa_button);
-  filter_buttons->addWidget(liquor_button);
-  filter_buttons->addWidget(cream_button);
-  filter_buttons->setSpacing(50);
-  filter_buttons->setContentsMargins(50, 20, 50, 20);
-
-  return filter_buttons;
-}
-
-QHBoxLayout *view::add_receipt_buttons() {
-  QHBoxLayout *receipt_buttons = new QHBoxLayout;
-
-  pay_button = new QPushButton("Elimina");
-  delete_receipt = new QPushButton("Paga");
-
-  receipt_buttons->addWidget(pay_button);
-  receipt_buttons->addWidget(delete_receipt);
-  receipt_buttons->setSpacing(50);
-  receipt_buttons->setContentsMargins(100, 20, 100, 20);
-
-  return receipt_buttons;
-}
-
-view::view(QWidget *parent) : QWidget(parent) {
-  QVBoxLayout *main_layout = new QVBoxLayout;
-  QHBoxLayout *main_object_layout = new QHBoxLayout;
-
-  add_menu_bar(main_layout);
-
-  add_title(main_layout);
-
-  add_grid(main_object_layout);
-
-  add_receipt(main_object_layout);
-
-  main_layout->addLayout(main_object_layout);
-
-  main_layout->setSpacing(20);
-  setLayout(main_layout);
-}
-
-void view::set_controller(controller * ctr)
-{
-   presenter = ctr;
-
-   //segnali
-   //segnale inserimento OK su prodotto -> slot: refresh_receipt
+    pay_dialog->show();
 }

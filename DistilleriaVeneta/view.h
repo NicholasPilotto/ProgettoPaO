@@ -1,66 +1,76 @@
 #ifndef VIEW_H_
 #define VIEW_H_
 
-#include <QBoxLayout>
-#include <QDialog>
-#include <QFileDialog>
-#include <QGridLayout>
+#include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QMenuBar>
+#include <QTableView>
+#include <QGridLayout>
+#include <QScrollArea>
+#include <QDialog>
+#include <QPushButton>
 #include <QLabel>
 #include <QLineEdit>
-#include <QListWidget>
-#include <QMenuBar>
-#include <QPushButton>
-#include <QScrollArea>
-#include <QScrollBar>
 #include <QString>
-#include <QTableView>
-#include <QVBoxLayout>
 
+
+
+#include "./Utilities/deep_ptr.hpp"
 #include "./Utilities/u_vector.hpp"
+#include "controller.h"
+#include "gridshow.h"
 #include "qproduct.h"
-#include "showgrid.h"
-#include "showreceipt.h"
+#include "receiptshow.h"
 
 class controller;
-class showreceipt;
 
 class view : public QWidget {
   Q_OBJECT
  private:
-  QMenuBar* menu_bar;               // Used
   QVBoxLayout* main_layout;         // Used
-  QHBoxLayout* main_object_layout;  // Used
-  QLabel* name_label;
-  QGridLayout* product_grid;
-  QPushButton* grappa_button;
-  QPushButton* liquor_button;
-  QPushButton* cream_button;
-  QPushButton* delete_receipt;
-  QPushButton* pay_button;
+  QHBoxLayout* object_layout;       // Used
+  QMenuBar* menu_bar;               // Used
+  QMenu* file;
+  QAction* close_action;
+  QMenu* filters;
+  QMenu* alcohols;
+  QAction* cresc;
+  QAction* desc;
+  QMenu* colors;
+  QMenu* flavors;
+  QLabel* title;
+  QHBoxLayout* filter_buttons;
+  QPushButton* grappa_button;       // Used
+  QPushButton* liquor_button;       // Used
+  QPushButton* cream_button;        // Used
+  QVBoxLayout* left_app;
+  QGridShow* product_area;
+  QHBoxLayout* receipt_buttons;
+  QGridLayout* resoconto;
+  QPushButton* delete_receipt;      // Used
+  QPushButton* pay_button;          // Used
+  QVBoxLayout* right_app;
+  QReceiptShow* receipt_area;
   controller* presenter;
 
-  showreceipt* showrec;
+  QDialog* pay_dialog;
 
-  void add_menu_bar(QVBoxLayout*);     // OK
-  void add_title(QVBoxLayout*);        // OK
-  void add_grid(QHBoxLayout*);         // OK
-  QHBoxLayout* add_filter_buttons();   // OK
-  void add_receipt(QHBoxLayout*);      // OK
-  QHBoxLayout* add_receipt_buttons();  // OK
-  unsigned int number_items();         // DA FARE
-  double calc_total_per_item();        // DA FARE
-  void show_alert(QDialog*);           // NON FATTO
-  //u_vector<deep_ptr<product>> load_products(const std::string& = ":/data/data.json") const;
-  u_vector<deep_ptr<product>> loading_products() const;
+  void add_menu_bar(QVBoxLayout*);                      // OK
+  void add_title(QVBoxLayout*, const QString&);         // OK
+  QHBoxLayout* add_filter_buttons();                    // OK
+  void add_grid(QHBoxLayout*);                          // OK
+  QHBoxLayout* add_receipt_buttons();                   // OK
+  QGridLayout* add_total();                             // OK
+  void add_receipt(QHBoxLayout*);                       // OK
+  void update_json();
 
  public:
-  view(QWidget* = nullptr);           // OK
-  void set_controller(controller*);   // NON FATTO
-  void show_warning(const QString&);  // OK
-  double calc_total();                // DA FARE
-  void pay_banner(QDialog*);          // NON FATTO
-  void refresh_receipt(u_vector<pair<deep_ptr<product>, int>> items) const;
+  view(QWidget* = nullptr);
+  void set_controller(controller*);                     // DA FARE
+  void show_warning(const QString&);                    // OK
+
+ public slots:
+  void pay_banner();
 };
 
 #endif  // VIEW_H_
