@@ -1,40 +1,29 @@
 #include "controller.h"
 
+#include <QDebug>
+
 controller::controller(QObject* parent) : QObject(parent) {}
 
-controller::~controller() {
-  delete _view;
-  delete _model;
-}
+void controller::set_model(model* m) { _model = m; }
 
-void controller::refresh_receipt()
-{
-    auto receipt_items = _model->get_receipt_item(); //items
+void controller::set_view(view* v) { _view = v; }
 
-    _view->refresh_receipt(receipt_items);
+void controller::add_item(const deep_ptr<product>& p) { _model->add_item(p); }
 
-}
+void controller::remove_item(const deep_ptr<product>& p) { _model->remove_item(p); }
 
-void controller::link_model(model* model) { _model = model; }
+void controller::delete_all() { _model->delete_all(); }
 
-void controller::link_view(view* view) { _view = view; }
-//aggiunto dopo
-u_vector<deep_ptr<product> > controller::load_products() const
-{
-    return _model->load_from_file();
-}
+bool controller::presenza(const deep_ptr<product> & p) const { return _model->presenza(p); }
 
-void controller::add_item(product* p) { _model->add_item(p); }
+unsigned int controller::total_number_items() const { return _model->total_number_items(); }
 
-void controller::save_receipt() const {}
+double controller::total_price_line(unsigned int i) const { return _model->total_price_line(i); }
 
-void controller::pay() {
-  double total_price = _model->total_price();
-  double total_tax = _model->total_TAX();
-}
+double controller::total_price() const { return _model->total_price(); }
 
-void controller::decrement_item(product* p) { _model->decrement_item(p); }
+double controller::total_taxes() const { return _model->total_taxes(); }
 
-void controller::increment_item(product* p) { _model->increment_item(p); }
+u_vector<deep_ptr<product>> controller::get_products_json() const { return _model->get_products_json(); }
 
-void controller::remove_item(product* p) { _model->remove_item(p); }
+u_vector<pair<deep_ptr<product>, int>> controller::get_receipt() const { return _model->get_receipt(); }

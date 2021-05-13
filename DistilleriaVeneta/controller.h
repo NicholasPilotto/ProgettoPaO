@@ -17,28 +17,21 @@ class controller : public QObject {
 
  public:
   explicit controller(QObject* = nullptr);
-  void link_model(model*);
-  void link_view(view*);
-  //aggiunto dopo
-  u_vector<deep_ptr<product> > load_products() const;
-  void save_receipt() const;
-  //  void add_package()
-  //  void remove_packege()
-  //  u_vector<std::pair<package, int>> get_package() const
-
-  void pay();
-  // non serve perchè nel main vengono già distrutti...
-  virtual ~controller();
-
-
+  void set_model(model*);
+  void set_view(view*);
+  void add_item(const deep_ptr<product>&);
+  void remove_item(const deep_ptr<product>&);
+  void delete_all();
+  bool presenza(const deep_ptr<product>&) const;
+  double total_taxes() const;
+  double total_price_line(unsigned int) const;
+  double total_price() const;
+  unsigned int total_number_items() const;
+  u_vector<deep_ptr<product>> get_products_json() const;
+  u_vector<pair<deep_ptr<product>, int>> get_receipt() const;
 
  public slots:
-    void decrement_item(product*);
-    //void delete_receipt();
-    void increment_item(product*);
-    void refresh_receipt();
-    void add_item(product*);
-      void remove_item(product*);
+
 };
 
 #endif  // CONTROLLER_H
