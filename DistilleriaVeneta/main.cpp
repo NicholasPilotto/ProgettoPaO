@@ -1,23 +1,21 @@
 #include <QApplication>
 
-#include "./Utilities/deep_ptr.hpp"
-#include "./Utilities/u_vector.hpp"
+#include "model.h"
+#include "controller.h"
 #include "view.h"
 
-int main(int argc, char *argv[]) {
-  QApplication a(argc, argv);
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
 
-  controller c;
-  model m;
+    model m(":/data/data.json");
+    controller c;
+    view w;
 
+    c.set_model(&m);
+    c.set_view(&w);
+    w.set_controller(&c);
+    w.show();
 
-  view w;
-
-  c.link_view(&w);
-  c.link_model(&m);
-  w.set_controller(&c);
-
-  w.show();
-
-  return a.exec();
+    return a.exec();
 }
