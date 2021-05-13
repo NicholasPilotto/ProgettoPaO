@@ -4,7 +4,7 @@ showreceipt::showreceipt(QWidget* parent) : QWidget(parent) {
   QVBoxLayout* main_receipt = new QVBoxLayout();
   main_receipt->setContentsMargins(0, 0, 0, 0);
   addTable(main_receipt);
-  //refreshtable();
+  // refreshtable();
 }
 
 void showreceipt::refreshtable(u_vector<pair<deep_ptr<product>, int>> items) const {
@@ -14,12 +14,12 @@ void showreceipt::refreshtable(u_vector<pair<deep_ptr<product>, int>> items) con
   unsigned int r = rows - 1;
   QTableWidgetItem* item;
 
-auto it = items.begin();
-auto end = items.end();
-  for (;it != end; it++) {
+  auto it = items.begin();
+  auto end = items.end();
+  for (; it != end; it++) {
     item = new QTableWidgetItem();
     const QIcon* bin = new QIcon("../Grafica/Immagini/delete@x2");
-    QPushButton* cestino = new QPushButton(*bin,"");
+    QPushButton* cestino = new QPushButton(*bin, "");
     table->setCellWidget(r, 0, cestino);
 
     item = new QTableWidgetItem();
@@ -84,4 +84,3 @@ void showreceipt::showdeleteline() {
   dialog->addButton(YesButton, QMessageBox::YesRole);
   dialog->addButton(NoButton, QMessageBox::NoRole);
 }
-

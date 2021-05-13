@@ -14,7 +14,7 @@ void controller::remove_item(const deep_ptr<product>& p) { _model->remove_item(p
 
 void controller::delete_all() { _model->delete_all(); }
 
-bool controller::presenza(const deep_ptr<product> & p) const { return _model->presenza(p); }
+bool controller::presenza(const deep_ptr<product>& p) const { return _model->presenza(p); }
 
 unsigned int controller::total_number_items() const { return _model->total_number_items(); }
 

@@ -22,26 +22,25 @@ void receipt::remove_item(const deep_ptr<product>& p) {
 }
 
 void receipt::delete_all() {
-    u_vector<pair<deep_ptr<product>, int>>::iterator it = items.begin();
-    u_vector<pair<deep_ptr<product>, int>>::iterator end = items.end();
+  u_vector<pair<deep_ptr<product>, int>>::iterator it = items.begin();
+  u_vector<pair<deep_ptr<product>, int>>::iterator end = items.end();
 
-    for(; it != end; it++) {
-        items.erase(it);
-    }
+  for (; it != end; it++) {
+    items.erase(it);
+  }
 }
 
-bool receipt::presenza(const deep_ptr<product>& p) const{
-    u_vector<pair<deep_ptr<product>, int>>::const_iterator cit = items.const_begin();
-    u_vector<pair<deep_ptr<product>, int>>::const_iterator end = items.const_end();
+bool receipt::presenza(const deep_ptr<product>& p) const {
+  u_vector<pair<deep_ptr<product>, int>>::const_iterator cit = items.const_begin();
+  u_vector<pair<deep_ptr<product>, int>>::const_iterator end = items.const_end();
 
-    for(; cit != end; cit++) {
-         if ((*cit).first->get_name() == p->get_name() && (*cit).first->get_kind() == p->get_kind())
-             return true;
-    }
-    return false;
+  for (; cit != end; cit++) {
+    if ((*cit).first->get_name() == p->get_name() && (*cit).first->get_kind() == p->get_kind()) return true;
+  }
+  return false;
 }
 
-unsigned int receipt::total_number_items() const{
+unsigned int receipt::total_number_items() const {
   unsigned int count = 0;
   u_vector<pair<deep_ptr<product>, int>> aux = get_items();
   auto cit = aux.const_begin();
@@ -58,14 +57,14 @@ double receipt::total_price() const {
   u_vector<pair<deep_ptr<product>, int>>::const_iterator cit = items.const_begin();
   u_vector<pair<deep_ptr<product>, int>>::const_iterator end = items.const_end();
 
-  for (int i=0; cit != end; cit++, i++) {
+  for (int i = 0; cit != end; cit++, i++) {
     price += total_price_line(i);
   }
   return price;
 }
 
 double receipt::total_price_line(unsigned int i) const {
-    double line;
+  double line;
   pair<deep_ptr<product>, int> pos = items.at(i);
   line = pos.first->get_price() * pos.second;
   return line;

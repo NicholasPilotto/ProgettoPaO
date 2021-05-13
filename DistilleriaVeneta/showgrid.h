@@ -6,8 +6,8 @@
 #include <QScrollArea>
 
 #include "controller.h"
-#include "qproduct.h"
 #include "model.h"
+#include "qproduct.h"
 
 class showgrid : public QWidget {
   Q_OBJECT
@@ -16,7 +16,7 @@ class showgrid : public QWidget {
   QFrame *contenitore;
   QGridLayout *layout;
 
-  //u_vector<deep_ptr<product>> products;
+  // u_vector<deep_ptr<product>> products;
 
  public:
   showgrid(u_vector<deep_ptr<product>>, QWidget * = nullptr);

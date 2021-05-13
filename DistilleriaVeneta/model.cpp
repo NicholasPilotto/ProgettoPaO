@@ -1,15 +1,13 @@
 #include "model.h"
 
-model::model(const std::string& filename) : r(new receipt()) {load_from_file(filename);}
+model::model(const std::string& filename) : r(new receipt()) { load_from_file(filename); }
 
 void model::load_from_file(const std::string& path) {
   io_json* io = new io_json(path);
   products = io->read();
 }
 
-
-
-u_vector<deep_ptr<product> > model::get_products_json() const { return products; }
+u_vector<deep_ptr<product>> model::get_products_json() const { return products; }
 
 void model::add_item(const deep_ptr<product>& p) { r->add_item(p); }
 

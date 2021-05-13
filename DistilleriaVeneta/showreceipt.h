@@ -17,9 +17,8 @@ class showreceipt : public QWidget {
   QTableWidget* table;
 
   void addTable(QVBoxLayout*);
-  //void refreshtable(u_vector<pair<deep_ptr<product>, int>> items) const;
+  // void refreshtable(u_vector<pair<deep_ptr<product>, int>> items) const;
   void showdeleteline();
-
 
  public:
   explicit showreceipt(QWidget* = nullptr);

@@ -26,6 +26,5 @@ class model {
   double total_price() const;
   double total_taxes() const;
   u_vector<pair<deep_ptr<product>, int>> get_receipt() const;
-
 };
 #endif

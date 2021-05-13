@@ -31,7 +31,6 @@ class controller : public QObject {
   u_vector<pair<deep_ptr<product>, int>> get_receipt() const;
 
  public slots:
-
 };
 
 #endif  // CONTROLLER_H

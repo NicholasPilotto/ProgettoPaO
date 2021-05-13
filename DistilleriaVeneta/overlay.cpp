@@ -1,16 +1,15 @@
 #include "overlay.h"
 
 QOverlay::QOverlay(QWidget* parent) : QWidget(parent) {
-
   // Creazione layout
 
   overlay_layout = new QVBoxLayout(this);
 
   // Creazione bottoni
 
-  small_button = new QPushButton("Small",this);
-  medium_button = new QPushButton("Medium",this);
-  large_button = new QPushButton("Large",this);
+  small_button = new QPushButton("Small", this);
+  medium_button = new QPushButton("Medium", this);
+  large_button = new QPushButton("Large", this);
 
   // Aggiunta bottoni
 

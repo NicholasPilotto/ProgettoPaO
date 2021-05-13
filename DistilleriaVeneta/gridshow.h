@@ -9,9 +9,9 @@
 #include "Hierarchy/product.h"
 #include "Utilities/deep_ptr.hpp"
 #include "Utilities/u_vector.hpp"
-#include "qstackedwidgethover.h"
 #include "overlay.h"
 #include "qproduct.h"
+#include "qstackedwidgethover.h"
 
 class QGridShow : public QWidget {
   Q_OBJECT

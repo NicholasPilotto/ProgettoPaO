@@ -1,6 +1,6 @@
 #include "showgrid.h"
 
-showgrid::showgrid( u_vector<deep_ptr<product>> prodotti, QWidget* parent) : QWidget(parent) {
+showgrid::showgrid(u_vector<deep_ptr<product>> prodotti, QWidget* parent) : QWidget(parent) {
   QVBoxLayout* main = new QVBoxLayout;
   product_area = new QScrollArea;
   product_area->setMinimumSize(QSize(500, 500));
@@ -16,8 +16,7 @@ showgrid::showgrid( u_vector<deep_ptr<product>> prodotti, QWidget* parent) : QWi
   product_area->setWidget(contenitore);
 
   int r = 1, c = 1, n_ele = 3;
-  for (auto it = prodotti.begin(); it != prodotti.end(); it++)
-  {
+  for (auto it = prodotti.begin(); it != prodotti.end(); it++) {
     QProduct* p = new QProduct(*it);
 
     layout->addWidget(p, r, c);

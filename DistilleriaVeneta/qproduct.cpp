@@ -3,7 +3,6 @@
 #include <QDebug>
 
 QProduct::QProduct(const deep_ptr<product>& _product, QWidget* parent) : QWidget(parent) {
-
   // Dichiarazione layout principale e dell'immagine
 
   mainlayout = new QVBoxLayout();
@@ -31,7 +30,7 @@ QProduct::QProduct(const deep_ptr<product>& _product, QWidget* parent) : QWidget
 
   mainlayout->addWidget(left_widget_image, Qt::AlignCenter);
 
-  //Aggiunta del nome della bottiglia
+  // Aggiunta del nome della bottiglia
 
   left_widget_name = new QLabel(_product->get_name().data());
   left_widget_name->setAlignment(Qt::AlignCenter);

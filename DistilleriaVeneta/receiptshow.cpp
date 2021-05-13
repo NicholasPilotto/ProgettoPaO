@@ -7,7 +7,6 @@ QReceiptShow::QReceiptShow(QWidget* parent) : QWidget(parent) {
 }
 
 void QReceiptShow::addTable(QVBoxLayout* table_layout) {
-
   table = new QTableWidget(this);
   table->setMinimumSize(500, 500);
   table->setColumnCount(4);
@@ -34,7 +33,6 @@ void QReceiptShow::addTable(QVBoxLayout* table_layout) {
 }
 
 void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>>& _products) {
-
   // Inserimento prodotti
 
   int rows = _products.size();

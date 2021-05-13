@@ -22,7 +22,7 @@ class receipt {
   void remove_item(const deep_ptr<product>&);
   void delete_all();
   bool presenza(const deep_ptr<product>&) const;
-  unsigned int total_number_items() const ;
+  unsigned int total_number_items() const;
   double total_price_line(unsigned int i) const;
   double total_price() const;
   double total_taxes() const;

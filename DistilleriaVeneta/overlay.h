@@ -13,7 +13,6 @@ class QOverlay : public QWidget {
   QPushButton* medium_button;
   QPushButton* large_button;
 
-
  public:
   explicit QOverlay(QWidget* = nullptr);
 };
