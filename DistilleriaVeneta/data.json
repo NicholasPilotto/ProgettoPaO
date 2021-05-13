@@ -2,7 +2,7 @@
   "elements": {
     "element1": {
       "product": "cream",
-      "name": "Crema al limone",
+      "name": "Crema\n al limone",
       "alcohol_content": 18,
       "color": 0,
       "tastes": [
@@ -12,7 +12,7 @@
     },
     "element2": {
       "product": "cream",
-      "name": "Crema alla nocciola",
+      "name": "Crema\n alla nocciola",
       "alcohol_content": 18,
       "color": 3,
       "tastes": [
@@ -22,7 +22,7 @@
     },
     "element3": {
       "product": "cream",
-      "name": "Crema al caffè",
+      "name": "Crema\n al caffè",
       "alcohol_content": 18,
       "color": 3,
       "tastes": [
@@ -32,7 +32,7 @@
     },
     "element4": {
       "product": "cream",
-      "name": "Crema alla liquirizia",
+      "name": "Crema\n alla liquirizia",
       "alcohol_content": 18,
       "color": 4,
       "tastes": [
@@ -42,7 +42,7 @@
     },
     "element5": {
       "product": "cream",
-      "name": "Crema al cioccolato",
+      "name": "Crema\n al cioccolato",
       "alcohol_content": 18,
       "color": 3,
       "tastes": [
@@ -52,7 +52,7 @@
     },
     "element6": {
       "product": "cream",
-      "name": "Crema all'uovo",
+      "name": "Crema\n all'uovo",
       "alcohol_content": 18,
       "color": 0,
       "tastes": [
@@ -62,7 +62,7 @@
     },
     "element7": {
       "product": "cream",
-      "name": "Crema alla panna",
+      "name": "Crema\n alla panna",
       "alcohol_content": 18,
       "color": 6,
       "tastes": [
@@ -72,7 +72,7 @@
     },
     "element8": {
       "product": "cream",
-      "name": "Crema alla fragola",
+      "name": "Crema\n alla fragola",
 
       "alcohol_content": 18,
       "color": 2,
@@ -83,7 +83,7 @@
     },
     "element9": {
       "product": "cream",
-      "name": "Crema ai frutti di bosco",
+      "name": "Crema\n frutti di bosco",
       "alcohol_content": 18,
       "color": 5,
       "tastes": [
@@ -93,7 +93,7 @@
     },
     "element10": {
       "product": "cream",
-      "name": "Crema alla menta",
+      "name": "Crema\n alla menta",
       "alcohol_content": 18,
       "color": 7,
       "tastes": [
@@ -104,7 +104,7 @@
     "element11": {
       "product": "liquor",
       "name": "Rum",
-      "alcohol_content": 38,
+      "alcohol_content": 36,
       "color": 3,
       "tastes": [
         24,
@@ -114,7 +114,7 @@
     },
     "element12": {
       "product": "liquor",
-      "name": "Liquore alla nocciola",
+      "name": "Liquore\n alla nocciola",
       "alcohol_content": 30,
       "color": 3,
       "tastes": [
@@ -134,7 +134,7 @@
     },
     "element13": {
       "product": "liquor",
-      "name": "Liquirizia",
+      "name": "Liquore\n alla liquirizia",
       "alcohol_content": 30,
       "color": 4,
       "tastes": [
@@ -144,7 +144,7 @@
     },
     "element14": {
       "product": "liquor",
-      "name": "Liquore al miele",
+      "name": "Liquore\n al miele",
       "alcohol_content": 30,
       "color": 0,
       "tastes": [
@@ -155,7 +155,7 @@
     },
     "element15": {
       "product": "liquor",
-      "name": "Prugna",
+      "name": "Liquore\n alla prugna",
       "alcohol_content": 30,
       "color": 5,
       "tastes": [
@@ -165,7 +165,7 @@
     },
     "element16": {
       "product": "liquor",
-      "name": "Liquore al mirtillo",
+      "name": "Liquore\n al mirtillo",
       "alcohol_content": 30,
       "color": 5,
       "tastes": [
@@ -175,7 +175,7 @@
     },
     "element17": {
       "product": "liquor",
-      "name": "Liquore al ribes",
+      "name": "Liquore\n al ribes",
       "alcohol_content": 30,
       "color": 1,
       "tastes": [
@@ -185,7 +185,7 @@
     },
     "element18": {
       "product": "young",
-      "name": "Grappa giovane",
+      "name": "Grappa\n giovane",
       "alcohol_content": 42,
       "color": 8,
       "tastes": [
@@ -195,7 +195,7 @@
     },
     "element19": {
       "product": "old",
-      "name": "Grappa invecchiata",
+      "name": "Grappa\n invecchiata",
       "alcohol_content": 42,
       "color": 9,
       "tastes": [
@@ -207,7 +207,7 @@
     },
     "element20": {
       "product": "old",
-      "name": "Grappa invecchiata barricata",
+      "name": "Grappa\n barricata",
       "alcohol_content": 42,
       "color": 9,
       "tastes": [
