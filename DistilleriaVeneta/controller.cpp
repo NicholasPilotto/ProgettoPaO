@@ -27,3 +27,14 @@ double controller::total_taxes() const { return _model->total_taxes(); }
 u_vector<deep_ptr<product>> controller::get_products_json() const { return _model->get_products_json(); }
 
 u_vector<pair<deep_ptr<product>, int>> controller::get_receipt() const { return _model->get_receipt(); }
+
+void controller::filter_by_products() {
+  std::string _sender = sender()->objectName().toStdString();
+  u_vector<deep_ptr<product>> _result = _model->filter_products(_sender);
+}
+
+void controller::filter_by_color() {
+  unsigned int _sender = std::stoi(sender()->objectName().toStdString());
+  u_vector<deep_ptr<product>> _result = _model->filter_color(_sender);
+  qDebug() << _result.size();
+}
