@@ -41,6 +41,7 @@ class view : public QWidget {
   QPushButton* grappa_button;  // Used
   QPushButton* liquor_button;  // Used
   QPushButton* cream_button;   // Used
+  QPushButton* all_button;     // Used
   QVBoxLayout* left_app;
   QGridShow* product_area;
   QHBoxLayout* receipt_buttons;

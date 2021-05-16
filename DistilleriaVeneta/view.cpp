@@ -1,5 +1,7 @@
 #include "view.h"
 
+#include <QDebug>
+
 void view::add_menu_bar(QVBoxLayout* main_layout) {
   menu_bar = new QMenuBar(this);
 
@@ -36,23 +38,22 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   alcohols->addAction(desc);
 
   // Azioni in Colore
+  // yellow, red, pink, brown, black, violet, white, green, white_trasparent, yellow_trasparent
+  u_vector<QString> colours_actions = {"Giallo", "Rosso", "Rosa", "Marrone", "Nero", "Violetto", "Bianco", "Verde", "Bianco Trasparente", "Giallo Trasparente"};
+  u_vector<QString>::const_iterator cit = colours_actions.const_begin();
+  u_vector<QString>::const_iterator _end = colours_actions.const_end();
 
-  u_vector<QString> colours_actions = {
-      "Giallo", "Rosso", "Rosa", "Marrone", "Nero", "Violetto", "Bianco", "Verde", "Bianco Trasparente", "Giallo Trasparente",
-  };
-
-  for (auto cit = colours_actions.const_begin(); cit != colours_actions.const_end(); cit++) {
-    QAction* action = new QAction(*cit, colors);
+  for (std::pair<u_vector<QString>::const_iterator, int> _pair = std::make_pair(cit, 10); _pair.first != _end; _pair.first++, _pair.second++) {
+    QAction* action = new QAction(*(_pair.first), colors);
     action->setCheckable(true);
+    action->setObjectName(QString::number(_pair.second));
     action->setChecked(false);
     colors->addAction(action);
   }
 
   // Azioni in gusto
 
-  u_vector<QString> flavors_actions = {
-      "Nocciola", "Caffè", "Liquirizia", "Cioccolato", "Uovo", "Rum", "Panna", "Fragola", "Frutti di Bosco", "Mirtillo", "Ribes", "Prugna", "Miele", "Secco", "Fruttato", "Amabile", "Menta",
-  };
+  u_vector<QString> flavors_actions = {"Nocciola", "Caffè", "Liquirizia", "Cioccolato", "Uovo", "Rum", "Panna", "Fragola", "Frutti di Bosco", "Mirtillo", "Ribes", "Prugna", "Miele", "Secco", "Fruttato", "Amabile", "Menta"};
 
   for (auto cit = flavors_actions.const_begin(); cit != flavors_actions.const_end(); cit++) {
     QAction* action = new QAction(*cit, flavors);
@@ -80,19 +81,25 @@ QHBoxLayout* view::add_filter_buttons() {
   // Creazione bottoni
 
   grappa_button = new QPushButton("Grappa");
+  grappa_button->setObjectName("grappa");
   liquor_button = new QPushButton("Liquore");
+  liquor_button->setObjectName("liquor");
   cream_button = new QPushButton("Crema");
+  cream_button->setObjectName("cream");
+  all_button = new QPushButton("Tutti");
+  all_button->setObjectName("all");
 
   // Aggiunta bottoni
 
   filter_buttons->addWidget(grappa_button);
   filter_buttons->addWidget(liquor_button);
   filter_buttons->addWidget(cream_button);
+  filter_buttons->addWidget(all_button);
 
   // Ritorno layout
 
-  filter_buttons->setSpacing(50);
-  filter_buttons->setContentsMargins(50, 20, 50, 20);
+  filter_buttons->setSpacing(30);
+  filter_buttons->setContentsMargins(30, 20, 30, 20);
   return filter_buttons;
 }
 
@@ -184,7 +191,7 @@ void view::update_json() {
 
 view::view(QWidget* parent) : QWidget(parent) {
   main_layout = new QVBoxLayout(this);
-  object_layout = new QHBoxLayout();
+  object_layout = new QHBoxLayout(this);
 
   // Aggiunta della barra dei menù
 
@@ -222,6 +229,15 @@ void view::set_controller(controller* c) {
 
   // Segnali right_app
   connect(pay_button, SIGNAL(clicked()), this, SLOT(pay_banner()));
+
+  connect(grappa_button, SIGNAL(clicked()), presenter, SLOT(filter_by_products()));
+  connect(liquor_button, SIGNAL(clicked()), presenter, SLOT(filter_by_products()));
+  connect(cream_button, SIGNAL(clicked()), presenter, SLOT(filter_by_products()));
+  connect(all_button, SIGNAL(clicked()), presenter, SLOT(filter_by_products()));
+
+  for (auto it = colors->actions().begin(); it != colors->actions().end(); it++) {
+    connect(*it, SIGNAL(triggered()), presenter, SLOT(filter_by_color()));
+  }
 }
 
 void view::show_warning(const QString& message) {
