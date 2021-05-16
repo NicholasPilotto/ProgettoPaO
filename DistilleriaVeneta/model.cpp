@@ -26,3 +26,7 @@ double model::total_price() const { return r->total_price(); }
 double model::total_taxes() const { return r->total_taxes(); }
 
 u_vector<pair<deep_ptr<product>, int>> model::get_receipt() const { return r->get_items(); }
+
+u_vector<deep_ptr<product>> model::filter_products(const std::string& _key) { return filter::products(products, _key); }
+
+u_vector<deep_ptr<product>> model::filter_color(unsigned int _key) { return filter::colors(products, _key); }

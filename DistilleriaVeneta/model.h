@@ -1,8 +1,11 @@
 #ifndef _MODEL_H
 #define _MODEL_H
 
+#include <QObject>
+
 #include "./Utilities/u_vector.hpp"
 #include "Hierarchy/product.h"
+#include "filter.h"
 #include "io_json.h"
 #include "receipt.h"
 
@@ -26,5 +29,7 @@ class model {
   double total_price() const;
   double total_taxes() const;
   u_vector<pair<deep_ptr<product>, int>> get_receipt() const;
+  u_vector<deep_ptr<product>> filter_products(const std::string& = std::string());
+  u_vector<deep_ptr<product>> filter_color(unsigned int = 0);
 };
 #endif
