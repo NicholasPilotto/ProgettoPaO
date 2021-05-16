@@ -30,8 +30,10 @@ SOURCES += \
   qstackedwidgethover.cpp \
   receiptshow.cpp \
   gridshow.cpp \
+  filter.cpp \
 
 HEADERS += \
+  ./Hierarchy/enum.h\
   ./Hierarchy/product.h \
   ./Hierarchy/spirits.h \
   ./Hierarchy/grappa.h \
@@ -53,6 +55,7 @@ HEADERS += \
   qstackedwidgethover.h \
   receiptshow.h \
   gridshow.h \
+  filter.h \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
