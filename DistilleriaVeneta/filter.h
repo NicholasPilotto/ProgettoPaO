@@ -12,9 +12,9 @@
 class filter {
  public:
   filter();
-  static u_vector<deep_ptr<product>> colors(const u_vector<deep_ptr<product>>& = {}, const unsigned int = 0);
-  static u_vector<deep_ptr<product>> products(const u_vector<deep_ptr<product>>& = {}, const std::string& = std::string());
-  static u_vector<deep_ptr<product>> tastes(const u_vector<deep_ptr<product>>& = {}, const taste = taste::_amable);
+  static u_vector<deep_ptr<product>> colors(u_vector<deep_ptr<product>>&, const unsigned int = 0);
+  static u_vector<deep_ptr<product>> products(u_vector<deep_ptr<product>>&, const std::string& = std::string());
+  static u_vector<deep_ptr<product>> tastes(u_vector<deep_ptr<product>>&, const taste = taste::_amable);
 };
 
 #endif  // FILTER_H
