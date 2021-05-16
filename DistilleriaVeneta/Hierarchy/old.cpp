@@ -43,7 +43,7 @@ double old::kind_price() const {
 
 double old::price_increment() const { return kind_price() + month_incr * month + (is_barrique() ? 3.00 : 0.00); }
 
-std::string old::get_product() const { return "old"; }
+std::string old::get_product() const { return "grappa"; }
 
 double old::get_price() const { return grappa::get_price() + price_increment(); }
 

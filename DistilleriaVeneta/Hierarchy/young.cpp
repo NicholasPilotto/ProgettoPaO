@@ -35,7 +35,7 @@ double young::kind_price() const {
 
 double young::price_increment() const { return kind_price(); }
 
-std::string young::get_product() const { return "young"; }
+std::string young::get_product() const { return "grappa"; }
 
 double young::get_price() const { return grappa::get_price() + price_increment(); }
 

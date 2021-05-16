@@ -31,7 +31,7 @@ class liquor : public spirits {
   virtual liquor* clone() const override;
   double kind_price() const;
   double price_increment() const;
-  virtual std::string get_product() const;
+  virtual std::string get_product() const override;
   virtual double get_price() const override;
   virtual double promotion() const override;
   virtual u_vector<taste> get_tastes() const override;
