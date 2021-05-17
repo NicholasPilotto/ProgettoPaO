@@ -1,6 +1,8 @@
 #ifndef VIEW_H_
 #define VIEW_H_
 
+#include <QApplication>
+#include <QDesktopWidget>
 #include <QDialog>
 #include <QGridLayout>
 #include <QHBoxLayout>

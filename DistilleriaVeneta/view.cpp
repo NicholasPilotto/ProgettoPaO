@@ -20,14 +20,12 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   filters->addMenu(flavors);
 
   // Azioni in file
-
   close_action = new QAction("Chiudi", file);
   const QKeySequence* closing = new QKeySequence("Ctrl+Q");
   close_action->setShortcut(*closing);
   file->addAction(close_action);
 
   // Azioni in Contenuto Alcolico
-
   QAction* cresc = new QAction("Ordine Crescente", alcohols);
   QAction* desc = new QAction("Ordine Decrescente", alcohols);
   cresc->setCheckable(true);
@@ -193,12 +191,15 @@ view::view(QWidget* parent) : QWidget(parent) {
   main_layout = new QVBoxLayout(this);
   object_layout = new QHBoxLayout(this);
 
-  // Aggiunta della barra dei menù
+  QRect desktopRect = QApplication::desktop()->availableGeometry(this);
+  QPoint center = desktopRect.center();
 
+  move(center.x() - width(), 0);
+
+  // Aggiunta della barra dei menù
   add_menu_bar(main_layout);
 
   // Aggiunta del titolo
-
   add_title(main_layout, "Distilleria Veneta");
 
   // Creazione  layout orizzontale con aggiunta delle 2 tabelle (left-to-right)
