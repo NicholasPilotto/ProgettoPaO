@@ -29,7 +29,9 @@ class model {
   double total_price() const;
   double total_taxes() const;
   u_vector<pair<deep_ptr<product>, int>> get_receipt() const;
-  u_vector<deep_ptr<product>> filter_products(const std::string& = std::string());
-  u_vector<deep_ptr<product>> filter_color(unsigned int = 0);
+  u_vector<deep_ptr<product>> filter_products(const std::string& = std::string()) const;
+  u_vector<deep_ptr<product>> filter_color(const unsigned int = 0) const;
+  u_vector<deep_ptr<product>> filter_taste(const unsigned int = 0) const;
+  u_vector<deep_ptr<product>> filter_all() const;
 };
 #endif
