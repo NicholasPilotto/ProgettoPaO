@@ -28,13 +28,30 @@ u_vector<deep_ptr<product>> controller::get_products_json() const { return _mode
 
 u_vector<pair<deep_ptr<product>, int>> controller::get_receipt() const { return _model->get_receipt(); }
 
-void controller::filter_by_products() {
+void controller::filter_by_products() const {
   std::string _sender = sender()->objectName().toStdString();
-  u_vector<deep_ptr<product>> _result = _model->filter_products(_sender);
+  u_vector<deep_ptr<product>> _result;
+  if (_sender != "all") {
+    _view->refresh_grid_view(_model->filter_products(_sender));
+  } else {
+    _view->refresh_grid_view(_model->filter_all());
+  }
 }
 
-void controller::filter_by_color() {
-  unsigned int _sender = std::stoi(sender()->objectName().toStdString());
-  u_vector<deep_ptr<product>> _result = _model->filter_color(_sender);
-  qDebug() << _result.size();
+void controller::filter_by_color() const {
+  if (qobject_cast<QAction*>(sender())->isChecked()) {
+    unsigned int _sender = std::stoi(sender()->objectName().toStdString());
+    _view->refresh_grid_view(_model->filter_color(_sender));
+  } else {
+    _view->refresh_grid_view(_model->filter_all());
+  }
+}
+
+void controller::filter_by_taste() const {
+  if (qobject_cast<QAction*>(sender())->isChecked()) {
+    unsigned int _sender = std::stoi(sender()->objectName().toStdString());
+    _view->refresh_grid_view(_model->filter_taste(_sender));
+  } else {
+    _view->refresh_grid_view(_model->filter_all());
+  }
 }
