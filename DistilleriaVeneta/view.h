@@ -69,6 +69,7 @@ class view : public QWidget {
   view(QWidget* = nullptr);
   void set_controller(controller*);   // DA FARE
   void show_warning(const QString&);  // OK
+  void refresh_grid_view(const u_vector<deep_ptr<product>>&);
 
  public slots:
   void pay_banner();

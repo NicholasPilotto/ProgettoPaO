@@ -38,10 +38,10 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   // Azioni in Colore
   // yellow, red, pink, brown, black, violet, white, green, white_trasparent, yellow_trasparent
   u_vector<QString> colours_actions = {"Giallo", "Rosso", "Rosa", "Marrone", "Nero", "Violetto", "Bianco", "Verde", "Bianco Trasparente", "Giallo Trasparente"};
-  u_vector<QString>::const_iterator cit = colours_actions.const_begin();
-  u_vector<QString>::const_iterator _end = colours_actions.const_end();
+  u_vector<QString>::const_iterator _color_cit = colours_actions.const_begin();
+  u_vector<QString>::const_iterator _color_end = colours_actions.const_end();
 
-  for (std::pair<u_vector<QString>::const_iterator, int> _pair = std::make_pair(cit, 10); _pair.first != _end; _pair.first++, _pair.second++) {
+  for (std::pair<u_vector<QString>::const_iterator, int> _pair = std::make_pair(_color_cit, 0); _pair.first != _color_end; _pair.first++, _pair.second++) {
     QAction* action = new QAction(*(_pair.first), colors);
     action->setCheckable(true);
     action->setObjectName(QString::number(_pair.second));
@@ -51,10 +51,13 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
 
   // Azioni in gusto
 
-  u_vector<QString> flavors_actions = {"Nocciola", "Caffè", "Liquirizia", "Cioccolato", "Uovo", "Rum", "Panna", "Fragola", "Frutti di Bosco", "Mirtillo", "Ribes", "Prugna", "Miele", "Secco", "Fruttato", "Amabile", "Menta"};
+  u_vector<QString> flavors_actions = {"Limone", "Nocciola", "Caffè", "Liquirizia", "Cioccolato", "Uovo", "Rum", "Crema", "Fragola", "Frutti di bosco", "Mirtillo", "Ribes", "Prugna", "Miele", "Secco", "Smooth", "Amabile", "Menta"};
 
-  for (auto cit = flavors_actions.const_begin(); cit != flavors_actions.const_end(); cit++) {
-    QAction* action = new QAction(*cit, flavors);
+  u_vector<QString>::const_iterator _flavor_cit = flavors_actions.const_begin();
+  u_vector<QString>::const_iterator _flavor_end = flavors_actions.const_end();
+  for (std::pair<u_vector<QString>::const_iterator, int> _pair = std::make_pair(_flavor_cit, 10); _pair.first != _flavor_end; _pair.first++, _pair.second++) {
+    QAction* action = new QAction(*(_pair.first), flavors);
+    action->setObjectName(QString::number(_pair.second));
     action->setCheckable(true);
     action->setChecked(false);
     flavors->addAction(action);
@@ -182,10 +185,7 @@ void view::add_receipt(QHBoxLayout* object_layout) {
   object_layout->addLayout(right_app);
 }
 
-void view::update_json() {
-  auto aux = presenter->get_products_json();
-  product_area->refresh_grid(aux);
-}
+void view::update_json() { product_area->refresh_grid(presenter->get_products_json()); }
 
 view::view(QWidget* parent) : QWidget(parent) {
   main_layout = new QVBoxLayout(this);
@@ -236,8 +236,16 @@ void view::set_controller(controller* c) {
   connect(cream_button, SIGNAL(clicked()), presenter, SLOT(filter_by_products()));
   connect(all_button, SIGNAL(clicked()), presenter, SLOT(filter_by_products()));
 
-  for (auto it = colors->actions().begin(); it != colors->actions().end(); it++) {
-    connect(*it, SIGNAL(triggered()), presenter, SLOT(filter_by_color()));
+  QList<QAction*>::const_iterator _color_cit = colors->actions().constBegin();
+  QList<QAction*>::const_iterator _color_end = colors->actions().constEnd();
+  for (; _color_cit != _color_end; _color_cit++) {
+    connect(*_color_cit, SIGNAL(triggered()), presenter, SLOT(filter_by_color()));
+  }
+
+  QList<QAction*>::const_iterator _flavor_cit = flavors->actions().constBegin();
+  QList<QAction*>::const_iterator _flavor_end = flavors->actions().constEnd();
+  for (; _flavor_cit != _flavor_end; _flavor_cit++) {
+    connect(*_flavor_cit, SIGNAL(triggered()), presenter, SLOT(filter_by_taste()));
   }
 }
 
@@ -288,3 +296,5 @@ void view::pay_banner() {
 
   pay_dialog->show();
 }
+
+void view::refresh_grid_view(const u_vector<deep_ptr<product>>& _vector) { product_area->refresh_grid(_vector); }
