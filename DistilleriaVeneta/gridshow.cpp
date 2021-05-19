@@ -24,10 +24,20 @@ QGridShow::QGridShow(QWidget* parent) : QWidget(parent) {
   setLayout(main_layout);
 }
 
+void QGridShow::clear_grid() {
+  while (auto item = grid->takeAt(0)) {
+    delete item->widget();
+    item++;
+  }
+}
+
 void QGridShow::refresh_grid(const u_vector<deep_ptr<product>>& _products) {
-  int r = 1, c = 1, n_ele = 3;
-  u_vector<deep_ptr<product>>::iterator it = _products.begin();
-  u_vector<deep_ptr<product>>::iterator end = _products.end();
+  clear_grid();
+  int r = 1;
+  int c = 1;
+  const int n_ele = 3;
+  u_vector<deep_ptr<product>>::const_iterator it = _products.const_begin();
+  u_vector<deep_ptr<product>>::const_iterator end = _products.const_end();
 
   for (; it != end; it++) {
     QProduct* p = new QProduct(*it);
@@ -39,7 +49,8 @@ void QGridShow::refresh_grid(const u_vector<deep_ptr<product>>& _products) {
     if (c == n_ele) {
       r++;
       c = 1;
-    } else
+    } else {
       c++;
+    }
   }
 }

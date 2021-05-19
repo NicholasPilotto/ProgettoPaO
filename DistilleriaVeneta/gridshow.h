@@ -21,6 +21,7 @@ class QGridShow : public QWidget {
   QFrame* contenitore;
   QGridLayout* grid;
   QStackedWidgetHover* stack;
+  void clear_grid();
 
  public:
   QGridShow(QWidget* parent = nullptr);
