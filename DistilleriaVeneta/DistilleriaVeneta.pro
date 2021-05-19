@@ -42,6 +42,9 @@ HEADERS += \
   ./Hierarchy/liquor.h \
   ./Hierarchy/non_spirits.h \
   ./Hierarchy/cream.h \
+  ./Utilities/u_vector.hpp \
+  ./Utilities/deep_ptr.hpp \
+  ./Utilities/aux_func.hpp \
   io_json.h \
   main.h \
   model.h \
