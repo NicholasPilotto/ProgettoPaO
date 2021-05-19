@@ -60,6 +60,8 @@ double product::operator+(const product& p) const { return get_price() + p.get_p
 
 double product::operator-(const product& p) const { return get_price() >= p.get_price() ? get_price() - p.get_price() : p.get_price() - get_price(); }
 
+bool product::operator<(const product& _p) const { return alcohol_content < _p.alcohol_content; }
+
 product* product::unserialize(QMap<QString, QVariant>& m) {
   std::string p = m["product"].toString().toStdString();
   if (_map.count(p) != 0) {
