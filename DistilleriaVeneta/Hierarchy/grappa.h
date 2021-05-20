@@ -9,7 +9,7 @@ class grappa : public spirits {
   static const double grappa_incr;
 
  public:
-  grappa(const color = white_trasparent, const u_vector<taste>& = {}, bottle_size = medium, const std::string& = " ", double = min_ac);
+  grappa(bottle_size = medium, const std::string& = " ", double = min_ac);
   grappa(const grappa&);
   grappa& operator=(const grappa&);
   static const double min_ac;

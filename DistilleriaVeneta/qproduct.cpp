@@ -2,7 +2,9 @@
 
 #include <QDebug>
 
-QProduct::QProduct(const deep_ptr<product>& _product, QWidget* parent) : QWidget(parent) {
+QProduct::QProduct(const deep_ptr<product>& _product, std::function<void(const deep_ptr<product>&)> callback, QWidget* parent) : QWidget(parent), item(_product), product_callback(callback) {
+
+    item = _product;
   // Dichiarazione layout principale e dell'immagine
 
   mainlayout = new QVBoxLayout();
@@ -40,9 +42,34 @@ QProduct::QProduct(const deep_ptr<product>& _product, QWidget* parent) : QWidget
 
   left_widget_price = new QLabel(QString::number(_product->get_price(), 'f', 2) + " €");
   left_widget_price->setAlignment((Qt::AlignCenter));
-  mainlayout->addWidget(left_widget_price, Qt::AlignHCenter);
+  mainlayout->addWidget(left_widget_price, Qt::AlignCenter);
+
+  // Aggiunta del codice della bottiglia
+
+  left_widget_code = new QLabel("Codice:\n" + QString::fromStdString(_product->code()));
+  left_widget_code->setStyleSheet("font: 11px");
+  left_widget_code->setAlignment((Qt::AlignRight));
+  mainlayout->addWidget(left_widget_code, Qt::AlignRight);
 
   // Set layout principale
 
   setLayout(mainlayout);
+}
+
+void QProduct::insert_small()
+{
+    item->set_kind_bottle(small);
+    product_callback(item);
+}
+
+void QProduct::insert_medium()
+{
+    item->set_kind_bottle(medium);
+    product_callback(item);
+}
+
+void QProduct::insert_big()
+{
+    item->set_kind_bottle(big);
+    product_callback(item);
 }

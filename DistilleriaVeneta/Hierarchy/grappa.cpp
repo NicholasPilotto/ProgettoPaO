@@ -1,6 +1,6 @@
 #include "grappa.h"
 
-grappa::grappa(const color c, const u_vector<taste>& tastes, bottle_size bs, const std::string& n, double ac) : spirits(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac) {}  // essendoci una variabile statica con lo stesso nome è conveniente cambiare nome ma secondo te va bene anche con l'operatore di scoping? Comunque io rinominerei...
+grappa::grappa(bottle_size bs, const std::string& n, double ac) : spirits(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac) {}
 
 grappa::grappa(const grappa& g) : spirits(g) {}  // non avendo campi dati come faccio? Solo il sottoogetto? Se si come?
 

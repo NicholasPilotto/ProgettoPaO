@@ -21,3 +21,10 @@ QOverlay::QOverlay(QWidget* parent) : QWidget(parent) {
 
   setLayout(overlay_layout);
 }
+
+
+QPushButton* QOverlay::get_small_button() const {return small_button;}
+
+QPushButton* QOverlay::get_medium_button() const {return medium_button;}
+
+QPushButton* QOverlay::get_large_button() const {return large_button;}

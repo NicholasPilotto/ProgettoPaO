@@ -21,7 +21,6 @@ class controller : public QObject {
   void set_view(view*);
   void add_item(const deep_ptr<product>&);
   void remove_item(const deep_ptr<product>&);
-  void delete_all();
   bool presenza(const deep_ptr<product>&) const;
   double total_taxes() const;
   double total_price_line(unsigned int) const;
@@ -31,6 +30,7 @@ class controller : public QObject {
   u_vector<pair<deep_ptr<product>, int>> get_receipt() const;
 
  public slots:
+  void delete_all();
   void filter_by_products() const;
   void filter_by_color() const;
   void filter_by_taste() const;

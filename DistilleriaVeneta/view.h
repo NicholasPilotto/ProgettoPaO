@@ -14,6 +14,7 @@
 #include <QString>
 #include <QTableView>
 #include <QVBoxLayout>
+#include <functional>
 
 #include "./Utilities/deep_ptr.hpp"
 #include "./Utilities/u_vector.hpp"
@@ -21,6 +22,8 @@
 #include "gridshow.h"
 #include "qproduct.h"
 #include "receiptshow.h"
+
+using namespace std::placeholders;
 
 class controller;
 
@@ -47,13 +50,13 @@ class view : public QWidget {
   QVBoxLayout* left_app;
   QGridShow* product_area;
   QHBoxLayout* receipt_buttons;
-  QGridLayout* resoconto;
   QPushButton* delete_receipt;  // Used
   QPushButton* pay_button;      // Used
   QVBoxLayout* right_app;
   QReceiptShow* receipt_area;
   controller* presenter;
 
+  QDialog* delete_dialog;
   QDialog* pay_dialog;
 
   void add_menu_bar(QVBoxLayout*);               // OK
@@ -61,7 +64,6 @@ class view : public QWidget {
   QHBoxLayout* add_filter_buttons();             // OK
   void add_grid(QHBoxLayout*);                   // OK
   QHBoxLayout* add_receipt_buttons();            // OK
-  QGridLayout* add_total();                      // OK
   void add_receipt(QHBoxLayout*);                // OK
   void update_json();
 
@@ -69,10 +71,13 @@ class view : public QWidget {
   view(QWidget* = nullptr);
   void set_controller(controller*);   // DA FARE
   void show_warning(const QString&);  // OK
+  void refresh_scontrino(const u_vector<pair<deep_ptr<product>,int>>&);
   void refresh_grid_view(const u_vector<deep_ptr<product>>&);
 
- public slots:
+ private slots:
   void pay_banner();
+  void confirm_deletion();
+  void delete_all();
 };
 
 #endif  // VIEW_H_

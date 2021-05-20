@@ -15,6 +15,9 @@ class QOverlay : public QWidget {
 
  public:
   explicit QOverlay(QWidget* = nullptr);
+  QPushButton* get_small_button() const;
+  QPushButton* get_medium_button() const;
+  QPushButton* get_large_button() const;
 };
 
 #endif  // OVERLAY_H

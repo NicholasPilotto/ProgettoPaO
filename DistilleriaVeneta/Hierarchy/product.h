@@ -43,7 +43,8 @@ class product {
   double taxes() const;
   double get_alcohol_content() const;
   bottle_size get_kind() const;
-  void set_kind_bottle(bottle_size = bottle_size::medium);
+  void set_kind_bottle(bottle_size = medium);
+  std::string fromKindToStdString(bottle_size) const;
   static product* unserialize(QMap<QString, QVariant>&);
   virtual product* create(QMap<QString, QVariant>&) const = 0;
   //	virtual std::string write() const = 0;

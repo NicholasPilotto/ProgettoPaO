@@ -24,12 +24,13 @@ void QReceiptShow::addTable(QVBoxLayout* table_layout) {
   table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
   // Non rende visibile una selezione
-
-  table->setEditTriggers(QAbstractItemView::NoEditTriggers);
-  table->setFocusPolicy(Qt::NoFocus);
-  table->setSelectionMode(QAbstractItemView::NoSelection);
+  // Momentaneamente disabilitati
+  // table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+  // table->setFocusPolicy(Qt::NoFocus);
+  // table->setSelectionMode(QAbstractItemView::NoSelection);
 
   table_layout->addWidget(table);
+  table_layout->addLayout(add_total());
 }
 
 void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>>& _products) {
@@ -62,7 +63,7 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
 
     QTableWidgetItem* dim_item = new QTableWidgetItem();
     // TODO: questa cosa fa abbastanza schifo e non funziona, da rivedere
-    //    dim_item->setText(QString::fromStdString((*cit).first->fromKindToStdString((*cit).first->get_kind())));
+    dim_item->setText(QString::fromStdString((*cit).first->fromKindToStdString((*cit).first->get_kind())));
     dim_item->setTextAlignment(Qt::AlignCenter);
     table->setItem(i, 1, dim_item);
 
@@ -75,17 +76,35 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
     // Inserimento totale per linea
 
     QTableWidgetItem* price_item = new QTableWidgetItem();
-    price_item->setText((*cit).first->get_name().data());  // la funzione che calcola il totale per item??
+    price_item->setText(QString::number((*cit).first->get_price()*(*cit).second, 'f', 2) + " €");
     price_item->setTextAlignment(Qt::AlignCenter);
     table->setItem(i, 3, price_item);
+
+    refresh_totale += (*cit).first->get_price()*(*cit).second;
+    refresh_tasse += (*cit).first->taxes()*(*cit).second;
   }
 
   table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
   // Non rende visibile una selezione
 
-  table->setEditTriggers(QAbstractItemView::NoEditTriggers);
-  table->setFocusPolicy(Qt::NoFocus);
-  table->setSelectionMode(QAbstractItemView::NoSelection);
+  // table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+  // table->setFocusPolicy(Qt::NoFocus);
+  // table->setSelectionMode(QAbstractItemView::NoSelection);
   // table->setStyleSheet("gridline-color: white");  // rende bianche le linee poi gli oggetti che inseriamo mettiamo i bordi alti e bassi così da avere solo linee
+}
+
+QGridLayout* QReceiptShow::add_total() {
+    resoconto = new QGridLayout();
+
+    resoconto->addWidget(new QLabel("TOTALE:"), 0, 0, 1, 1, Qt::AlignLeft);
+    prezzo_totale = new QLabel("€ -.--");
+    resoconto->addWidget(prezzo_totale, 0, 1, 1, 1, Qt::AlignRight);
+    resoconto->addWidget(new QLabel("Tasse:"), 1, 0, 1, 1, Qt::AlignLeft);
+    tasse_totale = new QLabel("€ -.--");
+    resoconto->addWidget(tasse_totale, 1, 1, 1, 1, Qt::AlignRight);
+
+    resoconto->setContentsMargins(10,10,10,10);
+
+    return resoconto;
 }

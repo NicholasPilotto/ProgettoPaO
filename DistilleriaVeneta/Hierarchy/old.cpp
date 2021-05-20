@@ -9,7 +9,7 @@ old::aux_map_initializer::aux_map_initializer() {
 old::aux_map_initializer::~aux_map_initializer() { delete ptr; }
 old::aux_map_initializer old::aux_map;
 
-old::old(const color c, const u_vector<taste>& t, bool b, unsigned int m, bottle_size bs, const std::string& n, double ac) : grappa(c, t, bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t), barrique(b), month(m) {}
+old::old(const color c, const u_vector<taste>& t, bool b, unsigned int m, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t), barrique(b), month(m) {}
 
 old::old(const old& o) : grappa(o), col(o.col), tastes(o.tastes), barrique(o.barrique), month(o.month) {}
 

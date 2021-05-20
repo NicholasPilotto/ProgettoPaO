@@ -8,11 +8,17 @@ void controller::set_model(model* m) { _model = m; }
 
 void controller::set_view(view* v) { _view = v; }
 
-void controller::add_item(const deep_ptr<product>& p) { _model->add_item(p); }
+void controller::add_item(const deep_ptr<product>& p) {
+  _model->add_item(p);
+  _view->refresh_scontrino(get_receipt());
+    }
 
 void controller::remove_item(const deep_ptr<product>& p) { _model->remove_item(p); }
 
-void controller::delete_all() { _model->delete_all(); }
+void controller::delete_all() {
+    _model->delete_all();
+    _view->refresh_scontrino(get_receipt());
+}
 
 bool controller::presenza(const deep_ptr<product>& p) const { return _model->presenza(p); }
 

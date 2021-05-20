@@ -7,7 +7,7 @@ young::aux_map_initializer::aux_map_initializer() {
 young::aux_map_initializer::~aux_map_initializer() { delete ptr; }
 young::aux_map_initializer young::aux_map;
 
-young::young(const color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : grappa(c, t, bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
+young::young(const color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
 
 young::young(const young& y) : grappa(y), col(y.col), tastes(y.tastes) {}  // Anche il sottooggetto? Se si come?
 

@@ -24,8 +24,6 @@ SOURCES += \
   controller.cpp \
   qproduct.cpp \
   receipt.cpp \
-  showgrid.cpp \
-  showreceipt.cpp \
   overlay.cpp \
   qstackedwidgethover.cpp \
   receiptshow.cpp \
@@ -46,14 +44,11 @@ HEADERS += \
   ./Utilities/deep_ptr.hpp \
   ./Utilities/aux_func.hpp \
   io_json.h \
-  main.h \
   model.h \
   view.h \
   controller.h \
   qproduct.h \
   receipt.h \
-  showgrid.h \
-  showreceipt.h \
   overlay.h \
   qstackedwidgethover.h \
   receiptshow.h \

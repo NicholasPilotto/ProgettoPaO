@@ -5,6 +5,7 @@
 #include <QScrollArea>
 #include <QStackedWidget>
 #include <QWidget>
+#include <functional>
 
 #include "Hierarchy/product.h"
 #include "Utilities/deep_ptr.hpp"
@@ -20,12 +21,13 @@ class QGridShow : public QWidget {
   QScrollArea* product_area;
   QFrame* contenitore;
   QGridLayout* grid;
-  QStackedWidgetHover* stack;
+  QList<QStackedWidgetHover*> lista_prodotti;
   void clear_grid();
 
  public:
   QGridShow(QWidget* parent = nullptr);
-  void refresh_grid(const u_vector<deep_ptr<product>>& _products);
+  void refresh_grid(const u_vector<deep_ptr<product>>& _products, std::function<void(const deep_ptr<product>&)>);
+  void add_product(QStackedWidgetHover*, int, int);
 };
 
 #endif  // GRIDSHOW_H

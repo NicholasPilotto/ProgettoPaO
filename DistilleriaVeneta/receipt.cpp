@@ -4,7 +4,9 @@ receipt::receipt() : date(steady_clock::now()), items({}) {}
 
 void receipt::add_item(const deep_ptr<product>& p) {
   pair<deep_ptr<product>, int> element(p, 1);
-  items.push_back(element);
+  if(!presenza(element.first)){
+    items.push_back(element);
+  }
 }
 
 void receipt::remove_item(const deep_ptr<product>& p) {
@@ -21,14 +23,7 @@ void receipt::remove_item(const deep_ptr<product>& p) {
   }
 }
 
-void receipt::delete_all() {
-  u_vector<pair<deep_ptr<product>, int>>::iterator it = items.begin();
-  u_vector<pair<deep_ptr<product>, int>>::iterator end = items.end();
-
-  for (; it != end; it++) {
-    items.erase(it);
-  }
-}
+void receipt::delete_all() { items.erase(items.begin(), items.end()); }
 
 bool receipt::presenza(const deep_ptr<product>& p) const {
   u_vector<pair<deep_ptr<product>, int>>::const_iterator cit = items.const_begin();
