@@ -16,5 +16,7 @@ int main(int argc, char *argv[]) {
   w.set_controller(&c);
   w.show();
 
+  w.setWindowIcon(QIcon(":/icon/icon.png"));
+
   return a.exec();
 }
