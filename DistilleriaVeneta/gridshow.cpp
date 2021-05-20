@@ -42,9 +42,9 @@ void QGridShow::refresh_grid(const u_vector<deep_ptr<product>>& _products, std::
 
   for (; it != end; it++) {
     QProduct* p = new QProduct(*it,bind);
-    p->setMaximumSize(160,220);
+    p->setMaximumSize(160,240);
     QOverlay* o = new QOverlay();
-    o->setMaximumSize(160,220);
+    o->setMaximumSize(160,240);
     QStackedWidgetHover* stack = new QStackedWidgetHover(p,o);
     add_product(stack,r,c);
 
