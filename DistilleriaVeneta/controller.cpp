@@ -4,6 +4,12 @@
 
 controller::controller(QObject* parent) : QObject(parent) {}
 
+controller::~controller() {
+  delete _view;
+  delete _model;
+  delete previous_sender;
+}
+
 void controller::set_model(model* m) { _model = m; }
 
 void controller::set_view(view* v) { _view = v; }
@@ -44,20 +50,32 @@ void controller::filter_by_products() const {
   }
 }
 
-void controller::filter_by_color() const {
-  if (qobject_cast<QAction*>(sender())->isChecked()) {
+void controller::filter_by_color() {
+  QAction* aux = qobject_cast<QAction*>(sender());
+  if (aux->isChecked()) {
     unsigned int _sender = std::stoi(sender()->objectName().toStdString());
     _view->refresh_grid_view(_model->filter_color(_sender));
+    if (previous_sender) {
+      previous_sender->setChecked(false);
+    }
   } else {
     _view->refresh_grid_view(_model->filter_all());
   }
+
+  previous_sender = aux;
 }
 
-void controller::filter_by_taste() const {
-  if (qobject_cast<QAction*>(sender())->isChecked()) {
+void controller::filter_by_taste() {
+  QAction* aux = qobject_cast<QAction*>(sender());
+  if (aux->isChecked()) {
     unsigned int _sender = std::stoi(sender()->objectName().toStdString());
     _view->refresh_grid_view(_model->filter_taste(_sender));
+    if (previous_sender) {
+      previous_sender->setChecked(false);
+    }
   } else {
     _view->refresh_grid_view(_model->filter_all());
   }
+
+  previous_sender = aux;
 }
