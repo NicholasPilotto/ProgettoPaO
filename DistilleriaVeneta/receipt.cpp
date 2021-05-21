@@ -1,6 +1,6 @@
 #include "receipt.h"
 
-receipt::receipt() : date(steady_clock::now()), items({}) {}
+receipt::receipt() : date(steady_clock::now()), items(u_vector<pair<deep_ptr<product>, int>>()) {}
 
 void receipt::add_item(const deep_ptr<product>& p) {
   pair<deep_ptr<product>, int> element(p, 1);
@@ -30,7 +30,9 @@ bool receipt::presenza(const deep_ptr<product>& p) const {
   u_vector<pair<deep_ptr<product>, int>>::const_iterator end = items.const_end();
 
   for (; cit != end; cit++) {
-    if ((*cit).first->get_name() == p->get_name() && (*cit).first->get_kind() == p->get_kind()) return true;
+    if ((*cit).first->get_name() == p->get_name() && (*cit).first->get_kind() == p->get_kind()) {
+      return true;
+    }
   }
   return false;
 }
