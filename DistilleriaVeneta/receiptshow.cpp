@@ -43,7 +43,7 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
   auto cit = _products.const_begin();
   auto end = _products.const_end();
 
-  for (int i = 0; cit != end; cit++, i++) {
+  for (int i = rows-1; cit != end; cit++, i--) {
     table->setRowHeight(i, 50);
 
     // Inserimento icona cestino
@@ -62,7 +62,6 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
     // Inserimento grandezza bottiglia
 
     QTableWidgetItem* dim_item = new QTableWidgetItem();
-    // TODO: questa cosa fa abbastanza schifo e non funziona, da rivedere
     dim_item->setText(QString::fromStdString((*cit).first->fromKindToStdString((*cit).first->get_kind())));
     dim_item->setTextAlignment(Qt::AlignCenter);
     table->setItem(i, 1, dim_item);
