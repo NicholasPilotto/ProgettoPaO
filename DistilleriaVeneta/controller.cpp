@@ -13,8 +13,8 @@ void controller::add_item(const deep_ptr<product>& p) {
   _view->refresh_scontrino(get_receipt());
     }
 
-void controller::remove_item(const deep_ptr<product>& p) { _model->remove_item(p); }
-
+void controller::remove_item(int i) { std::cout << "b" << std::endl;
+    _model->remove_item(i);}
 void controller::refresh_quantity(const deep_ptr<product> & p, int v)
 {
     _model->refresh_quantity(p,v);

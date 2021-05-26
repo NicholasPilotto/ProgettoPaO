@@ -13,11 +13,15 @@ class tablerow : public QWidget
 {
     Q_OBJECT
 private:
-    QList<QTableWidgetItem*> list_items;
-    QList<std::pair<QList<QTableWidgetItem*>,QSpinBox*>> list_table;
+
+    QTableWidgetItem* bin_item;
+    QTableWidgetItem* name_item;
+    QTableWidgetItem* dim_item;
+    QTableWidgetItem* price_item;
+
 public:
-    tablerow(/*const deep_ptr<product>&, int, QTableWidget*&, int,*/ QWidget* = nullptr);
-    void set_rows(const deep_ptr<product> &, int, QTableWidget*&, int);
+    tablerow(QWidget* = nullptr);
+    void set_row(const deep_ptr<product> &, int, QTableWidget*&, int);
 };
 
 #endif // TABLEROW_H

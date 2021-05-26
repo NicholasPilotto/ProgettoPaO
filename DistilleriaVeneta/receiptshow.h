@@ -16,6 +16,8 @@
 #include "tablerow.h"
 using std::pair;
 
+class controller;
+
 class QReceiptShow : public QWidget {
   Q_OBJECT
  private:
@@ -25,14 +27,19 @@ class QReceiptShow : public QWidget {
   QLabel* tasse_finale;
   double refresh_totale;
   double refresh_tasse;
+  controller* presenter;
 
   QDialog* remove_line;
 
  public:
   explicit QReceiptShow(QWidget* = nullptr);
+  void setpresenter(controller*);
   void addTable(QVBoxLayout*);
   void refreshTable(const u_vector<std::pair<deep_ptr<product>, int>>&);
   QGridLayout* add_total();
+
+private slots:
+  void remove_row(int);
 };
 
 #endif  // RECEIPTSHOW_H

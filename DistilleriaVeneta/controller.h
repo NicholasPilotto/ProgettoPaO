@@ -21,7 +21,7 @@ class controller : public QObject {
   void set_model(model*);
   void set_view(view*);
   void add_item(const deep_ptr<product>&);
-  void remove_item(const deep_ptr<product>&);
+  void remove_item(int);
   void refresh_quantity(const deep_ptr<product>&, int);
   bool presenza(const deep_ptr<product>&) const;
   double total_taxes() const;

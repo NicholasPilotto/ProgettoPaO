@@ -207,6 +207,8 @@ void view::set_controller(controller* c) {
 
   presenter = c;
 
+  receipt_area->setpresenter(c);
+
   // Update del file json
 
   update_json();

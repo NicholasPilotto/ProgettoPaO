@@ -11,7 +11,8 @@ u_vector<deep_ptr<product>> model::get_products_json() const { return products; 
 
 void model::add_item(const deep_ptr<product>& p) { r->add_item(p); }
 
-void model::remove_item(const deep_ptr<product>& p) { r->remove_item(p); }
+void model::remove_item(int i) { std::cout << "c" << std::endl;
+    r->remove_item(i); }
 
 void model::delete_all() { r->delete_all(); }
 

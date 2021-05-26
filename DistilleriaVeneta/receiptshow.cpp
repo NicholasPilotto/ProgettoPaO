@@ -1,9 +1,15 @@
 #include "receiptshow.h"
+#include "controller.h"
 
 QReceiptShow::QReceiptShow(QWidget* parent) : QWidget(parent) {
   QVBoxLayout* table_layout = new QVBoxLayout();
   addTable(table_layout);
   setLayout(table_layout);
+}
+
+void QReceiptShow::setpresenter(controller * c)
+{
+    presenter = c;
 }
 
 void QReceiptShow::addTable(QVBoxLayout* table_layout) {
@@ -43,52 +49,15 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
   auto cit = _products.const_begin();
   auto end = _products.const_end();
 
-  tablerow* new_line = new tablerow(/*(*cit).first, (*cit).second, table, i*/);
-
-  for (int i = rows-1; cit != end; cit++, i--) {
-
-  new_line->set_rows((*cit).first, (*cit).second, table, i);
-
-//    table->setRowHeight(i, 50);
-
-//    // Inserimento icona cestino
-
-//    const QIcon* icon = new QIcon("../Grafica/Immagini/delete.png");
-//    QTableWidgetItem* bin_item = new QTableWidgetItem(*icon, "");
-//    table->setVerticalHeaderItem(i, bin_item);
-
-//    // Inserimento nome
-
-//    QTableWidgetItem* name_item = new QTableWidgetItem();
-//    name_item->setText((*cit).first->get_name().data());
-//    name_item->setTextAlignment(Qt::AlignCenter);
-//    table->setItem(i, 0, name_item);
-
-//    // Inserimento grandezza bottiglia
-
-//    QTableWidgetItem* dim_item = new QTableWidgetItem();
-//    dim_item->setText(QString::fromStdString((*cit).first->fromKindToStdString((*cit).first->get_kind())));
-//    dim_item->setTextAlignment(Qt::AlignCenter);
-//    table->setItem(i, 1, dim_item);
-
-//    // Inserimento SpinBox
-
-//    QSpinBox* num_item = new QSpinBox();
-//    num_item->setRange(1, 2147483647);
-//    table->setCellWidget(i, 2, num_item);
-
-//    // Inserimento totale per linea
-
-//    QTableWidgetItem* price_item = new QTableWidgetItem();
-//    price_item->setText(QString::number((*cit).first->get_price()*(*cit).second, 'f', 2) + " €");
-//    price_item->setTextAlignment(Qt::AlignCenter);
-//    table->setItem(i, 3, price_item);
+  for (int i = 0; cit != end; cit++, i++) {
+  tablerow* new_line = new tablerow(this);
+  new_line->set_row((*cit).first, (*cit).second, table, i);
 
     refresh_totale += (*cit).first->get_price()*(*cit).second;
     refresh_tasse += (*cit).first->taxes()*(*cit).second;
   }
 
-  connect(table->verticalHeader(), SIGNAL(sectionClicked(int)), table, SLOT(hideRow(int))); // così con hiderow va bene, con remove row NON SI ELIMINA NEL VETTORE E POI RICOMPAINO (GIUSTAMENTE)
+  connect(table->verticalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(remove_row(int))); // così con hiderow va bene, con remove row NON SI ELIMINA NEL VETTORE E POI RICOMPAINO (GIUSTAMENTE)
   table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
   // Non rende visibile una selezione
@@ -112,4 +81,13 @@ QGridLayout* QReceiptShow::add_total() {
     resoconto->setContentsMargins(10,10,10,10);
 
     return resoconto;
+}
+
+void QReceiptShow::remove_row(int i)
+{
+    table->removeRow(i);
+    std::cout << "a" << std::endl;
+    std::cout << presenter << std::endl;
+    presenter->remove_item(i);
+
 }

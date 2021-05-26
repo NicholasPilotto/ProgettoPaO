@@ -14,6 +14,7 @@ int main(int argc, char *argv[]) {
   c.set_model(&m);
   c.set_view(&w);
   w.set_controller(&c);
+  std::cout << &c << std::endl;
   w.show();
 
   w.setWindowIcon(QIcon(":/icon/icon.png"));
