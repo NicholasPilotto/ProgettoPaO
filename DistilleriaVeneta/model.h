@@ -23,6 +23,7 @@ class model {
   void add_item(const deep_ptr<product>&);
   void remove_item(const deep_ptr<product>&);
   void delete_all();
+  void refresh_quantity(const deep_ptr<product>&, int);
   bool presenza(const deep_ptr<product>&) const;
   unsigned int total_number_items() const;
   double total_price_line(unsigned int) const;

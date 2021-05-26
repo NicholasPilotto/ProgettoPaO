@@ -25,6 +25,18 @@ void receipt::remove_item(const deep_ptr<product>& p) {
 
 void receipt::delete_all() { items.erase(items.begin(), items.end()); }
 
+void receipt::refresh_quantity(const deep_ptr<product>& p, int v){
+
+  u_vector<pair<deep_ptr<product>, int>>::iterator it = items.begin();
+  u_vector<pair<deep_ptr<product>, int>>::iterator end = items.end();
+
+  for (; it != end; it++) {
+    if ((*it).first->get_name() == p->get_name() && (*it).first->get_kind() == p->get_kind()) {
+      (*it).second = v;
+    }
+  }
+}
+
 bool receipt::presenza(const deep_ptr<product>& p) const {
   u_vector<pair<deep_ptr<product>, int>>::const_iterator cit = items.const_begin();
   u_vector<pair<deep_ptr<product>, int>>::const_iterator end = items.const_end();

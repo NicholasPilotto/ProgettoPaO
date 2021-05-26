@@ -38,7 +38,7 @@ void QGridShow::refresh_grid(const u_vector<deep_ptr<product>>& _products, std::
   const int n_ele = 3;
   u_vector<deep_ptr<product>>::const_iterator it = _products.const_begin();
   u_vector<deep_ptr<product>>::const_iterator end = _products.const_end();
-   lista_prodotti.clear();
+  lista_prodotti.clear();
 
   for (; it != end; it++) {
     QProduct* p = new QProduct(*it,bind);

@@ -29,6 +29,7 @@ SOURCES += \
   receiptshow.cpp \
   gridshow.cpp \
   filter.cpp \
+    tablerow.cpp
 
 HEADERS += \
   ./Hierarchy/enum.h\
@@ -54,6 +55,7 @@ HEADERS += \
   receiptshow.h \
   gridshow.h \
   filter.h \
+    tablerow.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

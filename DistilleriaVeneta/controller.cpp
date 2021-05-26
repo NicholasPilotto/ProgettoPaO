@@ -4,12 +4,6 @@
 
 controller::controller(QObject* parent) : QObject(parent) {}
 
-controller::~controller() {
-  delete _view;
-  delete _model;
-  delete previous_sender;
-}
-
 void controller::set_model(model* m) { _model = m; }
 
 void controller::set_view(view* v) { _view = v; }
@@ -20,6 +14,12 @@ void controller::add_item(const deep_ptr<product>& p) {
     }
 
 void controller::remove_item(const deep_ptr<product>& p) { _model->remove_item(p); }
+
+void controller::refresh_quantity(const deep_ptr<product> & p, int v)
+{
+    _model->refresh_quantity(p,v);
+    _view->refresh_scontrino(get_receipt());
+}
 
 void controller::delete_all() {
     _model->delete_all();

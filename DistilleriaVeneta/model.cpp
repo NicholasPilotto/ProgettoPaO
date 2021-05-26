@@ -15,6 +15,8 @@ void model::remove_item(const deep_ptr<product>& p) { r->remove_item(p); }
 
 void model::delete_all() { r->delete_all(); }
 
+void model::refresh_quantity(const deep_ptr<product> & p, int v){ r->refresh_quantity(p,v); }
+
 bool model::presenza(const deep_ptr<product>& p) const { return r->presenza(p); }
 
 unsigned int model::total_number_items() const { return r->total_number_items(); }

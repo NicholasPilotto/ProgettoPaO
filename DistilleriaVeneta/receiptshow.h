@@ -13,6 +13,7 @@
 #include "Hierarchy/product.h"
 #include "Utilities/deep_ptr.hpp"
 #include "Utilities/u_vector.hpp"
+#include "tablerow.h"
 using std::pair;
 
 class QReceiptShow : public QWidget {
@@ -20,10 +21,12 @@ class QReceiptShow : public QWidget {
  private:
   QTableWidget* table;
   QGridLayout* resoconto;
-  QLabel* prezzo_totale;
-  QLabel* tasse_totale;
+  QLabel* prezzo_finale;
+  QLabel* tasse_finale;
   double refresh_totale;
   double refresh_tasse;
+
+  QDialog* remove_line;
 
  public:
   explicit QReceiptShow(QWidget* = nullptr);

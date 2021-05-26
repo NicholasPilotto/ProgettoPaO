@@ -273,16 +273,25 @@ void view::pay_banner() {
 
   QPushButton* ok_button = new QPushButton("OK");
   QPushButton* annulla_button = new QPushButton("Annulla");
-  main->addWidget(new QLabel("Confermi il pagamento?"));
+  QLabel* alert;
+
+  if(presenter->get_receipt().size()){
+  alert = new QLabel("\t  Confermi il pagamento?");
+  main->addWidget(alert,Qt::AlignCenter);
   buttons->addWidget(annulla_button,Qt::AlignLeft);
   buttons->addWidget(ok_button,Qt::AlignRight);
-  buttons->setSpacing(20);
+  buttons->setSpacing(120);
   main->addLayout(buttons);
+  } else {
+      alert = new QLabel("Nessun prodotto presente nel carrello.\n          Pagamento non effettuato!");
+      alert->setContentsMargins(10,10,10,10);
+      main->addWidget(alert);
+  }
 
   pay_dialog->setLayout(main);
 
-  pay_dialog->setMinimumWidth(150);
-  pay_dialog->setMinimumHeight(80);
+  pay_dialog->setFixedWidth(310);
+  pay_dialog->setFixedHeight(150);
   connect(ok_button, SIGNAL(clicked()), presenter, SLOT(delete_all()));
   connect(ok_button, SIGNAL(clicked()), pay_dialog, SLOT(close()));
   connect(annulla_button, SIGNAL(clicked()), pay_dialog, SLOT(close()));
@@ -294,20 +303,31 @@ void view::confirm_deletion()
 {
     delete_dialog = new QDialog(this);
 
-    QGridLayout* d = new QGridLayout();
+    QLabel* alert;
+    QVBoxLayout* main = new QVBoxLayout(delete_dialog);
+    QHBoxLayout* buttons = new QHBoxLayout(delete_dialog);
 
-    QLabel* alert = new QLabel("Vuoi davvero cancellare\ntutti i prodotti del carrello?");
     QPushButton* ok = new QPushButton("OK");
     QPushButton* annulla = new QPushButton("Annulla");
 
-    d->addWidget(alert,0,0,1,2,Qt::AlignCenter);
-    d->addWidget(annulla,1,0,1,1,Qt::AlignLeft);
-    d->addWidget(ok,1,1,1,1,Qt::AlignRight);
+    if(presenter->get_receipt().size()) {
 
-    delete_dialog->setLayout(d);
-    delete_dialog->layout()->setAlignment(Qt::AlignCenter);
-    delete_dialog->setMinimumWidth(250);
-    delete_dialog->setMinimumHeight(150);
+    alert = new QLabel("\t     Vuoi davvero cancellare\n\t  tutti i prodotti del carrello?");
+    main->addWidget(alert,Qt::AlignCenter);
+    buttons->addWidget(annulla,Qt::AlignLeft);
+    buttons->addWidget(ok,Qt::AlignRight);
+    buttons->setSpacing(150);
+    main->addLayout(buttons);
+
+    } else {
+        alert = new QLabel("Nessun prodotto presente nello scontrino.\n\t   Il carrello è già vuoto!");
+        alert->setContentsMargins(10,0,10,0);
+        main->addWidget(alert,Qt::AlignCenter);
+    }
+
+    delete_dialog->setLayout(main);
+    delete_dialog->setFixedWidth(330);
+    delete_dialog->setFixedHeight(150);
 
     connect(ok, SIGNAL(clicked()), presenter, SLOT(delete_all()));
     connect(ok, SIGNAL(clicked()), delete_dialog, SLOT(close()));
