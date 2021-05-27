@@ -23,8 +23,8 @@ class liquor : public spirits {
 
  public:
   liquor(const color = white, const u_vector<taste>& = {}, bottle_size = medium, const std::string& = "", double = min_ac);  // da controllare
-  liquor(const liquor&);                                                                                                     // da controllare
-  liquor& operator=(const liquor&);                                                                                          // da controllare
+  liquor(const liquor&);
+  liquor& operator=(const liquor&);
   static const double min_ac;
   static const double max_ac;
   static const double discount_liquor;
@@ -39,6 +39,7 @@ class liquor : public spirits {
   virtual std::string code() const override;
   virtual std::string get_image_path() const override;
   virtual liquor* create(QMap<QString, QVariant>&) const override;
+  virtual std::string write() const;
 };
 
 #endif  // LIQUOR_H_

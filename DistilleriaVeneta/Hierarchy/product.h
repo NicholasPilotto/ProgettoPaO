@@ -5,6 +5,7 @@
 #include <QString>
 #include <QVariant>
 #include <map>
+#include <regex>
 #include <string>
 
 #include "./Utilities/u_vector.hpp"
@@ -47,7 +48,7 @@ class product {
   std::string fromKindToStdString(bottle_size) const;
   static product* unserialize(QMap<QString, QVariant>&);
   virtual product* create(QMap<QString, QVariant>&) const = 0;
-  //	virtual std::string write() const = 0;
+  virtual std::string write() const = 0;
   double operator+(const product&) const;
   double operator-(const product&) const;
   bool operator<(const product&) const;

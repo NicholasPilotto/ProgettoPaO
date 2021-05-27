@@ -92,3 +92,28 @@ old* old::create(QMap<QString, QVariant>& m) const {
 
   return new old(_color, _tastes, _barrique, _month, _bottle, _name, _alcohol_content);
 }
+
+std::string old::write() const {
+  std::string aux =
+      "\"product\": $0, \
+	    \"name\": \"$1\", \
+	    \"alcohol_content\": $2, \
+	    \"color\": $3, \
+	    \"tastes\": [ \
+	      $4 \
+	    ], \
+	    \"bottle_size\": $5, \
+            \"barrique\": $6, \
+            \"month\": $7";
+
+  aux = std::regex_replace(aux, std::regex("\\$0"), get_product());
+  aux = std::regex_replace(aux, std::regex("\\$1"), get_name());
+  aux = std::regex_replace(aux, std::regex("\\$2"), std::to_string(get_alcohol_content()));
+  aux = std::regex_replace(aux, std::regex("\\$3"), std::to_string(get_color()));
+  aux = std::regex_replace(aux, std::regex("\\$4"), std::to_string(get_tastes()[0]));
+  aux = std::regex_replace(aux, std::regex("\\$5"), std::to_string(get_kind()));
+  aux = std::regex_replace(aux, std::regex("\\$6"), std::to_string(is_barrique()));
+  aux = std::regex_replace(aux, std::regex("\\$7"), std::to_string(get_month_old()));
+
+  return aux;
+}

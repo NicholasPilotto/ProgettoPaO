@@ -97,3 +97,24 @@ cream* cream::create(QMap<QString, QVariant>& m) const {
 
   return new cream(_color, _tastes, _bottle, _name, _alcohol_content);
 }
+
+std::string cream::write() const {
+  std::string aux =
+      "\"product\": $0, \
+	    \"name\": \"$1\", \
+	    \"alcohol_content\": $2, \
+	    \"color\": $3, \
+	    \"tastes\": [ \
+	      $4 \
+	    ], \
+	    \"bottle_size\": $5";
+
+  aux = std::regex_replace(aux, std::regex("\\$0"), get_product());
+  aux = std::regex_replace(aux, std::regex("\\$1"), get_name());
+  aux = std::regex_replace(aux, std::regex("\\$2"), std::to_string(get_alcohol_content()));
+  aux = std::regex_replace(aux, std::regex("\\$3"), std::to_string(get_color()));
+  aux = std::regex_replace(aux, std::regex("\\$4"), std::to_string(get_tastes()[0]));
+  aux = std::regex_replace(aux, std::regex("\\$5"), std::to_string(get_kind()));
+
+  return aux;
+}

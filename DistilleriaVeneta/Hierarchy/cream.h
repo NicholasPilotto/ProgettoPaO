@@ -40,7 +40,7 @@ class cream : public non_spirits {
   virtual std::string code() const override;
   virtual std::string get_image_path() const override;
   virtual cream* create(QMap<QString, QVariant>&) const override;
-  //	virtual std::string write() const;
+  virtual std::string write() const;
 };
 
 #endif  // CREAM_H_
