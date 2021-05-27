@@ -2,7 +2,9 @@
 
 io_json::io_json(const std::string& path) : __file_path(path) {}
 
-u_vector<deep_ptr<product>> io_json::read() {
+std::string io_json::dir_path = "./file/Receipts/";
+
+u_vector<deep_ptr<product>> io_json::read() const {
   QFile file_obj(QString::fromStdString(__file_path));
   if (!file_obj.open(QIODevice::ReadOnly)) {
     qDebug() << "Failed to open ";
@@ -50,4 +52,47 @@ u_vector<deep_ptr<product>> io_json::read() {
   }
 
   return result;
+}
+
+void io_json::write(const u_vector<deep_ptr<product>>& a) const {
+  int i = 0;
+  time_t rawtime;
+  struct tm* timeinfo;
+  char buffer[50];
+
+  time(&rawtime);
+  timeinfo = localtime(&rawtime);
+
+  strftime(buffer, sizeof(buffer), "%d-%m-%Y %H:%M:%S", timeinfo);
+  std::string str(buffer);
+  std::string to_write =
+      "{ \n \
+         \"metadata\": { \
+	          \"timestamp\": \"$1\" \
+          }, \
+         \"elements\": {\n";
+  to_write = std::regex_replace(to_write, std::regex("\\$1"), str);
+  for (u_vector<deep_ptr<product>>::const_iterator it = a.const_begin(); it != a.const_end(); it++) {
+    i++;
+    to_write.append("\t\"element" + std::to_string(i) + "\":{ \n\t" + (*it)->write() + "},\n");
+  }
+  to_write.erase(to_write.end() - 2);
+  to_write.append("}\n}");
+  //	qDebug() << to_write.c_str();
+
+  QDir dir(dir_path.data());
+  if (!dir.exists()) {
+    dir.mkpath(".");
+  }
+
+  strftime(buffer, sizeof(buffer), "-%d-%m-%Y-%H_%M_%S", timeinfo);
+  str = buffer;
+  QFile file((dir_path + "receipt" + str + ".json").data());
+
+  file.open(QIODevice::WriteOnly);
+  QString jsonString = to_write.c_str();
+  //	qDebug() << doc.;
+  QJsonDocument doc = QJsonDocument::fromJson(jsonString.toUtf8());
+
+  file.write(doc.toJson(QJsonDocument::Indented));
 }

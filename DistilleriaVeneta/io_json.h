@@ -2,11 +2,14 @@
 #define IO_JSON_H
 
 #include <QDebug>
+#include <QDir>
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QMap>
 #include <QString>
+#include <QTime>
+#include <regex>
 #include <string>
 
 #include "Hierarchy/product.h"
@@ -19,8 +22,10 @@ class io_json {
 
  public:
   io_json(const std::string&);
+  static std::string dir_path;
 
-  u_vector<deep_ptr<product>> read();
+  u_vector<deep_ptr<product>> read() const;
+  void write(const u_vector<deep_ptr<product>>&) const;
 };
 
 #endif  // IO_JSON_H
