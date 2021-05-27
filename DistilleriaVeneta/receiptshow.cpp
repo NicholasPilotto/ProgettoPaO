@@ -34,6 +34,7 @@ void QReceiptShow::addTable(QVBoxLayout* table_layout) {
   // table->setEditTriggers(QAbstractItemView::NoEditTriggers);
   // table->setFocusPolicy(Qt::NoFocus);
   // table->setSelectionMode(QAbstractItemView::NoSelection);
+  table->selectionModel()->selectedRows();
 
   table_layout->addWidget(table);
   table_layout->addLayout(add_total());
@@ -41,7 +42,6 @@ void QReceiptShow::addTable(QVBoxLayout* table_layout) {
 
 void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>>& _products) {
   // Inserimento prodotti
-
   int rows = _products.size();
 
   table->setRowCount(rows);
@@ -59,7 +59,6 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
 
   connect(table->verticalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(remove_row(int))); // così con hiderow va bene, con remove row NON SI ELIMINA NEL VETTORE E POI RICOMPAINO (GIUSTAMENTE)
   table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
   // Non rende visibile una selezione
 
   // table->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -85,9 +84,15 @@ QGridLayout* QReceiptShow::add_total() {
 
 void QReceiptShow::remove_row(int i)
 {
-    table->removeRow(i);
+//    std::cout << i << std::endl;
+    auto s = table->selectedRanges().first();
+    int a = s.topRow() + s.bottomRow() - 1;
+    for(; a > s.topRow() - 1; a--) {
+        qDebug() << a;
+       table->removeRow(a);
+    }
     std::cout << "a" << std::endl;
-    std::cout << presenter << std::endl;
-    presenter->remove_item(i);
-
+    presenter->remove_row(a);
+    //table->selectionModel()->clearCurrentIndex();
+    //refreshTable(presenter->get_receipt());
 }
