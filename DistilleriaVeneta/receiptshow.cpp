@@ -53,7 +53,7 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
   tablerow* new_line = new tablerow(this);
   new_line->set_row((*cit).first, (*cit).second, table, i);
   }
-    refresh_tasse();
+    refresh_totali();
   connect(table->verticalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(remove_row(int))); // così con hiderow va bene, con remove row NON SI ELIMINA NEL VETTORE E POI RICOMPAINO (GIUSTAMENTE)
   table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
   // Non rende visibile una selezione
@@ -73,13 +73,16 @@ QGridLayout* QReceiptShow::add_total() {
     resoconto->addWidget(new QLabel("Tasse:"), 1, 0, 1, 1, Qt::AlignLeft);
     tasse_finale = new QLabel("€ 0.00");
     resoconto->addWidget(tasse_finale, 1, 1, 1, 1, Qt::AlignRight);
+    resoconto->addWidget(new QLabel("Numero di prodotti:"), 2, 0, 1, 1, Qt::AlignLeft);
+    n_items = new QLabel("0");
+    resoconto->addWidget(n_items, 2, 1, 1, 1, Qt::AlignRight);
 
     resoconto->setContentsMargins(10,10,10,10);
 
     return resoconto;
 }
 
-void QReceiptShow::refresh_tasse()
+void QReceiptShow::refresh_totali()
 {
     delete prezzo_finale;
     prezzo_finale = new QLabel("€ " + QString::number(presenter->total_price(), 'f', 2));
@@ -87,6 +90,9 @@ void QReceiptShow::refresh_tasse()
     delete tasse_finale;
     tasse_finale = new QLabel("€ " + QString::number(presenter->total_taxes(), 'f', 2));
     resoconto->addWidget(tasse_finale, 1, 1, 1, 1, Qt::AlignRight);
+    delete n_items;
+    n_items = new QLabel(QString::number(presenter->total_number_items()));
+    resoconto->addWidget(n_items, 2, 1, 1, 1, Qt::AlignRight);
 }
 
 void QReceiptShow::remove_row(int i)

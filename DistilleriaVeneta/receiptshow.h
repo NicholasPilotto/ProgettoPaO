@@ -25,6 +25,7 @@ class QReceiptShow : public QWidget {
   QGridLayout* resoconto;
   QLabel* prezzo_finale;
   QLabel* tasse_finale;
+  QLabel* n_items;
   controller* presenter;
 
   QDialog* remove_line;
@@ -35,7 +36,7 @@ class QReceiptShow : public QWidget {
   void addTable(QVBoxLayout*);
   void refreshTable(const u_vector<std::pair<deep_ptr<product>, int>>&);
   QGridLayout* add_total();
-  void refresh_tasse();
+  void refresh_totali();
 
 private slots:
   void remove_row(int);
