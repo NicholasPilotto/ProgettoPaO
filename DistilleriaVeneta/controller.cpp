@@ -2,7 +2,7 @@
 
 #include <QDebug>
 
-controller::controller(QObject* parent) : QObject(parent) {}
+controller::controller(QObject* parent) : QObject(parent), previous_sender(nullptr) {}
 
 void controller::set_model(model* m) { _model = m; }
 
