@@ -33,6 +33,7 @@ void tablerow::set_row(const deep_ptr<product> & p, int value_spin, QTableWidget
     QSpinBox* num_item = new QSpinBox();
     num_item->setRange(1, 2147483647);
     table->setCellWidget(riga, 2, num_item);
+//    connect(num_item, SIGNAL(valueChanged(int)), table, SLOT());
 
     // Inserimento totale per linea
 

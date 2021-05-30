@@ -9,9 +9,15 @@ void receipt::add_item(const deep_ptr<product>& p) {
   }
 }
 
-void receipt::remove_item(int i) {
-//  u_vector<pair<deep_ptr<product>, int>>::iterator it = items.begin();
+void receipt::remove_item(std::string name, std::string dim) {
+      u_vector<pair<deep_ptr<product>, int>>::iterator it = items.begin();
+      u_vector<pair<deep_ptr<product>, int>>::iterator end = items.end();
 
+      for(;it!=end;it++){
+          if((*it).first->get_name() == name && (*it).first->fromKindToStdString((*it).first->get_kind()) == dim){
+              items.erase(it);
+          }
+      }
 
 //  for (int j = 0; j<i ; j++) {it++;}
 
@@ -20,7 +26,7 @@ void receipt::remove_item(int i) {
   // std::cout  << "Inizio" << std::endl;
   // std::cout << items.size() << std::endl;
 
-      items.erase(items.begin() + i);
+//      items.erase(items.begin() + i);
 
 
   // std::cout << items.size() << std::endl;

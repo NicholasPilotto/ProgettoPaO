@@ -1,7 +1,7 @@
 #ifndef ENUM_H_
 #define ENUM_H_
 
-enum bottle_size { small, medium, big };
+enum bottle_size { small, medium, large };
 
 enum taste {
   _lemon = 10,

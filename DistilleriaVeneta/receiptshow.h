@@ -9,6 +9,7 @@
 #include <QTableWidgetItem>
 #include <QVBoxLayout>
 #include <QWidget>
+#include <QMessageBox>
 
 #include "Hierarchy/product.h"
 #include "Utilities/deep_ptr.hpp"
@@ -26,6 +27,7 @@ class QReceiptShow : public QWidget {
   QLabel* prezzo_finale;
   QLabel* tasse_finale;
   QLabel* n_items;
+  QPushButton* elimina_prodotto;
   controller* presenter;
 
   QDialog* remove_line;
@@ -37,9 +39,13 @@ class QReceiptShow : public QWidget {
   void refreshTable(const u_vector<std::pair<deep_ptr<product>, int>>&);
   QGridLayout* add_total();
   void refresh_totali();
+  void elimina_prodotto_dialog();
 
 private slots:
-  void remove_row(int);
+//  void remove_row(int);
+public slots:
+  void EliminaButtonSlot();
+  void CancellaProdottoSlot();
 };
 
 #endif  // RECEIPTSHOW_H

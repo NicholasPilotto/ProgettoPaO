@@ -262,78 +262,51 @@ void view::refresh_scontrino(const u_vector<pair<deep_ptr<product>,int>> & p)
 }
 
 void view::refresh_grid_view(const u_vector<deep_ptr<product>>& _vector) {
-  auto bind_item = std::bind(&controller::add_item, presenter, _1);
-  product_area->refresh_grid(_vector,bind_item); }
+    auto bind_item = std::bind(&controller::add_item, presenter, _1);
+    product_area->refresh_grid(_vector,bind_item); }
 
 // SLOTS
 
 void view::pay_banner() {
-  pay_dialog = new QDialog(this);
 
-  QVBoxLayout* main = new QVBoxLayout(pay_dialog);
-  QHBoxLayout* buttons = new QHBoxLayout(pay_dialog);
+  QMessageBox* pay_dialog = new QMessageBox(this);
 
-  QPushButton* ok_button = new QPushButton("OK");
-  QPushButton* annulla_button = new QPushButton("Annulla");
-  QLabel* alert;
+  if(presenter->get_receipt().size()) {
 
-  if(presenter->get_receipt().size()){
-  alert = new QLabel("\t  Confermi il pagamento?");
-  main->addWidget(alert,Qt::AlignCenter);
-  buttons->addWidget(annulla_button,Qt::AlignLeft);
-  buttons->addWidget(ok_button,Qt::AlignRight);
-  buttons->setSpacing(120);
-  main->addLayout(buttons);
-  } else {
-      alert = new QLabel("Nessun prodotto presente nel carrello.\n          Pagamento non effettuato!");
-      alert->setContentsMargins(10,10,10,10);
-      main->addWidget(alert);
-  }
-
-  pay_dialog->setLayout(main);
-
-  pay_dialog->setFixedWidth(310);
-  pay_dialog->setFixedHeight(150);
+  pay_dialog->setIcon(QMessageBox::Warning);
+  pay_dialog->setText("Confermi il pagamento?");
+  QPushButton* ok_button=new QPushButton("Ok");
+  QPushButton* annulla_button=new QPushButton("Annulla");
+  pay_dialog->addButton(ok_button,QMessageBox::YesRole);
   connect(ok_button, SIGNAL(clicked()), presenter, SLOT(delete_all()));
-  connect(ok_button, SIGNAL(clicked()), pay_dialog, SLOT(close()));
-  connect(annulla_button, SIGNAL(clicked()), pay_dialog, SLOT(close()));
+  pay_dialog->addButton(annulla_button,QMessageBox::NoRole);
+
+  } else {
+      pay_dialog->setIcon(QMessageBox::Information);
+      pay_dialog->setText("Nessun prodotto presente nel carrello.\n          Pagamento non effettuato!");
+  }
 
   pay_dialog->show();
 }
 
 void view::confirm_deletion()
 {
-    delete_dialog = new QDialog(this);
-
-    QLabel* alert;
-    QVBoxLayout* main = new QVBoxLayout(delete_dialog);
-    QHBoxLayout* buttons = new QHBoxLayout(delete_dialog);
-
-    QPushButton* ok = new QPushButton("OK");
-    QPushButton* annulla = new QPushButton("Annulla");
+    QMessageBox* delete_dialog = new QMessageBox(this);
 
     if(presenter->get_receipt().size()) {
 
-    alert = new QLabel("\t     Vuoi davvero cancellare\n\t  tutti i prodotti del carrello?");
-    main->addWidget(alert,Qt::AlignCenter);
-    buttons->addWidget(annulla,Qt::AlignLeft);
-    buttons->addWidget(ok,Qt::AlignRight);
-    buttons->setSpacing(150);
-    main->addLayout(buttons);
+    delete_dialog->setIcon(QMessageBox::Warning);
+    delete_dialog->setText("   Vuoi davvero eliminare\ntutti i prodotti dal carrello?");
+    QPushButton* ok_button=new QPushButton("Ok");
+    QPushButton* annulla_button=new QPushButton("Annulla");
+    delete_dialog->addButton(ok_button,QMessageBox::YesRole);
+    connect(ok_button, SIGNAL(clicked()), presenter, SLOT(delete_all()));
+    delete_dialog->addButton(annulla_button,QMessageBox::NoRole);
 
     } else {
-        alert = new QLabel("Nessun prodotto presente nello scontrino.\n\t   Il carrello è già vuoto!");
-        alert->setContentsMargins(10,0,10,0);
-        main->addWidget(alert,Qt::AlignCenter);
+        delete_dialog->setIcon(QMessageBox::Information);
+        delete_dialog->setText("Nessun prodotto presente\n           nel carrello!");
     }
-
-    delete_dialog->setLayout(main);
-    delete_dialog->setFixedWidth(330);
-    delete_dialog->setFixedHeight(150);
-
-    connect(ok, SIGNAL(clicked()), presenter, SLOT(delete_all()));
-    connect(ok, SIGNAL(clicked()), delete_dialog, SLOT(close()));
-    connect(annulla, SIGNAL(clicked()), delete_dialog, SLOT(close()));
 
     delete_dialog->show();
 }

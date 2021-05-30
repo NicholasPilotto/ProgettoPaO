@@ -28,7 +28,7 @@ const double product::min_ac = 18.0;
 double product::kind_price() const {
   if (kind == small) {
     return -1.00;
-  } else if (kind == big) {
+  } else if (kind == large) {
     return 1.00;
   }
   return 0.00;
@@ -44,7 +44,7 @@ double product::taxes() const {
   double aux = multiplier_taxes * alcohol_content;
   if (kind == small) {
     return aux * 0.50;
-  } else if (kind == big) {
+  } else if (kind == large) {
     return aux * 1.50;
   }
   return aux;
@@ -59,8 +59,8 @@ void product::set_kind_bottle(bottle_size __bottle_size) { kind = __bottle_size;
 std::string product::fromKindToStdString(bottle_size b) const {
         if(b == small)
             return "Small";
-        else if(b == big)
-            return "Big";
+        else if(b == large)
+            return "Large";
         return "Medium";
 }
 

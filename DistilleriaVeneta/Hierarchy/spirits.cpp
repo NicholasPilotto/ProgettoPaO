@@ -18,7 +18,7 @@ const double spirits::max_ac = 90.0;
 double spirits::kind_price() const {
   if (get_kind() == small) {
     return -1.00;
-  } else if (get_kind() == big) {
+  } else if (get_kind() == large) {
     return 0.50;
   }
   return 0.00;

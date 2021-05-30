@@ -39,7 +39,7 @@ cream* cream::clone() const { return new cream(*this); }
 double cream::kind_price() const {
   if (get_kind() == small) {
     return -0.50;
-  } else if (get_kind() == big) {
+  } else if (get_kind() == large) {
     return 0.50;
   }
   return 0.00;

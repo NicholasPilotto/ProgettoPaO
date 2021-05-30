@@ -35,7 +35,7 @@ old* old::clone() const { return new old(*this); }
 double old::kind_price() const {
   if (get_kind() == small) {
     return -1.50 + (is_barrique() ? -1.50 : 0.00);
-  } else if (get_kind() == big) {
+  } else if (get_kind() == large) {
     return 1.00 + (is_barrique() ? 1.20 : 0.00);
   }
   return 0.00;

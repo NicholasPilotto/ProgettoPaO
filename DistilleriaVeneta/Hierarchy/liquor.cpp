@@ -35,7 +35,7 @@ liquor* liquor::clone() const { return new liquor(*this); }
 double liquor::kind_price() const {
   if (get_kind() == small) {
     return -0.80;
-  } else if (get_kind() == big) {
+  } else if (get_kind() == large) {
     return 0.30;
   }
   return 0.00;
@@ -65,6 +65,9 @@ std::string liquor::code() const {
   for (; count < tastes.capacity(); count++) {
     aux += "00";
   }
+
+  std::cout << aux << std::endl;
+
   return aux;
 }
 

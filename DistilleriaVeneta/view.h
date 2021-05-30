@@ -14,6 +14,7 @@
 #include <QString>
 #include <QTableView>
 #include <QVBoxLayout>
+#include <QMessageBox>
 #include <functional>
 
 #include "./Utilities/deep_ptr.hpp"
@@ -56,8 +57,8 @@ class view : public QWidget {
   QReceiptShow* receipt_area;
   controller* presenter;
 
-  QDialog* delete_dialog;
-  QDialog* pay_dialog;
+//  QDialog* delete_dialog;
+//  QDialog* pay_dialog;
 
   void add_menu_bar(QVBoxLayout*);               // OK
   void add_title(QVBoxLayout*, const QString&);  // OK

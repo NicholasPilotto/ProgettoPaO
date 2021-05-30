@@ -34,9 +34,14 @@ void QReceiptShow::addTable(QVBoxLayout* table_layout) {
   // table->setEditTriggers(QAbstractItemView::NoEditTriggers);
   // table->setFocusPolicy(Qt::NoFocus);
   // table->setSelectionMode(QAbstractItemView::NoSelection);
-  table->selectionModel()->selectedRows();
+  //table->selectionModel()->selectedRows();
 
   table_layout->addWidget(table);
+
+  elimina_prodotto = new QPushButton("Elimina Prodotto");
+  table_layout->addWidget(elimina_prodotto);
+  connect(elimina_prodotto,SIGNAL(clicked()), this, SLOT(EliminaButtonSlot()));
+
   table_layout->addLayout(add_total());
 }
 
@@ -51,16 +56,18 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
 
   for (int i = 0; cit != end; cit++, i++) {
   tablerow* new_line = new tablerow(this);
+  auto bind_spin = std::bind(&controller::refresh_quantity, presenter, _1, _2);
   new_line->set_row((*cit).first, (*cit).second, table, i);
+
   }
     refresh_totali();
-  connect(table->verticalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(remove_row(int))); // così con hiderow va bene, con remove row NON SI ELIMINA NEL VETTORE E POI RICOMPAINO (GIUSTAMENTE)
+  /*connect(table->verticalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(remove_row(int)));*/ // così con hiderow va bene, con remove row NON SI ELIMINA NEL VETTORE E POI RICOMPAINO (GIUSTAMENTE)
   table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
   // Non rende visibile una selezione
 
    table->setEditTriggers(QAbstractItemView::NoEditTriggers);
    table->setFocusPolicy(Qt::NoFocus);
-   table->setSelectionMode(QAbstractItemView::NoSelection);
+//   table->setSelectionMode(QAbstractItemView::NoSelection);
   // table->setStyleSheet("gridline-color: white");  // rende bianche le linee poi gli oggetti che inseriamo mettiamo i bordi alti e bassi così da avere solo linee
 }
 
@@ -95,12 +102,52 @@ void QReceiptShow::refresh_totali()
     resoconto->addWidget(n_items, 2, 1, 1, 1, Qt::AlignRight);
 }
 
-void QReceiptShow::remove_row(int i)
+void QReceiptShow::elimina_prodotto_dialog()
 {
-//    std::cout << i << std::endl;
-    table->removeRow(i);
-    std::cout << "a" << std::endl;
-    presenter->remove_row(i);
-    //table->selectionModel()->clearCurrentIndex();
-    //refreshTable(presenter->get_receipt());
+    QMessageBox* dialog = new QMessageBox();
+    if(table->rowCount()>0){
+        if(table->currentRow()+1>0){
+            dialog->setIcon(QMessageBox::Warning);
+            dialog->setText("Sei sicuro di voler eliminare questo prodotto?");
+            QPushButton* SiButton=new QPushButton("Si");
+            QPushButton* NoButton=new QPushButton("No");
+            dialog->addButton(SiButton,QMessageBox::YesRole);
+            connect(SiButton,SIGNAL(pressed()),this,SLOT(CancellaProdottoSlot()));
+            dialog->addButton(NoButton,QMessageBox::NoRole);
+        }
+        else
+        {
+            dialog->setText("Non hai selezionato nessun prodotto da eliminare!");
+            dialog->setIcon(QMessageBox::Information);
+        }
+    }
+    else
+    {
+        dialog->setIcon(QMessageBox::Information);
+        dialog->setText("Nessun prodotto presente\n           nel carrello!");
+    }
+    dialog->show();
 }
+
+void QReceiptShow::EliminaButtonSlot()
+{
+    elimina_prodotto_dialog();
+}
+
+void QReceiptShow::CancellaProdottoSlot()
+{
+    QTableWidgetItem* item_name = table->item(table->currentRow(),0);
+    QTableWidgetItem* item_dim = table->item(table->currentRow(),1);
+    presenter->remove_item(item_name->text(), item_dim->text());
+    refreshTable(presenter->get_receipt());
+}
+
+//void QReceiptShow::remove_row(int i)
+//{
+//    std::cout << i << std::endl;
+//    table->removeRow(i);
+//    std::cout << "a" << std::endl;
+//    presenter->remove_item(i);
+//    //table->selectionModel()->clearCurrentIndex();
+//    //refreshTable(presenter->get_receipt());
+//}

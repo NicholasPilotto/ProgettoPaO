@@ -70,6 +70,6 @@ void QProduct::insert_medium()
 
 void QProduct::insert_big()
 {
-    item->set_kind_bottle(big);
+    item->set_kind_bottle(large);
     product_callback(item);
 }

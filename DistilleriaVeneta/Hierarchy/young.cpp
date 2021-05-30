@@ -27,7 +27,7 @@ young* young::clone() const { return new young(*this); }
 double young::kind_price() const {
   if (get_kind() == small) {
     return -0.30;
-  } else if (get_kind() == big) {
+  } else if (get_kind() == large) {
     return 0.10;
   }
   return 0.00;

@@ -20,7 +20,7 @@ const double grappa::max_ac = 90.0;
 double grappa::kind_price() const {
   if (get_kind() == small) {
     return -0.40;
-  } else if (get_kind() == big) {
+  } else if (get_kind() == large) {
     return 0.10;
   }
   return 0.00;
