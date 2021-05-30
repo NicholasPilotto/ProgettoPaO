@@ -16,13 +16,13 @@ void model::remove_item(std::string name, std::string dim) { std::cout << "c" <<
 
 void model::delete_all() { r->delete_all(); }
 
-void model::refresh_quantity(const deep_ptr<product> & p, int v){ r->refresh_quantity(p,v); }
+void model::refresh_quantity(std::string name, std::string dim, int v){ r->refresh_quantity(name,dim,v); }
 
 bool model::presenza(const deep_ptr<product>& p) const { return r->presenza(p); }
 
 unsigned int model::total_number_items() const { return r->total_number_items(); }
 
-double model::total_price_line(unsigned int i) const { return r->total_price_line(i); }
+double model::total_price_line(pair<deep_ptr<product>, int> p) const { return r->total_price_line(p); }
 
 double model::total_price() const { return r->total_price(); }
 

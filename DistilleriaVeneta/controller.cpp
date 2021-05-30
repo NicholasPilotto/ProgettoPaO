@@ -13,13 +13,13 @@ void controller::add_item(const deep_ptr<product>& p) {
   _view->refresh_scontrino(get_receipt());
     }
 
-void controller::remove_item(QString name, QString dim) { std::cout << "b" << std::endl;
-    _model->remove_item(name.toStdString(), dim.toStdString());
+void controller::remove_item(std::string name, std::string dim) { std::cout << "b" << std::endl;
+    _model->remove_item(name, dim);
     _view->refresh_scontrino(get_receipt());                                }
 
-void controller::refresh_quantity(const deep_ptr<product> & p, int v)
+void controller::refresh_quantity(std::string name, std::string dim, int v)
 {
-    _model->refresh_quantity(p,v);
+    _model->refresh_quantity(name,dim,v);
     _view->refresh_scontrino(get_receipt());
 }
 
@@ -32,7 +32,7 @@ bool controller::presenza(const deep_ptr<product>& p) const { return _model->pre
 
 unsigned int controller::total_number_items() const { return _model->total_number_items(); }
 
-double controller::total_price_line(unsigned int i) const { return _model->total_price_line(i); }
+double controller::total_price_line(pair<deep_ptr<product>, int> p) const { return _model->total_price_line(p); }
 
 double controller::total_price() const { return _model->total_price(); }
 

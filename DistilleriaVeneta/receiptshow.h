@@ -29,6 +29,7 @@ class QReceiptShow : public QWidget {
   QLabel* n_items;
   QPushButton* elimina_prodotto;
   controller* presenter;
+  int latest_value;
 
   QDialog* remove_line;
 
@@ -46,6 +47,7 @@ private slots:
 public slots:
   void EliminaButtonSlot();
   void CancellaProdottoSlot();
+  void refresh_spinbox(int);
 };
 
 #endif  // RECEIPTSHOW_H

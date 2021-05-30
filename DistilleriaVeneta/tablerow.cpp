@@ -1,10 +1,8 @@
 #include "tablerow.h"
 
-tablerow::tablerow(/*const deep_ptr<product> & p, int value_spin, QTableWidget*& table, int riga,*/ QWidget * parent) : QWidget(parent) {
-//    set_rows(p,value_spin,table,riga);
-}
+tablerow::tablerow(QTableWidget*& t) : QWidget(t), table(t) {}
 
-void tablerow::set_row(const deep_ptr<product> & p, int value_spin, QTableWidget*& table, int riga) { // p è (*cit).first e value_spin è (*cit).second
+void tablerow::set_row(const deep_ptr<product> & p, int value_spin, int riga) {
 
     table->setRowHeight(riga, 50);
 
@@ -30,10 +28,10 @@ void tablerow::set_row(const deep_ptr<product> & p, int value_spin, QTableWidget
 
     // Inserimento SpinBox
 
-    QSpinBox* num_item = new QSpinBox();
+    num_item = new QSpinBox();
     num_item->setRange(1, 2147483647);
+    num_item->setValue(value_spin);
     table->setCellWidget(riga, 2, num_item);
-//    connect(num_item, SIGNAL(valueChanged(int)), table, SLOT());
 
     // Inserimento totale per linea
 
@@ -42,4 +40,9 @@ void tablerow::set_row(const deep_ptr<product> & p, int value_spin, QTableWidget
     price_item->setTextAlignment(Qt::AlignCenter);
     table->setItem(riga, 3, price_item);
 
+}
+
+QSpinBox*& tablerow::get_spin()
+{
+    return num_item;
 }
