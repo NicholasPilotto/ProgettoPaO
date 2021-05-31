@@ -52,9 +52,11 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
   auto cit = _products.const_begin();
   auto end = _products.const_end();
 
+
   for (int i = 0; cit != end; cit++, i++) {
   tablerow* new_line = new tablerow(table);
   new_line->set_row((*cit).first, (*cit).second, i);
+  list_spin.append(new_line->get_spin());
   connect(new_line->get_spin(), SIGNAL(valueChanged(int)), this, SLOT(refresh_spinbox(int)));
   }
     refresh_totali();
@@ -141,8 +143,8 @@ void QReceiptShow::CancellaProdottoSlot()
 
 void QReceiptShow::refresh_spinbox(int v)
 {
-     QTableWidgetItem* item_name = table->item(table->currentRow(),0);
-     QTableWidgetItem* item_dim = table->item(table->currentRow(),1);
+     QTableWidgetItem* item_name = table->item(qobject_cast<QSpinBox*>(sender())->objectName().toInt(),0);
+     QTableWidgetItem* item_dim = table->item(qobject_cast<QSpinBox*>(sender())->objectName().toInt(),1);
      presenter->refresh_quantity(item_name->text().toStdString(), item_dim->text().toStdString(), v);
      refreshTable(presenter->get_receipt());
 }

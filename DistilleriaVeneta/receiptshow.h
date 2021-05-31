@@ -30,6 +30,7 @@ class QReceiptShow : public QWidget {
   QPushButton* elimina_prodotto;
   controller* presenter;
   int latest_value;
+  QList<QSpinBox*> list_spin;
 
   QDialog* remove_line;
 
