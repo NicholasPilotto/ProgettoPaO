@@ -87,3 +87,31 @@ void controller::filter_by_taste() {
 
   previous_sender = aux;
 }
+
+void controller::filter_by_ac_cre() {
+  QAction* aux = qobject_cast<QAction*>(sender());
+  if (aux->isChecked()) {
+    _view->refresh_grid_view(_model->filter_cre_ac());
+    if (previous_sender) {
+      previous_sender->setChecked(false);
+    }
+  } else {
+    _view->refresh_grid_view(_model->filter_all());
+  }
+
+  previous_sender = aux;
+}
+
+void controller::filter_by_ac_dec() {
+  QAction* aux = qobject_cast<QAction*>(sender());
+  if (aux->isChecked()) {
+    _view->refresh_grid_view(_model->filter_dec_ac());
+    if (previous_sender) {
+      previous_sender->setChecked(false);
+    }
+  } else {
+    _view->refresh_grid_view(_model->filter_all());
+  }
+
+  previous_sender = aux;
+}

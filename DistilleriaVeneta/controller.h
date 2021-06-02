@@ -36,6 +36,8 @@ class controller : public QObject {
   void filter_by_products() const;
   void filter_by_color();
   void filter_by_taste();
+  void filter_by_ac_cre();
+  void filter_by_ac_dec();
 };
 
 #endif  // CONTROLLER_H
