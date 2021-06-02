@@ -29,7 +29,7 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   QAction* cresc = new QAction("Ordine Crescente", alcohols);
   QAction* desc = new QAction("Ordine Decrescente", alcohols);
   cresc->setCheckable(true);
-  cresc->setChecked(true);
+  cresc->setChecked(false);
   desc->setCheckable(true);
   desc->setChecked(false);
   alcohols->addAction(cresc);
@@ -215,6 +215,9 @@ void view::set_controller(controller* c) {
 
   // Segnali
 
+  connect(alcohols->actions()[0], SIGNAL(triggered()), presenter, SLOT(filter_by_ac_cre()));
+  connect(alcohols->actions()[1], SIGNAL(triggered()), presenter, SLOT(filter_by_ac_dec()));
+
   // Segnali della Menubar
   connect(file->actions()[0], SIGNAL(triggered()), this, SLOT(close()));
 
@@ -283,7 +286,7 @@ void view::pay_banner() {
 
   } else {
       pay_dialog->setIcon(QMessageBox::Information);
-      pay_dialog->setText("Nessun prodotto presente nel carrello.\n          Pagamento non effettuato!");
+      pay_dialog->setText("Nessun prodotto presente nel carrello.\n Pagamento non effettuato!");
   }
 
   pay_dialog->show();
@@ -305,7 +308,7 @@ void view::confirm_deletion()
 
     } else {
         delete_dialog->setIcon(QMessageBox::Information);
-        delete_dialog->setText("Nessun prodotto presente\n           nel carrello!");
+        delete_dialog->setText("Nessun prodotto presente\n nel carrello!");
     }
 
     delete_dialog->show();
