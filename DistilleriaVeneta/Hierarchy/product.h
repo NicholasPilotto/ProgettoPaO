@@ -52,6 +52,7 @@ class product {
   double operator+(const product&) const;
   double operator-(const product&) const;
   bool operator<(const product&) const;
+  bool operator>(const product&) const;
 };
 
 #endif  // PRODOTTO_H_
