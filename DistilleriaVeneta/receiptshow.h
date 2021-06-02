@@ -3,13 +3,13 @@
 
 #include <QHeaderView>
 #include <QIcon>
-#include <QSpinBox>
 #include <QLabel>
+#include <QMessageBox>
+#include <QSpinBox>
 #include <QTableWidget>
 #include <QTableWidgetItem>
 #include <QVBoxLayout>
 #include <QWidget>
-#include <QMessageBox>
 
 #include "Hierarchy/product.h"
 #include "Utilities/deep_ptr.hpp"
@@ -43,9 +43,9 @@ class QReceiptShow : public QWidget {
   void refresh_totali();
   void elimina_prodotto_dialog();
 
-private slots:
-//  void remove_row(int);
-public slots:
+ private slots:
+  //  void remove_row(int);
+ public slots:
   void EliminaButtonSlot();
   void CancellaProdottoSlot();
   void refresh_spinbox(int);

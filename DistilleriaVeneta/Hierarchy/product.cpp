@@ -57,11 +57,11 @@ bottle_size product::get_kind() const { return kind; }
 void product::set_kind_bottle(bottle_size __bottle_size) { kind = __bottle_size; }
 
 std::string product::fromKindToStdString(bottle_size b) const {
-        if(b == small)
-            return "Small";
-        else if(b == large)
-            return "Large";
-        return "Medium";
+  if (b == small)
+    return "Small";
+  else if (b == large)
+    return "Large";
+  return "Medium";
 }
 
 double product::operator+(const product& p) const { return get_price() + p.get_price(); }

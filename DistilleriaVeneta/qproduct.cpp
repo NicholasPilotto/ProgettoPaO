@@ -3,8 +3,7 @@
 #include <QDebug>
 
 QProduct::QProduct(const deep_ptr<product>& _product, std::function<void(const deep_ptr<product>&)> callback, QWidget* parent) : QWidget(parent), item(_product), product_callback(callback) {
-
-    item = _product;
+  item = _product;
   // Dichiarazione layout principale e dell'immagine
 
   mainlayout = new QVBoxLayout();
@@ -56,20 +55,17 @@ QProduct::QProduct(const deep_ptr<product>& _product, std::function<void(const d
   setLayout(mainlayout);
 }
 
-void QProduct::insert_small()
-{
-    item->set_kind_bottle(small);
-    product_callback(item);
+void QProduct::insert_small() {
+  item->set_kind_bottle(small);
+  product_callback(item);
 }
 
-void QProduct::insert_medium()
-{
-    item->set_kind_bottle(medium);
-    product_callback(item);
+void QProduct::insert_medium() {
+  item->set_kind_bottle(medium);
+  product_callback(item);
 }
 
-void QProduct::insert_big()
-{
-    item->set_kind_bottle(large);
-    product_callback(item);
+void QProduct::insert_big() {
+  item->set_kind_bottle(large);
+  product_callback(item);
 }

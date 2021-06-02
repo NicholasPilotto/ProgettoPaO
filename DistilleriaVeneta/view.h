@@ -9,12 +9,12 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QMenuBar>
+#include <QMessageBox>
 #include <QPushButton>
 #include <QScrollArea>
 #include <QString>
 #include <QTableView>
 #include <QVBoxLayout>
-#include <QMessageBox>
 #include <functional>
 
 #include "./Utilities/deep_ptr.hpp"
@@ -57,8 +57,8 @@ class view : public QWidget {
   QReceiptShow* receipt_area;
   controller* presenter;
 
-//  QDialog* delete_dialog;
-//  QDialog* pay_dialog;
+  //  QDialog* delete_dialog;
+  //  QDialog* pay_dialog;
 
   void add_menu_bar(QVBoxLayout*);               // OK
   void add_title(QVBoxLayout*, const QString&);  // OK
@@ -72,7 +72,7 @@ class view : public QWidget {
   view(QWidget* = nullptr);
   void set_controller(controller*);   // DA FARE
   void show_warning(const QString&);  // OK
-  void refresh_scontrino(const u_vector<pair<deep_ptr<product>,int>>&);
+  void refresh_scontrino(const u_vector<pair<deep_ptr<product>, int>>&);
   void refresh_grid_view(const u_vector<deep_ptr<product>>&);
 
  private slots:

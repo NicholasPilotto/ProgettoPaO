@@ -26,9 +26,9 @@ class QProduct : public QWidget {
   std::function<void(deep_ptr<product>)> product_callback;
 
  public:
-  explicit QProduct(const deep_ptr<product>&,std::function<void(const deep_ptr<product>&)>, QWidget* = nullptr);
+  explicit QProduct(const deep_ptr<product>&, std::function<void(const deep_ptr<product>&)>, QWidget* = nullptr);
 
-public slots:
+ public slots:
   void insert_small();
   void insert_medium();
   void insert_big();

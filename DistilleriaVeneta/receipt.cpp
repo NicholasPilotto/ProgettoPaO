@@ -4,41 +4,39 @@ receipt::receipt() : date(steady_clock::now()), items(u_vector<pair<deep_ptr<pro
 
 void receipt::add_item(const deep_ptr<product>& p) {
   pair<deep_ptr<product>, int> element(p, 1);
-  if(!presenza(element.first)){
+  if (!presenza(element.first)) {
     items.push_back(element);
   }
 }
 
 void receipt::remove_item(std::string name, std::string dim) {
-      u_vector<pair<deep_ptr<product>, int>>::iterator it = items.begin();
-      u_vector<pair<deep_ptr<product>, int>>::iterator end = items.end();
+  u_vector<pair<deep_ptr<product>, int>>::iterator it = items.begin();
+  u_vector<pair<deep_ptr<product>, int>>::iterator end = items.end();
 
-      bool stop = false;
-      for(;it!=end && !stop;it++){
-          if((*it).first->get_name() == name && (*it).first->fromKindToStdString((*it).first->get_kind()) == dim){
-              items.erase(it);
-              stop = true;
-          }
-      }
+  bool stop = false;
+  for (; it != end && !stop; it++) {
+    if ((*it).first->get_name() == name && (*it).first->fromKindToStdString((*it).first->get_kind()) == dim) {
+      items.erase(it);
+      stop = true;
+    }
+  }
 
-//  for (int j = 0; j<i ; j++) {it++;}
+  //  for (int j = 0; j<i ; j++) {it++;}
 
-//  items.erase(it);
+  //  items.erase(it);
 
   // std::cout  << "Inizio" << std::endl;
   // std::cout << items.size() << std::endl;
 
-//      items.erase(items.begin() + i);
-
+  //      items.erase(items.begin() + i);
 
   // std::cout << items.size() << std::endl;
-  //std::cout << "Fine" << std::endl;
+  // std::cout << "Fine" << std::endl;
 }
 
 void receipt::delete_all() { items.erase(items.begin(), items.end()); }
 
-void receipt::refresh_quantity(std::string name, std::string dim, int v){
-
+void receipt::refresh_quantity(std::string name, std::string dim, int v) {
   u_vector<pair<deep_ptr<product>, int>>::iterator it = items.begin();
   u_vector<pair<deep_ptr<product>, int>>::iterator end = items.end();
 
@@ -47,7 +45,7 @@ void receipt::refresh_quantity(std::string name, std::string dim, int v){
   for (; it != end && !stop; it++) {
     if ((*it).first->get_name() == name && (*it).first->fromKindToStdString((*it).first->get_kind()) == dim) {
       (*it).second = v;
-        stop = true;
+      stop = true;
     }
   }
 }
@@ -87,9 +85,7 @@ double receipt::total_price() const {
   return price;
 }
 
-double receipt::total_price_line(pair<deep_ptr<product>, int> l) const {
-  return l.first->get_price()*l.second;
-}
+double receipt::total_price_line(pair<deep_ptr<product>, int> l) const { return l.first->get_price() * l.second; }
 
 double receipt::total_taxes() const {
   double tot_taxes = 0;

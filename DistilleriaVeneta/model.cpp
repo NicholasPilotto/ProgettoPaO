@@ -15,7 +15,7 @@ void model::remove_item(std::string name, std::string dim) { r->remove_item(name
 
 void model::delete_all() { r->delete_all(); }
 
-void model::refresh_quantity(std::string name, std::string dim, int v){ r->refresh_quantity(name,dim,v); }
+void model::refresh_quantity(std::string name, std::string dim, int v) { r->refresh_quantity(name, dim, v); }
 
 bool model::presenza(const deep_ptr<product>& p) const { return r->presenza(p); }
 

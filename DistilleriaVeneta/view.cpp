@@ -173,7 +173,7 @@ void view::add_receipt(QHBoxLayout* object_layout) {
 void view::update_json() {
   auto bind_item = std::bind(&controller::add_item, presenter, _1);
   product_area->refresh_grid(presenter->get_products_json(), bind_item);
-  }
+}
 
 view::view(QWidget* parent) : QWidget(parent) {
   main_layout = new QVBoxLayout(this);
@@ -259,63 +259,53 @@ void view::show_warning(const QString& message) {
   dialog->show();
 }
 
-void view::refresh_scontrino(const u_vector<pair<deep_ptr<product>,int>> & p)
-{
-    receipt_area->refreshTable(p);
-}
+void view::refresh_scontrino(const u_vector<pair<deep_ptr<product>, int>>& p) { receipt_area->refreshTable(p); }
 
 void view::refresh_grid_view(const u_vector<deep_ptr<product>>& _vector) {
-    auto bind_item = std::bind(&controller::add_item, presenter, _1);
-    product_area->refresh_grid(_vector,bind_item); }
+  auto bind_item = std::bind(&controller::add_item, presenter, _1);
+  product_area->refresh_grid(_vector, bind_item);
+}
 
 // SLOTS
 
 void view::pay_banner() {
-
   QMessageBox* pay_dialog = new QMessageBox(this);
 
-  if(presenter->get_receipt().size()) {
-
-  pay_dialog->setIcon(QMessageBox::Warning);
-  pay_dialog->setText("Confermi il pagamento?");
-  QPushButton* ok_button=new QPushButton("Ok");
-  QPushButton* annulla_button=new QPushButton("Annulla");
-  pay_dialog->addButton(ok_button,QMessageBox::YesRole);
-  connect(ok_button, SIGNAL(clicked()), presenter, SLOT(delete_all()));
-  pay_dialog->addButton(annulla_button,QMessageBox::NoRole);
+  if (presenter->get_receipt().size()) {
+    pay_dialog->setIcon(QMessageBox::Warning);
+    pay_dialog->setText("Confermi il pagamento?");
+    QPushButton* ok_button = new QPushButton("Ok");
+    QPushButton* annulla_button = new QPushButton("Annulla");
+    pay_dialog->addButton(ok_button, QMessageBox::YesRole);
+    connect(ok_button, SIGNAL(clicked()), presenter, SLOT(delete_all()));
+    pay_dialog->addButton(annulla_button, QMessageBox::NoRole);
 
   } else {
-      pay_dialog->setIcon(QMessageBox::Information);
-      pay_dialog->setText("Nessun prodotto presente nel carrello.\n Pagamento non effettuato!");
+    pay_dialog->setIcon(QMessageBox::Information);
+    pay_dialog->setText("Nessun prodotto presente nel carrello.\n Pagamento non effettuato!");
   }
 
   pay_dialog->show();
 }
 
-void view::confirm_deletion()
-{
-    QMessageBox* delete_dialog = new QMessageBox(this);
+void view::confirm_deletion() {
+  QMessageBox* delete_dialog = new QMessageBox(this);
 
-    if(presenter->get_receipt().size()) {
-
+  if (presenter->get_receipt().size()) {
     delete_dialog->setIcon(QMessageBox::Warning);
     delete_dialog->setText("   Vuoi davvero eliminare\ntutti i prodotti dal carrello?");
-    QPushButton* ok_button=new QPushButton("Ok");
-    QPushButton* annulla_button=new QPushButton("Annulla");
-    delete_dialog->addButton(ok_button,QMessageBox::YesRole);
+    QPushButton* ok_button = new QPushButton("Ok");
+    QPushButton* annulla_button = new QPushButton("Annulla");
+    delete_dialog->addButton(ok_button, QMessageBox::YesRole);
     connect(ok_button, SIGNAL(clicked()), presenter, SLOT(delete_all()));
-    delete_dialog->addButton(annulla_button,QMessageBox::NoRole);
+    delete_dialog->addButton(annulla_button, QMessageBox::NoRole);
 
-    } else {
-        delete_dialog->setIcon(QMessageBox::Information);
-        delete_dialog->setText("Nessun prodotto presente\n nel carrello!");
-    }
+  } else {
+    delete_dialog->setIcon(QMessageBox::Information);
+    delete_dialog->setText("Nessun prodotto presente\n nel carrello!");
+  }
 
-    delete_dialog->show();
+  delete_dialog->show();
 }
 
-void view::delete_all(){
-  presenter->delete_all();
-}
-
-
+void view::delete_all() { presenter->delete_all(); }

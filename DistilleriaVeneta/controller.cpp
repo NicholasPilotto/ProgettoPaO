@@ -18,10 +18,9 @@ void controller::remove_item(std::string name, std::string dim) {
   _view->refresh_scontrino(get_receipt());
 }
 
-void controller::refresh_quantity(std::string name, std::string dim, int v)
-{
-    _model->refresh_quantity(name,dim,v);
-    _view->refresh_scontrino(get_receipt());
+void controller::refresh_quantity(std::string name, std::string dim, int v) {
+  _model->refresh_quantity(name, dim, v);
+  _view->refresh_scontrino(get_receipt());
 }
 
 void controller::delete_all() {
