@@ -100,9 +100,9 @@ cream* cream::create(QMap<QString, QVariant>& m) const {
 
 std::string cream::write() const {
   std::string aux =
-      "\"product\": $0, \
+      "\"product\": \"$0\", \
 	    \"name\": \"$1\", \
-	    \"alcohol_content\": $2, \
+	    \"alcohol_content\": \"$2\", \
 	    \"color\": $3, \
 	    \"tastes\": [ \
 	      $4 \
