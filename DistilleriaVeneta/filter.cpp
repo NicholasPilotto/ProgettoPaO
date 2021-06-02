@@ -1,5 +1,7 @@
 #include "filter.h"
 
+#include <QDebug>
+
 filter::filter() {}
 
 u_vector<deep_ptr<product>> filter::colors(const u_vector<deep_ptr<product>>& _vector, const unsigned int __value) {
@@ -45,13 +47,15 @@ u_vector<deep_ptr<product>> filter::products(const u_vector<deep_ptr<product>>& 
 }
 
 u_vector<deep_ptr<product>> filter::cre_ac(const u_vector<deep_ptr<product>>& _vector) {
-  //  auto lambda = [&](deep_ptr<product> lft, deep_ptr<product> rgt) {
-  //    if (lft <= rgt) {
-  //      return lft;
-  //    } else {
-  //      return rgt;
-  //    }
-  //  };
-  //  std::sort(_vector.const_begin(), _vector.const_end());
-  return _vector;
+  u_vector<deep_ptr<product>> result(_vector);
+  std::sort(result.begin(), result.end(), [](deep_ptr<product>& a, deep_ptr<product>& b) { return a->get_alcohol_content() < b->get_alcohol_content(); });
+
+  return result;
+}
+
+u_vector<deep_ptr<product>> filter::dec_ac(const u_vector<deep_ptr<product>>& _vector) {
+  u_vector<deep_ptr<product>> result(_vector);
+  std::sort(result.begin(), result.end(), [](deep_ptr<product>& a, deep_ptr<product>& b) { return a->get_alcohol_content() > b->get_alcohol_content(); });
+
+  return result;
 }
