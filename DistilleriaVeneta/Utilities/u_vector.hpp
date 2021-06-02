@@ -135,6 +135,8 @@ class u_vector {
      */
     const_iterator operator+(int) const;
 
+    inline difference_type operator+(const const_iterator& it) const { return p + it.p; }
+
     /**
      * @brief operatore somma-uguale
      * @param value: int, numero di posizioni da avanzare
@@ -148,6 +150,8 @@ class u_vector {
      * @return const_iterator, oggetto di invocazione - `value`
      */
     const_iterator operator-(int) const;
+
+    inline difference_type operator-(const const_iterator& it) const { return p - it.p; }
 
     /**
      * @brief operatore differenza-uguale
@@ -273,6 +277,8 @@ class u_vector {
      */
     iterator operator+(int) const;
 
+    inline difference_type operator+(const iterator& it) const { return p - it.p; }
+
     /**
      * @brief operatore somma-uguale
      * @param value: int, numero di posizioni da avanzare
@@ -286,6 +292,8 @@ class u_vector {
      * @return iterator, oggetto di invocazione - `value`
      */
     iterator operator-(int) const;
+
+    inline difference_type operator-(const iterator& it) const { return p - it.p; }
 
     /**
      * @brief operatore differenza-uguale
