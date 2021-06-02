@@ -34,5 +34,7 @@ class model {
   u_vector<deep_ptr<product>> filter_color(const unsigned int = 0) const;
   u_vector<deep_ptr<product>> filter_taste(const unsigned int = 0) const;
   u_vector<deep_ptr<product>> filter_all() const;
+  u_vector<deep_ptr<product>> filter_cre_ac() const;
+  u_vector<deep_ptr<product>> filter_dec_ac() const;
 };
 #endif

@@ -36,3 +36,7 @@ u_vector<deep_ptr<product>> model::filter_color(const unsigned int _key) const {
 u_vector<deep_ptr<product>> model::filter_taste(const unsigned int _key) const { return filter::tastes(products, static_cast<taste>(_key)); }
 
 u_vector<deep_ptr<product>> model::filter_all() const { return products; }
+
+u_vector<deep_ptr<product>> model::filter_cre_ac() const { return filter::cre_ac(products); }
+
+u_vector<deep_ptr<product>> model::filter_dec_ac() const { return filter::dec_ac(products); }
