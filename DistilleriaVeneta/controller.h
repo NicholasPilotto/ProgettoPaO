@@ -19,7 +19,7 @@ class controller : public QObject {
  public:
   /**
    * @brief costruttore di controller
-   * @param parent : QObject*, puntatore al padre
+   * @param parent : QObject*, puntatore al padre, default = nullptr
    */
   explicit controller(QObject* = nullptr);
 
@@ -71,9 +71,10 @@ class controller : public QObject {
 
   /**
    * @brief metodo che ritorna il prezzo di un prodotto in base alla quantità
+   * @param l : std::pair<deep_ptr<product>, int>, coppia puntatore-quantità del prodotto
    * @return double, prezzo di un prodotto in base alla quantità
    */
-  double total_price_line(pair<deep_ptr<product>, int>) const; // da modificare + aggiunta param
+  double total_price_line(pair<deep_ptr<product>, int>) const;
 
   /**
    * @brief metodo per il prezzo totale del vettore scontrino

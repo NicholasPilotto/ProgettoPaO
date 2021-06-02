@@ -24,13 +24,13 @@ void controller::refresh_quantity(std::string name, std::string dim, int v) {
 }
 
 void controller::delete_all() {
-  io_json* io = new io_json();
-  if (io->write(_model->get_receipt())) {
+//  io_json* io = new io_json();
+//  if (io->write(_model->get_receipt())) {
     _model->delete_all();
     _view->refresh_scontrino(get_receipt());
-  } else {
-    // si è verificato un errore, segnalare all'utente
-  }
+//  } else {
+//    // si è verificato un errore, segnalare all'utente
+//  }
 }
 
 bool controller::presenza(const deep_ptr<product>& p) const { return _model->presenza(p); }

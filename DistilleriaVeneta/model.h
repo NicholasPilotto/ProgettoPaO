@@ -17,13 +17,13 @@ class model {
  public:
   /**
    * @brief costruttore di model
-   * @param filename: const std::string&, path del file json contentente i prodotti inseribili nello scontrino
+   * @param filename: const std::string&, path del file json contentente i prodotti inseribili nello scontrino, default = ":/data/data.json"
    */
   model(const std::string& = ":/data/data.json");
 
   /**
    * @brief metodo per il caricamento dei prodotti inseribili nello scontrino
-   * @param path : const std::string&, path del file json contentente i prodotti inseribili nello scontrino
+   * @param path : const std::string&, path del file json contentente i prodotti inseribili nello scontrino, default = ":/data/data.json"
    */
   void load_from_file(const std::string& = ":/data/data.json");
 
@@ -74,9 +74,10 @@ class model {
 
   /**
    * @brief metodo che ritorna il prezzo di un prodotto in base alla quantità
+   * @param l : std::pair<deep_ptr<product>, int>, coppia puntatore-quantità del prodotto
    * @return double, prezzo di un prodotto in base alla quantità
    */
-  double total_price_line(pair<deep_ptr<product>, int>) const; // da modificare + aggiunta param
+  double total_price_line(pair<deep_ptr<product>, int>) const;
 
   /**
    * @brief metodo per il prezzo totale del vettore scontrino

@@ -26,6 +26,12 @@ class QProduct : public QWidget {
   std::function<void(deep_ptr<product>)> product_callback;
 
  public:
+  /**
+   * @brief costruttore di QProduct
+   * @param _product : const deep_ptr<product>&, indirizzo del puntatore al prodotto da rappresentare
+   * @param callback : std::function<void(const deep_ptr<product>&)>, callback della funzione per il prodotto
+   * @param parent : QWidget*, puntatore al padre, default = nullptr
+   */
   explicit QProduct(const deep_ptr<product>&, std::function<void(const deep_ptr<product>&)>, QWidget* = nullptr);
 
  public slots:

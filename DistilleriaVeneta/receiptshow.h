@@ -29,26 +29,54 @@ class QReceiptShow : public QWidget {
   QLabel* n_items;
   QPushButton* elimina_prodotto;
   controller* presenter;
-  int latest_value;
   QList<QSpinBox*> list_spin;
 
-  QDialog* remove_line;
-
  public:
+  /**
+   * @brief costruttore di QReceiptShow
+   * @param parent : QWidget*, puntatore al padre, default = nullptr
+   */
   explicit QReceiptShow(QWidget* = nullptr);
+
+  /**
+   * @brief metodo setter per il controller
+   * @param c : controller*, puntatore al controller
+   */
   void setpresenter(controller*);
+
+  /**
+   * @brief metodo per l'aggiunta del background dello scontrino
+   * @param table_layout : QVBoxLayout*, puntatore al layout contenente il background dello scontrino
+   */
   void addTable(QVBoxLayout*);
+
+  /**
+   * @brief metodo per aggiornare lo scontrino
+   * @param _products : const u_vector<std::pair<deep_ptr<product>, int>>&, indirizzo del vettore scontrino
+   */
   void refreshTable(const u_vector<std::pair<deep_ptr<product>, int>>&);
+
+  /**
+   * @brief metodo che aggiunge del layout contente tutti i totali
+   * @return QGridLayout*, puntatore al layout contenente tutti i totali
+   */
   QGridLayout* add_total();
+
+  /**
+   * @brief metodo che aggiorna i totali
+   */
   void refresh_totali();
+
+  /**
+   * @brief metodo che costruisce i dialog per l'eliminazione dei prodotti
+   */
   void elimina_prodotto_dialog();
 
- private slots:
-  //  void remove_row(int);
  public slots:
   void EliminaButtonSlot();
   void CancellaProdottoSlot();
   void refresh_spinbox(int);
+
 };
 
 #endif  // RECEIPTSHOW_H

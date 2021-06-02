@@ -50,7 +50,7 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
   auto cit = _products.const_begin();
   auto end = _products.const_end();
 
-  for (int i = 0; cit != end; cit++, i++) {
+  for (int i = rows - 1; cit != end; cit++, i--) {
     tablerow* new_line = new tablerow(table);
     new_line->set_row((*cit).first, (*cit).second, i);
     list_spin.append(new_line->get_spin());

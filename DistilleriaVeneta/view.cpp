@@ -51,7 +51,7 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
 
   // Azioni in gusto
 
-  u_vector<QString> flavors_actions = {"Limone", "Nocciola", "Caffè", "Liquirizia", "Cioccolato", "Uovo", "Rum", "Crema", "Fragola", "Frutti di bosco", "Mirtillo", "Ribes", "Prugna", "Miele", "Secco", "Smooth", "Amabile", "Menta"};
+  u_vector<QString> flavors_actions = {"Limone", "Nocciola", "Caffè", "Liquirizia", "Cioccolato", "Uovo", "Rum", "Crema", "Fragola", "Frutti di bosco", "Mirtillo", "Ribes", "Prugna", "Miele", "Secco", "Dolce", "Amabile", "Menta"};
 
   u_vector<QString>::const_iterator _flavor_cit = flavors_actions.const_begin();
   u_vector<QString>::const_iterator _flavor_end = flavors_actions.const_end();
@@ -259,7 +259,7 @@ void view::show_warning(const QString& message) {
   dialog->show();
 }
 
-void view::refresh_scontrino(const u_vector<pair<deep_ptr<product>, int>>& p) { receipt_area->refreshTable(p); }
+void view::refresh_scontrino(const u_vector<pair<deep_ptr<product>, int>>& _vector) { receipt_area->refreshTable(_vector); }
 
 void view::refresh_grid_view(const u_vector<deep_ptr<product>>& _vector) {
   auto bind_item = std::bind(&controller::add_item, presenter, _1);

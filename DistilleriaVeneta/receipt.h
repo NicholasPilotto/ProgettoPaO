@@ -63,10 +63,10 @@ class receipt {
 
   /**
    * @brief metodo che ritorna il prezzo di un prodotto in base alla quantità
+   * @param l : std::pair<deep_ptr<product>, int>, coppia puntatore-quantità del prodotto
    * @return double, prezzo di un prodotto in base alla quantità
    */
-  double total_price_line(pair<deep_ptr<product>, int>) const; // da modificare + aggiunta param
-
+  double total_price_line(pair<deep_ptr<product>, int>) const;
   /**
    * @brief metodo per il prezzo totale del vettore scontrino
    * @return double, indica il prezzo totale dello scontrino
