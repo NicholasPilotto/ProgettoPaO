@@ -54,7 +54,7 @@ u_vector<deep_ptr<product>> io_json::read() const {
   return result;
 }
 
-void io_json::write(const u_vector<deep_ptr<product>>& a) const {
+bool io_json::write(const u_vector<std::pair<deep_ptr<product>, int>>& a) const {
   int i = 0;
   time_t rawtime;
   struct tm* timeinfo;
@@ -72,13 +72,14 @@ void io_json::write(const u_vector<deep_ptr<product>>& a) const {
           }, \
          \"elements\": {\n";
   to_write = std::regex_replace(to_write, std::regex("\\$1"), str);
-  for (u_vector<deep_ptr<product>>::const_iterator it = a.const_begin(); it != a.const_end(); it++) {
+  u_vector<std::pair<deep_ptr<product>, int>>::const_iterator it = a.const_begin();
+  u_vector<std::pair<deep_ptr<product>, int>>::const_iterator end = a.const_end();
+  for (; it != end; ++it) {
     i++;
-    to_write.append("\t\"element" + std::to_string(i) + "\":{ \n\t" + (*it)->write() + "},\n");
+    to_write.append("\t\"element" + std::to_string(i) + "\":{ \n\t" + (*it).first->write() + "},\n");
   }
   to_write.erase(to_write.end() - 2);
   to_write.append("}\n}");
-  //	qDebug() << to_write.c_str();
 
   QDir dir(dir_path.data());
   if (!dir.exists()) {
@@ -94,5 +95,10 @@ void io_json::write(const u_vector<deep_ptr<product>>& a) const {
   //	qDebug() << doc.;
   QJsonDocument doc = QJsonDocument::fromJson(jsonString.toUtf8());
 
-  file.write(doc.toJson(QJsonDocument::Indented));
+  if (doc.isEmpty()) {
+    return false;
+  } else {
+    file.write(doc.toJson(QJsonDocument::Indented));
+    return true;
+  }
 }

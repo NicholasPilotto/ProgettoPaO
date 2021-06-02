@@ -21,11 +21,11 @@ class io_json {
   std::string __file_path;
 
  public:
-  io_json(const std::string&);
+  io_json(const std::string& = ":/data/data.json");
   static std::string dir_path;
 
   u_vector<deep_ptr<product>> read() const;
-  void write(const u_vector<deep_ptr<product>>&) const;
+  bool write(const u_vector<std::pair<deep_ptr<product>, int>>&) const;
 };
 
 #endif  // IO_JSON_H
