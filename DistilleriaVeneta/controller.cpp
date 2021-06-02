@@ -11,11 +11,12 @@ void controller::set_view(view* v) { _view = v; }
 void controller::add_item(const deep_ptr<product>& p) {
   _model->add_item(p);
   _view->refresh_scontrino(get_receipt());
-    }
+}
 
-void controller::remove_item(std::string name, std::string dim) { std::cout << "b" << std::endl;
-    _model->remove_item(name, dim);
-    _view->refresh_scontrino(get_receipt());                                }
+void controller::remove_item(std::string name, std::string dim) {
+  _model->remove_item(name, dim);
+  _view->refresh_scontrino(get_receipt());
+}
 
 void controller::refresh_quantity(std::string name, std::string dim, int v)
 {
@@ -24,8 +25,13 @@ void controller::refresh_quantity(std::string name, std::string dim, int v)
 }
 
 void controller::delete_all() {
+  io_json* io = new io_json();
+  if (io->write(_model->get_receipt())) {
     _model->delete_all();
     _view->refresh_scontrino(get_receipt());
+  } else {
+    // si è verificato un errore, segnalare all'utente
+  }
 }
 
 bool controller::presenza(const deep_ptr<product>& p) const { return _model->presenza(p); }
