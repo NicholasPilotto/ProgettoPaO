@@ -7,7 +7,7 @@
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
 
-  model m(":/data/data.json");
+  model m;
   controller c;
   view w;
 
