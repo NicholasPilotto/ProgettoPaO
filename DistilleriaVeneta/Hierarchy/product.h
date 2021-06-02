@@ -174,14 +174,14 @@ class product {
   /**
    * @brief definizone operator<
    * @param p : const product&, indirizzo costante del prodotto da confrontare
-   * @return bool, `true` se il contenuto alcolico è minore, `false` altrimenti
+   * @return bool, `true` sse il contenuto alcolico è minore, `false` altrimenti
    */
   bool operator<(const product&) const;
 
   /**
    * @brief definizone operator>
    * @param p : const product&, indirizzo costante del prodotto da confrontare
-   * @return bool, `true` se il contenuto alcolico è maggiore, `false` altrimenti
+   * @return bool, `true` sse il contenuto alcolico è maggiore, `false` altrimenti
    */
   bool operator>(const product&) const;
 

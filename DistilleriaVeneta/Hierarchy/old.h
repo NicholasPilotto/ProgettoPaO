@@ -109,7 +109,7 @@ class old : public grappa {
 
   /**
    * @brief metodo per controllare se una grappa invecchiata è barricata
-   * @return bool, 'true' se barrique è true, 'false' altrimenti
+   * @return bool, 'true' sse barrique è true, 'false' altrimenti
    */
   bool is_barrique() const;
 

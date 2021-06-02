@@ -20,18 +20,6 @@ void receipt::remove_item(std::string name, std::string dim) {
       stop = true;
     }
   }
-
-  //  for (int j = 0; j<i ; j++) {it++;}
-
-  //  items.erase(it);
-
-  // std::cout  << "Inizio" << std::endl;
-  // std::cout << items.size() << std::endl;
-
-  //      items.erase(items.begin() + i);
-
-  // std::cout << items.size() << std::endl;
-  // std::cout << "Fine" << std::endl;
 }
 
 void receipt::delete_all() { items.erase(items.begin(), items.end()); }
