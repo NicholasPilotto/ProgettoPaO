@@ -44,6 +44,7 @@ class receipt {
    * @brief metodo per cambiare la quantità di un prodotto nel vettore scontrino
    * @param name : std::string, indica il nome del prodotto di cui si vuole modificare la quantità
    * @param dim : std::string, indica la dimensione del prodotto di cui si vuole modificare la quantità
+   * @param v : int, nuovo quantità del prodotto
    */
   void refresh_quantity(std::string, std::string, int);
 
@@ -64,7 +65,7 @@ class receipt {
    * @brief metodo che ritorna il prezzo di un prodotto in base alla quantità
    * @return double, prezzo di un prodotto in base alla quantità
    */
-  double total_price_line(pair<deep_ptr<product>, int>) const; // da modificare
+  double total_price_line(pair<deep_ptr<product>, int>) const; // da modificare + aggiunta param
 
   /**
    * @brief metodo per il prezzo totale del vettore scontrino
