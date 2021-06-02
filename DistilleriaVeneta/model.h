@@ -15,7 +15,7 @@ class model {
   u_vector<deep_ptr<product>> products;
 
  public:
-  model(const std::string&);
+  model(const std::string& = ":/data/data.json");
   void load_from_file(const std::string& = ":/data/data.json");
 
   u_vector<deep_ptr<product>> get_products_json() const;
