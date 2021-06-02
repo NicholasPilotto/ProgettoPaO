@@ -43,7 +43,7 @@ double old::kind_price() const {
 
 double old::price_increment() const { return kind_price() + month_incr * month + (is_barrique() ? 3.00 : 0.00); }
 
-std::string old::get_product() const { return "grappa"; }
+std::string old::type_product() const { return "grappa"; }
 
 double old::get_price() const { return grappa::get_price() + price_increment(); }
 
@@ -106,7 +106,7 @@ std::string old::write() const {
             \"barrique\": $6, \
             \"month\": $7";
 
-  aux = std::regex_replace(aux, std::regex("\\$0"), get_product());
+  aux = std::regex_replace(aux, std::regex("\\$0"), type_product());
   aux = std::regex_replace(aux, std::regex("\\$1"), get_name());
   aux = std::regex_replace(aux, std::regex("\\$2"), std::to_string(get_alcohol_content()));
   aux = std::regex_replace(aux, std::regex("\\$3"), std::to_string(get_color()));

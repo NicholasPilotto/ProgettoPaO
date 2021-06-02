@@ -43,7 +43,7 @@ double liquor::kind_price() const {
 
 double liquor::price_increment() const { return kind_price() + liquor_incr + tastes.size() * taste_incr; }
 
-std::string liquor::get_product() const { return "liquor"; }
+std::string liquor::type_product() const { return "liquor"; }
 
 double liquor::get_price() const { return spirits::get_price() + price_increment(); }
 
@@ -62,13 +62,9 @@ std::string liquor::code() const {
     aux += std::to_string(*cit);
     count++;
   }
-  for (; count < tastes.capacity(); count++) {
-    aux += "00";
-  }
-
-  std::cout << aux << std::endl;
 
   return aux;
+
 }
 
 std::string liquor::get_image_path() const {
@@ -103,7 +99,7 @@ std::string liquor::write() const {
 	    ], \
 	    \"bottle_size\": $5";
 
-  aux = std::regex_replace(aux, std::regex("\\$0"), get_product());
+  aux = std::regex_replace(aux, std::regex("\\$0"), type_product());
   aux = std::regex_replace(aux, std::regex("\\$1"), get_name());
   aux = std::regex_replace(aux, std::regex("\\$2"), std::to_string(get_alcohol_content()));
   aux = std::regex_replace(aux, std::regex("\\$3"), std::to_string(get_color()));

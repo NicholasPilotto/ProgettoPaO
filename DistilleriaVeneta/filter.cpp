@@ -35,7 +35,7 @@ u_vector<deep_ptr<product>> filter::tastes(const u_vector<deep_ptr<product>>& _v
 u_vector<deep_ptr<product>> filter::products(const u_vector<deep_ptr<product>>& _vector, const std::string& __value) {
   u_vector<deep_ptr<product>> _result;
   std::function<deep_ptr<product>(deep_ptr<product>)> lambda = [&](deep_ptr<product> value) {
-    if (value->get_product() == __value) {
+    if (value->type_product() == __value) {
       return value;
     }
     return deep_ptr<product>();
