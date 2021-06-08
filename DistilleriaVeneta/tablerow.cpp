@@ -27,7 +27,7 @@ void tablerow::set_row(const deep_ptr<product>& p, int value_spin, int riga) {
 
   // Inserimento SpinBox
 
-  num_item = new QSpinBox();
+  num_item = new QSpinBox(this);
   num_item->setRange(1, 2147483647);
   num_item->setValue(value_spin);
   num_item->setObjectName(QString::number(riga));

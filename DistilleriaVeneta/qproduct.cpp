@@ -6,18 +6,18 @@ QProduct::QProduct(const deep_ptr<product>& _product, std::function<void(const d
   item = _product;
   // Dichiarazione layout principale e dell'immagine
 
-  mainlayout = new QVBoxLayout();
-  image_layout = new QHBoxLayout();
+  mainlayout = new QVBoxLayout(this);
+  image_layout = new QHBoxLayout(this);
 
-  // Creazione dell'immagine e
+  // Creazione dell'immagine e contenitore per essa
 
-  img = new QLabel();
+  img = new QLabel(this);
   pix = new QPixmap(_product->get_image_path().data());
   img->setPixmap(*pix);
 
   // Immagine inserita nel suo layout e widget + set layout + grafica
 
-  left_widget_image = new QFrame();
+  left_widget_image = new QFrame(this);
   left_widget_image->setStyleSheet("background-color: rgb(239,235,231)");
   image_layout->addWidget(img);
   left_widget_image->setLayout(image_layout);

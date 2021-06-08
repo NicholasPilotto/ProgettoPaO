@@ -81,13 +81,13 @@ QHBoxLayout* view::add_filter_buttons() {
 
   // Creazione bottoni
 
-  grappa_button = new QPushButton("Grappa");
+  grappa_button = new QPushButton("Grappa", this);
   grappa_button->setObjectName("grappa");
-  liquor_button = new QPushButton("Liquore");
+  liquor_button = new QPushButton("Liquore", this);
   liquor_button->setObjectName("liquor");
-  cream_button = new QPushButton("Crema");
+  cream_button = new QPushButton("Crema", this);
   cream_button->setObjectName("cream");
-  all_button = new QPushButton("Tutti");
+  all_button = new QPushButton("Tutti", this);
   all_button->setObjectName("all");
 
   // Aggiunta bottoni
@@ -113,7 +113,7 @@ void view::add_grid(QHBoxLayout* object_layout) {
 
   // Creazione e aggiunta griglia vuota
 
-  product_area = new QGridShow();
+  product_area = new QGridShow(this);
   left_app->addWidget(product_area);
 
   // Aggiunta pulsanti di filtro veloci
@@ -132,8 +132,8 @@ QHBoxLayout* view::add_receipt_buttons() {
 
   // Creazione bottoni
 
-  delete_receipt = new QPushButton("Elimina");
-  pay_button = new QPushButton("Paga");
+  delete_receipt = new QPushButton("Elimina", this);
+  pay_button = new QPushButton("Paga", this);
 
   // Aggiunta bottoni
 
@@ -156,7 +156,7 @@ void view::add_receipt(QHBoxLayout* object_layout) {
 
   // Creazione e aggiunta della tabella
 
-  receipt_area = new QReceiptShow();
+  receipt_area = new QReceiptShow(this);
   right_app->addWidget(receipt_area);
 
   // Aggiunta dei pulsanti per lo scontrino
@@ -274,8 +274,8 @@ void view::pay_banner() {
   if (presenter->get_receipt().size()) {
     pay_dialog->setIcon(QMessageBox::Warning);
     pay_dialog->setText("Confermi il pagamento?");
-    QPushButton* ok_button = new QPushButton("Ok");
-    QPushButton* annulla_button = new QPushButton("Annulla");
+    QPushButton* ok_button = new QPushButton("Ok", pay_dialog);
+    QPushButton* annulla_button = new QPushButton("Annulla", pay_dialog);
     pay_dialog->addButton(ok_button, QMessageBox::YesRole);
     connect(ok_button, SIGNAL(clicked()), presenter, SLOT(delete_all()));
     pay_dialog->addButton(annulla_button, QMessageBox::NoRole);
@@ -294,8 +294,8 @@ void view::confirm_deletion() {
   if (presenter->get_receipt().size()) {
     delete_dialog->setIcon(QMessageBox::Warning);
     delete_dialog->setText("   Vuoi davvero eliminare\ntutti i prodotti dal carrello?");
-    QPushButton* ok_button = new QPushButton("Ok");
-    QPushButton* annulla_button = new QPushButton("Annulla");
+    QPushButton* ok_button = new QPushButton("Ok", delete_dialog);
+    QPushButton* annulla_button = new QPushButton("Annulla", delete_dialog);
     delete_dialog->addButton(ok_button, QMessageBox::YesRole);
     connect(ok_button, SIGNAL(clicked()), presenter, SLOT(delete_all()));
     delete_dialog->addButton(annulla_button, QMessageBox::NoRole);

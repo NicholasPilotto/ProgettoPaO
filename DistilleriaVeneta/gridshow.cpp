@@ -5,15 +5,15 @@ QGridShow::QGridShow(QWidget* parent) : QWidget(parent) {
 
   // ScrollArea
 
-  product_area = new QScrollArea();
+  product_area = new QScrollArea(this);
   product_area->setMinimumSize(550, 500);
   product_area->setWidgetResizable(true);
   product_area->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
   // Mettere la griglia sul contenitore e settare il widget sulla ScrollArea
 
-  contenitore = new QFrame();
-  grid = new QGridLayout();
+  contenitore = new QFrame(product_area);
+  grid = new QGridLayout(contenitore);
 
   contenitore->setLayout(grid);
   product_area->setWidget(contenitore);
@@ -41,9 +41,9 @@ void QGridShow::refresh_grid(const u_vector<deep_ptr<product>>& _products, std::
   lista_prodotti.clear();
 
   for (; it != end; it++) {
-    QProduct* p = new QProduct(*it, bind);
+    QProduct* p = new QProduct(*it, bind, product_area);
     p->setMaximumSize(160, 240);
-    QOverlay* o = new QOverlay();
+    QOverlay* o = new QOverlay(product_area);
     o->setMaximumSize(160, 240);
     QStackedWidgetHover* stack = new QStackedWidgetHover(p, o);
     add_product(stack, r, c);

@@ -3,7 +3,7 @@
 #include "controller.h"
 
 QReceiptShow::QReceiptShow(QWidget* parent) : QWidget(parent) {
-  QVBoxLayout* table_layout = new QVBoxLayout();
+  QVBoxLayout* table_layout = new QVBoxLayout(this);
   addTable(table_layout);
   setLayout(table_layout);
 }
@@ -34,7 +34,7 @@ void QReceiptShow::addTable(QVBoxLayout* table_layout) {
 
   table_layout->addWidget(table);
 
-  elimina_prodotto = new QPushButton("Elimina Prodotto");
+  elimina_prodotto = new QPushButton("Elimina Prodotto", table);
   table_layout->addWidget(elimina_prodotto);
   connect(elimina_prodotto, SIGNAL(clicked()), this, SLOT(EliminaButtonSlot()));
 
@@ -68,7 +68,7 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
 }
 
 QGridLayout* QReceiptShow::add_total() {
-  resoconto = new QGridLayout();
+  resoconto = new QGridLayout(this);
 
   resoconto->addWidget(new QLabel("TOTALE:"), 0, 0, 1, 1, Qt::AlignLeft);
   prezzo_finale = new QLabel("€ 0.00");
@@ -103,8 +103,8 @@ void QReceiptShow::elimina_prodotto_dialog() {
     if (table->currentRow() + 1 > 0) {
       dialog->setIcon(QMessageBox::Warning);
       dialog->setText("Sei sicuro di voler eliminare questo prodotto?");
-      QPushButton* SiButton = new QPushButton("Si");
-      QPushButton* NoButton = new QPushButton("No");
+      QPushButton* SiButton = new QPushButton("Si", dialog);
+      QPushButton* NoButton = new QPushButton("No", dialog);
       dialog->addButton(SiButton, QMessageBox::YesRole);
       connect(SiButton, SIGNAL(pressed()), this, SLOT(CancellaProdottoSlot()));
       dialog->addButton(NoButton, QMessageBox::NoRole);
