@@ -2,9 +2,14 @@
 
 model::model(const std::string& filename) : r(new receipt()) { load_from_file(filename); }
 
+model::~model()
+{
+    delete r;
+}
+
 void model::load_from_file(const std::string& path) {
-  io_json* io = new io_json(path);
-  products = io->read();
+  io_json io(path);
+  products = io.read();
 }
 
 u_vector<deep_ptr<product>> model::get_products_json() const { return products; }

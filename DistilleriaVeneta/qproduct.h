@@ -33,7 +33,7 @@ class QProduct : public QWidget {
    * @param parent : QWidget*, puntatore al padre, default = nullptr
    */
   explicit QProduct(const deep_ptr<product>&, std::function<void(const deep_ptr<product>&)>, QWidget* = nullptr);
-
+  ~QProduct();
  public slots:
   void insert_small();
   void insert_medium();

@@ -21,6 +21,8 @@ class model {
    */
   model(const std::string& = ":/data/data.json");
 
+  ~model();
+
   /**
    * @brief metodo per il caricamento dei prodotti inseribili nello scontrino
    * @param path : const std::string&, path del file json contentente i prodotti inseribili nello scontrino, default = ":/data/data.json"

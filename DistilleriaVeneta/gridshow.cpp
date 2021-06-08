@@ -46,7 +46,8 @@ void QGridShow::refresh_grid(const u_vector<deep_ptr<product>>& _products, std::
     QOverlay* o = new QOverlay(product_area);
     o->setMaximumSize(160, 240);
     QStackedWidgetHover* stack = new QStackedWidgetHover(p, o);
-    add_product(stack, r, c);
+    lista_prodotti.append(stack);
+    grid->addWidget(stack, r, c);
 
     connect(o->get_small_button(), SIGNAL(clicked()), p, SLOT(insert_small()));
     connect(o->get_medium_button(), SIGNAL(clicked()), p, SLOT(insert_medium()));
@@ -59,9 +60,4 @@ void QGridShow::refresh_grid(const u_vector<deep_ptr<product>>& _products, std::
       c++;
     }
   }
-}
-
-void QGridShow::add_product(QStackedWidgetHover* stack, int r, int c) {
-  lista_prodotti.append(stack);
-  grid->addWidget(stack, r, c);
 }

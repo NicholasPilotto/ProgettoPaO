@@ -21,7 +21,6 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
 
   // Azioni in file
   close_action = new QAction("Chiudi", file);
-  const QKeySequence* closing = new QKeySequence("Ctrl+Q");
   close_action->setShortcut(*closing);
   file->addAction(close_action);
 
@@ -175,7 +174,7 @@ void view::update_json() {
   product_area->refresh_grid(presenter->get_products_json(), bind_item);
 }
 
-view::view(QWidget* parent) : QWidget(parent) {
+view::view(QWidget* parent) : QWidget(parent), closing(new QKeySequence("Ctrl+Q")) {
   main_layout = new QVBoxLayout(this);
   object_layout = new QHBoxLayout(this);
 
@@ -200,6 +199,11 @@ view::view(QWidget* parent) : QWidget(parent) {
   main_layout->addLayout(object_layout);
   main_layout->setSpacing(20);
   setLayout(main_layout);
+}
+
+view::~view()
+{
+    delete closing;
 }
 
 void view::set_controller(controller* c) {

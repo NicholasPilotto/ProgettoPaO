@@ -57,6 +57,8 @@ class view : public QWidget {
   QReceiptShow* receipt_area;
   controller* presenter;
 
+  const QKeySequence* closing;
+
   /**
    * @brief metodo di aggiunta della bar
    * @param main_layout : QVBoxLayout*, puntatore al layout per aggiungere la menubar
@@ -105,6 +107,8 @@ class view : public QWidget {
    * @param parent : QWidget*, puntatore al parent, default = nullptr
    */
   view(QWidget* = nullptr);
+
+  ~view();
 
   /**
    * @brief metodo setter per il controller

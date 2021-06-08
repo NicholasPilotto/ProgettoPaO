@@ -2,7 +2,7 @@
 
 #include <QDebug>
 
-controller::controller(QObject* parent) : QObject(parent), previous_sender(nullptr) {}
+controller::controller(QObject* parent) : QObject(parent), previous_sender(new QAction(this)) {}
 
 void controller::set_model(model* m) { _model = m; }
 
@@ -49,7 +49,6 @@ u_vector<pair<deep_ptr<product>, int>> controller::get_receipt() const { return 
 
 void controller::filter_by_products() const {
   std::string _sender = sender()->objectName().toStdString();
-  u_vector<deep_ptr<product>> _result;
   if (_sender != "all") {
     _view->refresh_grid_view(_model->filter_products(_sender));
   } else {

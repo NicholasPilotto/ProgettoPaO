@@ -20,12 +20,16 @@ class tablerow : public QWidget {
   QTableWidgetItem* price_item;
   QTableWidget* table;
 
+  const QIcon* icon;
+
  public:
   /**
    * @brief costruttore di tablerow
    * @param t : QTableWidget*&, puntatore passato per riferimento indicante lo socntrino
    */
   tablerow(QTableWidget*&);
+
+  ~tablerow();
 
   /**
    * @brief metodo setter per settare le righe dello scontrino

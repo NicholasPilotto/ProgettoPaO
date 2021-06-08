@@ -1,13 +1,17 @@
 #include "tablerow.h"
 
-tablerow::tablerow(QTableWidget*& t) : QWidget(t), table(t) {}
+tablerow::tablerow(QTableWidget*& t) : QWidget(t), table(t), icon(new QIcon("../Grafica/Immagini/delete.png")) {}
+
+tablerow::~tablerow()
+{
+    delete icon;
+}
 
 void tablerow::set_row(const deep_ptr<product>& p, int value_spin, int riga) {
   table->setRowHeight(riga, 50);
 
   // Inserimento icona cestino
 
-  const QIcon* icon = new QIcon("../Grafica/Immagini/delete.png");
   bin_item = new QTableWidgetItem(*icon, "");
   table->setVerticalHeaderItem(riga, bin_item);
 

@@ -42,13 +42,6 @@ class QGridShow : public QWidget {
    */
   void refresh_grid(const u_vector<deep_ptr<product>>&, std::function<void(const deep_ptr<product>&)>);
 
-  /**
-   * @brief metodo per aggiungere un prodotto alla griglia
-   * @param stack : QStackedWidgetHover*, puntatore che contiene il prodotto e l'overlay
-   * @param r : int, indica il numero della riga dove inserire stack
-   * @param c : int, indica il numero della colonna dove inserire stack
-   */
-  void add_product(QStackedWidgetHover*, int, int);
 };
 
 #endif  // GRIDSHOW_H

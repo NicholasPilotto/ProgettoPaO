@@ -98,7 +98,7 @@ void QReceiptShow::refresh_totali() {
 }
 
 void QReceiptShow::elimina_prodotto_dialog() {
-  QMessageBox* dialog = new QMessageBox();
+  QMessageBox* dialog = new QMessageBox(this);
   if (table->rowCount() > 0) {
     if (table->currentRow() + 1 > 0) {
       dialog->setIcon(QMessageBox::Warning);
