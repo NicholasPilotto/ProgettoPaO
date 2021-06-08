@@ -41,7 +41,7 @@ class QStackedWidgetHover : public QStackedWidget {
    * @param o : QOverlay*, puntatore all'overlay che si vuole aggiungere
    * @param parent : QStackedWidget*, puntatore al parent, default = nullptr
    */
-  explicit QStackedWidgetHover(QProduct*, QOverlay*, QStackedWidget* = nullptr);
+  explicit QStackedWidgetHover(QProduct*, QOverlay*, QWidget* = nullptr);
 };
 
 #endif  // QSTACKEDWIDGETHOVER_H

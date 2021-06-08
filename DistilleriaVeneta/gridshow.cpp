@@ -27,7 +27,7 @@ QGridShow::QGridShow(QWidget* parent) : QWidget(parent) {
 void QGridShow::clear_grid() {
   while (auto item = grid->takeAt(0)) {
     delete item->widget();
-    item++;
+    delete item;
   }
 }
 
@@ -45,7 +45,7 @@ void QGridShow::refresh_grid(const u_vector<deep_ptr<product>>& _products, std::
     p->setMaximumSize(160, 240);
     QOverlay* o = new QOverlay(product_area);
     o->setMaximumSize(160, 240);
-    QStackedWidgetHover* stack = new QStackedWidgetHover(p, o);
+    QStackedWidgetHover* stack = new QStackedWidgetHover(p, o, product_area);
     lista_prodotti.append(stack);
     grid->addWidget(stack, r, c);
 

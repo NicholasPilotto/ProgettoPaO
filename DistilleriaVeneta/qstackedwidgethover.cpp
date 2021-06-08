@@ -29,7 +29,7 @@ bool QStackedWidgetHover::event(QEvent *event) {
   return QWidget::event(event);
 }
 
-QStackedWidgetHover::QStackedWidgetHover(QProduct *p, QOverlay *o, QStackedWidget *parent) : QStackedWidget(parent) {
+QStackedWidgetHover::QStackedWidgetHover(QProduct *p, QOverlay *o, QWidget *parent) : QStackedWidget(parent) {
   setMouseTracking(true);
   setAttribute(Qt::WA_Hover);
   addWidget(p);
