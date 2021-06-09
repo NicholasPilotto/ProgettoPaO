@@ -24,7 +24,17 @@ class io_json {
   io_json(const std::string& = ":/data/data.json");
   static std::string dir_path;
 
+  /**
+   * @brief read, metodo per la lettura del file
+   * @return u_vector<deep_ptr<product>>, vettore contenente gli oggetti creati
+   */
   u_vector<deep_ptr<product>> read() const;
+
+  /**
+   * @brief write, metodo per la scrittura del file
+   * @param a: const u_vector<std::pair<deep_ptr<product>, int>>&, vettore contenente gli oggetti da scrivere nel file
+   * @return bool: true sse tutto è andato correttamente, false altrimenti
+   */
   bool write(const u_vector<std::pair<deep_ptr<product>, int>>&) const;
 };
 
