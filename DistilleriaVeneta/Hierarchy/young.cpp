@@ -9,16 +9,7 @@ young::aux_map_initializer young::aux_map;
 
 young::young(const color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : grappa(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
 
-young::young(const young& y) : grappa(y), col(y.col), tastes(y.tastes) {}  // Anche il sottooggetto? Se si come?
-
-young& young::operator=(const young& y) {
-  if (this != &y) {
-    grappa::operator=(y);
-    col = y.col;
-    tastes = y.tastes;
-  }
-  return *this;
-}
+young::young(const young& y) : grappa(y), col(y.col), tastes(y.tastes) {}
 
 double const young::discount_young = 0.85;
 

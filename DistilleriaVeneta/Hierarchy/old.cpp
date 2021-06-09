@@ -13,17 +13,6 @@ old::old(const color c, const u_vector<taste>& t, bool b, unsigned int m, bottle
 
 old::old(const old& o) : grappa(o), col(o.col), tastes(o.tastes), barrique(o.barrique), month(o.month) {}
 
-old& old::operator=(const old& o) {
-  if (this != &o) {
-    grappa::operator=(o);
-    col = o.col;
-    tastes = o.tastes;
-    barrique = o.barrique;
-    month = o.month;
-  }
-  return *this;
-}
-
 const double old::month_incr = 0.20;
 
 unsigned int old::get_month_old() const { return month; }

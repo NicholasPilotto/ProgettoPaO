@@ -15,19 +15,6 @@ const double cream::cream_incr = 3.50;
 
 cream::cream(const cream& c) : non_spirits(c), col(c.col), tastes(c.tastes) {}
 
-cream& cream::operator=(const cream& c) {
-  if (this != &c) {
-    non_spirits::operator=(c);
-    col = c.col;
-    u_vector<taste>::const_iterator cit = tastes.const_begin();
-    u_vector<taste>::const_iterator end = tastes.const_end();
-    for (; cit != end; cit++) {
-      tastes = c.tastes;
-    }
-  }
-  return *this;
-}
-
 const double cream::discount_cream = 0.95;
 
 const double cream::max_ac = 21.0;

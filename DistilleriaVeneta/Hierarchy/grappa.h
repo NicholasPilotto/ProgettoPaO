@@ -23,8 +23,6 @@ class grappa : public spirits {
    */
   grappa(const grappa&);
 
-  grappa& operator=(const grappa&);
-
   static const double min_ac;
   static const double max_ac;
 

@@ -43,8 +43,6 @@ class old : public grappa {
    */
   old(const old&);
 
-  old& operator=(const old&);
-
   static const double discount_old;
 
   /**

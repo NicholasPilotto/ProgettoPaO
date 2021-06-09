@@ -2,14 +2,7 @@
 
 non_spirits::non_spirits(bottle_size bs, const std::string& n, double ac) : product(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac) {}
 
-non_spirits::non_spirits(const non_spirits& ns) : product(ns) {}  // non avendo campi dati come faccio? Solo il sottoogetto? Se si come?
-
-non_spirits& non_spirits::operator=(const non_spirits& ns) {
-  if (this != &ns) {
-    product::operator=(ns);
-  }
-  return *this;
-}
+non_spirits::non_spirits(const non_spirits& ns) : product(ns) {}
 
 const double non_spirits::max_ac = 21.0;
 

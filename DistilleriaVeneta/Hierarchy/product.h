@@ -45,8 +45,6 @@ class product {
    */
   product(const product&);
 
-  product& operator=(const product&);
-
   virtual ~product() = default;
 
   static const double multiplier_taxes;

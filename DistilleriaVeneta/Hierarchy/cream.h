@@ -41,8 +41,6 @@ class cream : public non_spirits {
    */
   cream(const cream&);
 
-  cream& operator=(const cream&);
-
   static const double discount_cream;
   static const double min_ac;
   static const double max_ac;

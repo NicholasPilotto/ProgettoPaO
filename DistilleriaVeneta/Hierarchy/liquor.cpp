@@ -13,16 +13,7 @@ const double liquor::liquor_incr = 4.00;
 
 const double liquor::taste_incr = 0.10;
 
-liquor::liquor(const liquor& l) : spirits(l), col(l.col), tastes(l.tastes) {}  // Anche il sottooggetto? Se si come?
-
-liquor& liquor::operator=(const liquor& l) {
-  if (this != &l) {
-    spirits::operator=(l);
-    col = l.col;
-    tastes = l.tastes;
-  }
-  return *this;
-}
+liquor::liquor(const liquor& l) : spirits(l), col(l.col), tastes(l.tastes) {}
 
 const double liquor::min_ac = 21.0;
 

@@ -38,8 +38,6 @@ class liquor : public spirits {
    */
   liquor(const liquor&);
 
-  liquor& operator=(const liquor&);
-
   static const double min_ac;
   static const double max_ac;
   static const double discount_liquor;

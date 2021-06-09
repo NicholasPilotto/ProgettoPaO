@@ -40,8 +40,6 @@ class young : public grappa {
    */
   young(const young&);
 
-  young& operator=(const young&);
-
   static const double discount_young;
 
   /**

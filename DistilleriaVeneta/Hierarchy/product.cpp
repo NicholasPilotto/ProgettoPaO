@@ -10,15 +10,6 @@ double product::get_default_price() const { return price_increment() + fixed_pri
 
 product::product(const product& p) : kind(p.kind), name(p.name), alcohol_content(p.alcohol_content < max_ac && p.alcohol_content >= min_ac ? p.alcohol_content : min_ac) {}
 
-product& product::operator=(const product& p) {
-  if (this != &p) {
-    kind = p.kind;
-    name = p.name;
-    alcohol_content = p.alcohol_content;
-  }
-  return *this;
-}
-
 const double product::multiplier_taxes = 0.10;
 
 const double product::max_ac = 90.0;

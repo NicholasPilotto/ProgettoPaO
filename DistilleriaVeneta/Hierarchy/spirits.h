@@ -18,8 +18,6 @@ class spirits : public product {
    */
   spirits(const spirits&);
 
-  spirits& operator=(const spirits&);
-
   static const double min_ac;
   static const double max_ac;
 
