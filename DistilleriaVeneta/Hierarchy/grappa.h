@@ -55,7 +55,6 @@ class grappa : public spirits {
    * @return std::string, path della grappa
    */
   virtual std::string get_image_path() const override;
-
 };
 
 #endif  // GRAPPA_H_

@@ -13,13 +13,11 @@
 
 class product {
  private:
-
   bottle_size kind;
   std::string name;
   double alcohol_content;
 
  protected:
-
   static const double fixed_price;
 
   /**
@@ -30,7 +28,6 @@ class product {
   inline static std::map<std::string, product*> _map;
 
  public:
-
   /**
    * @brief costruttore di product
    * @param bs : bottle_size, indica la grandezza del prodotto, default = medium
@@ -150,8 +147,23 @@ class product {
 
   // TODO
 
+  /**
+   * @brief metodo per la creazione polimorfa degli oggetti
+   * @return product*, oggetto creato
+   */
   static product* unserialize(QMap<QString, QVariant>&);
+
+  /**
+   * @brief create
+   * @param m: QMap<QString, QVariant>&, mappa contentente tutti i dati per la costruzione
+   * @return product*, oggetto creato
+   */
   virtual product* create(QMap<QString, QVariant>&) const = 0;
+
+  /**
+   * @brief metodo per la preparazione dell'oggetto per la scrittura
+   * @return std::string, serializzazione dell'oggetto
+   */
   virtual std::string write() const = 0;
 
   /**
@@ -182,7 +194,6 @@ class product {
    * @return bool, `true` sse il contenuto alcolico è maggiore, `false` altrimenti
    */
   bool operator>(const product&) const;
-
 };
 
 #endif  // PRODOTTO_H_

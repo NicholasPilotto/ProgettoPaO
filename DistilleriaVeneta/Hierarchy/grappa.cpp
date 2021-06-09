@@ -4,13 +4,6 @@ grappa::grappa(bottle_size bs, const std::string& n, double ac) : spirits(bs, n,
 
 grappa::grappa(const grappa& g) : spirits(g) {}  // non avendo campi dati come faccio? Solo il sottoogetto? Se si come?
 
-grappa& grappa::operator=(const grappa& g) {
-  if (this != &g) {
-    spirits::operator=(g);
-  }
-  return *this;
-}
-
 const double grappa::grappa_incr = 4.50;
 
 const double grappa::min_ac = 38.0;

@@ -50,7 +50,6 @@ class spirits : public product {
    * @return std::string, path del superalcolico
    */
   virtual std::string get_image_path() const override;
-
 };
 
 #endif  // SPIRITS_H_

@@ -55,7 +55,6 @@ std::string liquor::code() const {
   }
 
   return aux;
-
 }
 
 std::string liquor::get_image_path() const {

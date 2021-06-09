@@ -4,8 +4,8 @@
 #include "grappa.h"
 
 // non ha incrementi di prezzo in quanto è la grappa basica,
-//che non ha la stessa lavorazione di un liquore,
-//di una crema, di un'invecchiata o di una barricata
+// che non ha la stessa lavorazione di un liquore,
+// di una crema, di un'invecchiata o di una barricata
 
 class young : public grappa {
  private:
@@ -102,11 +102,18 @@ class young : public grappa {
    */
   virtual std::string get_image_path() const override;
 
-  // TODO
-
+  /**
+   * @brief create
+   * @param m: QMap<QString, QVariant>&, mappa contentente tutti i dati per la costruzione
+   * @return young*, oggetto creato
+   */
   virtual young* create(QMap<QString, QVariant>&) const override;
-  virtual std::string write() const;
 
+  /**
+   * @brief metodo per la preparazione dell'oggetto per la scrittura
+   * @return std::string, serializzazione dell'oggetto
+   */
+  virtual std::string write() const;
 };
 
 #endif  // YOUNG_H_

@@ -102,11 +102,13 @@ class liquor : public spirits {
    */
   virtual std::string get_image_path() const override;
 
-  //TODO
-
+  /**
+   * @brief create
+   * @param m: QMap<QString, QVariant>&, mappa contentente tutti i dati per la costruzione
+   * @return liquor*, oggetto creato
+   */
   virtual liquor* create(QMap<QString, QVariant>&) const override;
   virtual std::string write() const;
-
 };
 
 #endif  // LIQUOR_H_
