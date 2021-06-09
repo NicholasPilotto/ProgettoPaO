@@ -76,7 +76,6 @@ class QReceiptShow : public QWidget {
   void EliminaButtonSlot();
   void CancellaProdottoSlot();
   void refresh_spinbox(int);
-
 };
 
 #endif  // RECEIPTSHOW_H

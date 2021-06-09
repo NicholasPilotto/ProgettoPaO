@@ -2,10 +2,7 @@
 
 tablerow::tablerow(QTableWidget*& t) : QWidget(t), table(t), icon(new QIcon("../Grafica/Immagini/delete.png")) {}
 
-tablerow::~tablerow()
-{
-    delete icon;
-}
+tablerow::~tablerow() { delete icon; }
 
 void tablerow::set_row(const deep_ptr<product>& p, int value_spin, int riga) {
   table->setRowHeight(riga, 50);

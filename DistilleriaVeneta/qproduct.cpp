@@ -55,10 +55,7 @@ QProduct::QProduct(const deep_ptr<product>& _product, std::function<void(const d
   setLayout(mainlayout);
 }
 
-QProduct::~QProduct()
-{
-    delete pix;
-}
+QProduct::~QProduct() { delete pix; }
 
 void QProduct::insert_small() {
   item->set_kind_bottle(small);

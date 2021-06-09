@@ -41,7 +41,6 @@ class QGridShow : public QWidget {
    * @param bind : std::function<void(const deep_ptr<product>&)>, funzione che aggiunge un elemento della grandezza corrispondente
    */
   void refresh_grid(const u_vector<deep_ptr<product>>&, std::function<void(const deep_ptr<product>&)>);
-
 };
 
 #endif  // GRIDSHOW_H

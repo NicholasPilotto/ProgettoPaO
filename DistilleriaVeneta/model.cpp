@@ -2,10 +2,7 @@
 
 model::model(const std::string& filename) : r(new receipt()) { load_from_file(filename); }
 
-model::~model()
-{
-    delete r;
-}
+model::~model() { delete r; }
 
 void model::load_from_file(const std::string& path) {
   io_json io(path);

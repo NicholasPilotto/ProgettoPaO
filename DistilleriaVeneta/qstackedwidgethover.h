@@ -13,7 +13,7 @@
 class QStackedWidgetHover : public QStackedWidget {
   Q_OBJECT
  protected:
-    /**
+  /**
    * @brief definizione evento all'entrata del mouse
    */
   void hoverEnter(QHoverEvent*);

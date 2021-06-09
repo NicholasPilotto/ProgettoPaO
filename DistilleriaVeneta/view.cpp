@@ -201,10 +201,7 @@ view::view(QWidget* parent) : QWidget(parent), closing(new QKeySequence("Ctrl+Q"
   setLayout(main_layout);
 }
 
-view::~view()
-{
-    delete closing;
-}
+view::~view() { delete closing; }
 
 void view::set_controller(controller* c) {
   // Controller viene settato

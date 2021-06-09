@@ -84,6 +84,5 @@ class receipt {
    * @return u_vector<pair<deep_ptr<product>, int>>, scontrino contenente tutti i prodotti
    */
   u_vector<pair<deep_ptr<product>, int>> get_items() const;
-
 };
 #endif  // __RECEIPT_H__
