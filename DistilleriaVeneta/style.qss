@@ -1,20 +1,45 @@
 QStackedWidget {
-    background-color: white;
+  background-color: white;
 }
 
-QGridLayout {
-    background-color: white;
+#container {
+  background-color: white;
 }
 
-QScrollArea {
-    background-color: white;
+#overlay_button {
+  background-color: #F7F7F7;
+  border: 1px solid #E1E1E1;
+  border-radius: 5px;
+  font: 12px;
+  padding: 3px;
 }
 
-QVBoxLayout {
-    background-color: white;
+#delete_button {
+  color: white;
+  background-color: #FF1F10;
+  border: 2px solid #FF1F10;
+  border-radius: 5px;
+  padding: 3px;
+  margin: 0;
+  font: bold;
 }
 
-#contenitore-product {
-    background-color: white;
+#pay_button {
+  color: white;
+  background-color: #00C200;
+  border: 2px solid #00C200;
+  border-radius: 5px;
+  padding: 3px;
+  margin: 0;
+  font: bold;
 }
 
+#grappa, #liquor, #cream, #all, #delete_button_2 {
+  color: white;
+  background-color: rgb(58, 134, 255);
+  border: 2px solid rgb(58, 134, 255);
+  border-radius: 5px;
+  padding: 3px;
+  margin: 0;
+  font: bold;
+}

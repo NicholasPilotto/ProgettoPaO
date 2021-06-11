@@ -14,11 +14,11 @@ QProduct::QProduct(const deep_ptr<product>& _product, std::function<void(const d
   img = new QLabel(this);
   pix = new QPixmap(_product->get_image_path().data());
   img->setPixmap(*pix);
+  img->setObjectName("p_image");
 
   // Immagine inserita nel suo layout e widget + set layout + grafica
 
   left_widget_image = new QFrame(this);
-  left_widget_image->setStyleSheet("background-color: rgb(239,235,231)");
   image_layout->addWidget(img);
   left_widget_image->setLayout(image_layout);
   left_widget_image->layout()->setMargin(0);

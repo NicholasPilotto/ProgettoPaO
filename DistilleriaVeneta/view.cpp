@@ -132,8 +132,9 @@ QHBoxLayout* view::add_receipt_buttons() {
   // Creazione bottoni
 
   delete_receipt = new QPushButton("Elimina", this);
+  delete_receipt->setObjectName("delete_button");
   pay_button = new QPushButton("Paga", this);
-
+  pay_button->setObjectName("pay_button");
   // Aggiunta bottoni
 
   receipt_buttons->addWidget(delete_receipt);

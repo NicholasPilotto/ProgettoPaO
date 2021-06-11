@@ -35,6 +35,7 @@ void QReceiptShow::addTable(QVBoxLayout* table_layout) {
   table_layout->addWidget(table);
 
   elimina_prodotto = new QPushButton("Elimina Prodotto", table);
+  elimina_prodotto->setObjectName("delete_button_2");
   table_layout->addWidget(elimina_prodotto);
   connect(elimina_prodotto, SIGNAL(clicked()), this, SLOT(EliminaButtonSlot()));
 
@@ -69,9 +70,15 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
 
 QGridLayout* QReceiptShow::add_total() {
   resoconto = new QGridLayout(this);
+  QFont f = QFont();
+  f.setPointSize(17);
+  f.setBold(true);
 
-  resoconto->addWidget(new QLabel("TOTALE:"), 0, 0, 1, 1, Qt::AlignLeft);
+  QLabel* tot = new QLabel("TOTALE:");
+  tot->setFont(f);
+  resoconto->addWidget(tot, 0, 0, 1, 1, Qt::AlignLeft);
   prezzo_finale = new QLabel("€ 0.00");
+  prezzo_finale->setFont(f);
   resoconto->addWidget(prezzo_finale, 0, 1, 1, 1, Qt::AlignRight);
   resoconto->addWidget(new QLabel("Tasse:"), 1, 0, 1, 1, Qt::AlignLeft);
   tasse_finale = new QLabel("€ 0.00");
@@ -86,8 +93,9 @@ QGridLayout* QReceiptShow::add_total() {
 }
 
 void QReceiptShow::refresh_totali() {
-  delete prezzo_finale;
-  prezzo_finale = new QLabel("€ " + QString::number(presenter->total_price(), 'f', 2));
+  //  delete prezzo_finale;
+  prezzo_finale->setText("€ " + QString::number(presenter->total_price(), 'f', 2));
+  //  prezzo_finale = new QLabel("€ " + QString::number(presenter->total_price(), 'f', 2));
   resoconto->addWidget(prezzo_finale, 0, 1, 1, 1, Qt::AlignRight);
   delete tasse_finale;
   tasse_finale = new QLabel("€ " + QString::number(presenter->total_taxes(), 'f', 2));

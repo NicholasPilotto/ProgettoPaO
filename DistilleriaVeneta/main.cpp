@@ -7,6 +7,14 @@
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
 
+  QFile styleFile(":/style/style.qss");
+  if (styleFile.open(QIODevice::ReadOnly)) {
+    QTextStream textStream(&styleFile);
+    QString styleSheet = textStream.readAll();
+    styleFile.close();
+    a.setStyleSheet(styleSheet);
+  }
+
   model m;
   controller c;
   view w;

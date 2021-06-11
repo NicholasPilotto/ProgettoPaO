@@ -8,8 +8,11 @@ QOverlay::QOverlay(QWidget* parent) : QWidget(parent) {
   // Creazione bottoni
 
   small_button = new QPushButton("Small", this);
+  small_button->setObjectName("overlay_button");
   medium_button = new QPushButton("Medium", this);
+  medium_button->setObjectName("overlay_button");
   large_button = new QPushButton("Large", this);
+  large_button->setObjectName("overlay_button");
 
   // Aggiunta bottoni
 

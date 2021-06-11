@@ -16,6 +16,7 @@ QGridShow::QGridShow(QWidget* parent) : QWidget(parent) {
   grid = new QGridLayout(contenitore);
 
   contenitore->setLayout(grid);
+  contenitore->setObjectName("container");
   product_area->setWidget(contenitore);
 
   // Aggiunta ScrollArea vuota
@@ -25,7 +26,7 @@ QGridShow::QGridShow(QWidget* parent) : QWidget(parent) {
 }
 
 void QGridShow::clear_grid() {
-  while (auto item = grid->takeAt(0)) {
+  while (QLayoutItem* item = grid->takeAt(0)) {
     delete item->widget();
     delete item;
   }

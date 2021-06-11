@@ -34,4 +34,5 @@ QStackedWidgetHover::QStackedWidgetHover(QProduct *p, QOverlay *o, QWidget *pare
   setAttribute(Qt::WA_Hover);
   addWidget(p);
   addWidget(o);
+  setObjectName("qstackedhover");
 }

@@ -111,9 +111,17 @@ class old : public grappa {
    */
   bool is_barrique() const;
 
-  // TODO
-
+  /**
+   * @brief create
+   * @param m: QMap<QString, QVariant>&, mappa contentente tutti i dati per la costruzione
+   * @return old*, oggetto creato
+   */
   virtual old* create(QMap<QString, QVariant>&) const override;
+
+  /**
+   * @brief metodo per la preparazione dell'oggetto per la scrittura
+   * @return std::string, serializzazione dell'oggetto
+   */
   virtual std::string write() const;
 };
 
