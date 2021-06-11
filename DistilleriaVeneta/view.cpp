@@ -2,8 +2,6 @@
 
 #include <QDebug>
 
-#include "shadow_effect.h"
-
 void view::add_menu_bar(QVBoxLayout* main_layout) {
   menu_bar = new QMenuBar(this);
 
