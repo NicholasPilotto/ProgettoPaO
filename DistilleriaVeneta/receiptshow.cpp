@@ -93,15 +93,11 @@ QGridLayout* QReceiptShow::add_total() {
 }
 
 void QReceiptShow::refresh_totali() {
-  //  delete prezzo_finale;
   prezzo_finale->setText("€ " + QString::number(presenter->total_price(), 'f', 2));
-  //  prezzo_finale = new QLabel("€ " + QString::number(presenter->total_price(), 'f', 2));
   resoconto->addWidget(prezzo_finale, 0, 1, 1, 1, Qt::AlignRight);
-  delete tasse_finale;
-  tasse_finale = new QLabel("€ " + QString::number(presenter->total_taxes(), 'f', 2));
+  tasse_finale->setText("€ " + QString::number(presenter->total_taxes(), 'f', 2));
   resoconto->addWidget(tasse_finale, 1, 1, 1, 1, Qt::AlignRight);
-  delete n_items;
-  n_items = new QLabel(QString::number(presenter->total_number_items()));
+  n_items->setText(QString::number(presenter->total_number_items()));
   resoconto->addWidget(n_items, 2, 1, 1, 1, Qt::AlignRight);
 }
 
@@ -137,8 +133,9 @@ void QReceiptShow::CancellaProdottoSlot() {
 }
 
 void QReceiptShow::refresh_spinbox(int v) {
-  QTableWidgetItem* item_name = table->item(qobject_cast<QSpinBox*>(sender())->objectName().toInt(), 0);
-  QTableWidgetItem* item_dim = table->item(qobject_cast<QSpinBox*>(sender())->objectName().toInt(), 1);
+  int line = qobject_cast<QSpinBox*>(sender())->objectName().toInt();
+  QTableWidgetItem* item_name = table->item(line, 0);
+  QTableWidgetItem* item_dim = table->item(line, 1);
   presenter->refresh_quantity(item_name->text().toStdString(), item_dim->text().toStdString(), v);
   refreshTable(presenter->get_receipt());
 }

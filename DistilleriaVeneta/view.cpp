@@ -69,6 +69,10 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
 
 void view::add_title(QVBoxLayout* layout, const QString& message) {
   title = new QLabel(message, this);
+  QFont font = QFont();
+  font.setBold(true);
+  font.setPointSize(message == "Distilleria Veneta" ? 24 : 17);
+  title->setFont(font);
   title->setAlignment(Qt::AlignCenter);
   title->setContentsMargins(5, 5, 5, 5);
 
@@ -99,7 +103,7 @@ QHBoxLayout* view::add_filter_buttons() {
   // Ritorno layout
 
   filter_buttons->setSpacing(30);
-  filter_buttons->setContentsMargins(30, 20, 30, 20);
+  filter_buttons->setContentsMargins(20, 20, 20, 20);
   return filter_buttons;
 }
 
@@ -143,7 +147,7 @@ QHBoxLayout* view::add_receipt_buttons() {
   // Ritorno layout
 
   receipt_buttons->setSpacing(50);
-  receipt_buttons->setContentsMargins(100, 20, 100, 20);
+  receipt_buttons->setContentsMargins(25, 20, 25, 20);
   return receipt_buttons;
 }
 
