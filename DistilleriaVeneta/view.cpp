@@ -2,6 +2,8 @@
 
 #include <QDebug>
 
+#include "shadow_effect.h"
+
 void view::add_menu_bar(QVBoxLayout* main_layout) {
   menu_bar = new QMenuBar(this);
 
@@ -109,6 +111,7 @@ QHBoxLayout* view::add_filter_buttons() {
 
 void view::add_grid(QHBoxLayout* object_layout) {
   left_app = new QVBoxLayout(this);
+  left_app->setObjectName("left_app");
 
   // Aggiunta sottotitolo
 

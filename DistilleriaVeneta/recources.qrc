@@ -26,5 +26,6 @@
         <file>product/spirits/grappa/old/Grappa invecchiata.png</file>
         <file>product/spirits/grappa/young/Grappa giovane.png</file>
         <file>icon/icon.png</file>
+        <file>icon/delete.png</file>
     </qresource>
 </RCC>

@@ -1,6 +1,6 @@
 #include "tablerow.h"
 
-tablerow::tablerow(QTableWidget*& t) : QWidget(t), table(t), icon(new QIcon("../Grafica/Immagini/delete.png")) {}
+tablerow::tablerow(QTableWidget*& t) : QWidget(t), table(t), icon(new QIcon(":/icon/delete.png")) {}
 
 tablerow::~tablerow() { delete icon; }
 
