@@ -6,10 +6,11 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QWidget>
+#include <QPixmap>
 #include <functional>
 
-#include "Hierarchy/product.h"
-#include "Utilities/deep_ptr.hpp"
+#include "./Hierarchy/product.h"
+#include "./Utilities/deep_ptr.hpp"
 
 class QProduct : public QWidget {
   Q_OBJECT

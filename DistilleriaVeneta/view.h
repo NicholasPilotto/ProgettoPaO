@@ -3,17 +3,18 @@
 
 #include <QApplication>
 #include <QDesktopWidget>
-#include <QGridLayout>
+#include <QMenu>
+#include <QAction>
+#include <QKeySequence>
 #include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QLabel>
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QPushButton>
-#include <QScrollArea>
 #include <QString>
-#include <QTableView>
-#include <QVBoxLayout>
 #include <functional>
+
 
 #include "./Utilities/deep_ptr.hpp"
 #include "./Utilities/u_vector.hpp"
@@ -42,19 +43,18 @@ class view : public QWidget {
   QMenu* flavors;
   QLabel* title;
   QHBoxLayout* filter_buttons;
-  QPushButton* grappa_button;  // Used
-  QPushButton* liquor_button;  // Used
-  QPushButton* cream_button;   // Used
-  QPushButton* all_button;     // Used
+  QPushButton* grappa_button;
+  QPushButton* liquor_button;
+  QPushButton* cream_button;
+  QPushButton* all_button;
   QVBoxLayout* left_app;
   QGridShow* product_area;
   QHBoxLayout* receipt_buttons;
-  QPushButton* delete_receipt;  // Used
-  QPushButton* pay_button;      // Used
+  QPushButton* delete_receipt;
+  QPushButton* pay_button;
   QVBoxLayout* right_app;
   QReceiptShow* receipt_area;
   controller* presenter;
-
   const QKeySequence* closing;
 
   /**
@@ -113,12 +113,6 @@ class view : public QWidget {
    * @param c : controller*, puntatore controller riferito alla view
    */
   void set_controller(controller*);
-
-  /**
-   * @brief metodo per far comparire un warning dialog
-   * @param message : const QString&, corrisponde al messaggio del dialog
-   */
-  void show_warning(const QString&);
 
   /**
    * @brief metodo per aggiornare lo scontrino

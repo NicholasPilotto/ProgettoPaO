@@ -2,7 +2,6 @@
 #define QSTACKEDWIDGETHOVER_H
 
 #include <QEvent>
-#include <QFrame>
 #include <QHoverEvent>
 #include <QStackedWidget>
 #include <QWidget>

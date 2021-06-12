@@ -11,9 +11,9 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
-#include "Hierarchy/product.h"
-#include "Utilities/deep_ptr.hpp"
-#include "Utilities/u_vector.hpp"
+#include "./Hierarchy/product.h"
+#include "./Utilities/deep_ptr.hpp"
+#include "./Utilities/u_vector.hpp"
 #include "tablerow.h"
 using std::pair;
 

@@ -1,7 +1,7 @@
 #ifndef TABLEROW_H
 #define TABLEROW_H
 
-#include <QList>
+#include <QIcon>
 #include <QObject>
 #include <QSpinBox>
 #include <QTableWidget>

@@ -1,11 +1,10 @@
 #include "overlay.h"
 
 QOverlay::QOverlay(QWidget* parent) : QWidget(parent) {
-  // Creazione layout
+
 
   overlay_layout = new QVBoxLayout(this);
 
-  // Creazione bottoni
 
   small_button = new QPushButton("Small", this);
   small_button->setObjectName("overlay_button");
@@ -16,13 +15,11 @@ QOverlay::QOverlay(QWidget* parent) : QWidget(parent) {
   large_button = new QPushButton("Large", this);
   large_button->setObjectName("overlay_button");
 
-  // Aggiunta bottoni
 
   overlay_layout->addWidget(small_button);
   overlay_layout->addWidget(medium_button);
   overlay_layout->addWidget(large_button);
 
-  // Set Layout
 
   setLayout(overlay_layout);
 }
