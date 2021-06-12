@@ -3,13 +3,12 @@
 #include <QFrame>
 #include <QGridLayout>
 #include <QScrollArea>
-#include <QStackedWidget>
 #include <QWidget>
 #include <functional>
 
-#include "Hierarchy/product.h"
-#include "Utilities/deep_ptr.hpp"
-#include "Utilities/u_vector.hpp"
+#include "./Hierarchy/product.h"
+#include "./Utilities/deep_ptr.hpp"
+#include "./Utilities/u_vector.hpp"
 #include "overlay.h"
 #include "qproduct.h"
 #include "qstackedwidgethover.h"

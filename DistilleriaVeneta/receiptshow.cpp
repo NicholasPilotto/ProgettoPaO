@@ -15,7 +15,6 @@ void QReceiptShow::addTable(QVBoxLayout* table_layout) {
   table->setMinimumSize(500, 500);
   table->setColumnCount(4);
 
-  // Inizializzazione Horizontal Headers
 
   QStringList names_columns;
   names_columns << "Nome Prodotto"
@@ -26,9 +25,6 @@ void QReceiptShow::addTable(QVBoxLayout* table_layout) {
   table->setHorizontalHeaderLabels(names_columns);
 
   table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
-  // Non rende visibile una selezione
-  // Momentaneamente disabilitati
   table->setEditTriggers(QAbstractItemView::NoEditTriggers);
   table->setFocusPolicy(Qt::NoFocus);
 
@@ -60,12 +56,8 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
   refresh_totali();
 
   table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-  // Non rende visibile una selezione
-
   table->setEditTriggers(QAbstractItemView::NoEditTriggers);
   table->setFocusPolicy(Qt::NoFocus);
-  //   table->setSelectionMode(QAbstractItemView::NoSelection);
-  // table->setStyleSheet("gridline-color: white");  // rende bianche le linee poi gli oggetti che inseriamo mettiamo i bordi alti e bassi così da avere solo linee
 }
 
 QGridLayout* QReceiptShow::add_total() {
