@@ -71,7 +71,7 @@ QSpinBox::up-button {
 }
 
 QSpinBox::up-button:hover, QSpinBox::down-button:hover {
-    background-color: #white;
+    background-color: white;
 }
 
 QSpinBox::up-arrow:disabled, QSpinBox::down-arrow:disabled {
