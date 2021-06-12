@@ -1,5 +1,6 @@
 #ifndef GRIDSHOW_H
 #define GRIDSHOW_H
+
 #include <QFrame>
 #include <QGridLayout>
 #include <QScrollArea>
