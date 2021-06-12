@@ -7,33 +7,29 @@ std::string io_json::dir_path = "./file/Receipts/";
 u_vector<deep_ptr<product>> io_json::read() const {
   QFile file_obj(QString::fromStdString(__file_path));
   if (!file_obj.open(QIODevice::ReadOnly)) {
-    qDebug() << "Failed to open ";
-    throw std::exception();
+    return {};
   }
 
-  // step 2
   QTextStream file_text(&file_obj);
   QString json_string;
+
   json_string = file_text.readAll();
   file_obj.close();
+
   QByteArray json_bytes = json_string.toLocal8Bit();
 
-  // step 3
-  auto json_doc = QJsonDocument::fromJson(json_bytes);
+  QJsonDocument json_doc = QJsonDocument::fromJson(json_bytes);
 
   if (json_doc.isNull()) {
-    qDebug() << "Failed to create JSON doc.";
     throw std::exception();
   }
   if (!json_doc.isObject()) {
-    qDebug() << "JSON is not an object.";
     throw std::exception();
   }
 
   QJsonObject json_obj = json_doc.object();
 
   if (json_obj.isEmpty()) {
-    qDebug() << "JSON object is empty.";
     throw std::exception();
   }
 
@@ -54,7 +50,7 @@ u_vector<deep_ptr<product>> io_json::read() const {
   return result;
 }
 
-bool io_json::write(const u_vector<std::pair<deep_ptr<product>, int>>& a) const {
+bool io_json::write(const u_vector<std::pair<deep_ptr<product>, int>>& a, double _total, double _taxes, unsigned int _elements) const {
   int i = 0;
   time_t rawtime;
   struct tm* timeinfo;
@@ -68,12 +64,21 @@ bool io_json::write(const u_vector<std::pair<deep_ptr<product>, int>>& a) const 
   std::string to_write =
       "{ \n \
          \"metadata\": { \
-	          \"timestamp\": \"$1\" \
+	          \"timestamp\": \"$1\", \n \
+                  \"total_price\": \"$2\", \n \
+                  \"total_taxes\": \"$3\", \n \
+                  \"number_of_elements\": \"$4\" \n \
           }, \
          \"elements\": {\n";
+
   to_write = std::regex_replace(to_write, std::regex("\\$1"), str);
+  to_write = std::regex_replace(to_write, std::regex("\\$2"), std::to_string(_total));
+  to_write = std::regex_replace(to_write, std::regex("\\$3"), std::to_string(_taxes));
+  to_write = std::regex_replace(to_write, std::regex("\\$4"), std::to_string(_elements));
+
   u_vector<std::pair<deep_ptr<product>, int>>::const_iterator it = a.const_begin();
   u_vector<std::pair<deep_ptr<product>, int>>::const_iterator end = a.const_end();
+
   for (; it != end; ++it) {
     i++;
     to_write.append("\t\"element" + std::to_string(i) + "\":{ \n\t" + (*it).first->write() + "},\n");
@@ -86,18 +91,17 @@ bool io_json::write(const u_vector<std::pair<deep_ptr<product>, int>>& a) const 
     dir.mkpath(".");
   }
 
-  strftime(buffer, sizeof(buffer), "-%d-%m-%Y-%H_%M_%S", timeinfo);
-  str = buffer;
-  QFile file((dir_path + "receipt" + str + ".json").data());
-
-  file.open(QIODevice::WriteOnly);
   QString jsonString = to_write.c_str();
   QJsonDocument doc = QJsonDocument::fromJson(jsonString.toUtf8());
-  qDebug() << dir.absolutePath();
 
   if (doc.isEmpty()) {
     return false;
   } else {
+    strftime(buffer, sizeof(buffer), "-%d-%m-%Y-%H_%M_%S", timeinfo);
+    str = buffer;
+    QFile file((dir_path + "receipt" + str + ".json").data());
+
+    file.open(QIODevice::WriteOnly);
     file.write(doc.toJson(QJsonDocument::Indented));
     return true;
   }

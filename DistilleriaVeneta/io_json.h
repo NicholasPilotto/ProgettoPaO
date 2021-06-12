@@ -33,9 +33,12 @@ class io_json {
   /**
    * @brief write, metodo per la scrittura del file
    * @param a: const u_vector<std::pair<deep_ptr<product>, int>>&, vettore contenente gli oggetti da scrivere nel file
+   * @param _total: double, prezzo totale dello scontrino
+   * @param _taxes: double, totale delle tasse
+   * @param _elements: unsigned int, numero totale degli oggetti
    * @return bool: true sse tutto è andato correttamente, false altrimenti
    */
-  bool write(const u_vector<std::pair<deep_ptr<product>, int>>&) const;
+  bool write(const u_vector<std::pair<deep_ptr<product>, int>>&, double, double, unsigned int) const;
 };
 
 #endif  // IO_JSON_H
