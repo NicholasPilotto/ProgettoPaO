@@ -34,9 +34,15 @@ u_vector<deep_ptr<product>> filter::tastes(const u_vector<deep_ptr<product>>& _v
 
 u_vector<deep_ptr<product>> filter::products(const u_vector<deep_ptr<product>>& _vector, const std::string& __value) {
   u_vector<deep_ptr<product>> _result;
-//  u_vector<std::string> aux(std::strtok(__value,','));
+
+  std::vector<std::string> aux;
+
+  unsigned int pos = __value.find(',', 0);
+  aux.push_back(__value.substr(0, pos));
+  aux.push_back(__value.substr(pos + 1, __value.size() - pos));
+
   std::function<deep_ptr<product>(deep_ptr<product>)> lambda = [&](deep_ptr<product> value) {
-    if (value->type_product() == __value) {
+    if (value->type_product() == aux[0] || value->type_product() == aux[1]) {
       return value;
     }
     return deep_ptr<product>();
