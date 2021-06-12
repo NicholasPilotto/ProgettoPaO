@@ -85,7 +85,7 @@ QHBoxLayout* view::add_filter_buttons() {
   // Creazione bottoni
 
   grappa_button = new QPushButton("Grappa", this);
-  grappa_button->setObjectName("grappa");
+  grappa_button->setObjectName("old,young");
   liquor_button = new QPushButton("Liquore", this);
   liquor_button->setObjectName("liquor");
   cream_button = new QPushButton("Crema", this);

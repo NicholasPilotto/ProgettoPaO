@@ -1,12 +1,12 @@
 #include "cream.h"
 
-#include <QDebug>
-
 cream::aux_map_initializer::aux_map_initializer() {
   ptr = new cream();
-  _map["cream"] = ptr;
+  _map[ptr->type_product()] = ptr;
 }
+
 cream::aux_map_initializer::~aux_map_initializer() { delete ptr; }
+
 cream::aux_map_initializer cream::aux_map;
 
 cream::cream(const color c, const u_vector<taste>& t, bottle_size bs, const std::string& n, double ac) : non_spirits(bs, n, ac < max_ac && ac >= min_ac ? ac : min_ac), col(c), tastes(t) {}
@@ -47,18 +47,12 @@ u_vector<taste> cream::get_tastes() const { return tastes; }
 
 color cream::get_color() const { return col; }
 
-// da modificare con la proposta di liquor???
 std::string cream::code() const {
   std::string aux = "AC0";
-  unsigned int count = 0;
   u_vector<taste>::const_iterator cit = tastes.const_begin();
   u_vector<taste>::const_iterator end = tastes.const_end();
   for (; cit != end; cit++) {
     aux += std::to_string(*cit);
-    count++;
-  }
-  for (; count < tastes.capacity(); count++) {
-    aux += "00";
   }
   return aux;
 }

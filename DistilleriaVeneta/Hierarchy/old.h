@@ -22,7 +22,7 @@ class old : public grappa {
 
  protected:
   static const double month_incr;
-  unsigned int get_month_old() const;  // ha senso??
+  unsigned int get_month_old() const;
 
  public:
   /**
@@ -122,7 +122,7 @@ class old : public grappa {
    * @brief metodo per la preparazione dell'oggetto per la scrittura
    * @return std::string, serializzazione dell'oggetto
    */
-  virtual std::string write() const;
+  virtual std::string write() const override;
 };
 
 #endif  // OLD_H_

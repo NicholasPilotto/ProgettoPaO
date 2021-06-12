@@ -3,11 +3,9 @@
 
 #include <QApplication>
 #include <QDesktopWidget>
-#include <QDialog>
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QLabel>
-#include <QLineEdit>
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QPushButton>
@@ -31,9 +29,9 @@ class controller;
 class view : public QWidget {
   Q_OBJECT
  private:
-  QVBoxLayout* main_layout;    // Used
-  QHBoxLayout* object_layout;  // Used
-  QMenuBar* menu_bar;          // Used
+  QVBoxLayout* main_layout;
+  QHBoxLayout* object_layout;
+  QMenuBar* menu_bar;
   QMenu* file;
   QAction* close_action;
   QMenu* filters;

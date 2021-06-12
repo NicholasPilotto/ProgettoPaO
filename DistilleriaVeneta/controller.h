@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-#include "Hierarchy/product.h"
+#include "./Hierarchy/product.h"
 #include "model.h"
 #include "view.h"
 
@@ -46,7 +46,7 @@ class controller : public QObject {
    * @param name : std::string, indica il nome del prodotto da rimuovere
    * @param dim : std::string, indica la dimensione del prodotto da rimuovere
    */
-  void remove_item(std::string, std::string);
+  void remove_item(const std::string&, const std::string&);
 
   /**
    * @brief metodo per cambiare la quantità di un prodotto nel vettore scontrino
@@ -54,7 +54,7 @@ class controller : public QObject {
    * @param dim : std::string, indica la dimensione del prodotto di cui si vuole modificare la quantità
    * @param v : int, nuovo quantità del prodotto
    */
-  void refresh_quantity(std::string, std::string, int);
+  void refresh_quantity(const std::string&, const std::string&, int);
 
   /**
    * @brief metodo per verificare la presenza di un prodotto nel vettore scontrino
@@ -74,7 +74,7 @@ class controller : public QObject {
    * @param l : std::pair<deep_ptr<product>, int>, coppia puntatore-quantità del prodotto
    * @return double, prezzo di un prodotto in base alla quantità
    */
-  double total_price_line(pair<deep_ptr<product>, int>) const;
+  double total_price_line(const std::pair<deep_ptr<product>, int>&) const;
 
   /**
    * @brief metodo per il prezzo totale del vettore scontrino
@@ -96,9 +96,9 @@ class controller : public QObject {
 
   /**
    * @brief metodo getter per avere lo scontrino
-   * @return u_vector<pair<deep_ptr<product>, int>>, scontrino contenente tutti i prodotti
+   * @return u_vector<std::pair<deep_ptr<product>, int>>, scontrino contenente tutti i prodotti
    */
-  u_vector<pair<deep_ptr<product>, int>> get_receipt() const;
+  u_vector<std::pair<deep_ptr<product>, int>> get_receipt() const;
 
  public slots:
   void delete_all();

@@ -2,7 +2,7 @@
 
 liquor::aux_map_initializer::aux_map_initializer() {
   ptr = new liquor(color::white, {});
-  _map["liquor"] = ptr;
+  _map[ptr->type_product()] = ptr;
 }
 liquor::aux_map_initializer::~aux_map_initializer() { delete ptr; }
 liquor::aux_map_initializer liquor::aux_map;
@@ -46,14 +46,11 @@ color liquor::get_color() const { return col; }
 
 std::string liquor::code() const {
   std::string aux = "SL0";
-  unsigned int count = 0;
   u_vector<taste>::const_iterator cit = tastes.const_begin();
   u_vector<taste>::const_iterator end = tastes.const_end();
   for (; cit != end; cit++) {
     aux += std::to_string(*cit);
-    count++;
   }
-
   return aux;
 }
 

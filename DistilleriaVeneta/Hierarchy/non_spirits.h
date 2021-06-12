@@ -18,8 +18,6 @@ class non_spirits : public product {
    */
   non_spirits(const non_spirits&);
 
-  non_spirits& operator=(const non_spirits&);
-
   static const double min_ac;
   static const double max_ac;
 

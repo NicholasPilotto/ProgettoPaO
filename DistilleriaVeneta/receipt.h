@@ -4,17 +4,16 @@
 #include <chrono>
 
 #include "./Utilities/u_vector.hpp"
-#include "Hierarchy/product.h"
-#include "Utilities/deep_ptr.hpp"
+#include "./Hierarchy/product.h"
+#include "./Utilities/deep_ptr.hpp"
 
-using std::pair;
 using std::chrono::steady_clock;
 using std::chrono::time_point;
 
 class receipt {
  private:
   time_point<steady_clock> date;
-  u_vector<pair<deep_ptr<product>, int>> items;
+  u_vector<std::pair<deep_ptr<product>, int>> items;
 
  public:
   /**
@@ -33,7 +32,7 @@ class receipt {
    * @param name : std::string, indica il nome del prodotto da rimuovere
    * @param dim : std::string, indica la dimensione del prodotto da rimuovere
    */
-  void remove_item(std::string, std::string);
+  void remove_item(const std::string&, const std::string&);
 
   /**
    * @brief metodo per rimuovere tutti i prodotti dal vettore scontrino
@@ -46,7 +45,7 @@ class receipt {
    * @param dim : std::string, indica la dimensione del prodotto di cui si vuole modificare la quantità
    * @param v : int, nuovo quantità del prodotto
    */
-  void refresh_quantity(std::string, std::string, int);
+  void refresh_quantity(const std::string&, const std::string&, int);
 
   /**
    * @brief metodo per verificare la presenza di un prodotto nel vettore scontrino
@@ -66,7 +65,7 @@ class receipt {
    * @param l : std::pair<deep_ptr<product>, int>, coppia puntatore-quantità del prodotto
    * @return double, prezzo di un prodotto in base alla quantità
    */
-  double total_price_line(pair<deep_ptr<product>, int>) const;
+  double total_price_line(const std::pair<deep_ptr<product>, int>&) const;
   /**
    * @brief metodo per il prezzo totale del vettore scontrino
    * @return double, indica il prezzo totale dello scontrino
@@ -81,8 +80,8 @@ class receipt {
 
   /**
    * @brief metodo getter per avere lo scontrino
-   * @return u_vector<pair<deep_ptr<product>, int>>, scontrino contenente tutti i prodotti
+   * @return u_vector<std::pair<deep_ptr<product>, int>>, scontrino contenente tutti i prodotti
    */
-  u_vector<pair<deep_ptr<product>, int>> get_items() const;
+  u_vector<std::pair<deep_ptr<product>, int>> get_items() const;
 };
 #endif  // __RECEIPT_H__

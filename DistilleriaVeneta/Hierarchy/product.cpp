@@ -71,5 +71,3 @@ product* product::unserialize(QMap<QString, QVariant>& m) {
 
   return nullptr;
 }
-
-// importare math per floor e ceil

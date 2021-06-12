@@ -3,10 +3,6 @@
 
 #include "grappa.h"
 
-// non ha incrementi di prezzo in quanto è la grappa basica,
-// che non ha la stessa lavorazione di un liquore,
-// di una crema, di un'invecchiata o di una barricata
-
 class young : public grappa {
  private:
   class aux_map_initializer {
@@ -113,7 +109,7 @@ class young : public grappa {
    * @brief metodo per la preparazione dell'oggetto per la scrittura
    * @return std::string, serializzazione dell'oggetto
    */
-  virtual std::string write() const;
+  virtual std::string write() const override;
 };
 
 #endif  // YOUNG_H_

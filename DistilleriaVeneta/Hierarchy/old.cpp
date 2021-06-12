@@ -1,10 +1,8 @@
 #include "old.h"
 
-#include <QDebug>
-
 old::aux_map_initializer::aux_map_initializer() {
   ptr = new old();
-  _map["old"] = ptr;
+  _map[ptr->type_product()] = ptr;
 }
 old::aux_map_initializer::~aux_map_initializer() { delete ptr; }
 old::aux_map_initializer old::aux_map;
@@ -32,7 +30,7 @@ double old::kind_price() const {
 
 double old::price_increment() const { return kind_price() + month_incr * month + (is_barrique() ? 3.00 : 0.00); }
 
-std::string old::type_product() const { return "grappa"; }
+std::string old::type_product() const { return "old"; }
 
 double old::get_price() const { return grappa::get_price() + price_increment(); }
 
@@ -44,15 +42,10 @@ color old::get_color() const { return col; }
 
 std::string old::code() const {
   std::string aux = "SGO";
-  unsigned int count = 0;
   u_vector<taste>::const_iterator cit = tastes.const_begin();
   u_vector<taste>::const_iterator end = tastes.const_end();
   for (; cit != end; cit++) {
     aux += std::to_string(*cit);
-    count++;
-  }
-  for (; count < tastes.capacity(); count++) {
-    aux += "00";
   }
   return aux;
 }

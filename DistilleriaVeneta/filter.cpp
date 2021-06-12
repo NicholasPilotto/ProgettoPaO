@@ -1,5 +1,5 @@
 #include "filter.h"
-
+#include "cstring"
 #include <QDebug>
 
 filter::filter() {}
@@ -34,6 +34,7 @@ u_vector<deep_ptr<product>> filter::tastes(const u_vector<deep_ptr<product>>& _v
 
 u_vector<deep_ptr<product>> filter::products(const u_vector<deep_ptr<product>>& _vector, const std::string& __value) {
   u_vector<deep_ptr<product>> _result;
+//  u_vector<std::string> aux(std::strtok(__value,','));
   std::function<deep_ptr<product>(deep_ptr<product>)> lambda = [&](deep_ptr<product> value) {
     if (value->type_product() == __value) {
       return value;

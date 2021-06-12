@@ -108,7 +108,12 @@ class liquor : public spirits {
    * @return liquor*, oggetto creato
    */
   virtual liquor* create(QMap<QString, QVariant>&) const override;
-  virtual std::string write() const;
+
+  /**
+   * @brief metodo per la preparazione dell'oggetto per la scrittura
+   * @return std::string, serializzazione dell'oggetto
+   */
+  virtual std::string write() const override;
 };
 
 #endif  // LIQUOR_H_

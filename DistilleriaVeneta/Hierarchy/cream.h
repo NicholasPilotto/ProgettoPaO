@@ -116,7 +116,7 @@ class cream : public non_spirits {
    * @brief metodo per la preparazione dell'oggetto per la scrittura
    * @return std::string, serializzazione dell'oggetto
    */
-  virtual std::string write() const;
+  virtual std::string write() const override;
 };
 
 #endif  // CREAM_H_
