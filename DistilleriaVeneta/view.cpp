@@ -85,13 +85,13 @@ QHBoxLayout* view::add_filter_buttons() {
   // Creazione bottoni
 
   grappa_button = new QPushButton("Grappa", this);
-  grappa_button->setObjectName("old,young");
+  grappa_button->setObjectName("old-young");
   liquor_button = new QPushButton("Liquore", this);
-  liquor_button->setObjectName("liquor,null");
+  liquor_button->setObjectName("liquor-null");
   cream_button = new QPushButton("Crema", this);
-  cream_button->setObjectName("cream,null");
+  cream_button->setObjectName("cream-null");
   all_button = new QPushButton("Tutti", this);
-  all_button->setObjectName("all,null");
+  all_button->setObjectName("all-null");
 
   // Aggiunta bottoni
 

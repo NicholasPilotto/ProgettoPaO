@@ -42,7 +42,7 @@ u_vector<std::pair<deep_ptr<product>, int>> controller::get_receipt() const { re
 
 void controller::filter_by_products() const {
   std::string _sender = sender()->objectName().toStdString();
-  if (_sender != "all,null") {
+  if (_sender != "all-null") {
     _view->refresh_grid_view(_model->filter_products(_sender));
   } else {
     _view->refresh_grid_view(_model->filter_all());

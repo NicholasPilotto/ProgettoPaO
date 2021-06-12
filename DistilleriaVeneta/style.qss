@@ -35,7 +35,7 @@ QStackedWidget {
   font: bold;
 }
 
-#grappa, #liquor, #cream, #all, #delete_button_2 {
+#old-young , #liquor-null, #cream-null, #all-null, #delete_button_2 {
   color: white;
   background-color: rgb(58, 134, 255);
   border: 2px solid rgb(58, 134, 255);

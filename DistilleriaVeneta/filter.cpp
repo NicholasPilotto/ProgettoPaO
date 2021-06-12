@@ -37,7 +37,7 @@ u_vector<deep_ptr<product>> filter::products(const u_vector<deep_ptr<product>>& 
 
   std::vector<std::string> aux;
 
-  unsigned int pos = __value.find(',', 0);
+  unsigned int pos = __value.find('-', 0);
   aux.push_back(__value.substr(0, pos));
   aux.push_back(__value.substr(pos + 1, __value.size() - pos));
 
