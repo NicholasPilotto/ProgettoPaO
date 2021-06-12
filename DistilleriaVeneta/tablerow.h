@@ -13,14 +13,14 @@
 class tablerow : public QWidget {
   Q_OBJECT
  private:
+  QTableWidget* table;
+  const QIcon* icon;
   QTableWidgetItem* bin_item;
   QTableWidgetItem* name_item;
   QTableWidgetItem* dim_item;
   QSpinBox* num_item;
   QTableWidgetItem* price_item;
-  QTableWidget* table;
 
-  const QIcon* icon;
 
  public:
   /**
