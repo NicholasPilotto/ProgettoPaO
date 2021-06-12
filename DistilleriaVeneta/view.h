@@ -1,20 +1,19 @@
 #ifndef VIEW_H_
 #define VIEW_H_
 
+#include <QAction>
 #include <QApplication>
 #include <QDesktopWidget>
-#include <QMenu>
-#include <QAction>
-#include <QKeySequence>
 #include <QHBoxLayout>
-#include <QVBoxLayout>
+#include <QKeySequence>
 #include <QLabel>
+#include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QPushButton>
 #include <QString>
+#include <QVBoxLayout>
 #include <functional>
-
 
 #include "./Utilities/deep_ptr.hpp"
 #include "./Utilities/u_vector.hpp"

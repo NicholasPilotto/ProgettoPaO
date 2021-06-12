@@ -845,8 +845,10 @@ qrc_recources.cpp: recources.qrc \
 		product/spirits/grappa/old/Grappa\ invecchiata.png \
 		style.qss \
 		data/data.json \
+		icon/meno.png \
 		icon/icon.png \
-		icon/delete.png
+		icon/delete.png \
+		icon/plus.png
 	/usr/local/Cellar/qt/6.1.0_1/share/qt/libexec/rcc -name recources recources.qrc -o qrc_recources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -859,30 +861,26 @@ compiler_moc_header_make_all: moc_view.cpp moc_controller.cpp moc_qproduct.cpp m
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_view.cpp moc_controller.cpp moc_qproduct.cpp moc_overlay.cpp moc_qstackedwidgethover.cpp moc_receiptshow.cpp moc_gridshow.cpp moc_tablerow.cpp
 moc_view.cpp: view.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QAction \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qaction.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QApplication \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qapplication.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QDialog \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qdialog.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QGridLayout \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QKeySequence \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qkeysequence.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlabel.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLineEdit \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMenu \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmenu.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMenuBar \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmenubar.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMessageBox \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QPushButton \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QString \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qstring.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableView \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qtableview.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		Utilities/deep_ptr.hpp \
 		Utilities/u_vector.hpp \
@@ -915,17 +913,23 @@ moc_view.cpp: view.h \
 		gridshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QFrame \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qframe.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QGridLayout \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QWidget \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qwidget.h \
 		overlay.h \
 		qproduct.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QPixmap \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qpixmap.h \
 		qstackedwidgethover.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qcoreevent.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QHoverEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
 		receiptshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHeaderView \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qheaderview.h \
@@ -937,8 +941,6 @@ moc_view.cpp: view.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qtablewidget.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableWidgetItem \
 		tablerow.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QList \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qlist.h \
 		moc_predefs.h \
 		/usr/local/Cellar/qt/6.1.0_1/share/qt/libexec/moc
 	/usr/local/Cellar/qt/6.1.0_1/share/qt/libexec/moc $(DEFINES) --include '/Users/NicholasPilotto/Documents/UniPD/Anno II/PAO/Progetto/ProgettoPaO/DistilleriaVeneta/moc_predefs.h' -I/usr/local/Cellar/qt/6.1.0_1/share/qt/mkspecs/macx-clang -I'/Users/NicholasPilotto/Documents/UniPD/Anno II/PAO/Progetto/ProgettoPaO/DistilleriaVeneta' -I/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/usr/local/Cellar/qt/6.1.0_1/lib view.h -o moc_view.cpp
@@ -973,44 +975,46 @@ moc_controller.cpp: controller.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qdatetime.h \
 		receipt.h \
 		view.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QAction \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qaction.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QApplication \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qapplication.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QDialog \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qdialog.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QGridLayout \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QKeySequence \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qkeysequence.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlabel.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLineEdit \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMenu \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmenu.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMenuBar \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmenubar.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMessageBox \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QPushButton \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableView \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qtableview.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		controller.h \
 		gridshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QFrame \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qframe.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QGridLayout \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QWidget \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qwidget.h \
 		overlay.h \
 		qproduct.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QPixmap \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qpixmap.h \
 		qstackedwidgethover.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qcoreevent.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QHoverEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
 		receiptshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHeaderView \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qheaderview.h \
@@ -1022,8 +1026,6 @@ moc_controller.cpp: controller.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qtablewidget.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableWidgetItem \
 		tablerow.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QList \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qlist.h \
 		moc_predefs.h \
 		/usr/local/Cellar/qt/6.1.0_1/share/qt/libexec/moc
 	/usr/local/Cellar/qt/6.1.0_1/share/qt/libexec/moc $(DEFINES) --include '/Users/NicholasPilotto/Documents/UniPD/Anno II/PAO/Progetto/ProgettoPaO/DistilleriaVeneta/moc_predefs.h' -I/usr/local/Cellar/qt/6.1.0_1/share/qt/mkspecs/macx-clang -I'/Users/NicholasPilotto/Documents/UniPD/Anno II/PAO/Progetto/ProgettoPaO/DistilleriaVeneta' -I/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/usr/local/Cellar/qt/6.1.0_1/lib controller.h -o moc_controller.cpp
@@ -1038,6 +1040,8 @@ moc_qproduct.cpp: qproduct.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QWidget \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qwidget.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QPixmap \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qpixmap.h \
 		Hierarchy/product.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QMap \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qmap.h \
@@ -1066,8 +1070,6 @@ moc_overlay.cpp: overlay.h \
 moc_qstackedwidgethover.cpp: qstackedwidgethover.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qcoreevent.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QFrame \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qframe.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QHoverEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qevent.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
@@ -1080,9 +1082,13 @@ moc_qstackedwidgethover.cpp: qstackedwidgethover.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		qproduct.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QFrame \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qframe.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlabel.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QPixmap \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qpixmap.h \
 		Hierarchy/product.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QMap \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qmap.h \
@@ -1126,8 +1132,6 @@ moc_receiptshow.cpp: receiptshow.h \
 		Hierarchy/enum.h \
 		Utilities/deep_ptr.hpp \
 		tablerow.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QList \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qlist.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QObject \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qobject.h \
 		receiptshow.h \
@@ -1142,8 +1146,6 @@ moc_gridshow.cpp: gridshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QWidget \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qwidget.h \
 		Hierarchy/product.h \
@@ -1165,18 +1167,22 @@ moc_gridshow.cpp: gridshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlabel.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QPixmap \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qpixmap.h \
 		qstackedwidgethover.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qcoreevent.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QHoverEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
 		moc_predefs.h \
 		/usr/local/Cellar/qt/6.1.0_1/share/qt/libexec/moc
 	/usr/local/Cellar/qt/6.1.0_1/share/qt/libexec/moc $(DEFINES) --include '/Users/NicholasPilotto/Documents/UniPD/Anno II/PAO/Progetto/ProgettoPaO/DistilleriaVeneta/moc_predefs.h' -I/usr/local/Cellar/qt/6.1.0_1/share/qt/mkspecs/macx-clang -I'/Users/NicholasPilotto/Documents/UniPD/Anno II/PAO/Progetto/ProgettoPaO/DistilleriaVeneta' -I/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/usr/local/Cellar/qt/6.1.0_1/lib gridshow.h -o moc_gridshow.cpp
 
 moc_tablerow.cpp: tablerow.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QList \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qlist.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QIcon \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qicon.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QObject \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qobject.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QSpinBox \
@@ -1189,8 +1195,6 @@ moc_tablerow.cpp: tablerow.h \
 		receiptshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHeaderView \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qheaderview.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QIcon \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qicon.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlabel.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMessageBox \
@@ -1277,9 +1281,7 @@ old.o: Hierarchy/old.cpp Hierarchy/old.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QVariant \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qvariant.h \
 		Utilities/u_vector.hpp \
-		Hierarchy/enum.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QDebug \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qdebug.h
+		Hierarchy/enum.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o old.o Hierarchy/old.cpp
 
 young.o: Hierarchy/young.cpp Hierarchy/young.h \
@@ -1331,9 +1333,7 @@ cream.o: Hierarchy/cream.cpp Hierarchy/cream.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QVariant \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qvariant.h \
 		Utilities/u_vector.hpp \
-		Hierarchy/enum.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QDebug \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qdebug.h
+		Hierarchy/enum.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cream.o Hierarchy/cream.cpp
 
 io_json.o: io_json.cpp io_json.h \
@@ -1393,41 +1393,43 @@ main.o: main.cpp /usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QA
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qdatetime.h \
 		receipt.h \
 		view.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QDialog \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qdialog.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QGridLayout \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QAction \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qaction.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QKeySequence \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qkeysequence.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlabel.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLineEdit \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMenu \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmenu.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMenuBar \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmenubar.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMessageBox \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QPushButton \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableView \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qtableview.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		gridshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QFrame \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qframe.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QGridLayout \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QWidget \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qwidget.h \
 		overlay.h \
 		qproduct.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QPixmap \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qpixmap.h \
 		qstackedwidgethover.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qcoreevent.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QHoverEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
 		receiptshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHeaderView \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qheaderview.h \
@@ -1438,14 +1440,10 @@ main.o: main.cpp /usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QA
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableWidget \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qtablewidget.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableWidgetItem \
-		tablerow.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QList \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qlist.h
+		tablerow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 model.o: model.cpp model.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QObject \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qobject.h \
 		Utilities/u_vector.hpp \
 		Hierarchy/product.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QMap \
@@ -1474,30 +1472,26 @@ model.o: model.cpp model.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o model.o model.cpp
 
 view.o: view.cpp view.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QAction \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qaction.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QApplication \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qapplication.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QDialog \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qdialog.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QGridLayout \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QKeySequence \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qkeysequence.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlabel.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLineEdit \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMenu \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmenu.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMenuBar \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmenubar.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMessageBox \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QPushButton \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QString \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qstring.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableView \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qtableview.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		Utilities/deep_ptr.hpp \
 		Utilities/u_vector.hpp \
@@ -1529,17 +1523,23 @@ view.o: view.cpp view.h \
 		gridshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QFrame \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qframe.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QGridLayout \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QWidget \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qwidget.h \
 		overlay.h \
 		qproduct.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QPixmap \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qpixmap.h \
 		qstackedwidgethover.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qcoreevent.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QHoverEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
 		receiptshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHeaderView \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qheaderview.h \
@@ -1550,9 +1550,7 @@ view.o: view.cpp view.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableWidget \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qtablewidget.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableWidgetItem \
-		tablerow.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QList \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qlist.h
+		tablerow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o view.o view.cpp
 
 controller.o: controller.cpp controller.h \
@@ -1585,43 +1583,45 @@ controller.o: controller.cpp controller.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qdatetime.h \
 		receipt.h \
 		view.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QAction \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qaction.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QApplication \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qapplication.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QDialog \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qdialog.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QGridLayout \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QKeySequence \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qkeysequence.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlabel.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLineEdit \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMenu \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmenu.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMenuBar \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmenubar.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMessageBox \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QPushButton \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableView \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qtableview.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		gridshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QFrame \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qframe.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QGridLayout \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QWidget \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qwidget.h \
 		overlay.h \
 		qproduct.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QPixmap \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qpixmap.h \
 		qstackedwidgethover.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qcoreevent.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QHoverEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
 		receiptshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHeaderView \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qheaderview.h \
@@ -1632,9 +1632,7 @@ controller.o: controller.cpp controller.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableWidget \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qtablewidget.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableWidgetItem \
-		tablerow.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QList \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qlist.h
+		tablerow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controller.o controller.cpp
 
 qproduct.o: qproduct.cpp qproduct.h \
@@ -1647,6 +1645,8 @@ qproduct.o: qproduct.cpp qproduct.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QWidget \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qwidget.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QPixmap \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qpixmap.h \
 		Hierarchy/product.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QMap \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qmap.h \
@@ -1686,8 +1686,6 @@ overlay.o: overlay.cpp overlay.h \
 qstackedwidgethover.o: qstackedwidgethover.cpp qstackedwidgethover.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qcoreevent.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QFrame \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qframe.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QHoverEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qevent.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
@@ -1700,9 +1698,13 @@ qstackedwidgethover.o: qstackedwidgethover.cpp qstackedwidgethover.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		qproduct.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QFrame \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qframe.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlabel.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QPixmap \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qpixmap.h \
 		Hierarchy/product.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QMap \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qmap.h \
@@ -1744,8 +1746,6 @@ receiptshow.o: receiptshow.cpp receiptshow.h \
 		Hierarchy/enum.h \
 		Utilities/deep_ptr.hpp \
 		tablerow.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QList \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qlist.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QObject \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qobject.h \
 		controller.h \
@@ -1766,35 +1766,37 @@ receiptshow.o: receiptshow.cpp receiptshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qdatetime.h \
 		receipt.h \
 		view.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QAction \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qaction.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QApplication \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qapplication.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QDialog \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qdialog.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QGridLayout \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHBoxLayout \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLineEdit \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QKeySequence \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qkeysequence.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMenu \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmenu.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMenuBar \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qmenubar.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QPushButton \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QTableView \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qtableview.h \
 		gridshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QFrame \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qframe.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QGridLayout \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		overlay.h \
 		qproduct.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QPixmap \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qpixmap.h \
 		qstackedwidgethover.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qcoreevent.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QHoverEvent \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qevent.h
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o receiptshow.o receiptshow.cpp
 
 gridshow.o: gridshow.cpp gridshow.h \
@@ -1804,8 +1806,6 @@ gridshow.o: gridshow.cpp gridshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QScrollArea \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QWidget \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qwidget.h \
 		Hierarchy/product.h \
@@ -1827,11 +1827,15 @@ gridshow.o: gridshow.cpp gridshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlabel.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QPixmap \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qpixmap.h \
 		qstackedwidgethover.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QEvent \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qcoreevent.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QHoverEvent \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qevent.h
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QStackedWidget \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qstackedwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gridshow.o gridshow.cpp
 
 filter.o: filter.cpp filter.h \
@@ -1850,8 +1854,8 @@ filter.o: filter.cpp filter.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o filter.o filter.cpp
 
 tablerow.o: tablerow.cpp tablerow.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QList \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qlist.h \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QIcon \
+		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qicon.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/QObject \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtCore.framework/Headers/qobject.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QSpinBox \
@@ -1864,8 +1868,6 @@ tablerow.o: tablerow.cpp tablerow.h \
 		receiptshow.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QHeaderView \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qheaderview.h \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/QIcon \
-		/usr/local/Cellar/qt/6.1.0_1/lib/QtGui.framework/Headers/qicon.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/qlabel.h \
 		/usr/local/Cellar/qt/6.1.0_1/lib/QtWidgets.framework/Headers/QMessageBox \

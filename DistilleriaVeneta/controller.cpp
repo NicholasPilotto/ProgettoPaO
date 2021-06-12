@@ -26,6 +26,13 @@ void controller::delete_all() {
   _view->refresh_scontrino(get_receipt());
 }
 
+void controller::pay() {
+  io_json* io = new io_json();
+  io->write(_model->get_receipt());
+  delete_all();
+  delete io;
+}
+
 bool controller::presenza(const deep_ptr<product>& p) const { return _model->presenza(p); }
 
 unsigned int controller::total_number_items() const { return _model->total_number_items(); }

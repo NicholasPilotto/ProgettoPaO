@@ -92,8 +92,8 @@ bool io_json::write(const u_vector<std::pair<deep_ptr<product>, int>>& a) const 
 
   file.open(QIODevice::WriteOnly);
   QString jsonString = to_write.c_str();
-  //	qDebug() << doc.;
   QJsonDocument doc = QJsonDocument::fromJson(jsonString.toUtf8());
+  qDebug() << dir.absolutePath();
 
   if (doc.isEmpty()) {
     return false;

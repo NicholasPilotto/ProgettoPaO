@@ -173,12 +173,9 @@ view::view(QWidget* parent) : QWidget(parent), closing(new QKeySequence("Ctrl+Q"
 
   move(center.x() - width(), 0);
 
-
   add_menu_bar(main_layout);
 
-
   add_title(main_layout, "Distilleria Veneta");
-
 
   add_grid(object_layout);
   add_receipt(object_layout);
@@ -248,7 +245,7 @@ void view::pay_banner() {
     QPushButton* ok_button = new QPushButton("Ok", pay_dialog);
     QPushButton* annulla_button = new QPushButton("Annulla", pay_dialog);
     pay_dialog->addButton(ok_button, QMessageBox::YesRole);
-    connect(ok_button, SIGNAL(clicked()), presenter, SLOT(delete_all()));
+    connect(ok_button, SIGNAL(clicked()), presenter, SLOT(pay()));
     pay_dialog->addButton(annulla_button, QMessageBox::NoRole);
 
   } else {

@@ -102,6 +102,7 @@ class controller : public QObject {
 
  public slots:
   void delete_all();
+  void pay();
   void filter_by_products() const;
   void filter_by_color();
   void filter_by_taste();
