@@ -15,7 +15,6 @@ void QReceiptShow::addTable(QVBoxLayout* table_layout) {
   table->setMinimumSize(500, 500);
   table->setColumnCount(4);
 
-
   QStringList names_columns;
   names_columns << "Nome Prodotto"
                 << "Dimensione"

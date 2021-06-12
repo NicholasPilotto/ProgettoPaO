@@ -1,10 +1,7 @@
 #include "overlay.h"
 
 QOverlay::QOverlay(QWidget* parent) : QWidget(parent) {
-
-
   overlay_layout = new QVBoxLayout(this);
-
 
   small_button = new QPushButton("Small", this);
   small_button->setObjectName("overlay_button");
@@ -15,11 +12,9 @@ QOverlay::QOverlay(QWidget* parent) : QWidget(parent) {
   large_button = new QPushButton("Large", this);
   large_button->setObjectName("overlay_button");
 
-
   overlay_layout->addWidget(small_button);
   overlay_layout->addWidget(medium_button);
   overlay_layout->addWidget(large_button);
-
 
   setLayout(overlay_layout);
 }

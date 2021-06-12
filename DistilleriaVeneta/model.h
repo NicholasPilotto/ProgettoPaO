@@ -1,8 +1,8 @@
 #ifndef _MODEL_H
 #define _MODEL_H
 
-#include "./Utilities/u_vector.hpp"
 #include "./Hierarchy/product.h"
+#include "./Utilities/u_vector.hpp"
 #include "filter.h"
 #include "io_json.h"
 #include "receipt.h"

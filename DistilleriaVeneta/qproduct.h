@@ -4,9 +4,9 @@
 #include <QFrame>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QPixmap>
 #include <QVBoxLayout>
 #include <QWidget>
-#include <QPixmap>
 #include <functional>
 
 #include "./Hierarchy/product.h"

@@ -1,6 +1,8 @@
 #include "filter.h"
-#include "cstring"
+
 #include <QDebug>
+
+#include "cstring"
 
 filter::filter() {}
 

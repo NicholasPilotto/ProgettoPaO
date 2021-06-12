@@ -17,11 +17,9 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   filters->addMenu(colors);
   filters->addMenu(flavors);
 
-
   close_action = new QAction("Chiudi", file);
   close_action->setShortcut(*closing);
   file->addAction(close_action);
-
 
   QAction* cresc = new QAction("Ordine Crescente", alcohols);
   QAction* desc = new QAction("Ordine Decrescente", alcohols);
@@ -31,7 +29,6 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
   desc->setChecked(false);
   alcohols->addAction(cresc);
   alcohols->addAction(desc);
-
 
   u_vector<QString> colours_actions = {"Giallo", "Rosso", "Rosa", "Marrone", "Nero", "Violetto", "Bianco", "Verde", "Bianco Trasparente", "Giallo Trasparente"};
   u_vector<QString>::const_iterator _color_cit = colours_actions.const_begin();
@@ -45,7 +42,6 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
     colors->addAction(action);
   }
 
-
   u_vector<QString> flavors_actions = {"Limone", "Nocciola", "Caffè", "Liquirizia", "Cioccolato", "Uovo", "Rum", "Crema", "Fragola", "Frutti di bosco", "Mirtillo", "Ribes", "Prugna", "Miele", "Secco", "Dolce", "Amabile", "Menta"};
 
   u_vector<QString>::const_iterator _flavor_cit = flavors_actions.const_begin();
@@ -57,7 +53,6 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
     action->setChecked(false);
     flavors->addAction(action);
   }
-
 
   main_layout->addWidget(menu_bar);
 }
@@ -77,7 +72,6 @@ void view::add_title(QVBoxLayout* layout, const QString& message) {
 QHBoxLayout* view::add_filter_buttons() {
   filter_buttons = new QHBoxLayout(this);
 
-
   grappa_button = new QPushButton("Grappa", this);
   grappa_button->setObjectName("old-young");
   liquor_button = new QPushButton("Liquore", this);
@@ -87,12 +81,10 @@ QHBoxLayout* view::add_filter_buttons() {
   all_button = new QPushButton("Tutti", this);
   all_button->setObjectName("all-null");
 
-
   filter_buttons->addWidget(grappa_button);
   filter_buttons->addWidget(liquor_button);
   filter_buttons->addWidget(cream_button);
   filter_buttons->addWidget(all_button);
-
 
   filter_buttons->setSpacing(30);
   filter_buttons->setContentsMargins(20, 20, 20, 20);
@@ -103,16 +95,12 @@ void view::add_grid(QHBoxLayout* object_layout) {
   left_app = new QVBoxLayout(this);
   left_app->setObjectName("left_app");
 
-
   add_title(left_app, "Prodotti");
-
 
   product_area = new QGridShow(this);
   left_app->addWidget(product_area);
 
-
   left_app->addLayout(add_filter_buttons());
-
 
   left_app->setSpacing(0);
   left_app->setContentsMargins(20, 20, 20, 20);
@@ -122,16 +110,13 @@ void view::add_grid(QHBoxLayout* object_layout) {
 QHBoxLayout* view::add_receipt_buttons() {
   receipt_buttons = new QHBoxLayout(this);
 
-
   delete_receipt = new QPushButton("Elimina", this);
   delete_receipt->setObjectName("delete_button");
   pay_button = new QPushButton("Paga", this);
   pay_button->setObjectName("pay_button");
 
-
   receipt_buttons->addWidget(delete_receipt);
   receipt_buttons->addWidget(pay_button);
-
 
   receipt_buttons->setSpacing(50);
   receipt_buttons->setContentsMargins(25, 20, 25, 20);
@@ -142,16 +127,12 @@ QHBoxLayout* view::add_receipt_buttons() {
 void view::add_receipt(QHBoxLayout* object_layout) {
   right_app = new QVBoxLayout(this);
 
-
   add_title(right_app, "Scontrino");
-
 
   receipt_area = new QReceiptShow(this);
   right_app->addWidget(receipt_area);
 
-
   right_app->addLayout(add_receipt_buttons());
-
 
   right_app->setSpacing(0);
   right_app->setContentsMargins(20, 20, 20, 20);
@@ -180,7 +161,6 @@ view::view(QWidget* parent) : QWidget(parent), closing(new QKeySequence("Ctrl+Q"
   add_grid(object_layout);
   add_receipt(object_layout);
 
-
   main_layout->addLayout(object_layout);
   main_layout->setSpacing(20);
 
@@ -190,14 +170,11 @@ view::view(QWidget* parent) : QWidget(parent), closing(new QKeySequence("Ctrl+Q"
 view::~view() { delete closing; }
 
 void view::set_controller(controller* c) {
-
   presenter = c;
 
   receipt_area->setpresenter(c);
 
-
   update_json();
-
 
   connect(alcohols->actions()[0], SIGNAL(triggered()), presenter, SLOT(filter_by_ac_cre()));
   connect(alcohols->actions()[1], SIGNAL(triggered()), presenter, SLOT(filter_by_ac_dec()));
@@ -231,10 +208,6 @@ void view::refresh_grid_view(const u_vector<deep_ptr<product>>& _vector) {
   auto bind_item = std::bind(&controller::add_item, presenter, _1);
   product_area->refresh_grid(_vector, bind_item);
 }
-
-
-
-
 
 void view::pay_banner() {
   QMessageBox* pay_dialog = new QMessageBox(this);

@@ -21,7 +21,6 @@ class tablerow : public QWidget {
   QSpinBox* num_item;
   QTableWidgetItem* price_item;
 
-
  public:
   /**
    * @brief costruttore di tablerow

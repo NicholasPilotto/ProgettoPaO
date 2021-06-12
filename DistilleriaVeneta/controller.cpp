@@ -16,7 +16,7 @@ void controller::remove_item(const std::string& name, const std::string& dim) {
   _view->refresh_scontrino(get_receipt());
 }
 
-void controller::refresh_quantity(const std::string &name, const std::string &dim, int v) {
+void controller::refresh_quantity(const std::string& name, const std::string& dim, int v) {
   _model->refresh_quantity(name, dim, v);
   _view->refresh_scontrino(get_receipt());
 }
@@ -28,7 +28,7 @@ void controller::delete_all() {
 
 void controller::pay() {
   io_json* io = new io_json();
-  io->write(_model->get_receipt());
+  io->write(_model->get_receipt(), _model->total_price(), _model->total_taxes(), _model->total_number_items());
   delete_all();
   delete io;
 }

@@ -13,17 +13,17 @@ u_vector<deep_ptr<product>> model::get_products_json() const { return products; 
 
 void model::add_item(const deep_ptr<product>& p) { r->add_item(p); }
 
-void model::remove_item(const std::string &name, const std::string &dim) { r->remove_item(name, dim); }
+void model::remove_item(const std::string& name, const std::string& dim) { r->remove_item(name, dim); }
 
 void model::delete_all() { r->delete_all(); }
 
-void model::refresh_quantity(const std::string &name, const std::string &dim, int v) { r->refresh_quantity(name, dim, v); }
+void model::refresh_quantity(const std::string& name, const std::string& dim, int v) { r->refresh_quantity(name, dim, v); }
 
 bool model::presenza(const deep_ptr<product>& p) const { return r->presenza(p); }
 
 unsigned int model::total_number_items() const { return r->total_number_items(); }
 
-double model::total_price_line(const std::pair<deep_ptr<product>, int> &p) const { return r->total_price_line(p); }
+double model::total_price_line(const std::pair<deep_ptr<product>, int>& p) const { return r->total_price_line(p); }
 
 double model::total_price() const { return r->total_price(); }
 

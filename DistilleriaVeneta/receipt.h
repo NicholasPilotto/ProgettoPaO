@@ -3,9 +3,9 @@
 
 #include <chrono>
 
-#include "./Utilities/u_vector.hpp"
 #include "./Hierarchy/product.h"
 #include "./Utilities/deep_ptr.hpp"
+#include "./Utilities/u_vector.hpp"
 
 using std::chrono::steady_clock;
 using std::chrono::time_point;

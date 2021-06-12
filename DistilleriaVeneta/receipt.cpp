@@ -9,7 +9,7 @@ void receipt::add_item(const deep_ptr<product>& p) {
   }
 }
 
-void receipt::remove_item(const std::string &name, const std::string &dim) {
+void receipt::remove_item(const std::string& name, const std::string& dim) {
   u_vector<std::pair<deep_ptr<product>, int>>::iterator it = items.begin();
   u_vector<std::pair<deep_ptr<product>, int>>::iterator end = items.end();
 
@@ -73,7 +73,7 @@ double receipt::total_price() const {
   return price;
 }
 
-double receipt::total_price_line(const std::pair<deep_ptr<product>, int> &l) const { return l.first->get_price() * l.second; }
+double receipt::total_price_line(const std::pair<deep_ptr<product>, int>& l) const { return l.first->get_price() * l.second; }
 
 double receipt::total_taxes() const {
   double tot_taxes = 0;
