@@ -126,8 +126,7 @@ void QReceiptShow::CancellaProdottoSlot() {
 
 void QReceiptShow::refresh_spinbox(int v) {
   int line = qobject_cast<QSpinBox*>(sender())->objectName().toInt();
-  QTableWidgetItem* item_name = table->item(line, 0);
-  QTableWidgetItem* item_dim = table->item(line, 1);
-  presenter->refresh_quantity(item_name->text().toStdString(), item_dim->text().toStdString(), v);
+
+  presenter->refresh_quantity(table->item(line, 0)->text().toStdString(), table->item(line, 1)->text().toStdString(), v);
   refreshTable(presenter->get_receipt());
 }

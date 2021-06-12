@@ -29,7 +29,6 @@ QProduct::QProduct(const deep_ptr<product>& _product, std::function<void(const d
 
   mainlayout->addWidget(left_widget_image, Qt::AlignCenter);
 
-
   left_widget_name = new QLabel(_product->get_name().data());
   left_widget_name->setAlignment(Qt::AlignCenter);
   mainlayout->addWidget(left_widget_name, Qt::AlignCenter);

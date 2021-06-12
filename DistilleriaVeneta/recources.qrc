@@ -27,5 +27,7 @@
         <file>product/spirits/grappa/young/Grappa giovane.png</file>
         <file>icon/icon.png</file>
         <file>icon/delete.png</file>
+        <file>icon/plus.png</file>
+        <file>icon/meno.png</file>
     </qresource>
 </RCC>

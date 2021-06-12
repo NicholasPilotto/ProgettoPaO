@@ -44,3 +44,54 @@ QStackedWidget {
   margin: 0;
   font: bold;
 }
+
+QSpinBox {
+    /*text-align: center;*/
+    padding-right: 15px;
+    border-width: 5px;
+}
+
+QSpinBox:disabled {
+    color: #bbbbbb;
+}
+
+QSpinBox::up-button, QSpinBox::down-button {
+     subcontrol-origin: border;
+     padding-left: 0px;
+     padding-right: 10px;
+     width: 13px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+     /*height: 14px;*/
+     border-width: 1px;
+     border-radius: 1px;
+     background-color: white;
+}
+
+QSpinBox::up-button {
+    subcontrol-position: top right; /* position at the top right corner */
+}
+
+QSpinBox::up-button:hover, QSpinBox::down-button:hover {
+    background-color: #white;
+}
+
+QSpinBox::up-arrow:disabled, QSpinBox::down-arrow:disabled {
+    image: none;
+}
+
+QSpinBox::up-arrow, QSpinBox::down-arrow {
+     width: 20px;
+     height: 20px;
+     border: none;
+}
+
+QSpinBox::up-arrow {
+     image: url(:/icon/plus.png);
+}
+
+QSpinBox::down-button {
+    subcontrol-position: bottom right; /* position at bottom right corner */
+}
+
+QSpinBox::down-arrow {
+     image: url(:icon/meno.png);
+}
