@@ -97,13 +97,43 @@ class model {
    */
   u_vector<std::pair<deep_ptr<product>, int>> get_receipt() const;
 
-  // TODO
-
+  /**
+   * @brief filter_products
+   * @param _key: const std::string&, tipo di prodotto da ricercare
+   * @return u_vector<deep_ptr<product>>, vettore contenente i prodotti desiderati
+   */
   u_vector<deep_ptr<product>> filter_products(const std::string& = std::string()) const;
+
+  /**
+   * @brief filter_color
+   * @param _key: unsigned int, colore del prodotto da ricercare
+   * @return u_vector<deep_ptr<product>>, vettore contenente i prodotti desiderati
+   */
   u_vector<deep_ptr<product>> filter_color(const unsigned int = 0) const;
+
+  /**
+   * @brief filter_taste
+   * @param _key: const std::string&, gusto del prodotto da ricercare
+   * @return u_vector<deep_ptr<product>>, vettore contenente i prodotti desiderati
+   */
   u_vector<deep_ptr<product>> filter_taste(const unsigned int = 0) const;
+
+  /**
+   * @brief filter_products
+   * @return u_vector<deep_ptr<product>>, vettore contenente tutti i prodotti
+   */
   u_vector<deep_ptr<product>> filter_all() const;
+
+  /**
+   * @brief filter_products
+   * @return u_vector<deep_ptr<product>>, vettore contenente tutti i prodotti in ordine crescente secondo il contenuto alcolico
+   */
   u_vector<deep_ptr<product>> filter_cre_ac() const;
+
+  /**
+   * @brief filter_products
+   * @return u_vector<deep_ptr<product>>, vettore contenente tutti i prodotti in ordine decrescente secondo il contenuto alcolico
+   */
   u_vector<deep_ptr<product>> filter_dec_ac() const;
 };
 #endif
