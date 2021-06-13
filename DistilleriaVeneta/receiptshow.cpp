@@ -38,7 +38,7 @@ void QReceiptShow::addTable(QVBoxLayout* table_layout) {
 }
 
 void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>>& _products) {
-  // Inserimento prodotti
+
   int rows = _products.size();
 
   table->setRowCount(rows);
@@ -60,7 +60,7 @@ void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>
 }
 
 QGridLayout* QReceiptShow::add_total() {
-  resoconto = new QGridLayout(this);
+  resoconto = new QGridLayout();
   QFont f = QFont();
   f.setPointSize(17);
   f.setBold(true);

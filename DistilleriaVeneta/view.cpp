@@ -42,7 +42,7 @@ void view::add_menu_bar(QVBoxLayout* main_layout) {
     colors->addAction(action);
   }
 
-  u_vector<QString> flavors_actions = {"Limone", "Nocciola", "Caffè", "Liquirizia", "Cioccolato", "Uovo", "Rum", "Crema", "Fragola", "Frutti di bosco", "Mirtillo", "Ribes", "Prugna", "Miele", "Secco", "Dolce", "Amabile", "Menta"};
+  u_vector<QString> flavors_actions = {"Limone", "Nocciola", "Caffè", "Liquirizia", "Cioccolato", "Uovo", "Rum", "Panna", "Fragola", "Frutti di bosco", "Mirtillo", "Ribes", "Prugna", "Miele", "Secco", "Dolce", "Amabile", "Menta"};
 
   u_vector<QString>::const_iterator _flavor_cit = flavors_actions.const_begin();
   u_vector<QString>::const_iterator _flavor_end = flavors_actions.const_end();
@@ -70,7 +70,7 @@ void view::add_title(QVBoxLayout* layout, const QString& message) {
 }
 
 QHBoxLayout* view::add_filter_buttons() {
-  filter_buttons = new QHBoxLayout(this);
+  filter_buttons = new QHBoxLayout();
 
   grappa_button = new QPushButton("Grappa", this);
   grappa_button->setObjectName("old-young");
@@ -92,7 +92,7 @@ QHBoxLayout* view::add_filter_buttons() {
 }
 
 void view::add_grid(QHBoxLayout* object_layout) {
-  left_app = new QVBoxLayout(this);
+  left_app = new QVBoxLayout();
   left_app->setObjectName("left_app");
 
   add_title(left_app, "Prodotti");
@@ -108,7 +108,7 @@ void view::add_grid(QHBoxLayout* object_layout) {
 }
 
 QHBoxLayout* view::add_receipt_buttons() {
-  receipt_buttons = new QHBoxLayout(this);
+  receipt_buttons = new QHBoxLayout();
 
   delete_receipt = new QPushButton("Elimina", this);
   delete_receipt->setObjectName("delete_button");
@@ -125,7 +125,7 @@ QHBoxLayout* view::add_receipt_buttons() {
 }
 
 void view::add_receipt(QHBoxLayout* object_layout) {
-  right_app = new QVBoxLayout(this);
+  right_app = new QVBoxLayout();
 
   add_title(right_app, "Scontrino");
 
@@ -147,7 +147,7 @@ void view::update_json() {
 
 view::view(QWidget* parent) : QWidget(parent), closing(new QKeySequence("Ctrl+Q")) {
   main_layout = new QVBoxLayout(this);
-  object_layout = new QHBoxLayout(this);
+  object_layout = new QHBoxLayout();
 
   QRect desktopRect = QApplication::desktop()->availableGeometry(this);
   QPoint center = desktopRect.center();

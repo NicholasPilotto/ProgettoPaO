@@ -5,7 +5,7 @@
 QProduct::QProduct(const deep_ptr<product>& _product, std::function<void(const deep_ptr<product>&)> callback, QWidget* parent) : QWidget(parent), item(_product), product_callback(callback) {
   item = _product;
 
-  mainlayout = new QVBoxLayout(this);
+  mainlayout = new QVBoxLayout();
   image_layout = new QHBoxLayout(this);
 
   img = new QLabel(this);
