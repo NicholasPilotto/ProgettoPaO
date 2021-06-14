@@ -88,7 +88,7 @@ std::string cream::write() const {
 	    \"tastes\": [ \
 	      $4 \
 	    ], \
-	    \"bottle_size\": $5";
+	    \"bottle_size\": \"$5\"";
 
   std::string name = std::regex_replace(get_name(), std::regex("\n"), "");
 
