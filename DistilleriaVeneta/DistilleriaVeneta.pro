@@ -41,7 +41,6 @@ HEADERS += \
   ./Hierarchy/cream.h \
   ./Utilities/u_vector.hpp \
   ./Utilities/deep_ptr.hpp \
-  ./Utilities/aux_func.hpp \
   io_json.h \
   model.h \
   view.h \
