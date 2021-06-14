@@ -22,9 +22,7 @@ enum taste {
   _smooth = 25,
   _amable = 26,
   _mint = 27
-};  // differenza tra smooth e amable:
-    // smooth -> invecchiata
-    // amable -> più amabile
+};
 
 enum color { yellow, red, pink, brown, black, violet, white, green, white_trasparent, yellow_trasparent };
 
