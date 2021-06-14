@@ -79,15 +79,17 @@ std::string liquor::write() const {
   std::string aux =
       "\"product\": \"$0\", \
 	    \"name\": \"$1\", \
-	    \"alcohol_content\": $2, \
-	    \"color\": $3, \
+	    \"alcohol_content\": \"$2\", \
+	    \"color\": \"$3\", \
 	    \"tastes\": [ \
 	      $4 \
 	    ], \
-	    \"bottle_size\": $5";
+	    \"bottle_size\": \"$5\"";
+
+  std::string name = std::regex_replace(get_name(), std::regex("\n"), "");
 
   aux = std::regex_replace(aux, std::regex("\\$0"), type_product());
-  aux = std::regex_replace(aux, std::regex("\\$1"), get_name());
+  aux = std::regex_replace(aux, std::regex("\\$1"), name);
   aux = std::regex_replace(aux, std::regex("\\$2"), std::to_string(get_alcohol_content()));
   aux = std::regex_replace(aux, std::regex("\\$3"), std::to_string(get_color()));
   aux = std::regex_replace(aux, std::regex("\\$4"), std::to_string(get_tastes()[0]));
