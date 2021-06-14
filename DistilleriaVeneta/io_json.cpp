@@ -103,6 +103,7 @@ bool io_json::write(const u_vector<std::pair<deep_ptr<product>, int>>& a, double
 
     file.open(QIODevice::WriteOnly);
     file.write(doc.toJson(QJsonDocument::Indented));
+    file.close();
     return true;
   }
 }
