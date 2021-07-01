@@ -4,7 +4,7 @@
 #include "model.h"
 #include "view.h"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   QApplication a(argc, argv);
   QPalette pal = a.palette();
   pal.setColor(QPalette::Window, QColor::fromRgb(245, 245, 245));

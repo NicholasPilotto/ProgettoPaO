@@ -1,25 +1,25 @@
 #include "qstackedwidgethover.h"
 
-void QStackedWidgetHover::hoverEnter(QHoverEvent *) { setCurrentIndex(1); }
+void QStackedWidgetHover::hoverEnter(QHoverEvent*) { setCurrentIndex(1); }
 
-void QStackedWidgetHover::hoverLeave(QHoverEvent *) { setCurrentIndex(0); }
+void QStackedWidgetHover::hoverLeave(QHoverEvent*) { setCurrentIndex(0); }
 
-void QStackedWidgetHover::hoverMove(QHoverEvent *) { setCurrentIndex(1); }
+void QStackedWidgetHover::hoverMove(QHoverEvent*) { setCurrentIndex(1); }
 
-bool QStackedWidgetHover::event(QEvent *event) {
+bool QStackedWidgetHover::event(QEvent* event) {
   switch (event->type()) {
     case QEvent::HoverEnter:
-      hoverEnter(static_cast<QHoverEvent *>(event));
+      hoverEnter(static_cast<QHoverEvent*>(event));
       return true;
       break;
 
     case QEvent::HoverLeave:
-      hoverLeave(static_cast<QHoverEvent *>(event));
+      hoverLeave(static_cast<QHoverEvent*>(event));
       return true;
       break;
 
     case QEvent::HoverMove:
-      hoverMove(static_cast<QHoverEvent *>(event));
+      hoverMove(static_cast<QHoverEvent*>(event));
       return true;
       break;
 
@@ -29,7 +29,7 @@ bool QStackedWidgetHover::event(QEvent *event) {
   return QWidget::event(event);
 }
 
-QStackedWidgetHover::QStackedWidgetHover(QProduct *p, QOverlay *o, QWidget *parent) : QStackedWidget(parent) {
+QStackedWidgetHover::QStackedWidgetHover(QProduct* p, QOverlay* o, QWidget* parent) : QStackedWidget(parent) {
   setMouseTracking(true);
   setAttribute(Qt::WA_Hover);
   addWidget(p);

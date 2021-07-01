@@ -38,7 +38,6 @@ void QReceiptShow::addTable(QVBoxLayout* table_layout) {
 }
 
 void QReceiptShow::refreshTable(const u_vector<std::pair<deep_ptr<product>, int>>& _products) {
-
   int rows = _products.size();
 
   table->setRowCount(rows);
